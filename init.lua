@@ -5,5 +5,7 @@ require('treesitter-config')
 require('lualine-config')
 require('bufferline-config')
 require('lexima-config')
+require('onedark-config')
+require('telescope-config')
 vim.cmd('colorscheme gruvbox8_hard')
 

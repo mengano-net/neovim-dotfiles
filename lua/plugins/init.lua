@@ -13,5 +13,12 @@ return require('packer').startup(function()
   }
   use 'cohama/lexima.vim'
   use 'tpope/vim-fugitive'
+  use 'tpope/vim-commentary' 
   use 'airblade/vim-gitgutter'
+  use 'navarasu/onedark.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
 end)
