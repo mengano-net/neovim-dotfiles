@@ -1,0 +1,9 @@
+require('options')
+require('plugins')
+require('mappings')
+require('treesitter-config')
+require('lualine-config')
+require('bufferline-config')
+require('lexima-config')
+vim.cmd('colorscheme gruvbox8_hard')
+
