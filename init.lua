@@ -7,5 +7,6 @@ require('bufferline-config')
 require('lexima-config')
 require('onedark-config')
 require('telescope-config')
+require('telescope-extensions')
+require('notify-extensions')
 vim.cmd('colorscheme gruvbox8_hard')
-
