@@ -1,8 +1,7 @@
--- require('lualine').setup()
 require('lualine').setup {
     options = {
         -- theme = 'onedark',
-        -- theme = 'gruvbox',
+        theme = 'gruvbox',
         icons_enabled = true,
         -- extensions = {'fugitive'},
         section_separators = '',
@@ -27,7 +26,7 @@ require('lualine').setup {
         lualine_x = {
             {
                 'diagnostics',
-                -- sources = {"nvim_lsp"},
+                sources = {"nvim_lsp"},
                 symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
             },
             'fileformat',

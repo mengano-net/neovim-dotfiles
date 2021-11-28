@@ -1,14 +1,14 @@
 vim.g.mapleader = ' '
 vim.g.leader = ' '
 
--- vim.cmd('filetype plugin indent on')
 vim.cmd[[
+syntax enable
 filetype plugin indent on
 
 augroup highlight_on_yank
     autocmd!
     " au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
-    au TextYankPost * silent! lua vim.highlight.on_yank {timeout=500}
+    au TextYankPost * silent! lua vim.highlight.on_yank {timeout=750}
 augroup END
 
 " Unset paste mode aboue on InsertLeave action, that is leaving insert mode
@@ -55,6 +55,7 @@ vim.o.relativenumber = true
 vim.o.cul = true
 vim.o.cuc = true
 vim.o.colorcolumn = '100'
+-- vim.o.signcolumn = 'yes'
 vim.o.signcolumn = 'yes:2'
 vim.o.clipboard = "unnamedplus"
 vim.o.mouse = "a"
@@ -63,4 +64,6 @@ vim.o.expandtab = true
 vim.bo.expandtab = true
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
+-- not neededing since I'm running plugin: akinsho/bufferline.nvim
 -- vim.o.showtabline = 2
+vim.lsp.diagnostic.enable = true

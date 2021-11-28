@@ -71,6 +71,7 @@ function M.find_files()
             -- prompt_prefix = '  ',
             prompt_prefix = '  ',
             -- cwd = '%p',
+            file_ignore_patterns = { "node_modules" },
         }
         require'telescope.builtin'.find_files(opts)
     end
