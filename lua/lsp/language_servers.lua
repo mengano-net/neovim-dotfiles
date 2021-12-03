@@ -1,77 +1,49 @@
+local custom_lsp_attach = function(client)
+
+  -- See `:help nvim_buf_set_keymap()` for more information
+  local mapping_opts = { noremap=true, silent=true }
+  vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', mapping_opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gD', '<cmd> lua vim.lsp.buf.definition()<CR>', mapping_opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', mapping_opts)
+  -- vim.api.nvim_buf_set_keymap(0, 'n', 'gD', '<cmd> lua')
+
+  -- buf_set_keymap('n', '<leader>wa', ':lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  -- buf_set_keymap('n', 'K', ':lua vim.lsp.buf.hover()<cr>', opts)
+  -- buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  -- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  -- -- buf_set_keymap('n', '<leader>p', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Use LSP as the handler for omnifunc.
+  --    See `:help omnifunc` and `:help ins-completion` for more information.
+  vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Use LSP as the handler for formatexpr.
+  --    See `:help formatexpr` for more information.
+  vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+
+end
+
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- lua-language-server
--- local system_name
--- if vim.fn.has("mac") == 1 then
---   system_name = "macOS"
--- elseif vim.fn.has("unix") == 1 then
---   system_name = "Linux"
--- elseif vim.fn.has('win32') == 1 then
---   system_name = "Windows"
--- else
---   print("Unsupported system for sumneko")
--- end
-
--- -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
--- local sumneko_root_path = '/Users/neilsabde/.config/something/ls/lua-language-server'
--- local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
-
--- local runtime_path = vim.split(package.path, ';')
--- table.insert(runtime_path, "lua/?.lua")
--- table.insert(runtime_path, "lua/?/init.lua")
-
-local langservers = {
-  'html',
-  'cssls',
-  -- 'tsserver',
-  -- 'pylsp',
-  -- 'sumneko_lua'
+require'lspconfig'.cssls.setup {
+  cmd = { '/usr/bin/css-language-server', '--stdio' },
+  capabilities = capabilities,
+  on_attach = custom_lsp_attach,
 }
 
-for _, server in ipairs(langservers) do
-  if server == 'sumneko_lua' then
-    require'lspconfig'[server].setup {
-      cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-      settings = {
-        Lua = {
-          runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-            -- Setup your lua path
-            path = runtime_path,
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
-          },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false
-          },
-          -- Do not send telemetry data containing a randomized but unique identifier
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
-    }
-  elseif server == 'html' then
-    require'lspconfig'[server].setup {
-      cmd = { '/usr/bin/html-languageserver', '--stdio' },
-      capabilities = capabilities,
-    }
-  elseif server == 'cssls' then
-    require'lspconfig'[server].setup {
-      cmd = { '/usr/bin/css-language-server', '--stdio' },
-      capabilities = capabilities,
-      -- diagnostics = {},
-      vim.lsp.diagnostic.show_line_diagnostics(),
-    }
-  else
-    require'lspconfig'[server].setup {
-      capabilities = capabilities
-    }
-  end
-end
+require'lspconfig'.html.setup {
+  cmd = { '/usr/bin/html-languageserver', '--stdio' },
+  capabilities = capabilities,
+  -- vim.lsp.diagnostic.show_line_diagnostics(),
+  on_attach = custom_lsp_attach,
+}
+require'lspconfig'.pyright.setup {
+  -- cmd = { '/usr/bin/pyright', '--stdio' },
+  capabilities = capabilities,
+  on_attach = custom_lsp_attach,
+}

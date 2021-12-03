@@ -3,6 +3,7 @@ local actions = require('telescope.actions')
 -- module export
 local M = {}
 
+-- Telescope's setup to instantiate and setup some defaults
 require('telescope').setup {
   defaults = {
     layout_config = {

@@ -1,21 +1,4 @@
-vim.cmd [[
-
-" LspDiagnostics highlights
-" highlight LspDiagnosticsDefaultError guifg=BrightRed
-" highlight LspDiagnosticsVirtualTextError guifg=Red
-" highlight LspDiagnosticsUnderlineError guifg=Red
-" highlight LspDiagnosticsVirtualTextWarning guifg=Yellow
-
-" sign define DiagnosticSignError text=E texthl=DiagnosticSignError linehl= numhl=
-" sign define DiagnosticSignWarn text=W texthl=DiagnosticSignWarn linehl= numhl=
-" sign define DiagnosticSignInfo text=I texthl=DiagnosticSignInfo linehl= numhl=
-" sign define DiagnosticSignHint text=H texthl=DiagnosticSignHint linehl= numhl=
-
-
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-
-]]
-
+-- vim.diagnostic.config{}
 vim.diagnostic.config{
   virtual_text = true,
   signs = true,
@@ -31,8 +14,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
    -- Enable virtual text only on Warning or above, override spacing to 2
   signs = true,
    virtual_text = {
-     spacing = 2,
-     severity_limit = "Warning",
+     spacing = 5,
+     -- severity_limit = "Warning",
+     prefix = ' ', -- Could be '■' '●', '▎', 'x',
    },
  }
 )
@@ -40,7 +24,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
-  -- local hl = "LspDiagnosticsSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-

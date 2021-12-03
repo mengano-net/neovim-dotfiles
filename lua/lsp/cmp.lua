@@ -62,6 +62,7 @@ cmp.setup{
 
   -- the order of these sources dictates appearance on complete menu
   sources = cmp.config.sources {
+    { name = 'buffer', keyword_length = 4 },        -- type min of 4 chars before autocomplete kicks in
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'path' },
@@ -69,7 +70,6 @@ cmp.setup{
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
-    { name = 'buffer', keyword_length = 4 },        -- type min of 4 chars before autocomplete kicks in
   },
 
   formatting = {

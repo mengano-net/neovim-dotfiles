@@ -3,17 +3,31 @@ vim.g.leader = ' '
 
 vim.cmd[[
 syntax enable
-filetype plugin indent on
+filetype plugin indent on 
 
 augroup highlight_on_yank
     autocmd!
-    " au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
-    au TextYankPost * silent! lua vim.highlight.on_yank {timeout=750}
+    au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=750}
+    " au TextYankPost * silent! lua vim.highlight.on_yank {timeout=750}
 augroup END
 
 " Unset paste mode aboue on InsertLeave action, that is leaving insert mode
 autocmd InsertLeave * silent! set nopaste
 
+" Spelling mistakes will be colored up red
+hi SpellBad cterm=underline ctermfg=203 guifg=#ff5f5f
+hi SpellLocal cterm=underline ctermfg=203 guifg=#ff5f5f
+hi SpellRare cterm=underline ctermfg=203 guifg=#ff5f5f
+hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
+
+" Trailing whitespaces will be marked as errors, thus appear on red.
+match errorMsg /\s\+$/
+match WarningMsg /\s\+$/
+match Whitespace /\s\+$/
+
+" No lines on terminal window, also go stright into insert mode
+au TermOpen * silent! setlocal nonumber norelativenumber
+au TermOpen * silent! startinsert
 ]]
 
 vim.o.smartcase = true
@@ -45,7 +59,7 @@ vim.bo.tabstop = 2
 vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
 vim.o.textwidth = 99
-vim.o.updatetime = 300
+vim.o.updatetime = 150
 vim.o.backup = false
 vim.o.timeoutlen = 1000
 vim.o.list = true
@@ -55,10 +69,9 @@ vim.o.relativenumber = true
 vim.o.cul = true
 vim.o.cuc = true
 vim.o.colorcolumn = '100'
--- vim.o.signcolumn = 'yes'
 vim.o.signcolumn = 'yes:2'
 vim.o.clipboard = "unnamedplus"
-vim.o.mouse = "a"
+-- vim.o.mouse = "a"      -- mouse support
 vim.o.autoindent = true
 vim.o.expandtab = true
 vim.bo.expandtab = true
@@ -66,4 +79,3 @@ vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
 -- not neededing since I'm running plugin: akinsho/bufferline.nvim
 -- vim.o.showtabline = 2
-vim.lsp.diagnostic.enable = true

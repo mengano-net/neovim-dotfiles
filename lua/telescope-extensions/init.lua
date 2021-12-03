@@ -19,6 +19,7 @@ function M.neovim_config()
         prompt_title = '\\ NVim Config /',
         previewer = false,
         cwd = '~/.config/nvim',
+        file_ignore_patterns = { "node_modules" },
         prompt_prefix = '  ',
         layout_config = {
             width = 0.5,
@@ -62,11 +63,13 @@ function M.find_files()
     else
         local opts = {
             prompt_title = "\\ Find Files /",
+            -- previewer = 'true',
             follow = 'true',
             -- hidden = 'false',
             layout_strategy = "horizontal",
             layout_config = {
-                width = 0.95,
+              width = 0.95,
+              preview_width = 0.65,
             },
             -- prompt_prefix = '  ',
             prompt_prefix = '  ',
