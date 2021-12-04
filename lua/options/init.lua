@@ -3,7 +3,7 @@ vim.g.leader = ' '
 
 vim.cmd[[
 syntax enable
-filetype plugin indent on 
+filetype plugin indent on
 
 augroup highlight_on_yank
     autocmd!
