@@ -32,10 +32,17 @@ end
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+-- css language server
+local cssls_binary = ''
+if vim.fn.has('mac') == 1 then
+  cssls_binary = '/usr/local/bin/css-language-server'
+elseif vim.fn.has("unix") == 1 then
+  cssls_binary = '/usr/bin/css-language-server'
+end
+
 require'lspconfig'.cssls.setup {
-  -- cmd = { '/usr/bin/css-language-server', '--stdio' },
-  -- macos
-  cmd = { '/usr/local/bin/css-language-server', '--stdio' },
+  -- cmd = { '/usr/local/bin/css-language-server', '--stdio' },
+  cmd = { cssls_binary, '--stdio' },
   -- /usr/local/bin/css-language-server
   capabilities = capabilities,
   on_attach = custom_lsp_attach,
@@ -48,13 +55,11 @@ require'lspconfig'.html.setup {
   on_attach = custom_lsp_attach,
 }
 
-require'lspconfig'.pyright.setup {
-  -- cmd = { '/usr/bin/pyright', '--stdio' },
-  -- macos has this path, I need to work on this
-  cmd = { '/usr/local/bin/pyright', '--stdio' },
-  capabilities = capabilities,
-  on_attach = custom_lsp_attach,
-}
+-- require'lspconfig'.pyright.setup {
+--   cmd = { "/usr/local/bin/pyright" },
+--   capabilities = capabilities,
+--   on_attach = custom_lsp_attach,
+-- }
 
 require'lspconfig'.bashls.setup{
   cmd = { '/usr/local/bin/bash-language-server', 'start' },

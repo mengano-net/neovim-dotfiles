@@ -15,7 +15,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   signs = true,
    virtual_text = {
      spacing = 5,
-     -- severity_limit = "Warning",
+     severity_limit = "Hint",
      prefix = ' ', -- Could be '■' '●', '▎', 'x',
    },
  }

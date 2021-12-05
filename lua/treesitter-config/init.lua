@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = {"lua", "yaml", "bash", "python"},
+  ensure_installed = {"lua", "yaml", "bash" },
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
@@ -11,6 +11,5 @@ require'nvim-treesitter.configs'.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
-    disable = { "python" },
   },
 }
