@@ -8,7 +8,6 @@ filetype plugin indent on
 augroup highlight_on_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=750}
-    " au TextYankPost * silent! lua vim.highlight.on_yank {timeout=750}
 augroup END
 
 " Unset paste mode aboue on InsertLeave action, that is leaving insert mode
@@ -20,14 +19,13 @@ hi SpellLocal cterm=underline ctermfg=203 guifg=#ff5f5f
 hi SpellRare cterm=underline ctermfg=203 guifg=#ff5f5f
 hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
 
-" Trailing whitespaces will be marked as errors, thus appear on red.
-match errorMsg /\s\+$/
-match WarningMsg /\s\+$/
-match Whitespace /\s\+$/
-
 " No lines on terminal window, also go stright into insert mode
 au TermOpen * silent! setlocal nonumber norelativenumber
 au TermOpen * silent! startinsert
+
+" Saw this online while troubleshooting LSP
+" autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()
+
 ]]
 
 vim.o.smartcase = true

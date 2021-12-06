@@ -1,23 +1,55 @@
-local custom_lsp_attach = function(client)
+local nvim_lsp = require'lspconfig'
+-- local protocol   = require('vim.lsp.protocol')
+
+local custom_lsp_attach = function(client,bufnr)
+
+  --[[
+  -- Protocols
+  protocol.CompletionItemKind = {
+      '', -- Text
+      '', -- Method
+      '', -- Function
+      '', -- Constructor
+      '', -- Field
+      '', -- Variable
+      '', -- Class
+      'ﰮ', -- Interface
+      '', -- Module
+      '', -- Property
+      '', -- Unit
+      '', -- Value
+      '', -- Enum
+      '', -- Keyword
+      '﬌', -- Snippet
+      '', -- Color
+      '', -- File
+      '', -- Folder
+      '', -- EnumMember
+      '', -- Constant
+      '', -- Struct
+      '', -- Event
+      'ﬦ', -- Operator
+      '', -- TypeParameter
+  }
+  ]]
 
   -- See `:help nvim_buf_set_keymap()` for more information
-  local mapping_opts = { noremap=true, silent=true }
-  vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', mapping_opts)
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_buf_set_keymap(0, 'n', 'gD', '<cmd> lua vim.lsp.buf.definition()<CR>', mapping_opts)
-    vim.api.nvim_buf_set_keymap(0, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', mapping_opts)
-  end
-  -- vim.api.nvim_buf_set_keymap(0, 'n', 'gD', '<cmd> lua')
+  local map_opts = { noremap=true, silent=true }
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd> lua vim.lsp.buf.definition()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
 
-  -- buf_set_keymap('n', '<leader>wa', ':lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  -- buf_set_keymap('n', 'K', ':lua vim.lsp.buf.hover()<cr>', opts)
-  -- buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  -- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  -- buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  -- -- buf_set_keymap('n', '<leader>p', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
+  end
+
+  if client.resolved_capabilities.code_action then
+    print("codeAction present")
+  else
+    print("No codeAction")
+  end
 
   -- Use LSP as the handler for omnifunc.
   --    See `:help omnifunc` and `:help ins-completion` for more information.
@@ -29,47 +61,48 @@ local custom_lsp_attach = function(client)
 
 end
 
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Setup capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- css language server
-local cssls_binary = ''
+--[[
+require'lspconfig'.pyright.setup {
+  -- macOS
+  -- cmd = { "/usr/local/bin/pyright" },
+  cmd = { "/usr/bin/pyright" },
+  capabilities = capabilities,
+  on_attach = custom_lsp_attach,
+}
+]]
+
+-- bash language server
+local bashls_binary = ''
 if vim.fn.has('mac') == 1 then
-  cssls_binary = '/usr/local/bin/css-language-server'
+  bashls_binary = '/usr/local/bash-language-server'
 elseif vim.fn.has("unix") == 1 then
-  cssls_binary = '/usr/bin/css-language-server'
+  bashls_binary = '/usr/bin/bash-language-server'
 end
 
-require'lspconfig'.cssls.setup {
-  -- cmd = { '/usr/local/bin/css-language-server', '--stdio' },
-  cmd = { cssls_binary, '--stdio' },
-  -- /usr/local/bin/css-language-server
-  capabilities = capabilities,
-  on_attach = custom_lsp_attach,
-}
-
-require'lspconfig'.html.setup {
-  cmd = { '/usr/bin/html-languageserver', '--stdio' },
-  capabilities = capabilities,
-  -- vim.lsp.diagnostic.show_line_diagnostics(),
-  on_attach = custom_lsp_attach,
-}
-
--- require'lspconfig'.pyright.setup {
---   cmd = { "/usr/local/bin/pyright" },
---   capabilities = capabilities,
---   on_attach = custom_lsp_attach,
--- }
-
-require'lspconfig'.bashls.setup{
-  cmd = { '/usr/local/bin/bash-language-server', 'start' },
+nvim_lsp.bashls.setup{
+  cmd = { bashls_binary, "start"},
+  flags = {
+    debounce_text_changes = 150,
+  },
   filetypes = { 'sh', 'zsh' },
   capabilities = capabilities,
   on_attach = custom_lsp_attach,
 }
 
-require'lspconfig'.yamlls.setup{
-  -- cmd = { '/usr/local/bin/yaml-language-server' },
+--yaml language server
+local yamlls_binary = ''
+if vim.fn.has('mac') == 1 then
+  yamlls_binary = '/usr/bin/yaml-language-server'
+elseif vim.fn.has("unix") == 1 then
+  yamlls_binary = '/usr/bin/yaml-language-server'
+end
+
+nvim_lsp.yamlls.setup{
+  cmd = {yamlls_binary, "--stdio"},
   debounce_text_changes = 150,
   filetypes = { 'yaml', 'yml' },
   settings = {
@@ -114,13 +147,10 @@ else
   print("Unsupported system for sumneko")
 end
 
-require'lspconfig'.sumneko_lua.setup {
+nvim_lsp.sumneko_lua.setup {
   on_attach = custom_lsp_attach,
-  debounce_text_changes = 150,
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-  flags = {
-    debounce_text_changes = 150,
-  },
+  flags = {debounce_text_changes = 150},
   settings = {
     Lua = {
       runtime = {
