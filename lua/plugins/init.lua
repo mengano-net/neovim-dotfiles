@@ -13,7 +13,7 @@ return require('packer').startup(function()
   }
   use 'cohama/lexima.vim'
   use 'tpope/vim-fugitive'
-  use 'tpope/vim-commentary' 
+  use 'tpope/vim-commentary'
   use 'airblade/vim-gitgutter'
   use 'navarasu/onedark.nvim'
   use {
@@ -37,4 +37,7 @@ return require('packer').startup(function()
   use 'glepnir/lspsaga.nvim'
   --
   use 'ntpeters/vim-better-whitespace'
+  use 'rose-pine/neovim'
+  use 'lukas-reineke/indent-blankline.nvim'
+  use 'akinsho/toggleterm.nvim'
 end)

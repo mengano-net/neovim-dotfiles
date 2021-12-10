@@ -1,4 +1,4 @@
-vim.g.completeopt="menu,menuone,noselect,noinsert"
+vim.g.completeopt="menu,menuone,preview,noselect,noinsert"
 
 -- Functions to implement autocomplete on the custom <Tab> and
 -- <S-Tab> mappings below

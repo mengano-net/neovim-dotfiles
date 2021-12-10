@@ -37,7 +37,10 @@ local custom_lsp_attach = function(client,bufnr)
   local map_opts = { noremap=true, silent=true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd> lua vim.lsp.buf.definition()<CR>', map_opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
+
+  if client.resolved_capabilities.textDocument_declaration then
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
+  end
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
@@ -58,6 +61,8 @@ local custom_lsp_attach = function(client,bufnr)
   -- Use LSP as the handler for formatexpr.
   --    See `:help formatexpr` for more information.
   vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+
+  -- require('completion').on_attach()
 
 end
 
@@ -85,9 +90,9 @@ end
 
 nvim_lsp.bashls.setup{
   cmd = { bashls_binary, "start"},
-  flags = {
-    debounce_text_changes = 150,
-  },
+  -- flags = {
+  --   debounce_text_changes = 150,
+  -- },
   filetypes = { 'sh', 'zsh' },
   capabilities = capabilities,
   on_attach = custom_lsp_attach,

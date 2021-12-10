@@ -44,7 +44,7 @@ vim.o.backspace = 'indent,eol,start'
 vim.o.showcmd = false
 vim.o.showmode = false
 vim.o.wildoptions = 'pum'
-vim.o.wildignore = vim.o.wildignore .. '*.swp,.git,.gitignore'
+vim.o.wildignore = vim.o.wildignore .. '*.swp,.git,.gitignore,node_modules'
 vim.o.path = vim.o.path .. '.,**,'
 vim.o.hidden = true
 vim.o.splitright = true
@@ -77,3 +77,4 @@ vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
 -- not neededing since I'm running plugin: akinsho/bufferline.nvim
 -- vim.o.showtabline = 2
+vim.o.dictionary = '/usr/share/dict/words'
