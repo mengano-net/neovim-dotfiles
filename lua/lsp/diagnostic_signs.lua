@@ -1,6 +1,6 @@
 vim.diagnostic.config{
   virtual_text = true,
-  signs = true,
+  signs = false,
   underline = true,
   update_in_insert = true,
   severity_sort = true,
@@ -9,10 +9,13 @@ vim.diagnostic.config{
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
-    signs = true,
+    -- signs = true,
+    signs = {
+      severity_limit = 'Warning',
+    },
     virtual_text = {
       spacing = 5,
-      severity_limit = "Hint",
+      severity_limit = "Warning",
       prefix = ' ', -- Could be '■' '●', '▎', 'x',
     },
   }

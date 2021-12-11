@@ -3,36 +3,6 @@ local nvim_lsp = require'lspconfig'
 
 local custom_lsp_attach = function(client,bufnr)
 
-  --[[
-  -- Protocols
-  protocol.CompletionItemKind = {
-      '', -- Text
-      '', -- Method
-      '', -- Function
-      '', -- Constructor
-      '', -- Field
-      '', -- Variable
-      '', -- Class
-      'ﰮ', -- Interface
-      '', -- Module
-      '', -- Property
-      '', -- Unit
-      '', -- Value
-      '', -- Enum
-      '', -- Keyword
-      '﬌', -- Snippet
-      '', -- Color
-      '', -- File
-      '', -- Folder
-      '', -- EnumMember
-      '', -- Constant
-      '', -- Struct
-      '', -- Event
-      'ﬦ', -- Operator
-      '', -- TypeParameter
-  }
-  ]]
-
   -- See `:help nvim_buf_set_keymap()` for more information
   local map_opts = { noremap=true, silent=true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)

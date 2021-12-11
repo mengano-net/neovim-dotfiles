@@ -1,33 +1,5 @@
 vim.g.mapleader = ' '
 vim.g.leader = ' '
-
-vim.cmd[[
-syntax enable
-filetype plugin indent on
-
-augroup highlight_on_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=750}
-augroup END
-
-" Unset paste mode aboue on InsertLeave action, that is leaving insert mode
-autocmd InsertLeave * silent! set nopaste
-
-" Spelling mistakes will be colored up red
-hi SpellBad cterm=underline ctermfg=203 guifg=#ff5f5f
-hi SpellLocal cterm=underline ctermfg=203 guifg=#ff5f5f
-hi SpellRare cterm=underline ctermfg=203 guifg=#ff5f5f
-hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
-
-" No lines on terminal window, also go stright into insert mode
-au TermOpen * silent! setlocal nonumber norelativenumber
-au TermOpen * silent! startinsert
-
-" Saw this online while troubleshooting LSP
-" autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()
-
-]]
-
 vim.o.smartcase = true
 vim.o.laststatus = 2
 vim.o.hlsearch = true
@@ -78,3 +50,28 @@ vim.o.sidescrolloff = 5
 -- not neededing since I'm running plugin: akinsho/bufferline.nvim
 -- vim.o.showtabline = 2
 vim.o.dictionary = '/usr/share/dict/words'
+
+vim.cmd[[
+syntax enable
+filetype plugin indent on
+
+augroup highlight_on_yank
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=750}
+augroup END
+
+" Unset paste mode aboue on InsertLeave action, that is leaving insert mode
+autocmd InsertLeave * silent! set nopaste
+
+" Spelling mistakes will be colored up red
+hi SpellBad cterm=underline ctermfg=203 guifg=#ff5f5f
+hi SpellLocal cterm=underline ctermfg=203 guifg=#ff5f5f
+hi SpellRare cterm=underline ctermfg=203 guifg=#ff5f5f
+hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
+
+" Not needed since  I'm  using toggleterm plugin, which does this.
+" No lines on terminal window, also go stright into insert mode
+" au TermOpen * silent! setlocal nonumber norelativenumber
+" au TermOpen * silent! startinsert
+
+]]
