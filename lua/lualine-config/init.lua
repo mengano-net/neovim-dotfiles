@@ -14,8 +14,7 @@ end
 
 require('lualine').setup {
   options = {
-    theme = 'onedark',
-    -- theme = 'rose-pine',
+    theme = 'rose-pine',
     icons_enabled = true,
     extensions = {'fugitive'},
     section_separators = '',
@@ -43,8 +42,8 @@ require('lualine').setup {
         symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
       },
       -- 'fileformat',
-      'filetype',
-      -- { "filetype", icon_only = true },
+      -- 'filetype',
+      { "filetype", icon_only = true },
     },
     -- lualine_y = {},
     lualine_y = { { current_buffer_number }, { current_date } },
