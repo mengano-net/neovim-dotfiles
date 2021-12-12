@@ -3,11 +3,13 @@ local map = vim.api.nvim_set_keymap
 map('n', '<Leader>w', ':write<CR>', {noremap = true})
 map('i', 'jk', '<Esc>', {noremap = true})
 map('n', '<Tab>', ':BufferLineCycleNext<CR>', {silent = true})
+-- deprecated since I'm using toggeterm pluging
 -- map('n', '<Leader>sh', ':split term://zsh<cr>', {noremap = true})
 map('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
 map('n', 'nh', ':nohl<cr>', {noremap = true})
 -- paste yanked, not deleted, not system copied
 map('n', '<leader>p', '"0p', {noremap = true})
+map('n', '<leader>x', ':bd!<cr>', {noremap = true})
 
 -- better navigating splits
 map('n', '<C-h>', '<C-w><C-h>', {noremap = true})

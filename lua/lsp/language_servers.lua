@@ -28,6 +28,7 @@ local custom_lsp_attach = function(client,bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
   end
 
+  --Debug code
   --[[
   if client.resolved_capabilities.code_action then
     print("codeAction present")

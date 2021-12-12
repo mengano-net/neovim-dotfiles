@@ -45,11 +45,12 @@ vim.o.clipboard = "unnamedplus"
 vim.o.autoindent = true
 vim.o.expandtab = true
 vim.bo.expandtab = true
-vim.o.scrolloff = 5
+vim.o.scrolloff = 3
 vim.o.sidescrolloff = 5
 -- not neededing since I'm running plugin: akinsho/bufferline.nvim
 -- vim.o.showtabline = 2
 vim.o.dictionary = '/usr/share/dict/words'
+vim.o.conceallevel = 0
 
 vim.cmd[[
 syntax enable
