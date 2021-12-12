@@ -1,9 +1,17 @@
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
-local nvim_lsp = require'lspconfig'
+local nvim_lsp = require("lspconfig")
 -- local protocol   = require('vim.lsp.protocol')
 
 local custom_lsp_attach = function(client,bufnr)
+
+  -- Use LSP as the handler for omnifunc.
+  --    See `:help omnifunc` and `:help ins-completion` for more information.
+  vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Use LSP as the handler for formatexpr.
+  --    See `:help formatexpr` for more information.
+  vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
   -- See `:help nvim_buf_set_keymap()` for more information
   local map_opts = { noremap=true, silent=true }
@@ -28,13 +36,6 @@ local custom_lsp_attach = function(client,bufnr)
   end
   ]]
 
-  -- Use LSP as the handler for omnifunc.
-  --    See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Use LSP as the handler for formatexpr.
-  --    See `:help formatexpr` for more information.
-  vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
   -- Format on save BufWritePre to run lua formatting, conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -50,34 +51,22 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- python language server
-local pyright_binary = ""
-if vim.fn.has('mac') == 1 then
-  pyright_binary =  "/usr/local/bin/pyright"
-elseif vim.fn.has('unix') == 1 then
-  pyright_binary = "~/.local/bin/pylsp"
-end
-
-require("lspconfig").pyright.setup {
+nvim_lsp.pyright.setup {
   on_attach = custom_lsp_attach,
   capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  }
 }
 
 -- bash language server
-local bashls_binary = ''
-if vim.fn.has('mac') == 1 then
-  bashls_binary = '/usr/local/bash-language-server'
-elseif vim.fn.has("unix") == 1 then
-  bashls_binary = '/usr/bin/bash-language-server'
-end
-
 nvim_lsp.bashls.setup{
   on_attach = custom_lsp_attach,
-  -- cmd = { bashls_binary, "start"},
-  -- flags = {
-  --   debounce_text_changes = 150,
-  -- },
-  -- filetypes = { 'sh', 'zsh' },
   capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  filetypes = { 'sh', 'zsh' },
 }
 
 --yaml language server
@@ -162,4 +151,4 @@ nvim_lsp.sumneko_lua.setup {
   }
 }
 
-vim.lsp.set_log_level('debug')
+-- vim.lsp.set_log_level('debug')
