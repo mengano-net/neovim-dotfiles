@@ -15,6 +15,7 @@ local custom_lsp_attach = function(client,bufnr)
 
   -- See `:help nvim_buf_set_keymap()` for more information
   local map_opts = { noremap=true, silent=true }
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd> lua vim.lsp.buf.definition()<CR>', map_opts)
 
@@ -52,7 +53,14 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- python language server
+local pyright_binary = ""
+if vim.fn.has("mac") == 1 then
+  pyright_binary = "/usr/bin/pyright-langserver"
+elseif vim.fn.has("unix") == 1 then
+  pyright_binary = "/usr/bin/pyright-langserver"
+end
 nvim_lsp.pyright.setup {
+  cmd = {pyright_binary, "--stdio"},
   on_attach = custom_lsp_attach,
   capabilities = capabilities,
   flags = {
@@ -62,6 +70,7 @@ nvim_lsp.pyright.setup {
 
 -- bash language server
 nvim_lsp.bashls.setup{
+  cmd = {"/usr/bin/bash-language-server", "start"},
   on_attach = custom_lsp_attach,
   capabilities = capabilities,
   flags = {
