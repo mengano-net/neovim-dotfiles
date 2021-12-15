@@ -58,6 +58,7 @@ vim.o.conceallevel = 0
 vim.opt.shortmess:append "c"
 
 vim.cmd[[
+set whichwrap+=<,>,[,],h,l
 syntax enable
 filetype plugin indent on
 
