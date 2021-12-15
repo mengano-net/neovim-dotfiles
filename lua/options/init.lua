@@ -80,4 +80,35 @@ hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
 " au TermOpen * silent! setlocal nonumber norelativenumber
 " au TermOpen * silent! startinsert
 
+" Todua
+let g:netrw_liststyle = 3
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'              " hide dotfiles on load
+let g:netrw_banner = 0
+let g:netrw_winsize = 30                                    " width in percent
+let g:netrw_browser_split = 4                               " open in prior windoww
+let g:netrw_altv = 1                                        " open splits to the right
+let g:netrw_sort_sequence = '[\/]$,*'                       " sort directories first, files after
+let g:netrw_keepdir = 0                                     " syn current and browsing directories
+
+function! ToggleNetrw()
+  let i = bufnr("$")
+  let wasOpen = 0
+  while (i >= 1)
+    if (getbufvar(i, "&filetype") == "netrw")
+      silent exe "bwipeout " . i
+      let wasOpen = 1
+    endif
+    let i-=1
+  endwhile
+  if !wasOpen
+    silent Lexplore
+  endif
+endfunction
+map <leader>t :call ToggleNetrw() <CR>
+
+augroup netrw_buffers
+  autocmd!
+  autocmd filetype netrw :set signcolumn="no"
+augroup END
+
 ]]
