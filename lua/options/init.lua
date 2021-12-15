@@ -1,5 +1,9 @@
+-- First clear any possible maps present on "<Space>"
+vim.api.nvim_set_keymap("","<Space>", "<Nop>", {noremap = true, silent = true})
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 vim.g.leader = ' '
+
 vim.o.smartcase = true
 vim.o.laststatus = 2
 vim.o.hlsearch = true
@@ -51,6 +55,7 @@ vim.o.sidescrolloff = 5
 -- vim.o.showtabline = 2
 vim.o.dictionary = '/usr/share/dict/words'
 vim.o.conceallevel = 0
+vim.opt.shortmess:append "c"
 
 vim.cmd[[
 syntax enable
