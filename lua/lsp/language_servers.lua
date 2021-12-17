@@ -89,6 +89,7 @@ end
 
 nvim_lsp.yamlls.setup{
   cmd = {yamlls_binary, "--stdio"},
+  on_attach = custom_lsp_attach,
   debounce_text_changes = 150,
   filetypes = { 'yaml', 'yml' },
   settings = {
