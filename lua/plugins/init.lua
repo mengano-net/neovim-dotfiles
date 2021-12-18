@@ -51,7 +51,8 @@ return require("packer").startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'onsails/lspkind-nvim'
-  use 'glepnir/lspsaga.nvim'
+  -- use 'glepnir/lspsaga.nvim'
+  use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
   --
   use 'ntpeters/vim-better-whitespace'
   use 'rose-pine/neovim'

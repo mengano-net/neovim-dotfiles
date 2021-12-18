@@ -1,32 +1,34 @@
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
 local nvim_lsp = require("lspconfig")
--- local protocol   = require('vim.lsp.protocol')
+local buffer_map = vim.api.nvim_buf_set_keymap
+local buffer_option = vim.api.nvim_buf_set_option
+local map_opts = { noremap=true, silent=true }
 
 local custom_lsp_attach = function(client,bufnr)
 
   -- Use LSP as the handler for omnifunc.
   --    See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  buffer_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Use LSP as the handler for formatexpr.
   --    See `:help formatexpr` for more information.
-  vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+  buffer_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
   -- See `:help nvim_buf_set_keymap()` for more information
-  local map_opts = { noremap=true, silent=true }
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd> lua vim.lsp.buf.definition()<CR>', map_opts)
+  buffer_map(bufnr, 'n', 'K', '<cmd>Lspsaga hover_doc<CR>', map_opts)
+  buffer_map(bufnr, 'n', 'gD', '<cmd>Lspsaga preview_definition<CR>', map_opts)
+  buffer_map(bufnr, 'n', 'go', '<cmd>Lspsaga show_line_diagnostics<cr>', map_opts)
 
   if client.resolved_capabilities.textDocument_declaration then
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
+    buffer_map(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
   end
 
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
+    buffer_map(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
   elseif client.resolved_capabilities.document_range_formatting then
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
+    buffer_map(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
   end
 
   --Debug code
