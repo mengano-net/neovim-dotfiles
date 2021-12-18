@@ -20,6 +20,8 @@ local custom_lsp_attach = function(client,bufnr)
   buffer_map(bufnr, 'n', 'K', '<cmd>Lspsaga hover_doc<CR>', map_opts)
   buffer_map(bufnr, 'n', 'gD', '<cmd>Lspsaga preview_definition<CR>', map_opts)
   buffer_map(bufnr, 'n', 'go', '<cmd>Lspsaga show_line_diagnostics<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>', map_opts)
 
   if client.resolved_capabilities.textDocument_declaration then
     buffer_map(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
