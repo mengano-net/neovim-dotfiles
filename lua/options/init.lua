@@ -20,6 +20,7 @@ vim.o.backspace = 'indent,eol,start'
 vim.o.showcmd = false
 vim.o.showmode = false
 vim.o.wildoptions = 'pum'
+vim.o.pumheight = 20
 vim.o.wildignore = vim.o.wildignore .. '*.swp,.git,.gitignore,node_modules'
 vim.o.path = vim.o.path .. '.,**,'
 vim.o.hidden = true
@@ -49,8 +50,8 @@ vim.o.clipboard = "unnamedplus"
 vim.o.autoindent = true
 vim.o.expandtab = true
 vim.bo.expandtab = true
-vim.o.scrolloff = 3
-vim.o.sidescrolloff = 5
+vim.o.scrolloff = 8
+vim.o.sidescrolloff = 8
 -- not neededing since I'm running plugin: akinsho/bufferline.nvim
 -- vim.o.showtabline = 2
 vim.o.dictionary = '/usr/share/dict/words'
@@ -59,6 +60,7 @@ vim.opt.shortmess:append "c"
 
 vim.cmd[[
 set whichwrap+=<,>,[,],h,l
+set iskeyword+=-
 syntax enable
 filetype plugin indent on
 
