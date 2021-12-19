@@ -28,14 +28,14 @@ return require("packer").startup(function(use)
   use {'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons'
   }
-  use 'cohama/lexima.vim'
+  use { 'cohama/lexima.vim' , config = "require('lexima-config')" }
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
   use 'airblade/vim-gitgutter'
   use 'navarasu/onedark.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} },
   }
   use 'shaunsingh/nord.nvim'
   use 'rcarriga/nvim-notify'
@@ -50,14 +50,13 @@ return require("packer").startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-  use 'onsails/lspkind-nvim'
-  -- use 'glepnir/lspsaga.nvim'
+  use { 'onsails/lspkind-nvim', config = "require('lspkind-config')" }
   use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
   --
   use 'ntpeters/vim-better-whitespace'
   use 'rose-pine/neovim'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'akinsho/toggleterm.nvim'
+  use  { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
