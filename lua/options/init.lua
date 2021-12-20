@@ -57,10 +57,11 @@ vim.o.sidescrolloff = 8
 vim.o.dictionary = '/usr/share/dict/words'
 vim.o.conceallevel = 0
 vim.opt.shortmess:append "c"
+vim.o.cmdheight = 2
 
 vim.cmd[[
 set whichwrap+=<,>,[,],h,l
-set iskeyword+=-
+set iskeyword+=-,_
 syntax enable
 filetype plugin indent on
 
