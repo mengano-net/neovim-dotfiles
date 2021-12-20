@@ -1,3 +1,13 @@
+-- Exit if can't load module(s)
+local status_ok, comment = pcall(require, "cmp")
+if not status_ok then
+  return
+end
+local status_ok, comment = pcall(require, "lspkind")
+if not status_ok then
+  return
+end
+
 vim.g.completeopt="menu,menuone,preview,noselect,noinsert"
 
 -- Functions to implement autocomplete on the custom <Tab> and

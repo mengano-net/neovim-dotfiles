@@ -1,3 +1,9 @@
+-- Exit if can't load module(s)
+local status_ok, comment = pcall(require, "lspconfig")
+if not status_ok then
+  return
+end
+
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
 local nvim_lsp = require("lspconfig")

@@ -1,9 +1,16 @@
+-- Exit if can't load module(s)
+local status_ok, comment = pcall(require, "lualine")
+if not status_ok then
+  return
+end
+
 local function current_buffer_number()
   return "﬘ " .. vim.api.nvim_get_current_buf()
 end
 
 local function current_date()
-  return string.sub(os.date "%x", 1, 5)
+  -- return string.sub(os.date "%x", 1, 5)
+  return os.date "%x"
 end
 
 -- Vim's working directory

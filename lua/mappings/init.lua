@@ -2,7 +2,11 @@ local map = vim.api.nvim_set_keymap
 
 map('n', '<Leader>w', ':write<CR>', {noremap = true})
 map('i', 'jk', '<Esc>', {noremap = true})
-map('n', '<Tab>', ':BufferLineCycleNext<CR>', {silent = true})
+-- skip if module(s) isn't loaded
+local status_ok, comment = pcall(require, "bufferline")
+if status_ok then
+  map('n', '<Tab>', ':BufferLineCycleNext<CR>', {silent = true})
+end
 -- deprecated since I'm using toggeterm pluging
 -- map('n', '<Leader>sh', ':split term://zsh<cr>', {noremap = true})
 map('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
