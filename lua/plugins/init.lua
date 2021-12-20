@@ -28,7 +28,7 @@ return require("packer").startup(function(use)
   use {'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons'
   }
-  use { 'cohama/lexima.vim' , config = "require('lexima-config')" }
+  use { 'cohama/lexima.vim' }
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
   use 'airblade/vim-gitgutter'

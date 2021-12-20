@@ -21,8 +21,8 @@ end
 
 require('lualine').setup {
   options = {
-    -- theme = 'rose-pine',
-    theme = 'nord',
+    theme = 'rose-pine',
+    -- theme = 'nord',
     icons_enabled = true,
     extensions = {'fugitive'},
     section_separators = '',

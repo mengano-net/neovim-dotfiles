@@ -17,7 +17,6 @@ require("blankline-config")
 vim.cmd('colorscheme onedark')
 --[[
 moved these to lua/plugins/init.lua for supposedly a faster launch time
-require('lexima-config')
 require("toggleterm-config")
 require("lspkind-config")
 ]]
