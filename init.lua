@@ -13,8 +13,7 @@ require('lsp')
 require('lspsaga-config')
 require("blankline-config")
 -- vim.cmd('colorscheme rose-pine')
--- vim.cmd('colorscheme gruvbox8_hard')
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme gruvbox8_hard')
 --[[
 moved these to lua/plugins/init.lua for supposedly a faster launch time
 require("toggleterm-config")
