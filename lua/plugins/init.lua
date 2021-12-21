@@ -2,7 +2,7 @@
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  print("Installing packer close and reopen Neovim...")
+  print("Installing packer; you need to close and reopen Neovim...")
 end
 
 -- Have packer use a popup window
@@ -18,8 +18,6 @@ require("packer").init {
 return require("packer").startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use 'morhetz/gruvbox'
-  use 'lifepillar/vim-gruvbox8'
   use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
   use {
     'nvim-lualine/lualine.nvim',
@@ -30,14 +28,16 @@ return require("packer").startup(function(use)
   }
   use { 'cohama/lexima.vim' }
   use 'tpope/vim-fugitive'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    -- tag = 'release' -- To use the latest release
+  }
   use 'tpope/vim-commentary'
-  use 'airblade/vim-gitgutter'
-  use 'navarasu/onedark.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },
   }
-  use 'shaunsingh/nord.nvim'
   use 'rcarriga/nvim-notify'
   use 'norcalli/nvim-colorizer.lua'
   -- LSP
@@ -52,11 +52,15 @@ return require("packer").startup(function(use)
   use 'hrsh7th/vim-vsnip'
   use { 'onsails/lspkind-nvim', config = "require('lspkind-config')" }
   use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
-  --
   use 'ntpeters/vim-better-whitespace'
-  use 'rose-pine/neovim'
   use 'lukas-reineke/indent-blankline.nvim'
   use  { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
+
+  -- colorscheme
+  use { 'lifepillar/vim-gruvbox8' }
+  use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
+  use 'shaunsingh/nord.nvim'
+  use 'navarasu/onedark.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -12,10 +12,5 @@ require('colorizer-config')
 require('lsp')
 require('lspsaga-config')
 require("blankline-config")
--- vim.cmd('colorscheme rose-pine')
-vim.cmd('colorscheme gruvbox8_hard')
---[[
-moved these to lua/plugins/init.lua for supposedly a faster launch time
-require("toggleterm-config")
-require("lspkind-config")
-]]
+require("gitsigns-config")
+-- vim.cmd('colorscheme gruvbox8_hard')
