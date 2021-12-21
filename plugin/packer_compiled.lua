@@ -235,10 +235,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for toggleterm.nvim]], true)
 require('toggleterm-config')
 time([[Config for toggleterm.nvim]], false)
--- Config for: neovim
-time([[Config for neovim]], true)
-vim.cmd('colorscheme rose-pine')
-time([[Config for neovim]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 require('lspsaga-config')
@@ -247,6 +243,10 @@ time([[Config for lspsaga.nvim]], false)
 time([[Config for lspkind-nvim]], true)
 require('lspkind-config')
 time([[Config for lspkind-nvim]], false)
+-- Config for: neovim
+time([[Config for neovim]], true)
+vim.cmd('colorscheme rose-pine')
+time([[Config for neovim]], false)
 if should_profile then save_profiles() end
 
 end)
