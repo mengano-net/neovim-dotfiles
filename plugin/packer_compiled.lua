@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["apprentice.nvim"] = {
+    loaded = true,
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/apprentice.nvim",
+    url = "https://github.com/adisen99/apprentice.nvim"
+  },
   ["bufferline.nvim"] = {
     config = { "require('bufferline-config')" },
     loaded = true,
@@ -106,11 +111,13 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   ["gitsigns.nvim"] = {
+    config = { "require('gitsigns-config')" },
     loaded = true,
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["indent-blankline.nvim"] = {
+    config = { "require('blankline-config')" },
     loaded = true,
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
@@ -138,7 +145,13 @@ _G.packer_plugins = {
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
+  },
   neovim = {
+    config = { "vim.cmd('colorscheme rose-pine')" },
     loaded = true,
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/neovim",
     url = "https://github.com/rose-pine/neovim"
@@ -154,6 +167,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
+    config = { "require('colorizer-config')" },
     loaded = true,
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
@@ -164,11 +178,13 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-notify"] = {
+    config = { "require('notify-extensions')" },
     loaded = true,
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-treesitter"] = {
+    config = { "require('treesitter-config')" },
     loaded = true,
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -207,7 +223,6 @@ _G.packer_plugins = {
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["tokyonight.nvim"] = {
-    config = { "vim.cmd('colorscheme tokyonight')" },
     loaded = true,
     needs_bufread = false,
     path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/opt/tokyonight.nvim",
@@ -256,35 +271,55 @@ time([[Setup for onedark.nvim]], false)
 time([[packadd for onedark.nvim]], true)
 vim.cmd [[packadd onedark.nvim]]
 time([[packadd for onedark.nvim]], false)
--- Config for: lspkind-nvim
-time([[Config for lspkind-nvim]], true)
-require('lspkind-config')
-time([[Config for lspkind-nvim]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+require('lspsaga-config')
+time([[Config for lspsaga.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require('colorizer-config')
+time([[Config for nvim-colorizer.lua]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require('lualine-config')
+time([[Config for lualine.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('gitsigns-config')
+time([[Config for gitsigns.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require('blankline-config')
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+require('notify-extensions')
+time([[Config for nvim-notify]], false)
+-- Config for: neovim
+time([[Config for neovim]], true)
+vim.cmd('colorscheme rose-pine')
+time([[Config for neovim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('telescope-config')
 require('telescope-extensions')
 time([[Config for telescope.nvim]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require('bufferline-config')
-time([[Config for bufferline.nvim]], false)
--- Config for: tokyonight.nvim
-time([[Config for tokyonight.nvim]], true)
-vim.cmd('colorscheme tokyonight')
-time([[Config for tokyonight.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('treesitter-config')
+time([[Config for nvim-treesitter]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 require('toggleterm-config')
 time([[Config for toggleterm.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require('lualine-config')
-time([[Config for lualine.nvim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-require('lspsaga-config')
-time([[Config for lspsaga.nvim]], false)
+-- Config for: lspkind-nvim
+time([[Config for lspkind-nvim]], true)
+require('lspkind-config')
+time([[Config for lspkind-nvim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require('bufferline-config')
+time([[Config for bufferline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

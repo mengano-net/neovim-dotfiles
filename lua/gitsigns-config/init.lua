@@ -1,5 +1,5 @@
 -- Exit if can't load module
-local status_ok, comment = pcall(require, "gitsigns.nvim")
+local status_ok, comment = pcall(require, "gitsigns")
 if not status_ok then
   return
 end

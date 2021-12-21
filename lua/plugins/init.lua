@@ -18,7 +18,11 @@ require("packer").init {
 return require("packer").startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ":TSUpdate",
+    config = "require('treesitter-config')"
+  }
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
@@ -33,6 +37,7 @@ return require("packer").startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
+    config = { "require('gitsigns-config')" }
     -- tag = 'release' -- To use the latest release
   }
   use 'tpope/vim-commentary'
@@ -41,8 +46,9 @@ return require("packer").startup(function(use)
     requires = { 'nvim-lua/plenary.nvim' },
     config = { "require('telescope-config')", "require('telescope-extensions')" }
   }
-  use 'rcarriga/nvim-notify'
-  use 'norcalli/nvim-colorizer.lua'
+  use { 'rcarriga/nvim-notify', config = "require('notify-extensions')" }
+  use {  'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')" }
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -56,19 +62,20 @@ return require("packer").startup(function(use)
   use { 'onsails/lspkind-nvim', config = "require('lspkind-config')" }
   use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
   use 'ntpeters/vim-better-whitespace'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use  { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
+  use { 'lukas-reineke/indent-blankline.nvim', config = "require('blankline-config')" }
+  use { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
 
   -- colorscheme
   use { 'lifepillar/vim-gruvbox8' }
-  use { 'rose-pine/neovim' }
+  use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
   use 'shaunsingh/nord.nvim'
   use { 'navarasu/onedark.nvim', setup = "vim.g.onedark_style = 'deep'" }
   use {
     'folke/tokyonight.nvim',
     setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
-    config = "vim.cmd('colorscheme tokyonight')"
+    -- config = "vim.cmd('colorscheme tokyonight')"
   }
+  use { "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
