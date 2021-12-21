@@ -21,10 +21,12 @@ return require("packer").startup(function(use)
   use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    config = "require('lualine-config')"
   }
   use {'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = { "require('bufferline-config')" }
   }
   use { 'cohama/lexima.vim' }
   use 'tpope/vim-fugitive'
@@ -36,7 +38,8 @@ return require("packer").startup(function(use)
   use 'tpope/vim-commentary'
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = { "require('telescope-config')", "require('telescope-extensions')" }
   }
   use 'rcarriga/nvim-notify'
   use 'norcalli/nvim-colorizer.lua'

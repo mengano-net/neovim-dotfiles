@@ -70,6 +70,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["bufferline.nvim"] = {
+    config = { "require('bufferline-config')" },
     loaded = true,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
@@ -132,6 +133,7 @@ _G.packer_plugins = {
     url = "https://github.com/tami5/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
+    config = { "require('lualine-config')" },
     loaded = true,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
@@ -193,6 +195,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope.nvim"] = {
+    config = { "require('telescope-config')", "require('telescope-extensions')" },
     loaded = true,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
@@ -253,22 +256,35 @@ time([[Setup for onedark.nvim]], false)
 time([[packadd for onedark.nvim]], true)
 vim.cmd [[packadd onedark.nvim]]
 time([[packadd for onedark.nvim]], false)
--- Config for: tokyonight.nvim
-time([[Config for tokyonight.nvim]], true)
-vim.cmd('colorscheme tokyonight')
-time([[Config for tokyonight.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('toggleterm-config')
-time([[Config for toggleterm.nvim]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 require('lspsaga-config')
 time([[Config for lspsaga.nvim]], false)
+-- Config for: tokyonight.nvim
+time([[Config for tokyonight.nvim]], true)
+vim.cmd('colorscheme tokyonight')
+time([[Config for tokyonight.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require('lualine-config')
+time([[Config for lualine.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require('telescope-config')
+require('telescope-extensions')
+time([[Config for telescope.nvim]], false)
 -- Config for: lspkind-nvim
 time([[Config for lspkind-nvim]], true)
 require('lspkind-config')
 time([[Config for lspkind-nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('toggleterm-config')
+time([[Config for toggleterm.nvim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require('bufferline-config')
+time([[Config for bufferline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
