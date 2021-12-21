@@ -256,6 +256,13 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: onedark.nvim
+time([[Setup for onedark.nvim]], true)
+vim.g.onedark_style = 'deep'
+time([[Setup for onedark.nvim]], false)
+time([[packadd for onedark.nvim]], true)
+vim.cmd [[packadd onedark.nvim]]
+time([[packadd for onedark.nvim]], false)
 -- Setup for: tokyonight.nvim
 time([[Setup for tokyonight.nvim]], true)
 vim.g.tokyonight_style = 'night'
@@ -264,17 +271,6 @@ time([[Setup for tokyonight.nvim]], false)
 time([[packadd for tokyonight.nvim]], true)
 vim.cmd [[packadd tokyonight.nvim]]
 time([[packadd for tokyonight.nvim]], false)
--- Setup for: onedark.nvim
-time([[Setup for onedark.nvim]], true)
-vim.g.onedark_style = 'deep'
-time([[Setup for onedark.nvim]], false)
-time([[packadd for onedark.nvim]], true)
-vim.cmd [[packadd onedark.nvim]]
-time([[packadd for onedark.nvim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-require('lspsaga-config')
-time([[Config for lspsaga.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 require('colorizer-config')
@@ -295,10 +291,6 @@ time([[Config for indent-blankline.nvim]], false)
 time([[Config for nvim-notify]], true)
 require('notify-extensions')
 time([[Config for nvim-notify]], false)
--- Config for: neovim
-time([[Config for neovim]], true)
-vim.cmd('colorscheme rose-pine')
-time([[Config for neovim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('telescope-config')
@@ -308,18 +300,26 @@ time([[Config for telescope.nvim]], false)
 time([[Config for nvim-treesitter]], true)
 require('treesitter-config')
 time([[Config for nvim-treesitter]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('toggleterm-config')
-time([[Config for toggleterm.nvim]], false)
 -- Config for: lspkind-nvim
 time([[Config for lspkind-nvim]], true)
 require('lspkind-config')
 time([[Config for lspkind-nvim]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+require('lspsaga-config')
+time([[Config for lspsaga.nvim]], false)
 -- Config for: bufferline.nvim
 time([[Config for bufferline.nvim]], true)
 require('bufferline-config')
 time([[Config for bufferline.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('toggleterm-config')
+time([[Config for toggleterm.nvim]], false)
+-- Config for: neovim
+time([[Config for neovim]], true)
+vim.cmd('colorscheme rose-pine')
+time([[Config for neovim]], false)
 if should_profile then save_profiles() end
 
 end)

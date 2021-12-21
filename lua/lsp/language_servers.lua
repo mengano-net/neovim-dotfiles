@@ -97,7 +97,7 @@ nvim_lsp.bashls.setup{
 --yaml language server
 local yamlls_binary = ''
 if vim.fn.has('mac') == 1 then
-  yamlls_binary = '/usr/bin/yaml-language-server'
+  yamlls_binary = '/usr/local/bin/yaml-language-server'
 elseif vim.fn.has("unix") == 1 then
   yamlls_binary = '/usr/bin/yaml-language-server'
 end
