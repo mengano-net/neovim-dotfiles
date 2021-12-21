@@ -1,3 +1,9 @@
+-- Exit if can't load module
+local status_ok, comment = pcall(require, "gitsigns.nvim")
+if not status_ok then
+  return
+end
+
 local git_signs = require("gitsigns").setup {
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},

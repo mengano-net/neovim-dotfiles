@@ -1,3 +1,9 @@
+-- Exit if can't load module
+local status_ok, comment = pcall(require, "nvim-tressitter")
+if not status_ok then
+  return
+end
+
 require'nvim-treesitter.configs'.setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {"lua", "yaml", "bash", "python" },
