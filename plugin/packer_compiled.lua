@@ -179,7 +179,8 @@ _G.packer_plugins = {
   },
   ["onedark.nvim"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    needs_bufread = false,
+    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/onedark.nvim",
     url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
@@ -202,6 +203,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-better-whitespace"] = {
     loaded = true,
@@ -231,10 +238,24 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('toggleterm-config')
-time([[Config for toggleterm.nvim]], false)
+-- Setup for: tokyonight.nvim
+time([[Setup for tokyonight.nvim]], true)
+vim.g.tokyonight_style = 'night'
+time([[Setup for tokyonight.nvim]], false)
+time([[packadd for tokyonight.nvim]], true)
+vim.cmd [[packadd tokyonight.nvim]]
+time([[packadd for tokyonight.nvim]], false)
+-- Setup for: onedark.nvim
+time([[Setup for onedark.nvim]], true)
+vim.g.onedark_style = 'deep'
+time([[Setup for onedark.nvim]], false)
+time([[packadd for onedark.nvim]], true)
+vim.cmd [[packadd onedark.nvim]]
+time([[packadd for onedark.nvim]], false)
+-- Config for: neovim
+time([[Config for neovim]], true)
+vim.cmd('colorscheme rose-pine')
+time([[Config for neovim]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 require('lspsaga-config')
@@ -243,10 +264,10 @@ time([[Config for lspsaga.nvim]], false)
 time([[Config for lspkind-nvim]], true)
 require('lspkind-config')
 time([[Config for lspkind-nvim]], false)
--- Config for: neovim
-time([[Config for neovim]], true)
-vim.cmd('colorscheme rose-pine')
-time([[Config for neovim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('toggleterm-config')
+time([[Config for toggleterm.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

@@ -58,9 +58,15 @@ return require("packer").startup(function(use)
 
   -- colorscheme
   use { 'lifepillar/vim-gruvbox8' }
-  use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
+  -- use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
+  use { 'rose-pine/neovim' }
   use 'shaunsingh/nord.nvim'
-  use 'navarasu/onedark.nvim'
+  use { 'navarasu/onedark.nvim', setup = "vim.g.onedark_style = 'deep'" }
+  use {
+    'folke/tokyonight.nvim',
+    setup = "vim.g.tokyonight_style = 'night'",
+    config = "vim.cmd('colorscheme tokyonight')"
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
