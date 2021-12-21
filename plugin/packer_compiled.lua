@@ -137,7 +137,6 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   neovim = {
-    config = { "vim.cmd('colorscheme rose-pine')" },
     loaded = true,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/neovim",
     url = "https://github.com/rose-pine/neovim"
@@ -205,6 +204,7 @@ _G.packer_plugins = {
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["tokyonight.nvim"] = {
+    config = { "vim.cmd('colorscheme tokyonight')" },
     loaded = true,
     needs_bufread = false,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/tokyonight.nvim",
@@ -252,22 +252,22 @@ time([[Setup for onedark.nvim]], false)
 time([[packadd for onedark.nvim]], true)
 vim.cmd [[packadd onedark.nvim]]
 time([[packadd for onedark.nvim]], false)
--- Config for: neovim
-time([[Config for neovim]], true)
-vim.cmd('colorscheme rose-pine')
-time([[Config for neovim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-require('lspsaga-config')
-time([[Config for lspsaga.nvim]], false)
--- Config for: lspkind-nvim
-time([[Config for lspkind-nvim]], true)
-require('lspkind-config')
-time([[Config for lspkind-nvim]], false)
+-- Config for: tokyonight.nvim
+time([[Config for tokyonight.nvim]], true)
+vim.cmd('colorscheme tokyonight')
+time([[Config for tokyonight.nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 require('toggleterm-config')
 time([[Config for toggleterm.nvim]], false)
+-- Config for: lspkind-nvim
+time([[Config for lspkind-nvim]], true)
+require('lspkind-config')
+time([[Config for lspkind-nvim]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+require('lspsaga-config')
+time([[Config for lspsaga.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
