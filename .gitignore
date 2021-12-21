@@ -24,6 +24,7 @@ luac.out
 *.lo
 *.def
 *.exp
+node_modules/
 
 # Shared objects (inc. Windows DLLs)
 *.dll
