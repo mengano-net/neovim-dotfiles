@@ -62,28 +62,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- python language server
--- local pyright_binary = ''
--- if vim.fn.has('mac') == 1 then
---   pyright_binary = '/usr/local/bin/pyright'
--- elseif vim.fn.has('unix') == 1 then
---   pyright_binary = '/usr/bin/pyright-langserver'
--- end
--- nvim_lsp.pyright.setup {
---   -- cmd = { "pyright-langserver", '--stdio'},
---   -- cmd = { pyright_binary, '--stdio' },
---   cmd = { pyright_binary },
---   on_attach = custom_lsp_attach,
---   capabilities = capabilities,
---   settings = {
---     python = {
---       analysis = {
---         stubPath = "",
---       }
---     }
---   }
--- }
-
 nvim_lsp.pylsp.setup {
   cmd = { "pylsp" },
   filetypes = { "python" },
