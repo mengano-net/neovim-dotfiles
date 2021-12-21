@@ -241,6 +241,7 @@ time([[Defining packer_plugins]], false)
 -- Setup for: tokyonight.nvim
 time([[Setup for tokyonight.nvim]], true)
 vim.g.tokyonight_style = 'night'
+tokyonight_lualine_bold = 'true'
 time([[Setup for tokyonight.nvim]], false)
 time([[packadd for tokyonight.nvim]], true)
 vim.cmd [[packadd tokyonight.nvim]]
