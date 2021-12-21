@@ -58,7 +58,6 @@ return require("packer").startup(function(use)
 
   -- colorscheme
   use { 'lifepillar/vim-gruvbox8' }
-  -- use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
   use { 'rose-pine/neovim' }
   use 'shaunsingh/nord.nvim'
   use { 'navarasu/onedark.nvim', setup = "vim.g.onedark_style = 'deep'" }
