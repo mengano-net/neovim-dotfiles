@@ -116,6 +116,11 @@ _G.packer_plugins = {
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["indent-blankline.nvim"] = {
     config = { "require('blankline-config')" },
     loaded = true,
@@ -150,8 +155,14 @@ _G.packer_plugins = {
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
+  ["material.nvim"] = {
+    config = { "vim.cmd('colorscheme material')", "require('material-config')" },
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/material.nvim",
+    url = "https://github.com/marko-cerovac/material.nvim"
+  },
   neovim = {
-    config = { "vim.cmd('colorscheme rose-pine')" },
     loaded = true,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/neovim",
     url = "https://github.com/rose-pine/neovim"
@@ -243,11 +254,6 @@ _G.packer_plugins = {
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
-  ["vim-gruvbox8"] = {
-    loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/vim-gruvbox8",
-    url = "https://github.com/lifepillar/vim-gruvbox8"
-  },
   ["vim-vsnip"] = {
     loaded = true,
     path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/vim-vsnip",
@@ -263,6 +269,13 @@ time([[Setup for onedark.nvim]], false)
 time([[packadd for onedark.nvim]], true)
 vim.cmd [[packadd onedark.nvim]]
 time([[packadd for onedark.nvim]], false)
+-- Setup for: material.nvim
+time([[Setup for material.nvim]], true)
+vim.g.material_style = 'darker'
+time([[Setup for material.nvim]], false)
+time([[packadd for material.nvim]], true)
+vim.cmd [[packadd material.nvim]]
+time([[packadd for material.nvim]], false)
 -- Setup for: tokyonight.nvim
 time([[Setup for tokyonight.nvim]], true)
 vim.g.tokyonight_style = 'night'
@@ -271,26 +284,43 @@ time([[Setup for tokyonight.nvim]], false)
 time([[packadd for tokyonight.nvim]], true)
 vim.cmd [[packadd tokyonight.nvim]]
 time([[packadd for tokyonight.nvim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-require('lspsaga-config')
-time([[Config for lspsaga.nvim]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-require('colorizer-config')
-time([[Config for nvim-colorizer.lua]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require('lualine-config')
-time([[Config for lualine.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require('gitsigns-config')
-time([[Config for gitsigns.nvim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require('blankline-config')
 time([[Config for indent-blankline.nvim]], false)
+-- Config for: material.nvim
+time([[Config for material.nvim]], true)
+vim.cmd('colorscheme material')
+require('material-config')
+time([[Config for material.nvim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require('bufferline-config')
+time([[Config for bufferline.nvim]], false)
+-- Config for: lspkind-nvim
+time([[Config for lspkind-nvim]], true)
+require('lspkind-config')
+time([[Config for lspkind-nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('toggleterm-config')
+time([[Config for toggleterm.nvim]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+require('lspsaga-config')
+time([[Config for lspsaga.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('gitsigns-config')
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('treesitter-config')
+time([[Config for nvim-treesitter]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require('lualine-config')
+time([[Config for lualine.nvim]], false)
 -- Config for: nvim-notify
 time([[Config for nvim-notify]], true)
 require('notify-extensions')
@@ -300,26 +330,10 @@ time([[Config for telescope.nvim]], true)
 require('telescope-config')
 require('telescope-extensions')
 time([[Config for telescope.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('treesitter-config')
-time([[Config for nvim-treesitter]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('toggleterm-config')
-time([[Config for toggleterm.nvim]], false)
--- Config for: lspkind-nvim
-time([[Config for lspkind-nvim]], true)
-require('lspkind-config')
-time([[Config for lspkind-nvim]], false)
--- Config for: neovim
-time([[Config for neovim]], true)
-vim.cmd('colorscheme rose-pine')
-time([[Config for neovim]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require('bufferline-config')
-time([[Config for bufferline.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require('colorizer-config')
+time([[Config for nvim-colorizer.lua]], false)
 if should_profile then save_profiles() end
 
 end)

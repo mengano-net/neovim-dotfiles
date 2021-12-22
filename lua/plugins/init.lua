@@ -65,9 +65,8 @@ return require("packer").startup(function(use)
   use { 'lukas-reineke/indent-blankline.nvim', config = "require('blankline-config')" }
   use { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
 
-  -- colorscheme
-  use { 'lifepillar/vim-gruvbox8' }
-  use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
+  -- colorschemes
+  use { 'rose-pine/neovim' }
   use 'shaunsingh/nord.nvim'
   use { 'navarasu/onedark.nvim', setup = "vim.g.onedark_style = 'deep'" }
   use {
@@ -76,6 +75,13 @@ return require("packer").startup(function(use)
     -- config = "vim.cmd('colorscheme tokyonight')"
   }
   use { "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } }
+  use { "ellisonleao/gruvbox.nvim" }
+  use {
+    "marko-cerovac/material.nvim",
+    -- setup = "vim.g.material_style = 'deep ocean'",
+    setup = "vim.g.material_style = 'darker'",
+    config = { "vim.cmd('colorscheme material')", "require('material-config')" }
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
