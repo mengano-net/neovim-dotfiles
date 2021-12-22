@@ -40,3 +40,5 @@ node_modules/
 *.x86_64
 *.hex
 
+# Nvim
+plugin/packer_compiled.lua
