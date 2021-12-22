@@ -56,6 +56,7 @@ return require("packer").startup(function(use)
   use 'neovim/nvim-lspconfig'
   use { 'onsails/lspkind-nvim', config = "require('lspkind-config')" }
   use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
+  use { 'williamboman/nvim-lsp-installer', config = "require('nvim-lsp-installer')" }
 
   -- cmp
   use 'hrsh7th/cmp-nvim-lsp'
