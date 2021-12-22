@@ -262,6 +262,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: tokyonight.nvim
+time([[Setup for tokyonight.nvim]], true)
+vim.g.tokyonight_style = 'night'
+tokyonight_lualine_bold = 'true'
+time([[Setup for tokyonight.nvim]], false)
+time([[packadd for tokyonight.nvim]], true)
+vim.cmd [[packadd tokyonight.nvim]]
+time([[packadd for tokyonight.nvim]], false)
 -- Setup for: onedark.nvim
 time([[Setup for onedark.nvim]], true)
 vim.g.onedark_style = 'deep'
@@ -276,31 +284,6 @@ time([[Setup for material.nvim]], false)
 time([[packadd for material.nvim]], true)
 vim.cmd [[packadd material.nvim]]
 time([[packadd for material.nvim]], false)
--- Setup for: tokyonight.nvim
-time([[Setup for tokyonight.nvim]], true)
-vim.g.tokyonight_style = 'night'
-tokyonight_lualine_bold = 'true'
-time([[Setup for tokyonight.nvim]], false)
-time([[packadd for tokyonight.nvim]], true)
-vim.cmd [[packadd tokyonight.nvim]]
-time([[packadd for tokyonight.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require('blankline-config')
-time([[Config for indent-blankline.nvim]], false)
--- Config for: material.nvim
-time([[Config for material.nvim]], true)
-vim.cmd('colorscheme material')
-require('material-config')
-time([[Config for material.nvim]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require('bufferline-config')
-time([[Config for bufferline.nvim]], false)
--- Config for: lspkind-nvim
-time([[Config for lspkind-nvim]], true)
-require('lspkind-config')
-time([[Config for lspkind-nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 require('toggleterm-config')
@@ -313,27 +296,44 @@ time([[Config for lspsaga.nvim]], false)
 time([[Config for gitsigns.nvim]], true)
 require('gitsigns-config')
 time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('treesitter-config')
-time([[Config for nvim-treesitter]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 require('lualine-config')
 time([[Config for lualine.nvim]], false)
--- Config for: nvim-notify
-time([[Config for nvim-notify]], true)
-require('notify-extensions')
-time([[Config for nvim-notify]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require('colorizer-config')
+time([[Config for nvim-colorizer.lua]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require('blankline-config')
+time([[Config for indent-blankline.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('telescope-config')
 require('telescope-extensions')
 time([[Config for telescope.nvim]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-require('colorizer-config')
-time([[Config for nvim-colorizer.lua]], false)
+-- Config for: material.nvim
+time([[Config for material.nvim]], true)
+vim.cmd('colorscheme material')
+require('material-config')
+time([[Config for material.nvim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require('bufferline-config')
+time([[Config for bufferline.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('treesitter-config')
+time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+require('notify-extensions')
+time([[Config for nvim-notify]], false)
+-- Config for: lspkind-nvim
+time([[Config for lspkind-nvim]], true)
+require('lspkind-config')
+time([[Config for lspkind-nvim]], false)
 if should_profile then save_profiles() end
 
 end)

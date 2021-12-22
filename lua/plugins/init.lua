@@ -48,9 +48,16 @@ return require("packer").startup(function(use)
   }
   use { 'rcarriga/nvim-notify', config = "require('notify-extensions')" }
   use {  'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')" }
+  use 'ntpeters/vim-better-whitespace'
+  use { 'lukas-reineke/indent-blankline.nvim', config = "require('blankline-config')" }
+  use { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  use { 'onsails/lspkind-nvim', config = "require('lspkind-config')" }
+  use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
+
+  -- cmp
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -59,11 +66,6 @@ return require("packer").startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-  use { 'onsails/lspkind-nvim', config = "require('lspkind-config')" }
-  use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" }
-  use 'ntpeters/vim-better-whitespace'
-  use { 'lukas-reineke/indent-blankline.nvim', config = "require('blankline-config')" }
-  use { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
 
   -- colorschemes
   use { 'rose-pine/neovim' }

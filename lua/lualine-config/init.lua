@@ -21,7 +21,8 @@ end
 
 require('lualine').setup {
   options = {
-    theme = 'tokyonight',
+    -- theme = 'tokyonight',
+    theme = 'material',
     icons_enabled = true,
     extensions = {'fugitive'},
     section_separators = ' ',
