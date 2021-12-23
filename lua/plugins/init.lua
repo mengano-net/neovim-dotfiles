@@ -19,11 +19,6 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ":TSUpdate",
-    config = "require('treesitter-config')"
-  }
-  use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = "require('lualine-config')"
@@ -52,6 +47,13 @@ return require("packer").startup(function(use)
   use { 'lukas-reineke/indent-blankline.nvim', config = "require('blankline-config')" }
   use { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
 
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ":TSUpdate",
+    config = "require('treesitter-config')"
+  }
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use { 'onsails/lspkind-nvim', config = "require('lspkind-config')" }
@@ -78,12 +80,18 @@ return require("packer").startup(function(use)
     -- config = "vim.cmd('colorscheme tokyonight')"
   }
   use { "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } }
-  use { "ellisonleao/gruvbox.nvim" }
+  use {
+    "ellisonleao/gruvbox.nvim",
+    requires = { "rktjmp/lush.nvim" },
+    setup = { "vim.g.gruvbox_contrast_dark = 'hard'" },
+    config = "vim.cmd('colorscheme gruvbox')"
+  }
   use {
     "marko-cerovac/material.nvim",
     -- setup = "vim.g.material_style = 'deep ocean'",
     setup = "vim.g.material_style = 'darker'",
-    config = { "vim.cmd('colorscheme material')", "require('material-config')" }
+    -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
+    config = { "require('material-config')" }
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
