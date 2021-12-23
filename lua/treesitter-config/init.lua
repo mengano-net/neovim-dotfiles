@@ -1,10 +1,10 @@
 -- Exit if can't load module
-local status_ok, comment = pcall(require, "nvim-tressitter")
+local status_ok, treesitter = pcall(require, "nvim-tressitter")
 if not status_ok then
   return
 end
 
-require'nvim-treesitter.configs'.setup {
+treesitter.setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {"lua", "yaml", "bash", "python" },
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
@@ -18,12 +18,5 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-  autotag =  {
-    enable = true
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = false,
-    max_file_lines = nil
-  }
+  indent = { enable = true, disable = {} },
 }
