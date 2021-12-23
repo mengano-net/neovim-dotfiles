@@ -1,12 +1,10 @@
 -- Exit if can't load module(s)
-local status_ok, comment = pcall(require, "lspconfig")
+local status_ok, nvim_lsp = pcall(require, "lspconfig")
 if not status_ok then
   return
 end
 
 vim.opt.completeopt = "menuone,noinsert,noselect"
-
-local nvim_lsp = require("lspconfig")
 local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
 local map_opts = { noremap=true, silent=true }

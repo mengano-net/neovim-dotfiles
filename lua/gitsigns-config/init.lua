@@ -1,10 +1,10 @@
 -- Exit if can't load module
-local status_ok, comment = pcall(require, "gitsigns")
+local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
   return
 end
 
-local git_signs = require("gitsigns").setup {
+gitsigns.setup {
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
     change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},

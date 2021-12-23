@@ -1,5 +1,5 @@
 -- Exit if can't load module(s)
-local status_ok, comment = pcall(require, "lualine")
+local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
 end
@@ -19,7 +19,7 @@ local function current_working_dir()
   return "~" .. cwd
 end
 
-require('lualine').setup {
+lualine.setup {
   options = {
     -- theme = 'tokyonight',
     -- theme = 'material',

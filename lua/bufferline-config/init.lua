@@ -1,10 +1,10 @@
 -- Exit if can't load module
-local status_ok, comment = pcall(require, "bufferline")
+local status_ok, bufferline = pcall(require, "bufferline")
 if not status_ok then
   return
 end
 
-require("bufferline").setup{}
+bufferline.setup{}
 
 -- mappings
 vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', {silent = true})

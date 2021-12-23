@@ -1,10 +1,8 @@
 -- Exit if can't load module(s)
-local status_ok, comment = pcall(require, "lspsaga")
+local status_ok, lspsaga = pcall(require, "lspsaga")
 if not status_ok then
   return
 end
-
-local lspsaga = require 'lspsaga'
 
 -- defaults
 lspsaga.setup {

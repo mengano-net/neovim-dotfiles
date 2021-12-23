@@ -1,10 +1,10 @@
 -- Exit if can't load module
-local status_ok, comment = pcall(require, "indent_blankline")
+local status_ok, blankline = pcall(require, "indent_blankline")
 if not status_ok then
   return
 end
 
-require("indent_blankline").setup {
+blankline.setup {
   buftype_exclude = {"terminal", "help"},
   filetype_exclude = {"packer", "help"},
   show_current_context = true,

@@ -1,16 +1,14 @@
 -- Exit if can't load module
-local status_ok, comment = pcall(require, "telescope")
+local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
   return
 end
 
 local actions = require('telescope.actions')
-
--- module export
-local M = {}
+local map = vim.api.nvim_set_keymap
 
 -- Telescope's setup to instantiate and setup some defaults
-require('telescope').setup {
+telescope.setup {
   defaults = {
     layout_config = {
       width = 0.90,
@@ -61,7 +59,6 @@ require('telescope').setup {
 }
 
 -- mappings for Telescope
-local map = vim.api.nvim_set_keymap
 
 map('n', '<leader>f', ':lua require(\'telescope-extensions\').find_files()<cr>', {noremap = true, silent = true})
 map('n', '<leader>gs', ':lua require(\'telescope.builtin\').grep_string()<cr>', {noremap = true, silent = true})

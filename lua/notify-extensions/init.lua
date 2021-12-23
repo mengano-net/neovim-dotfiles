@@ -1,5 +1,5 @@
 -- skip if module(s) isn't loaded
-local status_ok, comment = pcall(require, "notify")
+local status_ok, notify = pcall(require, "notify")
 if not status_ok then
   return
 end
@@ -25,7 +25,7 @@ function M.notify(title, msg, log_level, time_out)
     title = vim.inspect(title),
     timeout = time_out,
   }
-  require("notify")(vim.inspect(msg), log_level, opts)
+  notify(vim.inspect(msg), log_level, opts)
 end
 
 -- Adding module to the _G global variable.
