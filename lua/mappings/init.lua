@@ -1,9 +1,12 @@
 local map = vim.api.nvim_set_keymap
 
-map('n', '<Leader>w', ':write<CR>', {noremap = true})
+-- https://github.com/nvim-treesitter/nvim-treesitter
+-- Under the troublwshooting section, it covers an issue similar to what I'm having, titled "I experience weird highlighting issues similar to #78"
+-- because of it, I'm comandeering the save map to also force-enable treesitter and reload buffer
+map('n', '<Leader>w', ':write | TSEnableAll highlight | edit<cr>', {noremap = true})
 map('i', 'jk', '<Esc>', {noremap = true})
 -- skip if module(s) isn't loaded
-local status_ok, comment = pcall(require, "bufferline")
+local status_ok, bufferline = pcall(require, "bufferline")
 if status_ok then
   map('n', '<Tab>', ':BufferLineCycleNext<CR>', {silent = true})
 end
