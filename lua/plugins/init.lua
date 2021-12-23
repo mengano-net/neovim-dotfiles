@@ -73,18 +73,18 @@ return require("packer").startup(function(use)
   -- colorschemes
   use { 'rose-pine/neovim' }
   use 'shaunsingh/nord.nvim'
-  use { 'navarasu/onedark.nvim', setup = "vim.g.onedark_style = 'deep'" }
+  use { 'navarasu/onedark.nvim', setup = "vim.g.onedark_style = 'dark'" }
   use {
     'folke/tokyonight.nvim',
-    setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
-    -- config = "vim.cmd('colorscheme tokyonight')"
+    setup = { "vim.g.tokyonight_style = 'storm'", "tokyonight_lualine_bold = 'true'" },
+    config = "vim.cmd('colorscheme tokyonight')"
   }
   use { "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } }
   use {
     "ellisonleao/gruvbox.nvim",
     requires = { "rktjmp/lush.nvim" },
     setup = { "vim.g.gruvbox_contrast_dark = 'hard'" },
-    config = "vim.cmd('colorscheme gruvbox')"
+    -- config = "vim.cmd('colorscheme gruvbox')"
   }
   use {
     "marko-cerovac/material.nvim",
