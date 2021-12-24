@@ -35,7 +35,6 @@ return require("packer").startup(function(use)
     config = { "require('gitsigns-config')" }
     -- tag = 'release' -- To use the latest release
   }
-  -- use 'tpope/vim-commentary'
   use { 'numToStr/Comment.nvim' }
   use {
     'nvim-telescope/telescope.nvim',
@@ -47,6 +46,13 @@ return require("packer").startup(function(use)
   use 'ntpeters/vim-better-whitespace'
   use { 'lukas-reineke/indent-blankline.nvim', config = "require('blankline-config')" }
   use { 'akinsho/toggleterm.nvim', config = "require('toggleterm-config')" }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require'nvim-tree'.setup {} end
+  }
 
   -- Treesitter
   use {

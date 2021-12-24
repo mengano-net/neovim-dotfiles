@@ -83,11 +83,12 @@ augroup END
 " Unset paste mode aboue on InsertLeave action, that is leaving insert mode
 autocmd InsertLeave * silent! set nopaste
 
+" This has never worked for me; disabling until I figure out or luafy
 " Spelling mistakes will be colored up red
-hi SpellBad cterm=underline ctermfg=203 guifg=#ff5f5f
-hi SpellLocal cterm=underline ctermfg=203 guifg=#ff5f5f
-hi SpellRare cterm=underline ctermfg=203 guifg=#ff5f5f
-hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
+" hi SpellBad cterm=underline ctermfg=203 guifg=#ff5f5f
+" hi SpellLocal cterm=underline ctermfg=203 guifg=#ff5f5f
+" hi SpellRare cterm=underline ctermfg=203 guifg=#ff5f5f
+" hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
 
 " Not needed since  I'm  using toggleterm plugin, which does this.
 " No lines on terminal window, also go stright into insert mode
@@ -95,34 +96,34 @@ hi SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
 " au TermOpen * silent! startinsert
 
 " Todua
-let g:netrw_liststyle = 3
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'              " hide dotfiles on load
-let g:netrw_banner = 0
-let g:netrw_winsize = 30                                    " width in percent
-let g:netrw_browser_split = 4                               " open in prior windoww
-let g:netrw_altv = 1                                        " open splits to the right
-let g:netrw_sort_sequence = '[\/]$,*'                       " sort directories first, files after
-let g:netrw_keepdir = 0                                     " syn current and browsing directories
+" let g:netrw_liststyle = 3
+" let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'              " hide dotfiles on load
+" let g:netrw_banner = 0
+" let g:netrw_winsize = 30                                    " width in percent
+" let g:netrw_browser_split = 4                               " open in prior windoww
+" let g:netrw_altv = 1                                        " open splits to the right
+" let g:netrw_sort_sequence = '[\/]$,*'                       " sort directories first, files after
+" let g:netrw_keepdir = 0                                     " syn current and browsing directories
 
-function! ToggleNetrw()
-  let i = bufnr("$")
-  let wasOpen = 0
-  while (i >= 1)
-    if (getbufvar(i, "&filetype") == "netrw")
-      silent exe "bwipeout " . i
-      let wasOpen = 1
-    endif
-    let i-=1
-  endwhile
-  if !wasOpen
-    silent Lexplore
-  endif
-endfunction
-map <leader>t :call ToggleNetrw() <CR>
+" function! ToggleNetrw()
+"   let i = bufnr("$")
+"   let wasOpen = 0
+"   while (i >= 1)
+"     if (getbufvar(i, "&filetype") == "netrw")
+"       silent exe "bwipeout " . i
+"       let wasOpen = 1
+"     endif
+"     let i-=1
+"   endwhile
+"   if !wasOpen
+"     silent Lexplore
+"   endif
+" endfunction
+" map <leader>t :call ToggleNetrw() <CR>
 
-augroup netrw_buffers
-  autocmd!
-  autocmd filetype netrw :set signcolumn="no"
-augroup END
+" augroup netrw_buffers
+"   autocmd!
+"   autocmd filetype netrw :set signcolumn="no"
+" augroup END
 
 ]]

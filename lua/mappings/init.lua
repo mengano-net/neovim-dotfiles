@@ -10,6 +10,13 @@ local status_ok, bufferline = pcall(require, "bufferline")
 if status_ok then
   map('n', '<Tab>', ':BufferLineCycleNext<CR>', {silent = true})
 end
+
+-- NvimTreeToggle
+local status_ok, nvimtree = pcall(require, "nvim-tree")
+if status_ok then
+  map('n', '<leader>t', ':NvimTreeToggle<CR>', {silent = true})
+end
+
 -- deprecated since I'm using toggeterm pluging
 -- map('n', '<Leader>sh', ':split term://zsh<cr>', {noremap = true})
 map('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
