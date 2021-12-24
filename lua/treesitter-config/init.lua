@@ -9,6 +9,9 @@ treesitter.setup {
   ensure_installed = {"lua", "yaml", "bash", "python" },
   sync_install = false,
   ignore_install = {},
+  autopairs = {
+		enable = true,
+	},
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true,
