@@ -49,6 +49,7 @@ local options = {
   dictionary = '/usr/share/dict/words',
   conceallevel = 0,
   cmdheight = 2,
+  fileencoding = "utf-8",
 }
 
 for key, value in pairs(options) do
