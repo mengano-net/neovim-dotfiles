@@ -12,6 +12,7 @@ gitsigns.setup {
     topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
+  attach_to_untracked = true,
   keymaps = {
     -- Default keymap options
     noremap = true,
