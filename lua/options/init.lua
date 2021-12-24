@@ -71,7 +71,7 @@ end
 
 
 vim.cmd[[
-syntax enable
+" syntax enable
 filetype plugin indent on
 
 augroup highlight_on_yank
