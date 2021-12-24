@@ -35,7 +35,8 @@ return require("packer").startup(function(use)
     config = { "require('gitsigns-config')" }
     -- tag = 'release' -- To use the latest release
   }
-  use 'tpope/vim-commentary'
+  -- use 'tpope/vim-commentary'
+  use { 'numToStr/Comment.nvim' }
   use {
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
