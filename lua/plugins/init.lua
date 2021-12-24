@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons',
     config = { "require('bufferline-config')" }
   }
-  use { 'cohama/lexima.vim' }
+  use { 'windwp/nvim-autopairs', config = { "require('autopairs-config')" } }
   use 'tpope/vim-fugitive'
   use {
     'lewis6991/gitsigns.nvim',
