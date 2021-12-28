@@ -86,7 +86,7 @@ return require("packer").startup(function(use)
   use { 'navarasu/onedark.nvim', setup = "vim.g.onedark_style = 'dark'" }
   use {
     'folke/tokyonight.nvim',
-    setup = { "vim.g.tokyonight_style = 'storm'", "tokyonight_lualine_bold = 'true'" },
+    setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
     -- config = "vim.cmd('colorscheme tokyonight')"
   }
   use { "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } }
