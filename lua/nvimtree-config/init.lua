@@ -8,6 +8,7 @@ local global_options = {
   nvim_tree_quit_on_open = 1,
   nvim_tree_indent_markers = 1,
   nvim_tree_highlight_opened_files = 1,
+  nvim_tree_git_hl = 1,
 }
 
 for key, value in pairs(global_options) do
@@ -27,7 +28,7 @@ vim.g.nvim_tree_icons = {
 }
 
 nvimtree.setup{
-    view = {
-      autoresize = true,
-    },
+  view = { autoresize = true },
+  git = { ignore = true },
+  filters = { dotfiles = true }
 }
