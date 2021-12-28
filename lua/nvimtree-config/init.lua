@@ -15,6 +15,10 @@ for key, value in pairs(global_options) do
   vim.g[key] = value
 end
 
+vim.g.nvim_tree_show_icons = {
+  git = 1
+}
+
 vim.g.nvim_tree_icons = {
   git = {
     unstaged = "",
