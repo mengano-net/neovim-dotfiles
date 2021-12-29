@@ -28,6 +28,7 @@ return require("packer").startup(function(use)
     config = { "require('bufferline-config')" }
   }
   use { 'windwp/nvim-autopairs', config = { "require('autopairs-config')" } }
+  use {'p00f/nvim-ts-rainbow'}
   use 'tpope/vim-fugitive'
   use {
     'lewis6991/gitsigns.nvim',
@@ -87,7 +88,7 @@ return require("packer").startup(function(use)
   use {
     'folke/tokyonight.nvim',
     setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
-    -- config = "vim.cmd('colorscheme tokyonight')"
+    config = "vim.cmd('colorscheme tokyonight')"
   }
   use { "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } }
   use {
@@ -100,8 +101,8 @@ return require("packer").startup(function(use)
     "marko-cerovac/material.nvim",
     -- setup = "vim.g.material_style = 'deep ocean'",
     setup = "vim.g.material_style = 'darker'",
-    config = { "vim.cmd('colorscheme material')", "require('material-config')" }
-    -- config = { "require('material-config')" }
+    -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
+    config = { "require('material-config')" }
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
