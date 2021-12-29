@@ -21,8 +21,8 @@ end
 
 lualine.setup {
   options = {
-    -- theme = 'tokyonight',
-    theme = 'material',
+    theme = 'tokyonight',
+    -- theme = 'material',
     -- theme = 'gruvbox',
     icons_enabled = true,
     extensions = {'fugitive'},
