@@ -104,6 +104,7 @@ return require("packer").startup(function(use)
     -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
     config = { "require('material-config')" }
   }
+  use {"lunarvim/darkplus.nvim"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
