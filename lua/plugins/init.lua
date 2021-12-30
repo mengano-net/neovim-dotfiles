@@ -36,7 +36,7 @@ return require("packer").startup(function(use)
     config = { "require('gitsigns-config')" }
     -- tag = 'release' -- To use the latest release
   }
-  use { 'numToStr/Comment.nvim' }
+  use { 'numToStr/Comment.nvim', config = "require('Comment').setup()" }
   use {
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
@@ -88,7 +88,7 @@ return require("packer").startup(function(use)
   use {
     'folke/tokyonight.nvim',
     setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
-    config = "vim.cmd('colorscheme tokyonight')"
+    -- config = "vim.cmd('colorscheme tokyonight')"
   }
   use { "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } }
   use {
@@ -101,8 +101,8 @@ return require("packer").startup(function(use)
     "marko-cerovac/material.nvim",
     -- setup = "vim.g.material_style = 'deep ocean'",
     setup = "vim.g.material_style = 'darker'",
-    -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
-    config = { "require('material-config')" }
+    config = { "vim.cmd('colorscheme material')", "require('material-config')" }
+    -- config = { "require('material-config')" }
   }
   use {"lunarvim/darkplus.nvim"}
 
