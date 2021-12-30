@@ -4,6 +4,14 @@ if not status_ok then
   return
 end
 
+local term_size = function(term)
+  if term.direction == "horizontal" then
+    return 20
+  elseif term.direction == "vertical" then
+    return vim.o.columns * 0.4
+  end
+end
+
 toggleterm.setup {
   open_mapping = [[<leader>sh]],
   shade_filetypes = {},
@@ -11,6 +19,18 @@ toggleterm.setup {
   shading_factor = 1,
   start_in_insert = true,
   persist_size = true,
-  direction = 'horizontal',
-  shell = "zsh"
+  -- direction = 'horizontal',
+  direction = 'float',
+  shell = "zsh",
+  size = term_size,
+  float_opts = {
+    border = 'double',
+    winblend = 3,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
+    width = vim.o.columns * 0.9,
+    -- height = vim.o.height * 0.5,
+  },
 }
