@@ -4,7 +4,7 @@ local map = vim.api.nvim_set_keymap
 -- Under the troublwshooting section, it covers an issue similar to what I'm having, titled "I experience weird highlighting issues similar to #78"
 -- because of it, I'm comandeering the save map to also force-enable treesitter and reload buffer
 -- map('n', '<Leader>w', ':write | TSEnableAll highlight | edit<cr>', {noremap = true})
-map('n', '<Leader>w', ':write<cr>', {noremap = true})
+-- map('n', '<Leader>w', ':write<cr>', {noremap = true})
 map('i', 'jk', '<Esc>', {noremap = true})
 -- skip if module(s) isn't loaded
 local status_ok, bufferline = pcall(require, "bufferline")
@@ -24,7 +24,7 @@ map('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
 map('n', 'nh', ':nohl<cr>', {noremap = true})
 -- paste yanked, not deleted, not system copied
 map('n', '<leader>p', '"0p', {noremap = true})
-map('n', '<leader>x', ':bd!<cr>', {noremap = true})
+-- map('n', '<leader>x', ':bd!<cr>', {noremap = true})
 
 -- better navigating splits
 map('n', '<C-h>', '<C-w><C-h>', {noremap = true})

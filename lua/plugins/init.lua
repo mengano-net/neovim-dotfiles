@@ -57,6 +57,13 @@ return require("packer").startup(function(use)
       "require('nvimtree-config')",
     }
   }
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      -- require("which-key").setup {}
+      require("whichkey-config")
+    end
+}
 
   -- Treesitter
   use {
