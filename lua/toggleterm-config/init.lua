@@ -30,7 +30,7 @@ toggleterm.setup {
       border = "Normal",
       background = "Normal",
     },
-    width = vim.o.columns * 0.9,
+    -- width = vim.o.columns * 0.9,
     -- height = vim.o.height * 0.5,
   },
 }
