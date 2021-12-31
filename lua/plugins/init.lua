@@ -109,10 +109,10 @@ return require("packer").startup(function(use)
     "marko-cerovac/material.nvim",
     -- setup = "vim.g.material_style = 'deep ocean'",
     setup = "vim.g.material_style = 'darker'",
-    config = { "vim.cmd('colorscheme material')", "require('material-config')" }
-    -- config = { "require('material-config')" }
+    -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
+    config = { "require('material-config')" }
   }
-  use {"lunarvim/darkplus.nvim"}
+  use {"lunarvim/darkplus.nvim", config = "vim.cmd('colorscheme darkplus')"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
