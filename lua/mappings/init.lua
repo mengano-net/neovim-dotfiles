@@ -1,9 +1,6 @@
 local map = vim.api.nvim_set_keymap
 
--- https://github.com/nvim-treesitter/nvim-treesitter
--- Under the troublwshooting section, it covers an issue similar to what I'm having, titled "I experience weird highlighting issues similar to #78"
--- because of it, I'm comandeering the save map to also force-enable treesitter and reload buffer
--- map('n', '<Leader>w', ':write | TSEnableAll highlight | edit<cr>', {noremap = true})
+-- moved to whichkey
 -- map('n', '<Leader>w', ':write<cr>', {noremap = true})
 map('i', 'jk', '<Esc>', {noremap = true})
 -- skip if module(s) isn't loaded
@@ -13,18 +10,20 @@ if status_ok then
 end
 
 -- NvimTreeToggle
-local status_ok, nvimtree = pcall(require, "nvim-tree")
+-- moved to whichkey
+--[[ local status_ok, nvimtree = pcall(require, "nvim-tree")
 if status_ok then
   map('n', '<leader>t', ':NvimTreeToggle<CR>', {silent = true})
-end
+end ]]
 
 -- deprecated since I'm using toggeterm pluging
 -- map('n', '<Leader>sh', ':split term://zsh<cr>', {noremap = true})
 map('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
-map('n', 'nh', ':nohl<cr>', {noremap = true})
--- paste yanked, not deleted, not system copied
-map('n', '<leader>p', '"0p', {noremap = true})
+
+-- moved to whichkey
 -- map('n', '<leader>x', ':bd!<cr>', {noremap = true})
+-- map('n', 'nh', ':nohl<cr>', {noremap = true})
+map('n', '<leader>p', '"0p', {noremap = true}) -- paste yanked, not deleted, not system copied
 
 -- better navigating splits
 map('n', '<C-h>', '<C-w><C-h>', {noremap = true})
