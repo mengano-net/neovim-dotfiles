@@ -60,8 +60,11 @@ local mappings = {
   ["f"] = {"<cmd>lua require('telescope-extensions').find_files()<cr>", "Find Files" },
   ["g"] = {
     name = "Git",
-    c = {"<cmd>lua require('telescope-extensions').git_commits()<cr>", "Commits"},
-    b = {"<cmd>lua require('telescope-extensions').git_branches()<cr>", "Commits"},
+    b = {"<cmd>lua require('telescope-extensions').git_branches()<cr>", "Branches"},
+    c = {"<cmd>Git commit -s<cr>", "Commit"},
+    l = {"<cmd>lua require('telescope-extensions').git_commits()<cr>", "List commits"},
+    s = {"<cmd>Ge:<cr>", "Stage?"},
+    p = {"<cmd>Git push<cr>", "Push"},
   },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   p = {
@@ -78,6 +81,7 @@ local mappings = {
     ["t"] = {":lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>", "Tags"},
     ["j"] = {":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>", "Jump Points"},
     ["c"] = {":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>", "Commands"},
+    ["G"] = {"<cmd>lua require('telescope-extensions').grep_within_grep()<cr>", "Grep within grep"},
     -- t = {function() print("bar") end, "Foobar"}
   },
   ["t"] = {

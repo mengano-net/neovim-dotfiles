@@ -66,17 +66,3 @@ map('n', '<leader>rc', ':%s///gc<left><left><left>', {noremap = true})
 map('x', '<leader>r', ':%s///g<left><left>', {noremap = true})
 -- same but with confirmation for each change
 map('x', '<leader>rc', ':%s///gc<left><left><left>', {noremap = true})
-
--- Telescope maps, see lua/plugins/telescope.lua
--- utils.map('n', '<leader>tf', ':lua require(\'plugins.telescope\').find_files()<cr>')
--- map('n', '<leader>f', ':lua require(\'plugins.telescope\').file_browser()<cr>')
--- map('n', '<leader>gs', ':lua require(\'plugins.telescope\').grep_string()<cr>')
--- map('n', '<leader>jl', ':lua require(\'plugins.telescope\').jumplist()<cr>')
--- map('n', '<leader>lg', ':lua require(\'plugins.telescope\').live_grep()<cr>')
--- map('n', '<leader>nc', ':lua require(\'plugins.telescope\').neovim_config()<cr>')
--- map('n', '<leader>gb', ':lua require(\'plugins.telescope\').git_branches()<cr>')
--- map('n', '<leader>gc', ':lua require(\'plugins.telescope\').git_commits()<cr>')
--- map('n', '<leader>ch', ':lua require(\'plugins.telescope\').command_history()<cr>')
--- map('n', '<leader>cl', ':lua require\'telescope.builtin\'.commands()<cr>')
--- map('n', '<leader>no', ':lua require\'plugins.telescope\'.notes()<cr>')
--- map('n', '<leader>ht', ':lua require\'plugins.telescope\'.help_tags()<cr>')
