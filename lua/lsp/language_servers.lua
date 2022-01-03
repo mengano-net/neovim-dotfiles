@@ -21,11 +21,10 @@ local custom_lsp_attach = function(client,bufnr)
 
   -- See `:help nvim_buf_set_keymap()` for more information
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opts)
-  buffer_map(bufnr, 'n', 'K', '<cmd>Lspsaga hover_doc<CR>', map_opts)
-  buffer_map(bufnr, 'n', 'gD', '<cmd>Lspsaga preview_definition<CR>', map_opts)
-  buffer_map(bufnr, 'n', 'go', '<cmd>Lspsaga show_line_diagnostics<cr>', map_opts)
-  buffer_map(bufnr, 'n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>', map_opts)
-  buffer_map(bufnr, 'n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'gj', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'gk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', map_opts)
 
   if client.resolved_capabilities.textDocument_declaration then
     buffer_map(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
