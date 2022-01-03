@@ -1,5 +1,6 @@
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
 vim.diagnostic.config{
-  -- turning this off since I'm now using Lspsaga
   virtual_text = false,
   signs = false,
   underline = true,
@@ -14,7 +15,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     signs = {
       severity_limit = 'Hint',
     },
-    -- turning this off since I'm now using Lspsaga
     -- virtual_text = {
     --   spacing = 5,
     --   severity_limit = "Hint",
