@@ -19,6 +19,10 @@ local custom_lsp_attach = function(client,bufnr)
   --    See `:help formatexpr` for more information.
   buffer_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
+  -- Handlers
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
+  vim.lsp.handlers["textDocument/signature_help"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
+
   -- See `:help nvim_buf_set_keymap()` for more information
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opts)
   buffer_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', map_opts)
@@ -36,7 +40,7 @@ local custom_lsp_attach = function(client,bufnr)
     buffer_map(bufnr, 'n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
   end
 
-  -- Set autocommands conditional on server_capabilities
+  -- highlight words under cursor
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[

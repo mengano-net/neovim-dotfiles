@@ -5,6 +5,14 @@ vim.diagnostic.config{
   signs = false,
   underline = true,
   update_in_insert = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
   severity_sort = true,
 }
 
