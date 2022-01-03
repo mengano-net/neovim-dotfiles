@@ -45,7 +45,7 @@ function M.is_git_worktree()
 end
 
 function M.git_files()
-  local opts = {
+  --[[ local opts = {
     prompt_title = "\\ Git Files /",
     follow = 'true',
     -- hidden = 'false',
@@ -54,7 +54,12 @@ function M.git_files()
       width = 0.95,
     },
   }
-  require'telescope.builtin'.git_files(opts)
+  require'telescope.builtin'.git_files(opts) ]]
+  require'telescope.builtin'.git_files(require('telescope.themes').get_ivy{
+    prompt_title = "Git Files",
+    follow = 'true',
+    prompt_prefix = '  ',
+  })
 end
 
 --[[
@@ -67,7 +72,7 @@ function M.find_files()
   if _is_git_worktree then
     M.git_files()
   else
-    local opts = {
+    --[[ local opts = {
       prompt_title = "\\ Find Files /",
       -- previewer = 'true',
       follow = 'true',
@@ -82,12 +87,18 @@ function M.find_files()
       -- cwd = '%p',
       file_ignore_patterns = { "node_modules" },
     }
-    require'telescope.builtin'.find_files(opts)
+    require'telescope.builtin'.find_files(opts) ]]
+    require'telescope.builtin'.find_files(require('telescope.themes').get_ivy{
+      prompt_title = "Find Files",
+      follow = 'true',
+      prompt_prefix = '  ',
+      file_ignore_patterns = { "node_modules" },
+    })
   end
 end
 
 function M.grep_within_grep()
-  local opts = {
+  --[[ local opts = {
     prompt_title = "\\ Secondary Grep /",
     layout_strategy = "horizontal",
     layout_config = {
@@ -95,30 +106,37 @@ function M.grep_within_grep()
     },
     search = vim.fn.input('Rg> '),
   }
-  require'telescope.builtin'.grep_string(opts)
+  require'telescope.builtin'.grep_string(opts) ]]
+  require'telescope.builtin'.grep_string(require('telescope.themes').get_ivy{
+    prompt_title = "Secondary Grep",
+    search = vim.fn.input('Rg> '),
+  })
 end
 
 function M.git_branches()
-  local opts = {
+  --[[ local opts = {
     prompt_title = "\\ Git Branches /",
     layout_strategy = "horizontal",
     layout_config = {
       width = 0.9,
     },
     prompt_prefix = '  ',
-  }
+  } ]]
   local _is_git_worktree = M.is_git_worktree()
   if _is_git_worktree then
-    require'telescope.builtin'.git_branches(opts)
+    -- require'telescope.builtin'.git_branches(opts)
+    require'telescope.builtin'.git_branches(require('telescope.themes').get_ivy{
+      prompt_title = "Git Branches",
+      prompt_prefix = '  ',
+    })
   else
-    -- print('Not a git worktree directory')
     require('notify-extensions').notify("Warning", "Not a git working tree", 3, 2000)
     return
   end
 end
 
 function M.git_commits()
-  local opts = {
+  --[[ local opts = {
     prompt_title = "\\ Git Commits /",
     layout_strategy = "horizontal",
     -- layout_strategy = "vertical",
@@ -126,12 +144,15 @@ function M.git_commits()
       width = 0.9,
     },
     prompt_prefix = '  ',
-  }
+  } ]]
   local _is_git_worktree = M.is_git_worktree()
   if _is_git_worktree then
-    require'telescope.builtin'.git_commits(opts)
+    -- require'telescope.builtin'.git_commits(opts)
+    require'telescope.builtin'.git_commits(require('telescope.themes').get_ivy{
+      prompt_title = "Git Commits",
+      prompt_prefix = '  ',
+    })
   else
-    -- print('Not a git worktree directory')
     require('notify-extensions').notify("Warning", "Not a git working tree", 3, 2000)
     return
   end
