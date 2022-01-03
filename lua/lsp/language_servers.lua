@@ -24,7 +24,7 @@ local custom_lsp_attach = function(client,bufnr)
   vim.lsp.handlers["textDocument/signature_help"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
 
   -- See `:help nvim_buf_set_keymap()` for more information
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opts)
+  -- buffer_map(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', map_opts)
   buffer_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', map_opts)
   buffer_map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', map_opts)
   buffer_map(bufnr, 'n', 'gj', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', map_opts)
