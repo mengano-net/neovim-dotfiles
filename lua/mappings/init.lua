@@ -38,7 +38,7 @@ map('v', '>', '>gv', {noremap = true})
 
 -- "Y" will select remainder of the line, start at cursor,
 -- similar to "D" and "C" for deleting and replacing respectively
-map('n', 'Y', 'y$', {noremap = true})
+-- map('n', 'Y', 'y$', {noremap = true}) -- moved to whichkey
 
 -- Moving visual blocks up/down
 map('v', 'J', ':m \'>+1<cr>gv=gv', {noremap = true})

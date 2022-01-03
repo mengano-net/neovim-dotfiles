@@ -4,6 +4,7 @@ if not status_ok then
   return
 end
 
+local themes = require("telescope.themes")
 local actions = require('telescope.actions')
 local map = vim.api.nvim_set_keymap
 
@@ -59,14 +60,16 @@ telescope.setup {
 }
 
 -- mappings for Telescope
-
-map('n', '<leader>f', ':lua require(\'telescope-extensions\').find_files()<cr>', {noremap = true, silent = true})
-map('n', '<leader>gs', ':lua require(\'telescope.builtin\').grep_string()<cr>', {noremap = true, silent = true})
+-- moved to whichkey
+--[[
 map('n', '<leader>lg', ':lua require(\'telescope.builtin\').live_grep()<cr>', {noremap = true, silent = true})
-map('n', '<leader>gw', ':lua require(\'telescope-extensions\').grep_within_grep()<cr>', {noremap = true, silent = true})
-map('n', '<leader>jl', ':lua require(\'telescope.builtin\').jumplist()<cr>', {noremap = true, silent = true})
-map('n', '<leader>c', ':lua require(\'telescope.builtin\').commands()<cr>', {noremap = true, silent = true})
-map('n', '<leader>ht', ':lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true, silent = true})
-map('n', '<leader>nc', ':lua require(\'telescope-extensions\').neovim_config()<cr>', {noremap = true, silent = true})
 map('n', '<leader>gc', ':lua require(\'telescope-extensions\').git_commits()<cr>', {noremap = true, silent = true})
 map('n', '<leader>gb', ':lua require(\'telescope-extensions\').git_branches()<cr>', {noremap = true, silent = true})
+map('n', '<leader>f', ':lua require(\'telescope-extensions\').find_files()<cr>', {noremap = true, silent = true})
+map('n', '<leader>ht', ':lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true, silent = true})
+map('n', '<leader>jl', ':lua require(\'telescope.builtin\').jumplist()<cr>', {noremap = true, silent = true})
+map('n', '<leader>c', ':lua require(\'telescope.builtin\').commands()<cr>', {noremap = true, silent = true})
+]]
+
+map('n', '<leader>gw', ':lua require(\'telescope-extensions\').grep_within_grep()<cr>', {noremap = true, silent = true})
+map('n', '<leader>nc', ':lua require(\'telescope-extensions\').neovim_config()<cr>', {noremap = true, silent = true})
