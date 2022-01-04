@@ -78,10 +78,12 @@ local mappings = {
   ["s"] = {
     name = "Search",
     ["g"] = {":lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy())<cr>", "Live Grep"},
-    ["t"] = {":lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>", "Tags"},
+    ["t"] = {":lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>", "Help Tags"},
     ["j"] = {":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>", "Jump Points"},
     ["c"] = {":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>", "Commands"},
     ["G"] = {"<cmd>lua require('telescope-extensions').grep_within_grep()<cr>", "Grep within grep"},
+    ["m"] = {":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>", "Man Pages"},
+    ["r"] = {":lua require('telescope.builtin').oldfiles(require('telescope.themes').get_ivy())<cr>", "Recent Files"},
     -- t = {function() print("bar") end, "Foobar"}
   },
   ["t"] = {
