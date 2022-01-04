@@ -63,19 +63,19 @@ local mappings = {
     name = "Git",
     b = {"<cmd>lua require('telescope-extensions').git_branches()<cr>", "Branches"},
     c = {"<cmd>Git commit -s<cr>", "Commit"},
+    h = {
+      name = "Hunks",
+      b = {"<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line"},
+      j = {"<cmd>Gitsigns next_hunk<cr>", "Next Hunk"},
+      k = {"<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk"},
+      p = {"<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk"},
+      r = {"<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk"},
+      s = {"<cmd> Gitsigns stage_hunk<cr>", "Stage Hunk"},
+      u = {"<cmd Gitsigns undo_stage_hunk<cr>", "UnStage Hunk"}
+    },
     l = {"<cmd>lua require('telescope-extensions').git_commits()<cr>", "List commits"},
     s = {"<cmd>Ge:<cr>", "Stage?"},
     p = {"<cmd>Git push<cr>", "Push"},
-  },
-  ["h"] = {
-    name = "Hunks",
-    b = {"<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line"},
-    j = {"<cmd>Gitsigns next_hunk<cr>", "Next Hunk"},
-    k = {"<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk"},
-    p = {"<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk"},
-    r = {"<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk"},
-    s = {"<cmd> Gitsigns stage_hunk<cr>", "Stage Hunk"},
-    u = {"<cmd Gitsigns undo_stage_hunk<cr>", "UnStage Hunk"}
   },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   p = {
