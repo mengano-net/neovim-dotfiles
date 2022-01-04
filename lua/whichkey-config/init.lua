@@ -47,10 +47,11 @@ vim.api.nvim_set_keymap("","s", "<Nop>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("","S", "<Nop>", {noremap = true, silent = true})
 
 local mappings = {
-  --[[ ["b"] = {
-    "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5}}<cr>",
-    "Buffers",
-  }, ]]
+  ["b"] = {
+    l = {"<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5}}<cr>", "List"},
+    r = {"<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer"},
+    s = {"<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer"},
+  },
   ["e"] = {
     name = "Edit",
     h = {"<cmd>nohl<cr>", "Highlights"},
@@ -65,6 +66,16 @@ local mappings = {
     l = {"<cmd>lua require('telescope-extensions').git_commits()<cr>", "List commits"},
     s = {"<cmd>Ge:<cr>", "Stage?"},
     p = {"<cmd>Git push<cr>", "Push"},
+  },
+  ["h"] = {
+    name = "Hunks",
+    b = {"<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line"},
+    j = {"<cmd>Gitsigns next_hunk<cr>", "Next Hunk"},
+    k = {"<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk"},
+    p = {"<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk"},
+    r = {"<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk"},
+    s = {"<cmd> Gitsigns stage_hunk<cr>", "Stage Hunk"},
+    u = {"<cmd Gitsigns undo_stage_hunk<cr>", "UnStage Hunk"}
   },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   p = {
