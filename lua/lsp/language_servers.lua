@@ -31,7 +31,7 @@ local custom_lsp_attach = function(client,bufnr)
   buffer_map(bufnr, 'n', 'gk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', map_opts)
 
   if client.resolved_capabilities.textDocument_declaration then
-    buffer_map(bufnr, 'n', 'gd', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
+    buffer_map(bufnr, 'n', 'gD', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
   end
 
   if client.resolved_capabilities.document_formatting then
