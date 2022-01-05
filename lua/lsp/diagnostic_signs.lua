@@ -1,4 +1,4 @@
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 vim.diagnostic.config{
   virtual_text = false,
@@ -19,7 +19,6 @@ vim.diagnostic.config{
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
-    -- signs = true,
     signs = {
       severity_limit = 'Hint',
     },
@@ -28,6 +27,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     --   severity_limit = "Hint",
     --   prefix = ' ', -- Could be '■' '●', '▎', 'x',
     -- },
+    update_in_insert = false,
   }
 )
 
