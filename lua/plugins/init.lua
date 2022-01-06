@@ -80,6 +80,7 @@ return require("packer").startup(function(use)
   use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" } ]]
   use {'tami5/lspsaga.nvim'}
   use { 'williamboman/nvim-lsp-installer', config = "require('nvim-lsp-installer')" }
+  use {"jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')"}
 
   -- cmp
   use 'hrsh7th/cmp-nvim-lsp'
