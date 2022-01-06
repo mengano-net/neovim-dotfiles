@@ -60,7 +60,7 @@ local mappings = {
   },
   ["f"] = {"<cmd>lua require('telescope-extensions').find_files()<cr>", "Find Files" },
   ["g"] = {
-    name = "Git",
+    name = "Git / Goto",
     b = {"<cmd>lua require('telescope-extensions').git_branches()<cr>", "Branches"},
     c = {"<cmd>Git commit -s<cr>", "Commit"},
     h = {
@@ -73,6 +73,8 @@ local mappings = {
       s = {"<cmd> Gitsigns stage_hunk<cr>", "Stage Hunk"},
       u = {"<cmd Gitsigns undo_stage_hunk<cr>", "UnStage Hunk"}
     },
+    j = {"<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic"},
+    k = {"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic"},
     l = {"<cmd>lua require('telescope-extensions').git_commits()<cr>", "List commits"},
     s = {"<cmd>Ge:<cr>", "Stage?"},
     p = {"<cmd>Git push<cr>", "Push"},

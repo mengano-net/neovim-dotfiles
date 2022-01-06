@@ -23,12 +23,13 @@ local custom_lsp_attach = function(client,bufnr)
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
   vim.lsp.handlers["textDocument/signature_help"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"})
 
-  -- See `:help nvim_buf_set_keymap()` for more information
   -- buffer_map(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', map_opts)
+  --[[ moved to whichkey
+  buffer_map(bufnr, 'n', 'gj', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'gk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', map_opts) ]]
   buffer_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', map_opts)
   buffer_map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', map_opts)
-  buffer_map(bufnr, 'n', 'gj', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', map_opts)
-  buffer_map(bufnr, 'n', 'gk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', map_opts)
+  buffer_map(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', map_opts)
 
   if client.resolved_capabilities.textDocument_declaration then
     buffer_map(bufnr, 'n', 'gD', '<cmd> lua vim.lsp.buf.declaration()<CR>', map_opts)
@@ -71,6 +72,7 @@ local custom_lsp_attach = function(client,bufnr)
     vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
     vim.api.nvim_command [[augroup END]]
   end
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 -- Setup capabilities
