@@ -14,7 +14,7 @@ local term_size = function(term)
 end
 
 toggleterm.setup {
-  open_mapping = [[<c-\>]], --disabling since I'm using whichkey now
+  open_mapping = [[<c-\>]],
   shade_filetypes = {},
   shade_terminals = true,
   shading_factor = 0,
