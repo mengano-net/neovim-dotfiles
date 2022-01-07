@@ -85,7 +85,7 @@ nvim_lsp.pylsp.setup({
 
 -- bash language server
 nvim_lsp.bashls.setup({
-	cmd = { "/usr/bin/bash-language-server", "start" },
+	-- cmd = { "/usr/bin/bash-language-server", "start" },
 	on_attach = custom_lsp_attach,
 	capabilities = capabilities,
 	flags = {
