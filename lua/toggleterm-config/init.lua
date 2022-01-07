@@ -17,7 +17,7 @@ toggleterm.setup {
   -- open_mapping = [[<leader>sh]], --disabling since I'm using whichkey now
   shade_filetypes = {},
   shade_terminals = true,
-  shading_factor = 1,
+  shading_factor = 0,
   start_in_insert = true,
   persist_size = true,
   direction = 'horizontal',
