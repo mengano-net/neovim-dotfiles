@@ -7,26 +7,27 @@ end
 local term_size = function(term)
   if term.direction == "horizontal" then
     -- return 20
-    return vim.o.lines * 0.5
+    return vim.o.lines * 0.4
   elseif term.direction == "vertical" then
     return vim.o.columns * 0.4
   end
 end
 
 toggleterm.setup {
-  -- open_mapping = [[<leader>sh]], --disabling since I'm using whichkey now
+  open_mapping = [[<c-\>]], --disabling since I'm using whichkey now
   shade_filetypes = {},
   shade_terminals = true,
   shading_factor = 0,
   start_in_insert = true,
   persist_size = true,
-  direction = 'horizontal',
+  -- direction = 'horizontal',
   -- direction = 'float',
   shell = "zsh",
   size = term_size,
+  close_on_exit = true,
   float_opts = {
     border = 'double',
-    winblend = 3,
+    winblend = 0,
     highlights = {
       border = "Normal",
       background = "Normal",
