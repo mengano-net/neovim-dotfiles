@@ -64,7 +64,6 @@ return require("packer").startup(function(use)
       require("whichkey-config")
     end
   }
-  use {'lukas-reineke/format.nvim', config = "require('format-config')"}
 
   -- Treesitter
   use {
