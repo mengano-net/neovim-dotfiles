@@ -72,6 +72,10 @@ return require("packer").startup(function(use)
 			require("whichkey-config")
 		end,
 	})
+	use({
+		"ellisonleao/glow.nvim",
+		setup = { "vim.g.glow_border = 'rounded'" },
+	})
 
 	-- Treesitter
 	use({
