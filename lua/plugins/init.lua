@@ -76,6 +76,9 @@ return require("packer").startup(function(use)
 		"ellisonleao/glow.nvim",
 		setup = { "vim.g.glow_border = 'rounded'" },
 	})
+	use({
+		"folke/twilight.nvim",
+	})
 
 	-- Treesitter
 	use({
