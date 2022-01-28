@@ -120,7 +120,8 @@ nvim_lsp.yamlls.setup({
 			customTags = {
 				"!Ref",
 				"!ImportValue",
-				"!Sub",
+				"!Sub sequence",
+				"!Sub scalar",
 				"!GetAtt",
 				"!GetAZs",
 				"!Join sequence",
