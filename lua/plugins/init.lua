@@ -102,7 +102,7 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-vsnip")
-	-- use("hrsh7th/vim-vsnip")
+	use("hrsh7th/vim-vsnip")
 
 	-- colorschemes
 	use({ "rose-pine/neovim" })

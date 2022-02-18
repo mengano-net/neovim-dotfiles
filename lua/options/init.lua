@@ -98,7 +98,7 @@ autocmd InsertLeave * silent! set nopaste
 " au TermOpen * silent! setlocal nonumber norelativenumber
 " au TermOpen * silent! startinsert
 
-" Todua
+" Not needed; no longer using netrw but kyazdani42/nvim-tree.lua
 " let g:netrw_liststyle = 3
 " let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'              " hide dotfiles on load
 " let g:netrw_banner = 0
