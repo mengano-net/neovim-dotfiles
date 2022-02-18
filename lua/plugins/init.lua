@@ -58,7 +58,7 @@ return require("packer").startup(function(use)
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
+			"kyazdani42/nvim-web-devicons",
 		},
 		config = {
 			-- function() require'nvim-tree'.setup {} end,
@@ -90,8 +90,6 @@ return require("packer").startup(function(use)
 	-- LSP
 	use("neovim/nvim-lspconfig")
 	use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
-	--[[ I'm trying to retire LSPSaga, most of its functions are implemented builtin
-  use { 'tami5/lspsaga.nvim', config = "require('lspsaga-config')" } ]]
 	use({ "tami5/lspsaga.nvim" })
 	use({ "williamboman/nvim-lsp-installer", config = "require('nvim-lsp-installer')" })
 	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
