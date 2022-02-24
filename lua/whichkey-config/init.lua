@@ -85,7 +85,8 @@ local mappings = {
 		k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
 		l = { "<cmd>lua require('telescope-extensions').git_commits()<cr>", "List commits" },
 		s = { "<cmd>Ge:<cr>", "Stage?" },
-		p = { "<cmd>Git push<cr>", "Push" },
+		p = { "<cmd>Git pull<cr>", "Pull" },
+		P = { "<cmd>Git push<cr>", "Push" },
 	},
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	p = {
