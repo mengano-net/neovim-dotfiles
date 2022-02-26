@@ -57,7 +57,7 @@ local mappings = {
 	},
 	["e"] = {
 		name = "Edit",
-		h = { "<cmd>nohl<cr>", "Highlights" },
+		h = { "<cmd>nohl<cr>", "No Highlights" },
 		Y = { "y$", "Yank remainder of line" },
 		-- p = {"<cmd>\"0p<cr>", "Paste previously yanked"}, -- this is not working for some reason
 	},
@@ -71,6 +71,10 @@ local mappings = {
 		name = "Goto",
 		j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
 		k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
+		["J"] = {
+			":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
+			"Jump Points",
+		},
 	},
 	["G"] = {
 		name = "Git",
@@ -108,12 +112,8 @@ local mappings = {
 			"Live Grep",
 		},
 		["t"] = {
-			":lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
+			" f:lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
 			"Help Tags",
-		},
-		["j"] = {
-			":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
-			"Jump Points",
 		},
 		["c"] = {
 			":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
