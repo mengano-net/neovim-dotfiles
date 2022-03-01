@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/ec2-user/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/ec2-user/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/ec2-user/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/ec2-user/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/ec2-user/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/alex.rodriguez/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/alex.rodriguez/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/alex.rodriguez/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/alex.rodriguez/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/alex.rodriguez/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -72,234 +72,251 @@ _G.packer_plugins = {
   ["Comment.nvim"] = {
     config = { "require('comment-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
   ["apprentice.nvim"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/apprentice.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/apprentice.nvim",
     url = "https://github.com/adisen99/apprentice.nvim"
   },
   ["bufferline.nvim"] = {
     config = { "require('bufferline-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lua"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
     url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/cmp-path",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-vsnip"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   ["darkplus.nvim"] = {
     config = { "vim.cmd('colorscheme darkplus')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
-  },
-  ["format.nvim"] = {
-    config = { "require('format-config')" },
-    loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/format.nvim",
-    url = "https://github.com/lukas-reineke/format.nvim"
   },
   ["gitsigns.nvim"] = {
     config = { "require('gitsigns-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["glow.nvim"] = {
+    loaded = true,
+    needs_bufread = false,
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/opt/glow.nvim",
+    url = "https://github.com/ellisonleao/glow.nvim"
   },
   ["gruvbox.nvim"] = {
     loaded = true,
     needs_bufread = false,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/gruvbox.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/opt/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["indent-blankline.nvim"] = {
     config = { "require('blankline-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lspkind-nvim"] = {
     config = { "require('lspkind-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
-    config = { "require('lspsaga-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/tami5/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     config = { "require('lualine-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["lush.nvim"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
   ["material.nvim"] = {
     config = { "require('material-config')" },
     loaded = true,
     needs_bufread = false,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/material.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/opt/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
   neovim = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/neovim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/neovim",
     url = "https://github.com/rose-pine/neovim"
   },
   ["nord.nvim"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nord.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nord.nvim",
     url = "https://github.com/shaunsingh/nord.nvim"
+  },
+  ["null-ls.nvim"] = {
+    config = { "require('null-ls-config')" },
+    loaded = true,
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     config = { "require('autopairs-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
     config = { "require('colorizer-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lsp-installer"] = {
     config = { "require('nvim-lsp-installer')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
     url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-notify"] = {
     config = { "require('notify-extensions')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     config = { "require('nvimtree-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     config = { "require('treesitter-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-ts-rainbow"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
     url = "https://github.com/p00f/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["onedark.nvim"] = {
     loaded = true,
     needs_bufread = false,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/onedark.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/opt/onedark.nvim",
     url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope.nvim"] = {
     config = { "require('telescope-config')", "require('telescope-extensions')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["toggleterm.nvim"] = {
     config = { "require('toggleterm-config')" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
     needs_bufread = false,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/opt/tokyonight.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/opt/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["twilight.nvim"] = {
+    loaded = true,
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/twilight.nvim",
+    url = "https://github.com/folke/twilight.nvim"
   },
   ["vim-better-whitespace"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
     url = "https://github.com/ntpeters/vim-better-whitespace"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-vsnip"] = {
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
   },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20whichkey-config\frequire\0" },
     loaded = true,
-    path = "/home/ec2-user/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    path = "/Users/alex.rodriguez/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: gruvbox.nvim
+time([[Setup for gruvbox.nvim]], true)
+vim.g.gruvbox_contrast_dark = 'hard'
+time([[Setup for gruvbox.nvim]], false)
+time([[packadd for gruvbox.nvim]], true)
+vim.cmd [[packadd gruvbox.nvim]]
+time([[packadd for gruvbox.nvim]], false)
 -- Setup for: tokyonight.nvim
 time([[Setup for tokyonight.nvim]], true)
 vim.g.tokyonight_style = 'night'
@@ -315,13 +332,6 @@ time([[Setup for material.nvim]], false)
 time([[packadd for material.nvim]], true)
 vim.cmd [[packadd material.nvim]]
 time([[packadd for material.nvim]], false)
--- Setup for: gruvbox.nvim
-time([[Setup for gruvbox.nvim]], true)
-vim.g.gruvbox_contrast_dark = 'hard'
-time([[Setup for gruvbox.nvim]], false)
-time([[packadd for gruvbox.nvim]], true)
-vim.cmd [[packadd gruvbox.nvim]]
-time([[packadd for gruvbox.nvim]], false)
 -- Setup for: onedark.nvim
 time([[Setup for onedark.nvim]], true)
 vim.g.onedark_style = 'dark'
@@ -329,87 +339,91 @@ time([[Setup for onedark.nvim]], false)
 time([[packadd for onedark.nvim]], true)
 vim.cmd [[packadd onedark.nvim]]
 time([[packadd for onedark.nvim]], false)
--- Config for: lspkind-nvim
-time([[Config for lspkind-nvim]], true)
-require('lspkind-config')
-time([[Config for lspkind-nvim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-require('lspsaga-config')
-time([[Config for lspsaga.nvim]], false)
--- Config for: nvim-notify
-time([[Config for nvim-notify]], true)
-require('notify-extensions')
-time([[Config for nvim-notify]], false)
+-- Setup for: glow.nvim
+time([[Setup for glow.nvim]], true)
+vim.g.glow_border = 'rounded'
+time([[Setup for glow.nvim]], false)
+time([[packadd for glow.nvim]], true)
+vim.cmd [[packadd glow.nvim]]
+time([[packadd for glow.nvim]], false)
+-- Config for: nvim-lsp-installer
+time([[Config for nvim-lsp-installer]], true)
+require('nvim-lsp-installer')
+time([[Config for nvim-lsp-installer]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 require('lualine-config')
 time([[Config for lualine.nvim]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+require('notify-extensions')
+time([[Config for nvim-notify]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require('nvimtree-config')
 time([[Config for nvim-tree.lua]], false)
+-- Config for: material.nvim
+time([[Config for material.nvim]], true)
+require('material-config')
+time([[Config for material.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require('treesitter-config')
 time([[Config for nvim-treesitter]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20whichkey-config\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
 -- Config for: darkplus.nvim
 time([[Config for darkplus.nvim]], true)
 vim.cmd('colorscheme darkplus')
 time([[Config for darkplus.nvim]], false)
--- Config for: format.nvim
-time([[Config for format.nvim]], true)
-require('format-config')
-time([[Config for format.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require('autopairs-config')
-time([[Config for nvim-autopairs]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20whichkey-config\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 require('gitsigns-config')
 time([[Config for gitsigns.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require('null-ls-config')
+time([[Config for null-ls.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require('autopairs-config')
+time([[Config for nvim-autopairs]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 require('comment-config')
 time([[Config for Comment.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require('blankline-config')
-time([[Config for indent-blankline.nvim]], false)
 -- Config for: bufferline.nvim
 time([[Config for bufferline.nvim]], true)
 require('bufferline-config')
 time([[Config for bufferline.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('toggleterm-config')
+time([[Config for toggleterm.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require('blankline-config')
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require('colorizer-config')
+time([[Config for nvim-colorizer.lua]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('telescope-config')
 require('telescope-extensions')
 time([[Config for telescope.nvim]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-require('colorizer-config')
-time([[Config for nvim-colorizer.lua]], false)
--- Config for: material.nvim
-time([[Config for material.nvim]], true)
-require('material-config')
-time([[Config for material.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('toggleterm-config')
-time([[Config for toggleterm.nvim]], false)
--- Config for: nvim-lsp-installer
-time([[Config for nvim-lsp-installer]], true)
-require('nvim-lsp-installer')
-time([[Config for nvim-lsp-installer]], false)
+-- Config for: lspkind-nvim
+time([[Config for lspkind-nvim]], true)
+require('lspkind-config')
+time([[Config for lspkind-nvim]], false)
 if should_profile then save_profiles() end
 
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

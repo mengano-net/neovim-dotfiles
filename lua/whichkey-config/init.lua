@@ -26,7 +26,7 @@ local setup = {
 		border = "rounded", -- none, single, double, shadow
 	},
 	layout = {
-		align = "center", -- align columns left, center or right
+		align = "left", -- align columns left, center or right
 	},
 	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
 }
@@ -130,11 +130,13 @@ local mappings = {
 		},
 		-- t = {function() print("bar") end, "Foobar"}
 	},
-	["t"] = {
-		name = "Terminal",
-		f = { toggle_float, "Floating" },
-		h = { toggle_horizontal, "Horizontal" },
-	},
+	-- I'm using the built-in map <C-\> to toggle terminal
+	-- ["t"] = { "<cmd>ToggleTerm<cr>", "Terminal" },
+	-- ["t"] = {
+	-- 	name = "Terminal",
+	-- 	f = { toggle_float, "Floating" },
+	-- 	h = { toggle_horizontal, "Horizontal" },
+	-- },
 	["T"] = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
 	["x"] = { ":bd!<cr>", "Close buffer" },
 	["w"] = { ":w!<cr>", "Save buffer" },
