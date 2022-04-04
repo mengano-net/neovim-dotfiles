@@ -1,4 +1,4 @@
--- Exit if can't load module(s)
+--ngu Exit if can't load module(s)
 local status_ok, nvim_lsp = pcall(require, "lspconfig")
 if not status_ok then
 	return
@@ -111,7 +111,8 @@ nvim_lsp.bashls.setup({
 --yaml language server
 local yamlls_binary = ""
 if vim.fn.has("mac") == 1 then
-	yamlls_binary = "/usr/local/bin/yaml-language-server"
+	-- yamlls_binary = "/usr/local/bin/yaml-language-server"
+	yamlls_binary = "/opt/homebrew/bin/yaml-language-server"
 elseif vim.fn.has("unix") == 1 then
 	yamlls_binary = "/usr/bin/yaml-language-server"
 end
