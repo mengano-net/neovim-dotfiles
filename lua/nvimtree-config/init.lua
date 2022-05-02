@@ -5,8 +5,6 @@ if not status_ok then
 end
 
 local global_options = {
-	-- nvim_tree_quit_on_open = 1,
-	nvim_tree_indent_markers = 0,
 	nvim_tree_highlight_opened_files = 1,
 	nvim_tree_git_hl = 1,
 }
@@ -32,8 +30,20 @@ vim.g.nvim_tree_icons = {
 }
 
 nvimtree.setup({
-	view = { autoresize = true },
-	git = { ignore = true },
+  actions = {
+    open_file = {
+      quit_on_open = true,
+      resize_window = true,
+    },
+  },
+  diable_netrw,
 	filters = { dotfiles = true },
+	git = { ignore = true },
 	quit_on_open = true,
+  renderer = {
+    indent_markers = {
+      enable = false,
+    },
+  },
+	view = { autoresize = true },
 })
