@@ -101,9 +101,11 @@ cmp.setup({
 		select = false,
 	},
 
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	},
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+    -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  },
 
 	experimental = {
 		native_menu = false,
