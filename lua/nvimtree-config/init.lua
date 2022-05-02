@@ -39,11 +39,9 @@ nvimtree.setup({
   diable_netrw,
 	filters = { dotfiles = true },
 	git = { ignore = true },
-	quit_on_open = true,
   renderer = {
     indent_markers = {
       enable = false,
     },
   },
-	view = { autoresize = true },
 })
