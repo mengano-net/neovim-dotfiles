@@ -1,4 +1,4 @@
--- Exit if can't load module(s)
+--ngu Exit if can't load module(s)
 local status_ok, nvim_lsp = pcall(require, "lspconfig")
 if not status_ok then
 	return
@@ -8,6 +8,7 @@ vim.opt.completeopt = "menuone,noinsert,noselect"
 local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
 local map_opts = { noremap = true, silent = true }
+USER = vim.fn.expand("$USER")
 
 local custom_lsp_attach = function(client, bufnr)
 	-- Use LSP as the handler for omnifunc.
@@ -76,8 +77,21 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
+-- Language servers specific setups
+--
+-- Python
+
+local pylsp_root_binary = ""
+if vim.fn.has("mac") == 1 then
+  pylsp_root_binary = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/pylsp/venv/bin/pylsp"
+elseif vim.fn.has("unix") == 1 then
+else
+	print("Unsupported system for pylsp")
+end
+
 nvim_lsp.pylsp.setup({
-	cmd = { "pylsp" },
+	-- cmd = { "pylsp" },
+	cmd = { pylsp_root_binary },
 	filetypes = { "python" },
 	on_attach = custom_lsp_attach,
 	capabilities = capabilities,
@@ -97,7 +111,8 @@ nvim_lsp.bashls.setup({
 --yaml language server
 local yamlls_binary = ""
 if vim.fn.has("mac") == 1 then
-	yamlls_binary = "/usr/local/bin/yaml-language-server"
+	-- yamlls_binary = "/usr/local/bin/yaml-language-server"
+	yamlls_binary = "/opt/homebrew/bin/yaml-language-server"
 elseif vim.fn.has("unix") == 1 then
 	yamlls_binary = "/usr/bin/yaml-language-server"
 end
@@ -136,14 +151,15 @@ nvim_lsp.yamlls.setup({
 
 -- lua-language-server
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
-USER = vim.fn.expand("$USER")
 
 local sumneko_root_path = ""
 local sumneko_binary = ""
 
 if vim.fn.has("mac") == 1 then
-	sumneko_root_path = "/Users/" .. USER .. "/.local/lua-language-server"
-	sumneko_binary = "/Users/" .. USER .. "/.local/lua-language-server/bin/macOS/lua-language-server"
+	-- sumneko_root_path = "/Users/" .. USER .. "/.local/lua-language-server"
+	-- sumneko_binary = "/Users/" .. USER .. "/.local/lua-language-server/bin/macOS/lua-language-server"
+  sumneko_root_path = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
+  sumneko_binary = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
 	sumneko_root_path = "/home/" .. USER .. "/.local/lua-language-server"
 	sumneko_binary = "/home/" .. USER .. "/.local/lua-language-server/bin/lua-language-server"
