@@ -118,7 +118,7 @@ elseif vim.fn.has("unix") == 1 then
 end
 
 nvim_lsp.yamlls.setup({
-  cmd = { yamlls_binary, "--stdio" },
+  -- cmd = { yamlls_binary, "--stdio" },
   on_attach = custom_lsp_attach,
   capabilities = capabilities,
   debounce_text_changes = 150,
