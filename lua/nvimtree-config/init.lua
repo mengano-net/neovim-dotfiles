@@ -37,7 +37,7 @@ nvimtree.setup({
     indent_markers = {
       enable = false,
     },
-    highlight_opened_files = 1,
+    highlight_opened_files = "all",
     highlight_git = true,
     icons = {
       padding = " ",
