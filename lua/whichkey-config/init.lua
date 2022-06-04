@@ -26,7 +26,7 @@ local setup = {
 		border = "rounded", -- none, single, double, shadow
 	},
 	layout = {
-		align = "left", -- align columns left, center or right
+		align = "center", -- align columns left, center or right
 	},
 	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
 }
@@ -48,17 +48,15 @@ vim.api.nvim_set_keymap("", "S", "<Nop>", { noremap = true, silent = true })
 
 local mappings = {
 	["b"] = {
+    name = "Buffers",
 		l = {
 			"<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5}}<cr>",
 			"List",
 		},
-		r = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
-		s = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
 	},
 	["e"] = {
 		name = "Edit",
 		h = { "<cmd>nohl<cr>", "No Highlights" },
-		Y = { "y$", "Yank remainder of line" },
 		-- p = {"<cmd>\"0p<cr>", "Paste previously yanked"}, -- this is not working for some reason
 	},
 	["f"] = { "<cmd>lua require('telescope-extensions').find_files()<cr>", "Find Files" },
@@ -83,8 +81,10 @@ local mappings = {
 		-- h = {},
 		l = { "<cmd>lua require('telescope-extensions').git_commits()<cr>", "List commits" },
 		s = { "<cmd>Ge:<cr>", "Stage?" },
+		S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
 		p = { "<cmd>Git pull<cr>", "Pull" },
 		P = { "<cmd>Git push<cr>", "Push" },
+		r = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
 	},
 	["h"] = {
 		name = "Hunks",
