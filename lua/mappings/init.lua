@@ -43,8 +43,6 @@ map("v", ">", ">gv", { noremap = true })
 -- Moving visual blocks up/down
 map("v", "J", ":m '>+1<cr>gv=gv", { noremap = true })
 map("v", "K", ":m '<-2<cr>gv=gv", { noremap = true })
--- utils.map('i', '<c-j>', '<esc>:m .+1<cr>')
--- utils.map('i', '<c-k>', '<esc>:m .-2<cr>')
 
 -- Keeping it centered when hitting `n` or `N` after a search
 map("n", "n", "nzzzv", { noremap = true })
