@@ -42,6 +42,8 @@ local toggle_horizontal = function()
 	return float:toggle()
 end
 
+local _path = path or vim.fn.input ("Dir:", "", "dir")
+
 -- Clearing some builtin maps that I will steal for my own.
 vim.api.nvim_set_keymap("", "s", "<Nop>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "S", "<Nop>", { noremap = true, silent = true })
@@ -108,11 +110,11 @@ local mappings = {
 	["s"] = {
 		name = "Search",
 		["g"] = {
-			":lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy())<cr>",
+			":lua require('telescope.builtin').live_grep({require('telescope.themes').get_ivy(), search_dirs = {_path})<cr>",
 			"Live Grep",
 		},
 		["t"] = {
-			" f:lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
+			":lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
 			"Help Tags",
 		},
 		["c"] = {
