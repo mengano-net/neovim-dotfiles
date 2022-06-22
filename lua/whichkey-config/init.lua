@@ -62,7 +62,7 @@ local mappings = {
 	["f"] = { "<cmd>lua require('telescope-extensions').find_files()<cr>", "Find Files" },
 	["F"] = {
 		name = "Find",
-		r = { ":%s///g<left><left>", "Replace Globally" },
+		r = { ":%s///g<left><left><left>", "Replace Globally" },
 		c = { ":%s///gc<left><left><left>", "Replace / Confirm" },
 	},
 	["g"] = {
