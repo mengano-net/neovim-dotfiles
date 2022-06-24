@@ -50,6 +50,7 @@ local options = {
 	conceallevel = 0,
 	cmdheight = 2,
 	fileencoding = "utf-8",
+  spell = true
 }
 
 for key, value in pairs(options) do
