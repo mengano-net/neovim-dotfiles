@@ -44,7 +44,7 @@ local options = {
   clipboard = "unnamedplus",
   autoindent = true,
   expandtab = true,
-  scrolloff = 5,
+  scrolloff = 10,
   sidescrolloff = 5,
   dictionary = "/usr/share/dict/words",
   conceallevel = 0,
@@ -96,14 +96,16 @@ vim.api.nvim_create_autocmd(
 )
 
 -- "Documentation" filetypes
-local documentation_filetypes = function()
+local function filetypes_documentation()
   vim.wo.spell = true
+  vim.bo.fo = "aw2tq"
+  vim.wo.linebreak = true
 end
-local augroup_filetype_documentation = vim.api.nvim_create_augroup("documentation_filetypes", { clear = true })
+
+local augroup_filetype_documentation = vim.api.nvim_create_augroup("filetypes_documentation", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "*.md", "*.tex" },
-  -- command = "setlocal spell",
-  callback = documentation_filetypes,
+  callback = filetypes_documentation,
   group = augroup_filetype_documentation,
 })
 
