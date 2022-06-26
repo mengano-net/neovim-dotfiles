@@ -82,11 +82,19 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- local augroup_python_colorcolumn = vim.api.nvim_create_augroup("Python colorcolum set to 80", { clear = true })
--- vim.api.nvim_create_autocmd(
---   "FileType python",
---   { command = "lua vim.opt_local.colorcolumn = '80'", group = augroup_python_colorcolumn }
--- )
+-- Python filetypes
+local function filetypes_python()
+  vim.wo.colorcolumn = "80"
+end
+
+local augroup_filetype_python = vim.api.nvim_create_augroup("filetype python", { clear = true })
+vim.api.nvim_create_autocmd(
+  "filetype python",
+  {
+    callback = filetypes_python,
+    group = augroup_filetype_python
+  }
+)
 
 -- Unset paste mode on InsertLeave action, leaving insert mode
 local augroup_set_nopaste_on_insert_leave = vim.api.nvim_create_augroup("set nopaste", { clear = true })
