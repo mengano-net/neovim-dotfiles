@@ -95,6 +95,7 @@ nvim_lsp.pylsp.setup({
   filetypes = { "python" },
   on_attach = custom_lsp_attach,
   capabilities = capabilities,
+  completion = true,
 })
 
 -- bash language server
@@ -159,7 +160,8 @@ if vim.fn.has("mac") == 1 then
   -- sumneko_root_path = "/Users/" .. USER .. "/.local/lua-language-server"
   -- sumneko_binary = "/Users/" .. USER .. "/.local/lua-language-server/bin/macOS/lua-language-server"
   sumneko_root_path = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
-  sumneko_binary = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
+  sumneko_binary = "/Users/" ..
+      USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
   sumneko_root_path = "/home/" .. USER .. "/.local/lua-language-server"
   sumneko_binary = "/home/" .. USER .. "/.local/lua-language-server/bin/lua-language-server"
