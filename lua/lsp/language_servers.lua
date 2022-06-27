@@ -10,12 +10,12 @@ USER = vim.fn.expand("$USER")
 
 local custom_lsp_attach = function(client, bufnr)
   -- Use LSP as the handler for omnifunc.
-  --    See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- See `:help omnifunc` and `:help ins-completion` for more information.
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Use LSP as the handler for formatexpr.
   --    See `:help formatexpr` for more information.
-  vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
   -- Handlers
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
@@ -33,9 +33,7 @@ local custom_lsp_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd> lua vim.lsp.buf.declaration()<CR>", map_opts)
   end
 
-  -- highlight words under cursor
   if client.resolved_capabilities.document_highlight then
-
     -- highlight word under cursor, when cursor holds
     local lsp_highlight_under_cursor = vim.api.nvim_create_augroup(
       "lsp_highlight_under_cursor",

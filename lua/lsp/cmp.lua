@@ -1,14 +1,26 @@
 -- Exit if can't load module(s)
-local status_ok, cmp = pcall(require, "cmp")
-if not status_ok then
-  return
-end
-local status_ok, lspkind = pcall(require, "lspkind")
-if not status_ok then
+local is_cmp_available, cmp = pcall(require, "cmp")
+if not is_cmp_available then
+  -- print("require'cmp' failed to load")
+  require('notify-extensions').notify("Library error", "require'cmp' failed to load", 3, 2000)
   return
 end
 
-vim.g.completeopt = "menu,menuone,preview,noselect,noinsert"
+local is_lspkind_available, lspkind = pcall(require, "lspkind")
+if not is_lspkind_available then
+  -- print("require'lspkind' failed to load")
+  require('notify-extensions').notify("Library error", "require'lspkind' failed to load", 3, 2000)
+  return
+end
+
+local is_luasnip_available, luasnip = pcall(require, "luasnip")
+if not is_luasnip_available then
+  -- print("require'luasnip' failed to load")
+  require('notify-extensions').notify("Library error", "require'luasnip' failed to load", 3, 2000)
+  return
+end
+
+vim.api.nvim_set_option("completeopt", "menu,menuone,preview,noselect,noinsert")
 
 -- Functions to implement autocomplete on the custom <Tab> and
 -- <S-Tab> mappings below
@@ -28,15 +40,15 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-      -- require('luasnip').lsp_expand(args.body)
+      -- vim.fn["vsnip#anonymous"](args.body)
+      luasnip.lsp_expand(args.body)
       -- vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
 
-  mapping = {
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+  mapping = cmp.mapping.preset.insert {
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(-4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({
@@ -46,19 +58,21 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif vim.fn["vsnip#available"]() == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function()
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
+      elseif luasnip.jumpable(-1) == 1 then
+        luasnip.jump(-1)
+      else
+        fallback()
       end
     end, { "i", "s" }),
   },
@@ -70,10 +84,7 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = "treesitter" },
     { name = "path" },
-    { name = "vsnip" }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
+    { name = 'luasnip' },
     { name = "spell" },
   }),
 
