@@ -177,6 +177,7 @@ end
 nvim_lsp.sumneko_lua.setup({
   on_attach = custom_lsp_attach,
   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+  capabilities = capabilities,
   -- cmd = {"/home/ec2-user/github-repos/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/ec2-user/github-repos/lua-language-server/" .. "main.lua"},
   flags = { debounce_text_changes = 150 },
   settings = {
