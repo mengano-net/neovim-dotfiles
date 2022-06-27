@@ -74,15 +74,15 @@ end
 --
 -- Highlight yanked text for 750 miliseconds
 local augroup_highlight_on_yank = vim.api.nvim_create_augroup(
-  "test",
+  "highlight yanked text",
   { clear = true }
 )
 vim.api.nvim_create_autocmd(
   "TextYankPost",
   {
-    command = "lua vim.highlight.on_yank {higroup='IncSearch', timeout=750}",
-    group = augroup_highlight_on_yank
-  }
+  command = "lua vim.highlight.on_yank {higroup='IncSearch', timeout=750}",
+  group = augroup_highlight_on_yank
+}
 )
 
 -- To reset window options that had been set by other autocmd, this is needed because win options
@@ -101,10 +101,10 @@ local augroup_reset_win_options_when_bufleave = vim.api.nvim_create_augroup(
 vim.api.nvim_create_autocmd(
   "BufLeave",
   {
-    pattern = { "*" },
-    callback = reset_win_options,
-    group = augroup_reset_win_options_when_bufleave
-  }
+  pattern = { "*" },
+  callback = reset_win_options,
+  group = augroup_reset_win_options_when_bufleave
+}
 )
 
 -- Python filetypes
