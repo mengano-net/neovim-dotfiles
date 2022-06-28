@@ -41,7 +41,11 @@ local custom_lsp_attach = function(client, bufnr)
     )
     vim.api.nvim_create_autocmd(
       "CursorHold",
-      { command = "lua vim.lsp.buf.document_highlight()", group = lsp_highlight_under_cursor }
+      {
+      pattern = { "*.lua" },
+      command = "lua vim.lsp.buf.document_highlight()",
+      group = lsp_highlight_under_cursor,
+    }
     )
 
     -- clear highlighted word when cursor moves again
