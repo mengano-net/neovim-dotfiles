@@ -82,9 +82,9 @@ cmp.setup({
     { name = "buffer", keyword_length = 4 }, -- type min of 4 chars before autocomplete kicks in
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
+    { name = 'luasnip' },
     { name = "treesitter" },
     { name = "path" },
-    { name = 'luasnip' },
     { name = "spell" },
   }),
 
@@ -110,12 +110,21 @@ cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
-    -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   },
 
   experimental = {
-    native_menu = false,
-    ghost_text = false,
+    ghost_text = true,
+  },
+
+  -- completion = {
+  --   keyword_length = 1,
+  --   completeopt = "menu,noselect"
+  -- },
+
+  view = {
+    entries = "experimental",
+    -- entries = "custom",
   },
 })
 
