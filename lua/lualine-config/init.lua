@@ -1,30 +1,31 @@
 -- Exit if can't load module(s)
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
-	return
+  return
 end
 
 local function current_buffer_number()
-	return "﬘ " .. vim.api.nvim_get_current_buf()
+  return "﬘ " .. vim.api.nvim_get_current_buf()
 end
 
 local function current_date()
-	-- return string.sub(os.date "%x", 1, 5)
-	-- return os.date "%x"
-	return os.date("%a %b %d, %H:%M", os.time() + 8 * 60 * 60)
+  -- return string.sub(os.date "%x", 1, 5)
+  -- return os.date "%x"
+  return os.date("%a %b %d, %H:%M", os.time() + 8 * 60 * 60)
 end
 
 -- Vim's working directory
 local function current_working_dir()
-	local cwd = string.sub(vim.fn.getcwd(), 12)
-	return "~" .. cwd
+  local cwd = string.sub(vim.fn.getcwd(), 12)
+  return "~" .. cwd
 end
 
 lualine.setup({
-	options = {
-		-- theme = 'tokyonight',
+  options = {
+    -- theme = 'tokyonight',
 		theme = "material",
 		-- theme = 'gruvbox',
+    -- theme = "darkplus",
 		icons_enabled = true,
 		extensions = { "fugitive" },
 		section_separators = " ",

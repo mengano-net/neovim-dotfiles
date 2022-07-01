@@ -50,7 +50,7 @@ local options = {
 	conceallevel = 0,
 	cmdheight = 2,
 	fileencoding = "utf-8",
-  spell = true
+  spell = false
 }
 
 for key, value in pairs(options) do
@@ -79,10 +79,10 @@ augroup highlight_on_yank
   au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=750}
 augroup END
 
-augroup python
-  au!
-  au FileType python setlocal colorcolumn=80
-augroup END
+" augroup python
+"   au!
+"   au FileType python setlocal colorcolumn=80
+" augroup END
 
 " Unset paste mode aboue on InsertLeave action, that is leaving insert mode
 autocmd InsertLeave * silent! set nopaste

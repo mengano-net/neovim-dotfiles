@@ -13,84 +13,145 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 -- Have packer use a popup window
-require("packer").init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
-})
+-- require("packer").init({
+--   display = {
+--     open_fn = function()
+--       return require("packer.util").float({ border = "rounded" })
+--     end,
+--   },
+-- })
 
--- return require('packer').startup(function()
 return require("packer").startup(function(use)
   -- Packer can manage itself
---   use("wbthomason/packer.nvim")
---   use({
---     "nvim-lualine/lualine.nvim",
---     requires = { "kyazdani42/nvim-web-devicons", opt = true },
---     config = "require('lualine-config')",
---   })
---   use({
---     "akinsho/bufferline.nvim",
---     tag = "v2.*",
---     requires = "kyazdani42/nvim-web-devicons",
---     config = { "require('bufferline-config')" },
---   })
---   use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
---   use({ "p00f/nvim-ts-rainbow" })
---   use("tpope/vim-fugitive")
---   use({
---     "lewis6991/gitsigns.nvim",
---     requires = { "nvim-lua/plenary.nvim" },
---     config = { "require('gitsigns-config')" },
---     -- tag = 'release' -- To use the latest release
---   })
---   use({ "numToStr/Comment.nvim", config = "require('comment-config')" })
---   use({
---     "nvim-telescope/telescope.nvim",
---     requires = { "nvim-lua/plenary.nvim" },
---     config = { "require('telescope-config')", "require('telescope-extensions')" },
---   })
---   use({ "rcarriga/nvim-notify", config = "require('notify-extensions')" })
---   use({ "norcalli/nvim-colorizer.lua", config = "require('colorizer-config')" })
---   use("ntpeters/vim-better-whitespace")
---   use({ "lukas-reineke/indent-blankline.nvim", config = "require('blankline-config')" })
---   use({
---     "akinsho/toggleterm.nvim",
---     tag = "v1.*",
---     config = "require('toggleterm-config')",
---   })
---   use({
---     "kyazdani42/nvim-tree.lua",
---     requires = {
---       "kyazdani42/nvim-web-devicons",
---     },
---     config = {
---       -- function() require'nvim-tree'.setup {} end,
---       "require('nvimtree-config')",
---     },
---   })
---   use({
---     "folke/which-key.nvim",
---     config = function()
---       -- require("which-key").setup {}
---       require("whichkey-config")
---     end,
---   })
---   use({
---     "ellisonleao/glow.nvim",
---     setup = { "vim.g.glow_border = 'rounded'" },
---   })
---   use({
---     "folke/twilight.nvim",
---   })
--- 
---   -- Treesitter
---   use({
---     "nvim-treesitter/nvim-treesitter",
---     run = ":TSUpdate",
---     config = "require('treesitter-config')",
---   })
+  use("wbthomason/packer.nvim")
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+      config = "require('lualine-config')",
+  })
+
+
+  -- color schemes
+  use({ "rose-pine/neovim" })
+
+  use("shaunsingh/nord.nvim")
+
+  use({ "navarasu/onedark.nvim", setup = "vim.g.onedark_style = 'dark'" })
+
+  use({
+    "folke/tokyonight.nvim",
+    setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
+    -- config = "vim.cmd('colorscheme tokyonight')"
+  })
+
+  use({ "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } })
+
+  use({
+    "ellisonleao/gruvbox.nvim",
+    requires = { "rktjmp/lush.nvim" },
+    setup = { "vim.g.gruvbox_contrast_dark = 'hard'" },
+    -- config = "vim.cmd('colorscheme gruvbox')"
+  })
+
+  use({
+    "marko-cerovac/material.nvim",
+    -- setup = "vim.g.material_style = 'deep ocean'",
+    setup = "vim.g.material_style = 'darker'",
+    -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
+    config = { "require('material-config')" },
+  })
+
+  use({ "lunarvim/darkplus.nvim", config = "vim.cmd('colorscheme darkplus')" })
+
+  use({
+    "akinsho/bufferline.nvim",
+    tag = "v2.*",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = { "require('bufferline-config')" },
+  })
+  -------------------------------------------------------------------------------------------------
+
+
+  -- Better formatting, colors, auto pairs, etc
+  use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
+
+  use({ "numToStr/Comment.nvim", config = "require('comment-config')" })
+
+  -- This is now a treesitter module, it is NOT a standalone plugin, I will need to configure on
+  -- treesitter
+  -- use({ "p00f/nvim-ts-rainbow" })
+
+  use({ "norcalli/nvim-colorizer.lua", config = "require('colorizer-config')" })
+
+  use("ntpeters/vim-better-whitespace")
+
+  use({ "lukas-reineke/indent-blankline.nvim", config = "require('blankline-config')" })
+  -------------------------------------------------------------------------------------------------
+
+
+  -- Plugins that make this configuration a better IDE
+  use("tpope/vim-fugitive")
+
+  use({
+    "lewis6991/gitsigns.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = { "require('gitsigns-config')" },
+    tag = 'release' -- To use the latest release
+  })
+
+  use({
+    "ellisonleao/glow.nvim",
+    branch = 'main',
+    setup = { "vim.g.glow_border = 'rounded'" },
+  })
+
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+    },
+    config = {
+      -- function() require'nvim-tree'.setup {} end,
+      "require('nvimtree-config')",
+    },
+  })
+
+  use({ "rcarriga/nvim-notify", config = "require('notify-extensions')" })
+
+  use({
+    "akinsho/toggleterm.nvim",
+    tag = "v1.*",
+    config = "require('toggleterm-config')",
+  })
+
+  use({
+    "nvim-telescope/telescope.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = { "require('telescope-config')", "require('telescope-extensions')" },
+  })
+
+  --[[ This plugin has MANY key maps configured to call several of the plugins above, do NOT
+  install it until the previous plugins are also installed and configured FIRST
+  Such plugins are(not exhaustive): telescope, gitsigns, nvimTree, etc. ]]
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      -- require("which-key").setup {}
+      require("whichkey-config")
+    end,
+  })
+  -------------------------------------------------------------------------------------------------
+
+
+  -- Language servers, code formatting, autocompletion
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = "require('treesitter-config')",
+  })
+
+  -------------------------------------------------------------------------------------------------
+
 -- 
 --   -- LSP
 --   use("neovim/nvim-lspconfig")
@@ -109,30 +170,6 @@ return require("packer").startup(function(use)
 --   use("hrsh7th/cmp-vsnip")
 --   use("hrsh7th/vim-vsnip")
 -- 
---   -- colorschemes
---   use({ "rose-pine/neovim" })
---   use("shaunsingh/nord.nvim")
---   use({ "navarasu/onedark.nvim", setup = "vim.g.onedark_style = 'dark'" })
---   use({
---     "folke/tokyonight.nvim",
---     setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
---     -- config = "vim.cmd('colorscheme tokyonight')"
---   })
---   use({ "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } })
---   use({
---     "ellisonleao/gruvbox.nvim",
---     requires = { "rktjmp/lush.nvim" },
---     setup = { "vim.g.gruvbox_contrast_dark = 'hard'" },
---     -- config = "vim.cmd('colorscheme gruvbox')"
---   })
---   use({
---     "marko-cerovac/material.nvim",
---     -- setup = "vim.g.material_style = 'deep ocean'",
---     setup = "vim.g.material_style = 'darker'",
---     -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
---     config = { "require('material-config')" },
---   })
---   use({ "lunarvim/darkplus.nvim", config = "vim.cmd('colorscheme darkplus')" })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
