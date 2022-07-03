@@ -156,8 +156,8 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-u>'] = cmp.mapping.scroll_docs(4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -239,6 +239,7 @@ else
   print("Can't find lua-language-server binary.")
 end
 
+-- lua-language-server
 require('lspconfig')['sumneko_lua'].setup {
   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
   capabilities = capabilities,
@@ -274,6 +275,78 @@ require('lspconfig')['sumneko_lua'].setup {
           indent_style = "space",
           indent_size = "2",
         }
+      },
+    },
+  },
+}
+
+
+-- Python
+local pylsp_root_binary = ""
+if vim.fn.has("mac") == 1 then
+  pylsp_root_binary = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/pylsp/venv/bin/pylsp"
+elseif vim.fn.has("unix") == 1 then
+else
+  print("Unsupported system for pylsp")
+end
+
+require('lspconfig')['pylsp'].setup {
+  -- cmd = { "pylsp" },
+  cmd = { pylsp_root_binary },
+  filetypes = { "python" },
+  on_attach = custom_lsp_attach,
+  capabilities = capabilities,
+}
+
+
+-- bash language server
+require('lspconfig')['bashls'].setup {
+  -- cmd = { "/usr/bin/bash-language-server", "start" },
+  -- cmd == { "~/.local/share/nvim/lsp_servers/bash", "start" },
+  on_attach = custom_lsp_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  filetypes = { "sh", "zsh" },
+}
+
+
+--yaml language server
+--[[ local yamlls_binary = ""
+if vim.fn.has("mac") == 1 then
+  yamlls_binary = "/usr/local/bin/yaml-language-server"
+elseif vim.fn.has("unix") == 1 then
+  yamlls_binary = "/usr/bin/yaml-language-server"
+end ]]
+
+require('lspconfig')['yamlls'].setup {
+  -- cmd = { yamlls_binary, "--stdio" },
+  on_attach = custom_lsp_attach,
+  capabilities = capabilities,
+  debounce_text_changes = 150,
+  filetypes = { "yaml", "yml" },
+  settings = {
+    yaml = {
+      hover = true,
+      format = {
+        enable = true,
+        singleQuote = true,
+      },
+      completion = true,
+      validate = true,
+      customTags = {
+        "!Ref",
+        "!ImportValue",
+        "!Sub sequence",
+        "!Sub scalar",
+        "!GetAtt",
+        "!GetAZs",
+        "!Join sequence",
+        "!Equals sequence",
+        "!FindInMap sequence",
+        "!Select sequence",
+        "!Split sequence",
       },
     },
   },
