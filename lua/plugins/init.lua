@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
   use({
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
-      config = "require('lualine-config')",
+    config = "require('lualine-config')",
   })
 
 
@@ -79,7 +79,7 @@ return require("packer").startup(function(use)
 
   -- This is now a treesitter module, it is NOT a standalone plugin, I will need to configure on
   -- treesitter
-  -- use({ "p00f/nvim-ts-rainbow" })
+  use({ "p00f/nvim-ts-rainbow" })
 
   use({ "norcalli/nvim-colorizer.lua", config = "require('colorizer-config')" })
 
@@ -150,26 +150,40 @@ return require("packer").startup(function(use)
     config = "require('treesitter-config')",
   })
 
+  use({
+    "hrsh7th/nvim-cmp",
+    config = "require('cmp-config')",
+  })
+
+  use("neovim/nvim-lspconfig")
+
+  use({ "williamboman/nvim-lsp-installer" })
+
+  use("hrsh7th/cmp-nvim-lsp")
+
+  use("hrsh7th/cmp-buffer")
+
+  use("hrsh7th/cmp-path")
+
+  use("hrsh7th/cmp-cmdline")
+
+  use("hrsh7th/cmp-vsnip")
+
+  use({ "hrsh7th/vim-vsnip" })
+
   -------------------------------------------------------------------------------------------------
 
--- 
---   -- LSP
---   use("neovim/nvim-lspconfig")
---   use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
---   use({ "tami5/lspsaga.nvim" })
---   use({ "williamboman/nvim-lsp-installer", config = "require('nvim-lsp-installer')" })
---   use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
--- 
---   -- cmp
---   use("hrsh7th/cmp-nvim-lsp")
---   use("hrsh7th/cmp-buffer")
---   use("hrsh7th/cmp-path")
---   use("hrsh7th/cmp-cmdline")
---   use("hrsh7th/cmp-nvim-lua")
---   use("hrsh7th/nvim-cmp")
---   use("hrsh7th/cmp-vsnip")
---   use("hrsh7th/vim-vsnip")
--- 
+  --
+  --   -- LSP
+  --   use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
+  --   use({ "tami5/lspsaga.nvim" })
+  --   use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
+  --
+  --   -- cmp
+  --   use("hrsh7th/cmp-nvim-lua")
+  --   use("hrsh7th/cmp-vsnip")
+  --   use("hrsh7th/vim-vsnip")
+  --
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
