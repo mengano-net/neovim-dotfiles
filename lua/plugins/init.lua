@@ -173,7 +173,6 @@ return require("packer").startup(function(use)
 
   use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
 
-  -- use({ "tami5/lspsaga.nvim", config = "require('lspsaga-config')" })
 
   -------------------------------------------------------------------------------------------------
 
