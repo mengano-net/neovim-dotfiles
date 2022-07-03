@@ -171,18 +171,15 @@ return require("packer").startup(function(use)
 
   use({ "hrsh7th/vim-vsnip" })
 
+  use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
+
+  -- use({ "tami5/lspsaga.nvim", config = "require('lspsaga-config')" })
+
   -------------------------------------------------------------------------------------------------
 
   --
   --   -- LSP
-  --   use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
-  --   use({ "tami5/lspsaga.nvim" })
   --   use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
-  --
-  --   -- cmp
-  --   use("hrsh7th/cmp-nvim-lua")
-  --   use("hrsh7th/cmp-vsnip")
-  --   use("hrsh7th/vim-vsnip")
   --
 
   -- Automatically set up your configuration after cloning packer.nvim
