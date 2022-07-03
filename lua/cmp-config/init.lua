@@ -61,12 +61,13 @@ local custom_lsp_attach = function(client, bufnr)
   end
 
   -- highlight words under cursor
-  if client.server_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
     ]] ,
@@ -83,16 +84,19 @@ local custom_lsp_attach = function(client, bufnr)
   end
   ]]
 
-  vim.api.nvim_exec(
-    [[
-      augroup Format
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
-      augroup END
-      command! Format execute 'lua vim.lsp.buf.formatting()'
-    ]],
-    false
-  )
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_exec(
+      [[
+        augroup Format
+          autocmd! * <buffer>
+          autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+        augroup END
+        command! Format execute 'lua vim.lsp.buf.formatting()'
+      ]],
+      false
+    )
+  end
+
 end
 
 
