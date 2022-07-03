@@ -214,6 +214,10 @@ require('lspconfig')['sumneko_lua'].setup {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = { "vim" },
+        --[[ This sets up lua-language-server to check code styles too, like indentation best practices, etc
+        neededFileStatus = {
+          ["codestyle-check"] = "Any",
+        }, ]]
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -222,6 +226,13 @@ require('lspconfig')['sumneko_lua'].setup {
           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
           [vim.fn.expand("~/.config.nvim/lua")] = true,
         },
+      },
+      format = {
+        enable = true,
+        defaultConfig = {
+          indent_style = "space",
+          indent_size = "2",
+        }
       },
     },
   },
