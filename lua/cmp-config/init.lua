@@ -5,11 +5,11 @@ if not cmp_status_ok then
   return
 end
 
-local lsp_status_ok, lsp = pcall(require, "lsp")
+--[[ local lsp_status_ok, lsp = pcall(require, "lsp")
 if not lsp_status_ok then
   print("Couldn't require module 'lsp'.")
   return
-end
+end ]]
 
 local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status_ok then
@@ -32,9 +32,10 @@ local feedkey = function(key, mode)
 end
 
 local custom_lsp_attach = function(client, bufnr)
-  -- Use LSP as the handler for omnifunc.
-  --    See `:help omnifunc` and `:help ins-completion` for more information.
-  -- buffer_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- omnifunc is INCOMPATIBLE with nvim-cmp
+  --[[ Use LSP as the handler for omnifunc.
+     See `:help omnifunc` and `:help ins-completion` for more information.
+  buffer_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc") ]]
 
   -- Use LSP as the handler for formatexpr.
   --    See `:help formatexpr` for more information.
