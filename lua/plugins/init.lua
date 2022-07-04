@@ -81,7 +81,10 @@ return require("packer").startup(function(use)
   -- treesitter
   use({ "p00f/nvim-ts-rainbow" })
 
-  use({ "norcalli/nvim-colorizer.lua", config = "require('colorizer-config')" })
+  use({
+    "norcalli/nvim-colorizer.lua",
+    config = require('colorizer').setup()
+  })
 
   use("ntpeters/vim-better-whitespace")
 
