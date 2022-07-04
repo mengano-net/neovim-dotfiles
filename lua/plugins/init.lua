@@ -78,16 +78,17 @@ return require("packer").startup(function(use)
     config = "vim.cmd('colorscheme darkplus')"
   })
 
+  -------------------------------------------------------------------------------------------------
+
+
+  -- Better formatting, colors, auto pairs, etc
   use({
     "akinsho/bufferline.nvim",
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
     config = { "require('bufferline-config')" },
   })
-  -------------------------------------------------------------------------------------------------
 
-
-  -- Better formatting, colors, auto pairs, etc
   use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
   use({ "numToStr/Comment.nvim", config = "require('comment-config')" })
@@ -101,7 +102,14 @@ return require("packer").startup(function(use)
     config = "require('colorizer').setup()",
   })
 
-  use("ntpeters/vim-better-whitespace")
+  use({
+    "ntpeters/vim-better-whitespace",
+    config = {
+      vim.cmd(
+        "let g:better_whitespace_filetypes_blacklist=['<filetype1>', '<filetype2>', '<etc>', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'toggleterm']"
+      )
+    },
+  })
 
   use({ "lukas-reineke/indent-blankline.nvim", config = "require('blankline-config')" })
 
