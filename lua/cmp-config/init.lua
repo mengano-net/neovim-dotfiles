@@ -5,12 +5,6 @@ if not cmp_status_ok then
   return
 end
 
---[[ local lsp_status_ok, lsp = pcall(require, "lsp")
-if not lsp_status_ok then
-  print("Couldn't require module 'lsp'.")
-  return
-end ]]
-
 local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status_ok then
   print("Couldn't require module 'cmp_nvim_lsp'.")
