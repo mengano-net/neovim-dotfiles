@@ -52,7 +52,7 @@ return require("packer").startup(function(use)
     },
     config = {
       "require('onedark-config')",
-      "vim.cmd('colorscheme onedark')",
+      -- "vim.cmd('colorscheme onedark')",
     }
   })
 
@@ -81,7 +81,7 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    -- config = "vim.cmd('colorscheme darkplus')"
+    config = "vim.cmd('colorscheme darkplus')"
   })
 
   use({
