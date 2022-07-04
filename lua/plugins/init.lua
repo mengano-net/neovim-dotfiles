@@ -91,7 +91,12 @@ return require("packer").startup(function(use)
 
   use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
-  use({ "numToStr/Comment.nvim", config = "require('comment-config')" })
+  use({
+    "numToStr/Comment.nvim",
+    config = {
+      "require('Comment').setup{ignore = '^$'}",
+    },
+  })
 
   -- This is now a treesitter module, it is NOT a standalone plugin, I will need to configure on
   -- treesitter
