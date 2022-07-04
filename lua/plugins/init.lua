@@ -86,7 +86,10 @@ return require("packer").startup(function(use)
     "akinsho/bufferline.nvim",
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
-    config = { "require('bufferline-config')" },
+    config = {
+      vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { silent = true }),
+      require('bufferline').setup(),
+    },
   })
 
   use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
