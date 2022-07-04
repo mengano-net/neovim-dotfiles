@@ -34,9 +34,27 @@ return require("packer").startup(function(use)
   -- color schemes
   use({ "rose-pine/neovim" })
 
-  use("shaunsingh/nord.nvim")
+  use({
+    "shaunsingh/nord.nvim",
+    setup = {
+      "vim.g.nord_contrast = true",
+      "vim.g.nord_borders = true",
+      "vim.g.nord_disable_background = true",
+      "vim.g.nord_italic = true",
+    },
+    -- config = "vim.cmd('colorscheme nord')"
+  })
 
-  use({ "navarasu/onedark.nvim", setup = "vim.g.onedark_style = 'dark'" })
+  use({
+    "navarasu/onedark.nvim",
+    setup = {
+      -- "vim.g.onedark_style = 'dark'",
+    },
+    config = {
+      "require('onedark-config')",
+      "vim.cmd('colorscheme onedark')",
+    }
+  })
 
   use({
     "folke/tokyonight.nvim",
@@ -61,7 +79,10 @@ return require("packer").startup(function(use)
     config = { "require('material-config')" },
   })
 
-  use({ "lunarvim/darkplus.nvim", config = "vim.cmd('colorscheme darkplus')" })
+  use({
+    "lunarvim/darkplus.nvim",
+    -- config = "vim.cmd('colorscheme darkplus')"
+  })
 
   use({
     "akinsho/bufferline.nvim",

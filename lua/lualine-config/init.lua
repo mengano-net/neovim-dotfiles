@@ -22,9 +22,10 @@ end
 
 lualine.setup({
   options = {
-    theme = 'tokyonight',
+    -- theme = 'tokyonight',
     -- theme = "material",
     -- theme = 'gruvbox',
+    theme = 'onedark',
     icons_enabled = true,
     extensions = { "fugitive" },
     section_separators = " ",
