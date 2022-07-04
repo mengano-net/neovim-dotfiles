@@ -24,11 +24,7 @@ end
 return require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
-  use({
-    "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    config = "require('lualine-config')",
-  })
+
 
 
   -- color schemes
@@ -81,7 +77,7 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    config = "vim.cmd('colorscheme darkplus')"
+    -- config = "vim.cmd('colorscheme darkplus')"
   })
 
   use({
@@ -104,12 +100,18 @@ return require("packer").startup(function(use)
 
   use({
     "norcalli/nvim-colorizer.lua",
-    config = require('colorizer').setup()
+    config = "require('colorizer').setup()",
   })
 
   use("ntpeters/vim-better-whitespace")
 
   use({ "lukas-reineke/indent-blankline.nvim", config = "require('blankline-config')" })
+
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    config = "require('lualine-config')",
+  })
   -------------------------------------------------------------------------------------------------
 
 
