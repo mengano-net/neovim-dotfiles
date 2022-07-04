@@ -25,8 +25,6 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
 
-
-
   -- color schemes
   use({ "rose-pine/neovim" })
 
@@ -77,7 +75,7 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    -- config = "vim.cmd('colorscheme darkplus')"
+    config = "vim.cmd('colorscheme darkplus')"
   })
 
   use({
