@@ -75,7 +75,9 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    config = "vim.cmd('colorscheme darkplus')"
+    config = function()
+      vim.cmd('colorscheme darkplus')
+    end,
   })
 
   -------------------------------------------------------------------------------------------------
@@ -86,10 +88,12 @@ return require("packer").startup(function(use)
     "akinsho/bufferline.nvim",
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
-    config = {
+    setup = {
       vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { silent = true }),
-      require('bufferline').setup(),
     },
+    config = function()
+      require('bufferline').setup()
+    end,
   })
 
   use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
