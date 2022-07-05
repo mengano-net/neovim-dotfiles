@@ -75,9 +75,7 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    config = function()
-      vim.cmd('colorscheme darkplus')
-    end,
+    config = { "vim.cmd('colorscheme darkplus')" },
   })
 
   -------------------------------------------------------------------------------------------------
