@@ -190,7 +190,7 @@ return require("packer").startup(function(use)
   -- Language servers, code formatting, autocompletion
   use({
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    run = ": TSUpdate",
     config = "require('treesitter-config')",
   })
 
