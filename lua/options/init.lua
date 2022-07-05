@@ -5,53 +5,6 @@ vim.g.maplocalleader = " "
 vim.g.leader = " "
 
 local options = {
-<<<<<<< HEAD
-  smartcase = true,
-  laststatus = 2,
-  hlsearch = true,
-  incsearch = true,
-  ignorecase = false,
-  termguicolors = true,
-  background = "dark",
-  ruler = true,
-  writebackup = false,
-  swapfile = false,
-  pastetoggle = "<F2>",
-  backspace = "indent,eol,start",
-  showcmd = false,
-  showmode = false,
-  wildoptions = "pum",
-  pumheight = 20,
-  hidden = true,
-  splitright = true,
-  splitbelow = true,
-  wildmenu = true,
-  redrawtime = 250,
-  softtabstop = 2,
-  tabstop = 2,
-  shiftwidth = 2,
-  textwidth = 99,
-  updatetime = 150,
-  backup = false,
-  timeoutlen = 1000,
-  list = true,
-  wrap = true,
-  number = true,
-  relativenumber = true,
-  cul = true,
-  cuc = false,
-  colorcolumn = "100",
-  signcolumn = "yes:2",
-  clipboard = "unnamedplus",
-  autoindent = true,
-  expandtab = true,
-  scrolloff = 10,
-  sidescrolloff = 5,
-  dictionary = "/usr/share/dict/words",
-  conceallevel = 0,
-  cmdheight = 2,
-  fileencoding = "utf-8",
-=======
 	smartcase = true,
 	laststatus = 2,
 	hlsearch = true,
@@ -98,7 +51,6 @@ local options = {
 	cmdheight = 2,
 	fileencoding = "utf-8",
   spell = false
->>>>>>> develop
 }
 
 for key, value in pairs(options) do
@@ -201,9 +153,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 -- vimscript section, in case I need to implement vimscript options, au, etc.
 vim.cmd([[
 " syntax enable
-<<<<<<< HEAD
-" filetype plugin indent on
-=======
 filetype plugin indent on
 
 augroup highlight_on_yank
@@ -218,6 +167,4 @@ augroup END
 
 " Unset paste mode aboue on InsertLeave action, that is leaving insert mode
 autocmd InsertLeave * silent! set nopaste
-
->>>>>>> develop
 ]])
