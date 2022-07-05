@@ -4,10 +4,11 @@ if not status_ok then
   return
 end
 
+vim.opt.listchars:append("eol:↴")
+
 blankline.setup {
-  buftype_exclude = {"terminal", "help", "nofile", "NvimTree"},
-  filetype_exclude = {"packer", "help", "NvimTree"},
-  show_current_context = true,
+  buftype_exclude = { "terminal", "help", "nofile", "NvimTree" },
+  filetype_exclude = { "packer", "help", "NvimTree" },
   show_current_context_start = true,
   show_end_of_line = true,
   show_icons = {
