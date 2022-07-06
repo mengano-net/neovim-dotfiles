@@ -75,7 +75,15 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    config = { "vim.cmd('colorscheme darkplus')" },
+    -- config = { "vim.cmd('colorscheme darkplus')" },
+  })
+
+  use({
+    "EdenEast/nightfox.nvim",
+    config = function()
+      require('nightfox').setup({})
+      vim.cmd("colorscheme nightfox")
+    end
   })
 
   -------------------------------------------------------------------------------------------------
