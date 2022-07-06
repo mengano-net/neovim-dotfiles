@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
     },
     config = {
       "require('onedark-config')",
-      -- "vim.cmd('colorscheme onedark')",
+      "vim.cmd('colorscheme onedark')",
     }
   })
 
@@ -75,7 +75,15 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    config = { "vim.cmd('colorscheme darkplus')" },
+    -- config = { "vim.cmd('colorscheme darkplus')" },
+  })
+
+  use({
+    "EdenEast/nightfox.nvim",
+    config = function()
+      require('nightfox').setup({})
+      vim.cmd("colorscheme nightfox")
+    end
   })
 
   -------------------------------------------------------------------------------------------------
@@ -127,6 +135,7 @@ return require("packer").startup(function(use)
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = "require('lualine-config')",
+    after = 'onedark.nvim', -- Fix here: https://github.com/nvim-lualine/lualine.nvim/issues/632
   })
   -------------------------------------------------------------------------------------------------
 
