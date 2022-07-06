@@ -36,7 +36,7 @@ return require("packer").startup(function(use)
       "vim.g.nord_disable_background = true",
       "vim.g.nord_italic = true",
     },
-    -- config = "vim.cmd('colorscheme nord')"
+    config = "vim.cmd('colorscheme nord')"
   })
 
   use({
@@ -82,7 +82,8 @@ return require("packer").startup(function(use)
     "EdenEast/nightfox.nvim",
     config = function()
       require('nightfox').setup({})
-      vim.cmd("colorscheme nightfox")
+      vim.cmd('set termguicolors')
+      vim.cmd('colorscheme nightfox')
     end
   })
 
