@@ -75,16 +75,24 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    -- config = { "vim.cmd('colorscheme darkplus')" },
+    config = function()
+      vim.cmd('colorscheme darkplus')
+    end
   })
 
   use({
     "EdenEast/nightfox.nvim",
     config = function()
       require('nightfox').setup({})
-      vim.cmd('set termguicolors')
-      vim.cmd('colorscheme nightfox')
     end
+  })
+
+  use({
+    "bluz71/vim-nightfly-guicolors"
+  })
+
+  use({
+    "mcchrish/zenbones.nvim"
   })
 
   -------------------------------------------------------------------------------------------------
