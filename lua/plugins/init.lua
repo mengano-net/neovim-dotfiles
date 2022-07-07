@@ -36,7 +36,7 @@ return require("packer").startup(function(use)
       "vim.g.nord_disable_background = true",
       "vim.g.nord_italic = true",
     },
-    config = "vim.cmd('colorscheme nord')"
+    -- config = "vim.cmd('colorscheme nord')"
   })
 
   use({
@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
     },
     config = {
       "require('onedark-config')",
-      "vim.cmd('colorscheme onedark')",
+      -- "vim.cmd('colorscheme onedark')",
     }
   })
 
