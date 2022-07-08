@@ -22,7 +22,7 @@ end
 
 lualine.setup({
   options = {
-    theme = 'nightfox',
+    theme = 'nord',
     icons_enabled = true,
     extensions = { "fugitive" },
     section_separators = " ",

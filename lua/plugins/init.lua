@@ -31,12 +31,17 @@ return require("packer").startup(function(use)
   use({
     "shaunsingh/nord.nvim",
     setup = {
-      "vim.g.nord_contrast = true",
+      "vim.g.nord_contrast = false",
       "vim.g.nord_borders = true",
       "vim.g.nord_disable_background = true",
       "vim.g.nord_italic = true",
     },
-    -- config = "vim.cmd('colorscheme nord')"
+    --[[ config = function()
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = true
+      vim.g.nord_disable_background = true
+      require('nord').set()
+    end ]]
   })
 
   use({
@@ -52,11 +57,23 @@ return require("packer").startup(function(use)
 
   use({
     "folke/tokyonight.nvim",
-    setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
+    branch = "main",
+    setup = {
+      "vim.g.tokyonight_style = 'night'",
+      "vim.g.tokyonight_lualine_bold = 'true'",
+      "vim.g.tokyonight_italic_functions = '1'",
+      "vim.g.tokyonight_sidebars = { 'terminal' }"
+    },
     -- config = "vim.cmd('colorscheme tokyonight')"
   })
 
-  use({ "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } })
+  use({
+    "adisen99/apprentice.nvim",
+    requires = { "rktjmp/lush.nvim" },
+    setup = {
+      "vim.g.apprentice_contrast_dark = 'hard'",
+    }
+  })
 
   use({
     "ellisonleao/gruvbox.nvim",
