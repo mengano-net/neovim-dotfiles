@@ -186,7 +186,7 @@ cmp.setup({
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'path' },
     { name = 'nvim_lsp_signature_help' },
-  }, {
+    { name = 'nvim_lua' },
     { name = 'buffer' },
   })
 })
