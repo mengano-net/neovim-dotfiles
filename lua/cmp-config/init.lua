@@ -185,6 +185,7 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'path' },
+    { name = 'nvim_lsp_signature_help' },
   }, {
     { name = 'buffer' },
   })
