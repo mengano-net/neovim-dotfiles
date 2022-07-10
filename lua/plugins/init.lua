@@ -252,7 +252,7 @@ return require("packer").startup(function(use)
 
   use({ "hrsh7th/vim-vsnip" })
 
-  use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
+  use({ "onsails/lspkind-nvim" })
 
 
   -------------------------------------------------------------------------------------------------

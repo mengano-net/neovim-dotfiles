@@ -11,6 +11,38 @@ if not cmp_nvim_lsp_status_ok then
   return
 end
 
+local status_ok, lspkind = pcall(require, "lspkind")
+if not status_ok then
+  return
+end
+
+lspkind.init({
+  mode = "symbol_text",
+  symbol_map = {
+    Text = "",
+    Method = "ƒ",
+    Function = "ﬦ",
+    Constructor = "",
+    Variable = "",
+    Class = "",
+    Interface = "ﰮ",
+    Module = "",
+    Property = "",
+    Unit = "",
+    Value = "",
+    Enum = "了",
+    Keyword = "",
+    Snippet = "﬌",
+    Color = "",
+    File = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+    Event = "",
+  },
+})
+
 vim.g.completeopt = "menu,menuone,preview,noselect,noinsert"
 local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
@@ -145,10 +177,12 @@ cmp.setup({
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
+
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -178,6 +212,7 @@ cmp.setup({
       end
     end, { "i", "s" }),
   }),
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
@@ -188,7 +223,19 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lua' },
     { name = 'buffer' },
-  })
+  }),
+
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[Lua]",
+      })
+    }),
+  },
+
 })
 
 -- Set configuration for specific filetype.
