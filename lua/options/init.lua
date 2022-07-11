@@ -50,7 +50,7 @@ local options = {
 	conceallevel = 0,
 	cmdheight = 2,
 	fileencoding = "utf-8",
-  spell = false
+	spell = false,
 }
 
 for key, value in pairs(options) do
@@ -70,21 +70,38 @@ for key, value in pairs(buffer_options) do
 	vim.bo[key] = value
 end
 
+-- autocmds
+--[[ vim.api.nvim_create_augroup("bufcheck", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = "bufcheck",
+  pattern = { "gitcommit", "gitrebase" },
+  command = "startinsert | 1",
+}) ]]
+
+local augroup_highlight_on_yank = vim.api.nvim_create_augroup("highlight_on_yank", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	command = "lua vim.highlight.on_yank { higroup='IncSearch', timeout=750}",
+	group = augroup_highlight_on_yank,
+})
+
+local augroup_set_nopaste = vim.api.nvim_create_augroup("leave_insert_set_nopaste", { clear = true })
+vim.api.nvim_create_autocmd("InsertLeave", {
+	command = "silent! set nopaste",
+	group = augroup_set_nopaste,
+})
+
+local documentation_file_options = function()
+	vim.wo.spell = true
+	vim.bo.fo = "aw2tq"
+	vim.wo.linebreak = true
+end
+
+local augroup_filetype_documentation = vim.api.nvim_create_augroup("documentation_file_options", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = { "*.md", "*.tex" },
+	callback = documentation_file_options,
+	group = augroup_filetype_documentation,
+})
+
 vim.cmd([[
-" syntax enable
-filetype plugin indent on
-
-augroup highlight_on_yank
-  autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=750}
-augroup END
-
-" augroup python
-"   au!
-"   au FileType python setlocal colorcolumn=80
-" augroup END
-
-" Unset paste mode aboue on InsertLeave action, that is leaving insert mode
-autocmd InsertLeave * silent! set nopaste
-
 ]])
