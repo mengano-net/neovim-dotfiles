@@ -261,12 +261,9 @@ return require("packer").startup(function(use)
 
   use({ "onsails/lspkind-nvim" })
 
+  use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 
   -------------------------------------------------------------------------------------------------
-
-  --
-  --   use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
-  --
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
