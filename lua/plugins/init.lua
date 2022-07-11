@@ -234,7 +234,14 @@ return require("packer").startup(function(use)
 
   use("neovim/nvim-lspconfig")
 
-  use({ "williamboman/nvim-lsp-installer" })
+  use({
+    "williamboman/nvim-lsp-installer",
+    config = function()
+      require("nvim-lsp-installer").setup({
+        automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+      })
+    end
+  })
 
   use("hrsh7th/cmp-nvim-lsp")
 
