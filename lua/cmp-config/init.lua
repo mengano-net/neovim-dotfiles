@@ -13,6 +13,7 @@ end
 
 local status_ok, lspkind = pcall(require, "lspkind")
 if not status_ok then
+  print("Couldn't require module 'lspkind'.")
   return
 end
 
@@ -238,6 +239,11 @@ cmp.setup({
         nvim_lua = "[Lua]",
       })
     }),
+  },
+
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
   },
 
 })
