@@ -31,12 +31,17 @@ return require("packer").startup(function(use)
   use({
     "shaunsingh/nord.nvim",
     setup = {
-      "vim.g.nord_contrast = true",
+      "vim.g.nord_contrast = false",
       "vim.g.nord_borders = true",
       "vim.g.nord_disable_background = true",
       "vim.g.nord_italic = true",
     },
-    -- config = "vim.cmd('colorscheme nord')"
+    --[[ config = function()
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = true
+      vim.g.nord_disable_background = true
+      require('nord').set()
+    end ]]
   })
 
   use({
@@ -46,17 +51,29 @@ return require("packer").startup(function(use)
     },
     config = {
       "require('onedark-config')",
-      "vim.cmd('colorscheme onedark')",
+      -- "vim.cmd('colorscheme onedark')",
     }
   })
 
   use({
     "folke/tokyonight.nvim",
-    setup = { "vim.g.tokyonight_style = 'night'", "tokyonight_lualine_bold = 'true'" },
+    branch = "main",
+    setup = {
+      "vim.g.tokyonight_style = 'night'",
+      "vim.g.tokyonight_lualine_bold = 'true'",
+      "vim.g.tokyonight_italic_functions = '1'",
+      "vim.g.tokyonight_sidebars = { 'terminal' }"
+    },
     -- config = "vim.cmd('colorscheme tokyonight')"
   })
 
-  use({ "adisen99/apprentice.nvim", requires = { "rktjmp/lush.nvim" } })
+  use({
+    "adisen99/apprentice.nvim",
+    requires = { "rktjmp/lush.nvim" },
+    setup = {
+      "vim.g.apprentice_contrast_dark = 'hard'",
+    }
+  })
 
   use({
     "ellisonleao/gruvbox.nvim",
@@ -75,15 +92,24 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    -- config = { "vim.cmd('colorscheme darkplus')" },
+    config = function()
+      vim.cmd('colorscheme darkplus')
+    end
   })
 
   use({
     "EdenEast/nightfox.nvim",
     config = function()
       require('nightfox').setup({})
-      vim.cmd("colorscheme nightfox")
     end
+  })
+
+  use({
+    "bluz71/vim-nightfly-guicolors"
+  })
+
+  use({
+    "mcchrish/zenbones.nvim"
   })
 
   -------------------------------------------------------------------------------------------------
@@ -208,7 +234,14 @@ return require("packer").startup(function(use)
 
   use("neovim/nvim-lspconfig")
 
-  use({ "williamboman/nvim-lsp-installer" })
+  use({
+    "williamboman/nvim-lsp-installer",
+    config = function()
+      require("nvim-lsp-installer").setup({
+        automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+      })
+    end
+  })
 
   use("hrsh7th/cmp-nvim-lsp")
 
@@ -220,16 +253,17 @@ return require("packer").startup(function(use)
 
   use("hrsh7th/cmp-vsnip")
 
+  use("hrsh7th/cmp-nvim-lsp-signature-help")
+
+  use("hrsh7th/cmp-nvim-lua")
+
   use({ "hrsh7th/vim-vsnip" })
 
-  use({ "onsails/lspkind-nvim", config = "require('lspkind-config')" })
+  use({ "onsails/lspkind-nvim" })
 
+  use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 
   -------------------------------------------------------------------------------------------------
-
-  --
-  --   use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
-  --
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

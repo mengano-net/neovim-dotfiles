@@ -11,6 +11,42 @@ if not cmp_nvim_lsp_status_ok then
   return
 end
 
+local status_ok, lspkind = pcall(require, "lspkind")
+if not status_ok then
+  print("Couldn't require module 'lspkind'.")
+  return
+end
+
+lspkind.init({
+  mode = "symbol_text",
+  symbol_map = {
+    Text = " ",
+    Method = " ",
+    -- Function = "ﬦ",
+    Function = "ƒ",
+    Constructor = " ",
+    Variable = " ",
+    Class = " ",
+    Interface = "ﰮ",
+    Module = " ",
+    Property = "",
+    Unit = "",
+    Value = " ",
+    Enum = "了",
+    Keyword = "",
+    Color = " ",
+    File = " ",
+    Folder = " ",
+    -- Folder = " ",
+    EnumMember = " ",
+    Constant = " ",
+    Reference = " ",
+    Snippet = " ",
+    Struct = " ",
+    Event = "",
+  },
+})
+
 vim.g.completeopt = "menu,menuone,preview,noselect,noinsert"
 local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
@@ -145,15 +181,21 @@ cmp.setup({
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
+
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+    -- ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-e>'] = cmp.mapping {
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    },
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -174,15 +216,36 @@ cmp.setup({
       end
     end, { "i", "s" }),
   }),
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
-  }, {
+    { name = 'path' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'nvim_lua' },
     { name = 'buffer' },
-  })
+  }),
+
+  formatting = {
+    fields = { "abbr", "kind", "menu" },
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[Lua]",
+      })
+    }),
+  },
+
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
+
 })
 
 -- Set configuration for specific filetype.
