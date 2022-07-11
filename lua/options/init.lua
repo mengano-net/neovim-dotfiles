@@ -71,12 +71,12 @@ for key, value in pairs(buffer_options) do
 end
 
 -- autocmds
---[[ vim.api.nvim_create_augroup("bufcheck", { clear = true })
+vim.api.nvim_create_augroup("bufcheck", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-  group = "bufcheck",
-  pattern = { "gitcommit", "gitrebase" },
-  command = "startinsert | 1",
-}) ]]
+	group = "bufcheck",
+	pattern = { "gitcommit", "gitrebase" },
+	command = "startinsert | 1",
+})
 
 local augroup_highlight_on_yank = vim.api.nvim_create_augroup("highlight_on_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
