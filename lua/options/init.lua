@@ -70,12 +70,43 @@ for key, value in pairs(buffer_options) do
 	vim.bo[key] = value
 end
 
--- autocmds
+--
+-- Autocommands
+--
+--
+-- To reset window options that had been set by other autocmd. This is needed because win options
+-- are set for the whole window, not only buffers, thus they carry over to other buffers. I'd be
+-- nice to have these options available for buffers.
+local function reset_win_options()
+	vim.api.nvim_win_set_option(0, "colorcolumn", "100")
+	vim.api.nvim_win_set_option(0, "spell", false)
+	vim.api.nvim_win_set_option(0, "linebreak", false)
+end
+
+local augroup_reset_win_options_when_bufleave = vim.api.nvim_create_augroup("reset win options", { clear = true })
+vim.api.nvim_create_autocmd("BufLeave", {
+	pattern = { "*" },
+	callback = reset_win_options,
+	group = augroup_reset_win_options_when_bufleave,
+})
+
 vim.api.nvim_create_augroup("bufcheck", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	group = "bufcheck",
 	pattern = { "gitcommit", "gitrebase" },
 	command = "startinsert | 1",
+})
+
+-- Python filetypes
+local function filetypes_python()
+	vim.api.nvim_win_set_option(0, "colorcolumn", "80")
+end
+
+local augroup_filetype_python = vim.api.nvim_create_augroup("filetype python", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "*.py" },
+	callback = filetypes_python,
+	group = augroup_filetype_python,
 })
 
 local augroup_highlight_on_yank = vim.api.nvim_create_augroup("highlight_on_yank", { clear = true })
