@@ -109,6 +109,18 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	group = augroup_filetype_python,
 })
 
+-- Markdown filetypes
+local function filetypes_markdown()
+	vim.api.nvim_win_set_option(0, "conceallevel", 2)
+end
+
+local augroup_filetype_markdown = vim.api.nvim_create_augroup("filetype markdown", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "*.md" },
+	callback = filetypes_markdown,
+	group = augroup_filetype_markdown,
+})
+
 local augroup_highlight_on_yank = vim.api.nvim_create_augroup("highlight_on_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	command = "lua vim.highlight.on_yank { higroup='IncSearch', timeout=750}",
