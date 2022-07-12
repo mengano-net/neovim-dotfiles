@@ -1,4 +1,4 @@
--- First clear any possible maps present on my <leader>, I'm currently using "<Space>"
+-- First clear any possible maps present on "<Space>"
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -50,121 +50,58 @@ local options = {
 	conceallevel = 0,
 	cmdheight = 2,
 	fileencoding = "utf-8",
-  spell = false
+	spell = false,
 }
 
 for key, value in pairs(options) do
-  vim.opt[key] = value
+	vim.opt[key] = value
 end
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-,_")
 
 local buffer_options = {
-  tabstop = 2,
-  shiftwidth = 2,
-  expandtab = true,
+	tabstop = 2,
+	shiftwidth = 2,
+	expandtab = true,
 }
 
 for key, value in pairs(buffer_options) do
-  vim.bo[key] = value
+	vim.bo[key] = value
 end
 
---
--- Autocommands
---
--- Highlight yanked text for 750 miliseconds
-local augroup_highlight_on_yank = vim.api.nvim_create_augroup(
-  "highlight yanked text",
-  { clear = true }
-)
-vim.api.nvim_create_autocmd(
-  "TextYankPost",
-  {
-  command = "lua vim.highlight.on_yank {higroup='IncSearch', timeout=750}",
-  group = augroup_highlight_on_yank
-}
-)
-
--- To reset window options that had been set by other autocmd, this is needed because win options
--- are set for the whole window, not only buffers, thus they carry over to other buffers. I'd be
--- nice to have these options available for buffers.
-local function reset_win_options()
-  vim.api.nvim_win_set_option(0, "colorcolumn", "100")
-  vim.api.nvim_win_set_option(0, "spell", false)
-  vim.api.nvim_win_set_option(0, "linebreak", false)
-end
-
-local augroup_reset_win_options_when_bufleave = vim.api.nvim_create_augroup(
-  "reset win options",
-  { clear = true }
-)
-vim.api.nvim_create_autocmd(
-  "BufLeave",
-  {
-  pattern = { "*" },
-  callback = reset_win_options,
-  group = augroup_reset_win_options_when_bufleave
-}
-)
-
--- Python filetypes
-local function filetypes_python()
-  vim.api.nvim_win_set_option(0, "colorcolumn", "80")
-end
-
-local augroup_filetype_python = vim.api.nvim_create_augroup(
-  "filetype python",
-  { clear = true }
-)
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.py" },
-  callback = filetypes_python,
-  group = augroup_filetype_python
+-- autocmds
+vim.api.nvim_create_augroup("bufcheck", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = "bufcheck",
+	pattern = { "gitcommit", "gitrebase" },
+	command = "startinsert | 1",
 })
 
--- Unset paste mode on InsertLeave action, leaving insert mode
-local augroup_set_nopaste_on_insert_leave = vim.api.nvim_create_augroup(
-  "set nopaste",
-  { clear = true }
-)
-vim.api.nvim_create_autocmd(
-  "InsertLeave",
-  { command = "silent! set nopaste", group = augroup_set_nopaste_on_insert_leave }
-)
-
--- "Documentation" filetypes
-local function filetypes_documentation()
-  vim.api.nvim_win_set_option(0, "spell", true)
-  vim.api.nvim_buf_set_option(0, "fo", "aw2tq")
-  vim.api.nvim_win_set_option(0, "linebreak", true)
-end
-
-local augroup_filetype_documentation = vim.api.nvim_create_augroup(
-  "filetypes_documentation",
-  { clear = true }
-)
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.md", "*.tex" },
-  callback = filetypes_documentation,
-  group = augroup_filetype_documentation,
+local augroup_highlight_on_yank = vim.api.nvim_create_augroup("highlight_on_yank", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	command = "lua vim.highlight.on_yank { higroup='IncSearch', timeout=750}",
+	group = augroup_highlight_on_yank,
 })
 
--- vimscript section, in case I need to implement vimscript options, au, etc.
+local augroup_set_nopaste = vim.api.nvim_create_augroup("leave_insert_set_nopaste", { clear = true })
+vim.api.nvim_create_autocmd("InsertLeave", {
+	command = "silent! set nopaste",
+	group = augroup_set_nopaste,
+})
+
+local documentation_file_options = function()
+	vim.wo.spell = true
+	vim.bo.fo = "aw2tq"
+	vim.wo.linebreak = true
+end
+
+local augroup_filetype_documentation = vim.api.nvim_create_augroup("documentation_file_options", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = { "*.md", "*.tex" },
+	callback = documentation_file_options,
+	group = augroup_filetype_documentation,
+})
+
 vim.cmd([[
-" syntax enable
-filetype plugin indent on
-
-augroup highlight_on_yank
-  autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=750}
-augroup END
-
-" augroup python
-"   au!
-"   au FileType python setlocal colorcolumn=80
-" augroup END
-
-" Unset paste mode aboue on InsertLeave action, that is leaving insert mode
-autocmd InsertLeave * silent! set nopaste
 ]])
