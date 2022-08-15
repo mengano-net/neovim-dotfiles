@@ -9,6 +9,7 @@ luac.out
 # Neovim
 spell/
 **/packer_compiled.lua
+plugin/packer_compiled.lua
 
 # Object files
 *.o
