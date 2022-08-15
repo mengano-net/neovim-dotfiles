@@ -6,6 +6,10 @@ luac.out
 *.zip
 *.tar.gz
 
+# Neovim
+spell/
+**/packer_compiled.lua
+
 # Object files
 *.o
 *.os
