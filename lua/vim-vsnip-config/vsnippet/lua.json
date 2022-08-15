@@ -1,0 +1,20 @@
+{
+  "Comment section header": {
+    "prefix": ["comment_section_header"],
+    "body": [
+      "----------------------------------------------------------------------------------------",
+      "$BLOCK_COMMENT_START ${1:Title}",
+      "----------------------------------------------------------------------------------------",
+      "${2}"
+    ],
+    "description": "Comment section header."
+  },
+  "Comment section end in Lua": {
+    "prefix": ["comment_section_end"],
+    "body": [
+      "----------------------------------------------------------------------------------------",
+      "$1"
+    ],
+    "description": "Comment section end."
+  }
+}
