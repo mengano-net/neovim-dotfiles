@@ -1,0 +1,31 @@
+{
+  "name": "nvim",
+  "version": "1.0.3",
+  "private": true,
+  "description": "Neovim dotfiles for Mengano.Net",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"\"",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mengano-net/neovim-dotfiles.git"
+  },
+  "keywords": [
+    "neovim",
+    "neovim-dotfiles",
+    "neovim-config"
+  ],
+  "author": "Mengano.Net",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mengano-net/neovim-dotfiles/issues"
+  },
+  "homepage": "https://github.com/mengano-net/neovim-dotfiles#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "husky": "^8.0.1"
+  }
+}
