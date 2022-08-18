@@ -20,7 +20,6 @@ nvimtree.setup({
       resize_window = true,
     },
   },
-  disable_netrw = true,
   diagnostics = {
     enable = true,
     show_on_dirs = true,
@@ -31,9 +30,12 @@ nvimtree.setup({
       error = " ",
     },
   },
+  disable_netrw = true,
   filters = { dotfiles = true },
-  git = { ignore = true },
+  git = {},
+  reload_on_bufenter = true,
   renderer = {
+    add_trailing = true,
     indent_markers = {
       enable = false,
     },
@@ -53,5 +55,9 @@ nvimtree.setup({
         },
       },
     },
+  },
+  sync_root_with_cwd = true,
+  view = {
+    adaptive_size = true,
   },
 })
