@@ -118,8 +118,9 @@ return require("packer").startup(function(use)
     },
     config = function()
       require("bufferline").setup({
-        diagnostics = "nvim_lsp",
-        separator_style = "thick",
+        options = {
+          separator_style = "thick",
+        },
       })
     end,
   })
