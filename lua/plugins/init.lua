@@ -185,7 +185,8 @@ return require("packer").startup(function(use)
 
   use({
     "mengano-net/glow.nvim",
-    branch = "feat_win-size",
+    -- branch = "feat_win-size",
+    branch = "fix/arod",
     -- branch = "main",
     config = {
       function()
