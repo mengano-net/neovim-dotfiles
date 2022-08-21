@@ -92,12 +92,12 @@ local custom_lsp_attach = function(client, bufnr)
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
-      pattern = { "*" },
+      pattern = { "*.yaml", "*.yml", "*.lua", "*.py" },
       command = "lua vim.lsp.buf.document_highlight()",
     })
     vim.api.nvim_create_autocmd("CursorMoved", {
       group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
-      pattern = { "*" },
+      pattern = { "*.yaml", "*.yml", "*.lua", "*.py" },
       command = "lua vim.lsp.buf.clear_references()",
     })
   end
