@@ -50,7 +50,7 @@ local options = {
   conceallevel = 0,
   cmdheight = 2,
   fileencoding = "utf-8",
-  spell = false,
+  spell = true,
 }
 
 for key, value in pairs(options) do
@@ -96,9 +96,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Python filetypes
-local function filetypes_python()
-  vim.api.nvim_win_set_option(0, "colorcolumn", "80")
-end
+local function filetypes_python() vim.api.nvim_win_set_option(0, "colorcolumn", "80") end
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = vim.api.nvim_create_augroup("filetype python", { clear = true }),
