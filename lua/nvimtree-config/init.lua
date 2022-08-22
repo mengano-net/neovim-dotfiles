@@ -31,7 +31,7 @@ nvimtree.setup({
     },
   },
   disable_netrw = true,
-  filters = { dotfiles = true },
+  filters = { dotfiles = false },
   git = {},
   reload_on_bufenter = true,
   renderer = {

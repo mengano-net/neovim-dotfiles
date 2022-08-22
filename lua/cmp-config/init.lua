@@ -110,6 +110,7 @@ local custom_lsp_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
       pattern = { "*" },
+      -- command = "lua vim.lsp.buf.formatting()",
       command = "lua vim.lsp.buf.format()",
     })
   end
@@ -268,9 +269,8 @@ USER = vim.fn.expand("$USER")
 
 if vim.fn.has("mac") == 1 then
   sumneko_root_path = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
-  sumneko_binary = "/Users/"
-      .. USER
-      .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
+  sumneko_binary = "/Users/" ..
+      USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
   sumneko_root_path = "/home/" .. USER .. "/.local/lua-language-server"
   sumneko_binary = "/home/" .. USER .. "/.local/lua-language-server/bin/lua-language-server"
