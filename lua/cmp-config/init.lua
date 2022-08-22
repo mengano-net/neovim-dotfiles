@@ -110,7 +110,7 @@ local custom_lsp_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
       pattern = { "*" },
-      command = "lua vim.lsp.buf.format()",
+      command = "lua vim.lsp.buf.formatting()",
     })
   end
 end
