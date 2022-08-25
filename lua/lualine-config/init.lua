@@ -1,12 +1,8 @@
 -- Exit if can't load module(s)
 local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
-local function current_buffer_number()
-  return "﬘ " .. vim.api.nvim_get_current_buf()
-end
+local function current_buffer_number() return "﬘ " .. vim.api.nvim_get_current_buf() end
 
 local function current_date()
   -- return string.sub(os.date "%x", 1, 5)
@@ -20,17 +16,16 @@ local function current_working_dir()
   return "~" .. cwd
 end
 
-local function word_count()
-  return "Words: " .. tostring(vim.fn.wordcount().words)
-end
+local function word_count() return "Words: " .. tostring(vim.fn.wordcount().words) end
 
 lualine.setup({
   options = {
-    theme = "nordfox",
-    icons_enabled = true,
-    extensions = { "fugitive" },
-    section_separators = " ",
     component_separators = " ",
+    disabled_filetypes = { "NvimTree", "Outline", "toggleterm" },
+    extensions = { "fugitive" },
+    icons_enabled = true,
+    section_separators = " ",
+    theme = "nordfox",
   },
   sections = {
     lualine_a = { "mode" },
