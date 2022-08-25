@@ -16,6 +16,17 @@ local function current_working_dir()
   return "~" .. cwd
 end
 
+-- cool function for progress
+local progress = function()
+  local current_line = vim.fn.line(".")
+  local total_lines = vim.fn.line("$")
+  local chars =
+  { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+  local line_ratio = current_line / total_lines
+  local index = math.ceil(line_ratio * #chars)
+  return chars[index]
+end
+
 local function word_count() return "Words: " .. tostring(vim.fn.wordcount().words) end
 
 lualine.setup({
@@ -51,6 +62,7 @@ lualine.setup({
       "filetype",
       -- { "filetype", icon_only = true },
     },
-    lualine_y = { { current_buffer_number }, { word_count }, { current_date } },
+    lualine_y = { word_count, "location", progress },
+    lualine_z = { current_date },
   },
 })
