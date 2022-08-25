@@ -171,24 +171,14 @@ return require("packer").startup(function(use)
   })
 
   -- See https://github.com/ellisonleao/glow.nvim/issues/82
-  --[[ use({
+  use({
     "ellisonleao/glow.nvim",
     branch = "main",
-    -- setup = { "vim.g.glow_border = 'rounded'" },
-  }) ]]
-
-  use({
-    "mengano-net/glow.nvim",
-    -- branch = "feat_win-size",
-    branch = "fix/arod",
-    -- branch = "main",
     config = {
-      function()
-        require("glow").setup({
-          border = "rounded",
-          width = 120,
-        })
-      end,
+      require("glow").setup({
+        border = "rounded",
+        width = 120,
+      }),
     },
   })
 
