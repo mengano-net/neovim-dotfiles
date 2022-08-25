@@ -1,8 +1,6 @@
 --  if can't load module(s)
 local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 local opts = {
   prefix = "<leader>",
@@ -16,14 +14,18 @@ local opts = {
 local setup = {
   plugins = {
     spelling = {
-      enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      enabled = true, -- show WhichKey when pressing z= to select spelling suggestions
+      suggestions = 20,
     },
   },
   presets = {
     operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
   },
   window = {
-    border = "rounded", -- none, single, double, shadow
+    border = "single", -- none, single, double, shadow
+    margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
+    padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]
+    winblend = 0,
   },
   layout = {
     align = "center", -- align columns left, center or right
@@ -108,6 +110,14 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
+  ["l"] = {
+    name = "LSP",
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
+    i = { "<cmd>LspInfo<cr>", "Info" },
+    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+  },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["s"] = {
     name = "Search",
@@ -135,13 +145,12 @@ local mappings = {
     },
     -- t = {function() print("bar") end, "Foobar"}
   },
-  -- I'm using the built-in map <C-\> to toggle terminal
-  -- ["t"] = { "<cmd>ToggleTerm<cr>", "Terminal" },
-  -- ["t"] = {
-  -- 	name = "Terminal",
-  -- 	f = { toggle_float, "Floating" },
-  -- 	h = { toggle_horizontal, "Horizontal" },
-  -- },
+  ["t"] = {
+    name = "Terminal",
+    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+  },
   ["T"] = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
   ["x"] = { ":bd!<cr>", "Close buffer" },
   ["w"] = { ":w!<cr>", "Save buffer" },

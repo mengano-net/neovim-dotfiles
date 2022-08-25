@@ -15,9 +15,7 @@ end
 -- Have packer use a popup window
 require("packer").init({
   display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
+    open_fn = function() return require("packer.util").float({ border = "rounded" }) end,
   },
 })
 
@@ -84,16 +82,12 @@ return require("packer").startup(function(use)
 
   use({
     "lunarvim/darkplus.nvim",
-    config = function()
-      vim.cmd("colorscheme darkplus")
-    end,
+    config = function() vim.cmd("colorscheme darkplus") end,
   })
 
   use({
     "EdenEast/nightfox.nvim",
-    config = function()
-      require("nightfox").setup({})
-    end,
+    config = function() require("nightfox").setup({}) end,
   })
 
   use({
@@ -237,9 +231,15 @@ return require("packer").startup(function(use)
       require("whichkey-config")
     end,
   })
-  -------------------------------------------------------------------------------------------------
 
+  use({
+    "kylechui/nvim-surround",
+    config = function() require("nvim-surround").setup({}) end,
+  })
+
+  ----------------------------------------------------------------------------------------
   -- Language servers, code formatting, autocompletion
+  ----------------------------------------------------------------------------------------
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ": TSUpdate",
@@ -257,7 +257,8 @@ return require("packer").startup(function(use)
     "williamboman/nvim-lsp-installer",
     config = function()
       require("nvim-lsp-installer").setup({
-        automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+        -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+        automatic_installation = true,
       })
     end,
   })
@@ -278,20 +279,20 @@ return require("packer").startup(function(use)
 
   use({
     "hrsh7th/vim-vsnip",
-    config = function()
-      require("vim-vsnip-config")
-    end,
+    config = function() require("vim-vsnip-config") end,
   })
 
   use({ "onsails/lspkind-nvim" })
 
   use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 
+  use({
+    "lewis6991/spellsitter.nvim",
+    config = function() require("spellsitter").setup() end,
+  })
   -------------------------------------------------------------------------------------------------
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+  if PACKER_BOOTSTRAP then require("packer").sync() end
 end)

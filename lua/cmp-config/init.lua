@@ -55,7 +55,8 @@ local map_opts = { noremap = true, silent = true }
 -- Functions to implement autocomplete on the custom <Tab> and -- <S-Tab> mappings below
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0
+      and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -268,9 +269,12 @@ local sumneko_binary = ""
 USER = vim.fn.expand("$USER")
 
 if vim.fn.has("mac") == 1 then
-  sumneko_root_path = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
-  sumneko_binary = "/Users/" ..
-      USER .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
+  sumneko_root_path = "/Users/"
+      .. USER
+      .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
+  sumneko_binary = "/Users/"
+      .. USER
+      .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
   sumneko_root_path = "/home/" .. USER .. "/.local/lua-language-server"
   sumneko_binary = "/home/" .. USER .. "/.local/lua-language-server/bin/lua-language-server"
