@@ -1,8 +1,6 @@
 -- Exit if can't load module
 local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 local M = {}
 
@@ -178,9 +176,7 @@ end
 
 function M.find_files_in_path()
   local _path = vim.fn.input("Enter Directory: ", "", "dir")
-  if _path == nil or _path == "" then
-    _path = vim.fn.expand("%:p:h")
-  end
+  if _path == nil or _path == "" then _path = vim.fn.expand("%:p:h") end
   require("telescope.builtin").find_files(require("telescope.themes").get_ivy({
     prompt_title = "Find in directory: " .. _path,
     search_dirs = { _path },
