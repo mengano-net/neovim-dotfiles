@@ -14,6 +14,7 @@ local function reset_win_options()
   vim.api.nvim_win_set_option(0, "colorcolumn", "100")
   vim.api.nvim_win_set_option(0, "spell", false)
   vim.api.nvim_win_set_option(0, "linebreak", false)
+  vim.api.nvim_win_set_option(0, "conceallevel", 0)
 end
 
 vim.api.nvim_create_autocmd("BufLeave", {
