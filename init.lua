@@ -1,3 +1,4 @@
 require("options")
-require("user.mappings")
 require("plugins")
+require("user.mappings")
+require("user.autommands")
