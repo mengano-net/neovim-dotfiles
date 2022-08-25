@@ -83,6 +83,8 @@ local mappings = {
   ["G"] = {
     name = "Git",
     b = { "<cmd>lua require('user.telescope').git_branches()<cr>", "Branches" },
+    -- B = { "<cmd>lua require('gitsigns').blame_line{full=true}<cr>", "Blame" },
+    B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
     c = { "<cmd>Git commit -s<cr>", "Commit" },
     -- h = {},
     l = { "<cmd>lua require('user.telescope').git_commits()<cr>", "List commits" },
