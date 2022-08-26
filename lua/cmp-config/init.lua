@@ -47,7 +47,6 @@ lspkind.init({
   },
 })
 
-vim.g.completeopt = "menu,menuone,preview,noselect,noinsert"
 local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
 local map_opts = { noremap = true, silent = true }
@@ -155,6 +154,8 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+---@cast cmp -?
+-- See https://github.com/sumneko/lua-language-server/issues/1487
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
