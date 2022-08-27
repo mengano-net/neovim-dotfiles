@@ -27,4 +27,6 @@ autopairs.setup({
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then return end
+---@cast cmp -?
+-- See https://github.com/sumneko/lua-language-server/issues/1487
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))

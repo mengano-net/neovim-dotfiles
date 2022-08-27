@@ -64,9 +64,11 @@ local options = {
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
+
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-,_")
+vim.opt.listchars:append("eol:↴")
 
 local buffer_options = {
   tabstop = 2,

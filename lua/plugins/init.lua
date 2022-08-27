@@ -156,7 +156,20 @@ return require("packer").startup(function(use)
     },
   })
 
-  use({ "lukas-reineke/indent-blankline.nvim", config = "require('blankline-config')" })
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = {
+      require("indent_blankline").setup({
+        buftype_exclude = { "terminal", "help", "nofile", "NvimTree" },
+        filetype_exclude = { "packer", "help", "NvimTree" },
+        show_current_context_start = true,
+        show_end_of_line = true,
+        show_icons = {
+          git = 1,
+        },
+      }),
+    },
+  })
 
   use({
     "nvim-lualine/lualine.nvim",
