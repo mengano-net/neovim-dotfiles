@@ -41,7 +41,17 @@ return require("packer").startup(function(use)
   use({
     "navarasu/onedark.nvim",
     config = {
-      "require('onedark-config')",
+      require("onedark").setup({
+        style = "darker",
+        transparent = true, -- Show/hide background
+        -- style = 'warmer',
+        term_colors = true,
+        diagnostics = {
+          darker = true, -- darker colors for diagnostic
+          undercurl = false, -- use undercurl instead of underline for diagnostics
+          background = false, -- use background color for virtual text
+        },
+      }),
     },
   })
 
