@@ -188,8 +188,44 @@ return require("packer").startup(function(use)
 
   use({
     "lewis6991/gitsigns.nvim",
+    config = {
+      require("gitsigns").setup({
+        signs = {
+          add = {
+            hl = "GitSignsAdd",
+            text = "▎",
+            numhl = "GitSignsAddNr",
+            linehl = "GitSignsAddLn",
+          },
+          change = {
+            hl = "GitSignsChange",
+            text = "▎",
+            numhl = "GitSignsChangeNr",
+            linehl = "GitSignsChangeLn",
+          },
+          delete = {
+            hl = "GitSignsDelete",
+            text = "_",
+            numhl = "GitSignsDeleteNr",
+            linehl = "GitSignsDeleteLn",
+          },
+          topdelete = {
+            hl = "GitSignsDelete",
+            text = "‾",
+            numhl = "GitSignsDeleteNr",
+            linehl = "GitSignsDeleteLn",
+          },
+          changedelete = {
+            hl = "GitSignsChange",
+            text = "~",
+            numhl = "GitSignsChangeNr",
+            linehl = "GitSignsChangeLn",
+          },
+        },
+        attach_to_untracked = true,
+      }),
+    },
     requires = { "nvim-lua/plenary.nvim" },
-    config = { "require('gitsigns-config')" },
     tag = "release", -- To use the latest release
   })
 
