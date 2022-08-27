@@ -32,7 +32,7 @@ local function word_count() return "Words: " .. tostring(vim.fn.wordcount().word
 lualine.setup({
   options = {
     component_separators = " ",
-    disabled_filetypes = { "NvimTree", "Outline", "toggleterm" },
+    disabled_filetypes = { "NvimTree", "Outline", "toggleterm", "help", "lspinfo", "man", "qf" },
     extensions = { "fugitive" },
     icons_enabled = true,
     section_separators = " ",
