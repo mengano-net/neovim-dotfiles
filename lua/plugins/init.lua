@@ -41,7 +41,17 @@ return require("packer").startup(function(use)
   use({
     "navarasu/onedark.nvim",
     config = {
-      "require('onedark-config')",
+      require("onedark").setup({
+        style = "darker",
+        transparent = true, -- Show/hide background
+        -- style = 'warmer',
+        term_colors = true,
+        diagnostics = {
+          darker = true, -- darker colors for diagnostic
+          undercurl = false, -- use undercurl instead of underline for diagnostics
+          background = false, -- use background color for virtual text
+        },
+      }),
     },
   })
 
@@ -76,8 +86,19 @@ return require("packer").startup(function(use)
     "marko-cerovac/material.nvim",
     -- setup = "vim.g.material_style = 'deep ocean'",
     setup = "vim.g.material_style = 'darker'",
-    -- config = { "vim.cmd('colorscheme material')", "require('material-config')" }
-    config = { "require('material-config')" },
+    config = {
+      borders = true,
+      -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+      popup_menu = "colorful",
+      text_contrast = {
+        lighter = false, -- Enable higher contrast text for lighter style
+        darker = true, -- Enable higher contrast text for darker style
+      },
+      custom_highlights = {
+        CursorLine = "#0000FF",
+        LineNr = "#FF0000",
+      },
+    },
   })
 
   use({
@@ -146,7 +167,20 @@ return require("packer").startup(function(use)
     },
   })
 
-  use({ "lukas-reineke/indent-blankline.nvim", config = "require('blankline-config')" })
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = {
+      require("indent_blankline").setup({
+        buftype_exclude = { "terminal", "help", "nofile", "NvimTree" },
+        filetype_exclude = { "packer", "help", "NvimTree" },
+        show_current_context_start = true,
+        show_end_of_line = true,
+        show_icons = {
+          git = 1,
+        },
+      }),
+    },
+  })
 
   use({
     "nvim-lualine/lualine.nvim",
@@ -165,8 +199,44 @@ return require("packer").startup(function(use)
 
   use({
     "lewis6991/gitsigns.nvim",
+    config = {
+      require("gitsigns").setup({
+        signs = {
+          add = {
+            hl = "GitSignsAdd",
+            text = "▎",
+            numhl = "GitSignsAddNr",
+            linehl = "GitSignsAddLn",
+          },
+          change = {
+            hl = "GitSignsChange",
+            text = "▎",
+            numhl = "GitSignsChangeNr",
+            linehl = "GitSignsChangeLn",
+          },
+          delete = {
+            hl = "GitSignsDelete",
+            text = "_",
+            numhl = "GitSignsDeleteNr",
+            linehl = "GitSignsDeleteLn",
+          },
+          topdelete = {
+            hl = "GitSignsDelete",
+            text = "‾",
+            numhl = "GitSignsDeleteNr",
+            linehl = "GitSignsDeleteLn",
+          },
+          changedelete = {
+            hl = "GitSignsChange",
+            text = "~",
+            numhl = "GitSignsChangeNr",
+            linehl = "GitSignsChangeLn",
+          },
+        },
+        attach_to_untracked = true,
+      }),
+    },
     requires = { "nvim-lua/plenary.nvim" },
-    config = { "require('gitsigns-config')" },
     tag = "release", -- To use the latest release
   })
 
