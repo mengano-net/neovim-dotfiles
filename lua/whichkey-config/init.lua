@@ -96,7 +96,8 @@ local mappings = {
   },
   ["h"] = {
     name = "Hunks",
-    b = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line" },
+    b = { "<cmd>lua require'gitsigns'.blame_line{full=false}<cr>", "Blame Line - Short" },
+    B = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line - Short" },
     j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
     k = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
     p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
