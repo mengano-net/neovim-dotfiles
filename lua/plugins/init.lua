@@ -227,6 +227,11 @@ return require("packer").startup(function(use)
     config = function() require("nvim-surround").setup({}) end,
   })
 
+  use({
+    "RRethy/vim-illuminate",
+    config = function() require("illuminate").configure() end,
+  })
+
   ----------------------------------------------------------------------------------------
   -- Language servers, code formatting, autocompletion
   ----------------------------------------------------------------------------------------

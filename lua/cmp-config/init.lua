@@ -88,7 +88,10 @@ local custom_lsp_attach = function(client, bufnr)
     buffer_map(bufnr, "n", "gD", "<cmd> lua vim.lsp.buf.declaration()<CR>", map_opts)
   end
 
-  -- highlight words under cursor
+  -- Deprecated since I'm now using plugin: https://github.com/RRethy/vim-illuminate.
+  -- It's better because native way of doing this, makes word blink evertime `CursorMoved` event
+  -- fires up vim.lsp.buf.clear_references()".
+  --[[ -- highlight words under cursor
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
@@ -100,7 +103,7 @@ local custom_lsp_attach = function(client, bufnr)
       pattern = { "*.yaml", "*.yml", "*.lua", "*.py" },
       command = "lua vim.lsp.buf.clear_references()",
     })
-  end
+  end ]]
 
   --Debug code
   -- To print capabilities present on buffer, execute this:
