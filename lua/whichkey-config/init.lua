@@ -96,7 +96,8 @@ local mappings = {
   },
   ["h"] = {
     name = "Hunks",
-    b = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line" },
+    b = { "<cmd>lua require'gitsigns'.blame_line{full=false}<cr>", "Blame Line - Short" },
+    B = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line - Short" },
     j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
     k = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
     p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
@@ -115,7 +116,7 @@ local mappings = {
   ["l"] = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
+    f = { "<cmd>lua vim.lsp.buf.format{async=false} vim.diagnostic.enable()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },

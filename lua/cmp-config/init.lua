@@ -47,7 +47,6 @@ lspkind.init({
   },
 })
 
-vim.g.completeopt = "menu,menuone,preview,noselect,noinsert"
 local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
 local map_opts = { noremap = true, silent = true }
@@ -89,7 +88,10 @@ local custom_lsp_attach = function(client, bufnr)
     buffer_map(bufnr, "n", "gD", "<cmd> lua vim.lsp.buf.declaration()<CR>", map_opts)
   end
 
-  -- highlight words under cursor
+  -- Deprecated since I'm now using plugin: https://github.com/RRethy/vim-illuminate.
+  -- It's better because native way of doing this, makes word blink evertime `CursorMoved` event
+  -- fires up vim.lsp.buf.clear_references()".
+  --[[ -- highlight words under cursor
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
@@ -101,7 +103,7 @@ local custom_lsp_attach = function(client, bufnr)
       pattern = { "*.yaml", "*.yml", "*.lua", "*.py" },
       command = "lua vim.lsp.buf.clear_references()",
     })
-  end
+  end ]]
 
   --Debug code
   -- To print capabilities present on buffer, execute this:
@@ -111,8 +113,7 @@ local custom_lsp_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
       pattern = { "*" },
-      -- command = "lua vim.lsp.buf.formatting()",
-      command = "lua vim.lsp.buf.format()",
+      command = "lua vim.lsp.buf.format() vim.diagnostic.enable()",
     })
   end
 end
@@ -155,6 +156,8 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+---@cast cmp -?
+-- See https://github.com/sumneko/lua-language-server/issues/1487
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
