@@ -12,7 +12,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   print("Installing packer; you need to close and reopen Neovim...")
 end
 
--- Have packer use a popup window
+-- Have packer use a pop-up window
 require("packer").init({
   display = {
     open_fn = function() return require("packer.util").float({ border = "rounded" }) end,
@@ -31,27 +31,10 @@ return require("packer").startup(function(use)
   use({
     "shaunsingh/nord.nvim",
     setup = {
-      "vim.g.nord_contrast = false",
-      "vim.g.nord_borders = true",
-      "vim.g.nord_disable_background = true",
-      "vim.g.nord_italic = true",
-    },
-  })
-
-  use({
-    "navarasu/onedark.nvim",
-    config = {
-      require("onedark").setup({
-        style = "darker",
-        transparent = true, -- Show/hide background
-        -- style = 'warmer',
-        term_colors = true,
-        diagnostics = {
-          darker = true, -- darker colors for diagnostic
-          undercurl = false, -- use undercurl instead of underline for diagnostics
-          background = false, -- use background color for virtual text
-        },
-      }),
+      "vim.g.nord_contrast = 'false'",
+      "vim.g.nord_borders = 'true'",
+      "vim.g.nord_disable_background = 'true'",
+      "vim.g.nord_italic = 'true'",
     },
   })
 
@@ -64,7 +47,6 @@ return require("packer").startup(function(use)
       "vim.g.tokyonight_italic_functions = '1'",
       "vim.g.tokyonight_sidebars = { 'terminal' }",
     },
-    -- config = "vim.cmd('colorscheme tokyonight')"
   })
 
   use({
@@ -79,45 +61,15 @@ return require("packer").startup(function(use)
     "ellisonleao/gruvbox.nvim",
     requires = { "rktjmp/lush.nvim" },
     setup = { "vim.g.gruvbox_contrast_dark = 'hard'" },
-    -- config = "vim.cmd('colorscheme gruvbox')"
   })
 
-  use({
-    "marko-cerovac/material.nvim",
-    -- setup = "vim.g.material_style = 'deep ocean'",
-    setup = "vim.g.material_style = 'darker'",
-    config = {
-      borders = true,
-      -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
-      popup_menu = "colorful",
-      text_contrast = {
-        lighter = false, -- Enable higher contrast text for lighter style
-        darker = true, -- Enable higher contrast text for darker style
-      },
-      custom_highlights = {
-        CursorLine = "#0000FF",
-        LineNr = "#FF0000",
-      },
-    },
-  })
+  use({ "lunarvim/darkplus.nvim" })
 
-  use({
-    "lunarvim/darkplus.nvim",
-    config = function() vim.cmd("colorscheme darkplus") end,
-  })
+  use({ "EdenEast/nightfox.nvim" })
 
-  use({
-    "EdenEast/nightfox.nvim",
-    config = function() require("nightfox").setup({}) end,
-  })
+  use({ "bluz71/vim-nightfly-guicolors" })
 
-  use({
-    "bluz71/vim-nightfly-guicolors",
-  })
-
-  use({
-    "mcchrish/zenbones.nvim",
-  })
+  use({ "mcchrish/zenbones.nvim" })
 
   ----------------------------------------------------------------------------------------
   -- Better formatting, colors, auto pairs, etc
@@ -149,10 +101,6 @@ return require("packer").startup(function(use)
     },
   })
 
-  -- This is now a treesitter module, it is NOT a standalone plugin, I will need to configure on
-  -- treesitter
-  use({ "p00f/nvim-ts-rainbow" })
-
   use({
     "norcalli/nvim-colorizer.lua",
     config = "require('colorizer').setup()",
@@ -169,7 +117,7 @@ return require("packer").startup(function(use)
 
   use({
     "lukas-reineke/indent-blankline.nvim",
-    config = {
+    config = function()
       require("indent_blankline").setup({
         buftype_exclude = { "terminal", "help", "nofile", "NvimTree" },
         filetype_exclude = { "packer", "help", "NvimTree" },
@@ -178,8 +126,8 @@ return require("packer").startup(function(use)
         show_icons = {
           git = 1,
         },
-      }),
-    },
+      })
+    end,
   })
 
   use({
@@ -189,8 +137,6 @@ return require("packer").startup(function(use)
     after = "onedark.nvim", -- Fix here: https://github.com/nvim-lualine/lualine.nvim/issues/632
   })
 
-  use({ "junegunn/goyo.vim" })
-
   ----------------------------------------------------------------------------------------
   -- Plugins that make this configuration a better IDE
   ----------------------------------------------------------------------------------------
@@ -199,7 +145,7 @@ return require("packer").startup(function(use)
 
   use({
     "lewis6991/gitsigns.nvim",
-    config = {
+    config = function()
       require("gitsigns").setup({
         signs = {
           add = {
@@ -234,22 +180,22 @@ return require("packer").startup(function(use)
           },
         },
         attach_to_untracked = true,
-      }),
-    },
+      })
+    end,
     requires = { "nvim-lua/plenary.nvim" },
-    tag = "release", -- To use the latest release
+    tag = "release",
   })
 
   -- See https://github.com/ellisonleao/glow.nvim/issues/82
   use({
     "ellisonleao/glow.nvim",
     branch = "main",
-    config = {
+    config = function()
       require("glow").setup({
         border = "rounded",
         width = 120,
-      }),
-    },
+      })
+    end,
   })
 
   use({
@@ -262,7 +208,6 @@ return require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons",
     },
     config = {
-      -- function() require'nvim-tree'.setup {} end,
       "require('nvimtree-config')",
     },
   })
@@ -281,9 +226,9 @@ return require("packer").startup(function(use)
     config = { "require('telescope-config')", "require('user.telescope')" },
   })
 
-  --[[ This plugin has MANY key maps configured to call several of the plugins above, do NOT
-  install it until the previous plugins are also installed and configured FIRST
-  Such plugins are(not exhaustive): telescope, gitsigns, nvimTree, etc. ]]
+  -- This plugin has MANY key maps configured to call several of the plugins above, do NOT
+  -- install it until the previous plugins are also installed and configured FIRST
+  -- Such plugins are(not exhaustive): telescope, gitsigns, nvimTree, etc.
   use({
     "folke/which-key.nvim",
     config = function()
@@ -309,6 +254,8 @@ return require("packer").startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ": TSUpdate",
     config = "require('treesitter-config')",
+    -- This is now a treesitter module, it is NOT a standalone plugin
+    requires = "p00f/nvim-ts-rainbow",
   })
 
   use({
