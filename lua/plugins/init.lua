@@ -134,7 +134,6 @@ return require("packer").startup(function(use)
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = "require('lualine-config')",
-    after = "onedark.nvim", -- Fix here: https://github.com/nvim-lualine/lualine.nvim/issues/632
   })
 
   ----------------------------------------------------------------------------------------
