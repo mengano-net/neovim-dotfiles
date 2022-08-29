@@ -49,27 +49,20 @@ return require("packer").startup(function(use)
     },
   })
 
-  use({
-    "adisen99/apprentice.nvim",
-    requires = { "rktjmp/lush.nvim" },
-    setup = {
-      "vim.g.apprentice_contrast_dark = 'hard'",
-    },
-  })
-
-  use({
-    "ellisonleao/gruvbox.nvim",
-    requires = { "rktjmp/lush.nvim" },
-    setup = { "vim.g.gruvbox_contrast_dark = 'hard'" },
-  })
-
   use({ "lunarvim/darkplus.nvim" })
 
   use({ "EdenEast/nightfox.nvim" })
 
-  use({ "bluz71/vim-nightfly-guicolors" })
+  use({
+    "mcchrish/zenbones.nvim",
+    requires = { "rktjmp/lush.nvim" },
+  })
 
-  use({ "mcchrish/zenbones.nvim" })
+  use({
+    "marko-cerovac/material.nvim",
+    -- setup = "vim.g.material_style = 'deep ocean'",
+    setup = "vim.g.material_style = 'darker'",
+  })
 
   ----------------------------------------------------------------------------------------
   -- Better formatting, colors, auto pairs, etc
