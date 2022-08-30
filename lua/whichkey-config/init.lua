@@ -1,3 +1,6 @@
+local keymap = vim.keymap.set
+local keymap_opts = { noremap = true, silent = true }
+
 --  if can't load module(s)
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then return end
@@ -45,8 +48,8 @@ local toggle_horizontal = function()
 end
 
 -- Clearing some builtin maps that I will steal for my own.
-vim.api.nvim_set_keymap("", "s", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("", "S", "<Nop>", { noremap = true, silent = true })
+keymap("", "s", "<Nop>", keymap_opts)
+keymap("", "S", "<Nop>", keymap_opts)
 
 local mappings = {
   ["b"] = {
@@ -137,7 +140,10 @@ local mappings = {
       ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
       "Commands",
     },
-    ["G"] = { "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>", "Grep within grep" },
+    ["G"] = {
+      "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>",
+      "Grep within grep",
+    },
     ["m"] = {
       ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
       "Man Pages",
