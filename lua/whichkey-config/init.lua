@@ -61,11 +61,11 @@ local mappings = {
     h = { "<cmd>nohl<cr>", "No Highlights" },
     -- p = {"<cmd>\"0p<cr>", "Paste previously yanked"}, -- this is not working for some reason
   },
-  ["f"] = { "<cmd>lua require('user.telescope').find_files()<cr>", "Find Files" },
+  ["f"] = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find Files" },
   ["F"] = {
     name = "Find",
     ["f"] = {
-      ":lua require('user.telescope').find_files_in_path()<cr>",
+      ":lua require('user.telescope-extensions').find_files_in_path()<cr>",
       "Files in directory",
     },
     r = { ":%s///g<left><left><left>", "Replace Globally" },
@@ -82,12 +82,12 @@ local mappings = {
   },
   ["G"] = {
     name = "Git",
-    b = { "<cmd>lua require('user.telescope').git_branches()<cr>", "Branches" },
+    b = { "<cmd>lua require('user.telescope-extensions').git_branches()<cr>", "Branches" },
     -- B = { "<cmd>lua require('gitsigns').blame_line{full=true}<cr>", "Blame" },
     B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
     c = { "<cmd>Git commit -s<cr>", "Commit" },
     -- h = {},
-    l = { "<cmd>lua require('user.telescope').git_commits()<cr>", "List commits" },
+    l = { "<cmd>lua require('user.telescope-extensions').git_commits()<cr>", "List commits" },
     s = { "<cmd>Ge:<cr>", "Stage?" },
     S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
     p = { "<cmd>Git pull<cr>", "Pull" },
@@ -137,7 +137,7 @@ local mappings = {
       ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
       "Commands",
     },
-    ["G"] = { "<cmd>lua require('user.telescope').grep_within_grep()<cr>", "Grep within grep" },
+    ["G"] = { "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>", "Grep within grep" },
     ["m"] = {
       ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
       "Man Pages",

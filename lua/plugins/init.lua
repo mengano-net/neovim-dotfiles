@@ -215,7 +215,7 @@ return require("packer").startup(function(use)
   use({
     "nvim-telescope/telescope.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    config = { "require('telescope-config')", "require('user.telescope')" },
+    config = { "require('telescope-config')", "require('user.telescope-extensions')" },
   })
 
   -- This plugin has MANY key maps configured to call several of the plugins above, do NOT
