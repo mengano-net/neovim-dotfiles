@@ -55,7 +55,7 @@ local mappings = {
   ["b"] = {
     name = "Buffers",
     l = {
-      "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5}}<cr>",
+      "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5, height = 0.5}}<cr>",
       "List",
     },
   },
@@ -91,7 +91,7 @@ local mappings = {
     c = { "<cmd>Git commit -s<cr>", "Commit" },
     -- h = {},
     l = { "<cmd>lua require('user.telescope-extensions').git_commits()<cr>", "List commits" },
-    s = { "<cmd>Ge:<cr>", "Stage?" },
+    s = { "<cmd>Ge:<cr>", "Status" },
     S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
     p = { "<cmd>Git pull<cr>", "Pull" },
     P = { "<cmd>Git push<cr>", "Push" },
