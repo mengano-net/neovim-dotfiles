@@ -152,24 +152,6 @@ return require("packer").startup(function(use)
             numhl = "GitSignsChangeNr",
             linehl = "GitSignsChangeLn",
           },
-          delete = {
-            hl = "GitSignsDelete",
-            text = "_",
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
-          },
-          topdelete = {
-            hl = "GitSignsDelete",
-            text = "‾",
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
-          },
-          changedelete = {
-            hl = "GitSignsChange",
-            text = "~",
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
-          },
         },
         attach_to_untracked = true,
       })
