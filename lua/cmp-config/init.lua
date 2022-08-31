@@ -72,8 +72,10 @@ local custom_lsp_attach = function(client, bufnr)
   buffer_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
   -- Handlers
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signature_help"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+  vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+  vim.lsp.handlers["textDocument/signature_help"] =
+  vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
   -- buffer_map(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', map_opts)
   --[[ moved to whichkey
@@ -116,6 +118,10 @@ local custom_lsp_attach = function(client, bufnr)
       command = "lua vim.lsp.buf.format() vim.diagnostic.enable()",
     })
   end
+
+  local illuminate_status_ok, illuminate = pcall(require, "illuminate")
+  if not illuminate_status_ok then return end
+  illuminate.on_attach(client)
 end
 
 -- Diagnostics and their representation
@@ -137,7 +143,8 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
   signs = {
     severity_limit = "Hint",
