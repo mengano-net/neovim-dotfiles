@@ -1,10 +1,10 @@
 local colorscheme = "darkplus"
+-- local colorscheme = "neobones"
 
-local status_ok, _ = pcall(require, "darkplus")
+local status_ok, _ = pcall(require, colorscheme)
 if not status_ok then
   print("colorscheme not found: " .. colorscheme)
   return
 end
 
--- vim.cmd("colorscheme darkplus")
 pcall(vim.cmd, "colorscheme " .. colorscheme)

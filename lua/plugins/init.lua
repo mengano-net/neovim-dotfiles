@@ -62,6 +62,7 @@ return require("packer").startup(function(use)
     "marko-cerovac/material.nvim",
     -- setup = "vim.g.material_style = 'deep ocean'",
     setup = "vim.g.material_style = 'darker'",
+    config = function() require("material").setup() end,
   })
 
   ----------------------------------------------------------------------------------------
