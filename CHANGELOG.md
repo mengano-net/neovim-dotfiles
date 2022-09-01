@@ -1,3 +1,23 @@
+## 1.2.0 (2022-09-01)
+
+### Fix
+
+- **colorscheme**: fixing colorscheme.lua
+- **illuminate**: added this plugin into lsp's on_attach function
+- **lualine**: issue with onedark dependency
+- **several**: see notes below
+- **onedark**: lazy_loaded config into plugins.lua
+- **lualine and whichkey**: see below
+- **lualine**: added filetypes to lualine exclusions
+- **diagnostic**: they dissaper when I run vim.lsp.format()
+- **illuminate**: new plugin illuminate.
+- **cmp**: see https://github.com/sumneko/lua-language-server/issues/1487
+- **options**: formatting and few minor adjustments
+
+### Feat
+
+- **hunks**: now we have 2 flavours of git hunk blame, short and long
+
 ## 1.1.0 (2022-08-26)
 
 ### Fix
