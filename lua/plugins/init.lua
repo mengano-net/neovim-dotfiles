@@ -49,27 +49,21 @@ return require("packer").startup(function(use)
     },
   })
 
-  use({
-    "adisen99/apprentice.nvim",
-    requires = { "rktjmp/lush.nvim" },
-    setup = {
-      "vim.g.apprentice_contrast_dark = 'hard'",
-    },
-  })
-
-  use({
-    "ellisonleao/gruvbox.nvim",
-    requires = { "rktjmp/lush.nvim" },
-    setup = { "vim.g.gruvbox_contrast_dark = 'hard'" },
-  })
-
   use({ "lunarvim/darkplus.nvim" })
 
   use({ "EdenEast/nightfox.nvim" })
 
-  use({ "bluz71/vim-nightfly-guicolors" })
+  use({
+    "mcchrish/zenbones.nvim",
+    requires = { "rktjmp/lush.nvim" },
+  })
 
-  use({ "mcchrish/zenbones.nvim" })
+  use({
+    "marko-cerovac/material.nvim",
+    -- setup = "vim.g.material_style = 'deep ocean'",
+    setup = "vim.g.material_style = 'darker'",
+    config = function() require("material").setup() end,
+  })
 
   ----------------------------------------------------------------------------------------
   -- Better formatting, colors, auto pairs, etc
@@ -159,24 +153,6 @@ return require("packer").startup(function(use)
             numhl = "GitSignsChangeNr",
             linehl = "GitSignsChangeLn",
           },
-          delete = {
-            hl = "GitSignsDelete",
-            text = "_",
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
-          },
-          topdelete = {
-            hl = "GitSignsDelete",
-            text = "‾",
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
-          },
-          changedelete = {
-            hl = "GitSignsChange",
-            text = "~",
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
-          },
         },
         attach_to_untracked = true,
       })
@@ -222,7 +198,7 @@ return require("packer").startup(function(use)
   use({
     "nvim-telescope/telescope.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    config = { "require('telescope-config')", "require('user.telescope')" },
+    config = { "require('telescope-config')", "require('user.telescope-extensions')" },
   })
 
   -- This plugin has MANY key maps configured to call several of the plugins above, do NOT

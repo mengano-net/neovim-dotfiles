@@ -1,3 +1,6 @@
+local keymap = vim.keymap.set
+local keymap_opts = { noremap = true, silent = true }
+
 --  if can't load module(s)
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then return end
@@ -45,14 +48,14 @@ local toggle_horizontal = function()
 end
 
 -- Clearing some builtin maps that I will steal for my own.
-vim.api.nvim_set_keymap("", "s", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("", "S", "<Nop>", { noremap = true, silent = true })
+keymap("", "s", "<Nop>", keymap_opts)
+keymap("", "S", "<Nop>", keymap_opts)
 
 local mappings = {
   ["b"] = {
     name = "Buffers",
     l = {
-      "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5}}<cr>",
+      "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5, height = 0.5}}<cr>",
       "List",
     },
   },
@@ -61,11 +64,11 @@ local mappings = {
     h = { "<cmd>nohl<cr>", "No Highlights" },
     -- p = {"<cmd>\"0p<cr>", "Paste previously yanked"}, -- this is not working for some reason
   },
-  ["f"] = { "<cmd>lua require('user.telescope').find_files()<cr>", "Find Files" },
+  ["f"] = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find Files" },
   ["F"] = {
     name = "Find",
     ["f"] = {
-      ":lua require('user.telescope').find_files_in_path()<cr>",
+      ":lua require('user.telescope-extensions').find_files_in_path()<cr>",
       "Files in directory",
     },
     r = { ":%s///g<left><left><left>", "Replace Globally" },
@@ -82,13 +85,13 @@ local mappings = {
   },
   ["G"] = {
     name = "Git",
-    b = { "<cmd>lua require('user.telescope').git_branches()<cr>", "Branches" },
+    b = { "<cmd>lua require('user.telescope-extensions').git_branches()<cr>", "Branches" },
     -- B = { "<cmd>lua require('gitsigns').blame_line{full=true}<cr>", "Blame" },
     B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
     c = { "<cmd>Git commit -s<cr>", "Commit" },
     -- h = {},
-    l = { "<cmd>lua require('user.telescope').git_commits()<cr>", "List commits" },
-    s = { "<cmd>Ge:<cr>", "Stage?" },
+    l = { "<cmd>lua require('user.telescope-extensions').git_commits()<cr>", "List commits" },
+    s = { "<cmd>Ge:<cr>", "Status" },
     S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
     p = { "<cmd>Git pull<cr>", "Pull" },
     P = { "<cmd>Git push<cr>", "Push" },
@@ -137,7 +140,10 @@ local mappings = {
       ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
       "Commands",
     },
-    ["G"] = { "<cmd>lua require('user.telescope').grep_within_grep()<cr>", "Grep within grep" },
+    ["G"] = {
+      "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>",
+      "Grep within grep",
+    },
     ["m"] = {
       ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
       "Man Pages",
