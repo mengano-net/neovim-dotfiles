@@ -23,7 +23,6 @@ function M.neovim_config()
     prompt_title = "\\ NVim Config /",
     previewer = false,
     cwd = "~/.config/nvim",
-    file_ignore_patterns = { "node_modules" },
     prompt_prefix = "  ",
     layout_config = {
       width = 0.5,
@@ -75,28 +74,7 @@ function M.find_files()
   if _is_git_worktree then
     M.git_files()
   else
-    --[[ local opts = {
-      prompt_title = "\\ Find Files /",
-      -- previewer = 'true',
-      follow = 'true',
-      -- hidden = 'false',
-      layout_strategy = "horizontal",
-      layout_config = {
-        width = 0.95,
-        preview_width = 0.65,
-      },
-      -- prompt_prefix = '  ',
-      prompt_prefix = '  ',
-      -- cwd = '%p',
-      file_ignore_patterns = { "node_modules" },
-    }
-    require'telescope.builtin'.find_files(opts) ]]
-    require("telescope.builtin").find_files(require("telescope.themes").get_ivy({
-      prompt_title = "Find Files",
-      follow = "true",
-      prompt_prefix = "  ",
-      file_ignore_patterns = { "node_modules" },
-    }))
+    require("telescope.builtin").find_files(require("telescope.themes").get_ivy({}))
   end
 end
 
