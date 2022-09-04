@@ -238,9 +238,9 @@ return require("packer").startup(function(use)
     config = "require('cmp-config')",
   })
 
-  use("neovim/nvim-lspconfig")
-
-  use({
+  -- Author has deprecated this plugin and moved into a new plugin with even more Functionality:
+  -- https://github.com/williamboman/mason.nvim
+  --[[ use({
     "williamboman/nvim-lsp-installer",
     config = function()
       require("nvim-lsp-installer").setup({
@@ -248,6 +248,13 @@ return require("packer").startup(function(use)
         automatic_installation = true,
       })
     end,
+  }) ]]
+
+  use({
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    config = require("lua.mason-config.init"),
   })
 
   use("hrsh7th/cmp-nvim-lsp")
