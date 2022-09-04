@@ -55,7 +55,7 @@ local map_opts = { noremap = true, silent = true }
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
-      and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -73,9 +73,9 @@ local custom_lsp_attach = function(client, bufnr)
 
   -- Handlers
   vim.lsp.handlers["textDocument/hover"] =
-  vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
   vim.lsp.handlers["textDocument/signature_help"] =
-  vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
   -- buffer_map(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', map_opts)
   --[[ moved to whichkey
@@ -144,18 +144,18 @@ vim.diagnostic.config({
 })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  signs = {
-    severity_limit = "Hint",
-  },
-  -- virtual_text = {
-  --   spacing = 5,
-  --   severity_limit = "Hint",
-  --   prefix = ' ', -- Could be '■' '●', '▎', 'x',
-  -- },
-  update_in_insert = false,
-})
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = false,
+    signs = {
+      severity_limit = "Hint",
+    },
+    virtual_text = {
+      spacing = 5,
+      severity_limit = "Warning",
+      prefix = " ", -- Could be '■' '●', '▎', 'x',
+    },
+    update_in_insert = false,
+  })
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -280,11 +280,11 @@ USER = vim.fn.expand("$USER")
 
 if vim.fn.has("mac") == 1 then
   sumneko_root_path = "/Users/"
-      .. USER
-      .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
+    .. USER
+    .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
   sumneko_binary = "/Users/"
-      .. USER
-      .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
+    .. USER
+    .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
   sumneko_root_path = "/home/" .. USER .. "/.local/lua-language-server"
   sumneko_binary = "/home/" .. USER .. "/.local/lua-language-server/bin/lua-language-server"
@@ -330,7 +330,7 @@ require("lspconfig")["sumneko_lua"].setup({
 })
 
 -- Python
-local pylsp_root_binary = ""
+--[[ local pylsp_root_binary = ""
 if vim.fn.has("mac") == 1 then
   pylsp_root_binary = "/Users/" .. USER .. "/.local/share/nvim/lsp_servers/pylsp/venv/bin/pylsp"
 elseif vim.fn.has("unix") == 1 then
@@ -341,6 +341,11 @@ end
 require("lspconfig")["pylsp"].setup({
   -- cmd = { "pylsp" },
   cmd = { pylsp_root_binary },
+  filetypes = { "python" },
+  on_attach = custom_lsp_attach,
+  capabilities = capabilities,
+}) ]]
+require("lspconfig")["pyright"].setup({
   filetypes = { "python" },
   on_attach = custom_lsp_attach,
   capabilities = capabilities,

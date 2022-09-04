@@ -37,10 +37,16 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- git
 ----------------------------------------------------------------------------------------
 
+local function filetypes_git()
+  vim.cmd("setlocal spell spelllang=en_us")
+  vim.cmd("startinsert | 1")
+end
+
 vim.api.nvim_create_autocmd("FileType", {
   group = _git,
   pattern = { "gitcommit", "gitrebase" },
-  command = "startinsert | 1",
+  -- command = "startinsert | 1",
+  callback = filetypes_git,
 })
 
 ----------------------------------------------------------------------------------------
