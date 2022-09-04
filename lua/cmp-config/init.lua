@@ -124,45 +124,6 @@ local custom_lsp_attach = function(client, bufnr)
   illuminate.on_attach(client)
 end
 
--- Diagnostics and their representation
--- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
-
-vim.diagnostic.config({
-  virtual_text = false,
-  signs = false,
-  underline = true,
-  update_in_insert = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
-  severity_sort = true,
-})
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    signs = {
-      severity_limit = "Hint",
-    },
-    virtual_text = {
-      spacing = 5,
-      severity_limit = "Warning",
-      prefix = " ", -- Could be '■' '●', '▎', 'x',
-    },
-    update_in_insert = false,
-  })
-
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 ---@cast cmp -?
 -- See https://github.com/sumneko/lua-language-server/issues/1487
 cmp.setup({
