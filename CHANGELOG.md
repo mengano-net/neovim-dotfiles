@@ -1,3 +1,14 @@
+## 1.3.0 (2022-09-04)
+
+### Fix
+
+- **whichkey-config**: updated now that LSPInstalled is gone.
+- **lsp**: pylsp won't install, so I'm using pyright for now
+- **autocommands**: added filetype gitcommit to have 'setlocal spell'
+- **cmp-lsp**: adding floating diagnostics back
+- **telescope**: issue with find_files()
+- **nvim-options**: rolled back cmdheight to 1
+
 ## 1.2.0 (2022-09-01)
 
 ### Fix
