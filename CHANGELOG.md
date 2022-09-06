@@ -1,3 +1,14 @@
+## 1.3.1 (2022-09-06)
+
+### Feat
+
+- **python**: added prettier and autopep8 formatters
+
+### Fix
+
+- **bufferline**: slanted tab border.
+- **diagnostics**: signs were disabled by default :(
+
 ## 1.3.0 (2022-09-04)
 
 ### Fix
