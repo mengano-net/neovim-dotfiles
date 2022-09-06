@@ -80,7 +80,9 @@ return require("packer").startup(function(use)
     config = function()
       require("bufferline").setup({
         options = {
-          separator_style = "thick",
+          separator_style = "padded_slant",
+          sort_by = "insert_at_end",
+          diagnostics = "nvim_lsp",
         },
       })
     end,
@@ -254,7 +256,7 @@ return require("packer").startup(function(use)
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    config = require("lua.mason-config.init"),
+    config = require("mason-config"),
   })
 
   use("hrsh7th/cmp-nvim-lsp")

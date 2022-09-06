@@ -3,7 +3,7 @@
 
 vim.diagnostic.config({
   virtual_text = false,
-  signs = false,
+  signs = true,
   underline = true,
   update_in_insert = true,
   float = {
@@ -22,9 +22,6 @@ vim.diagnostic.config({
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
 vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = false,
-  signs = {
-    severity_limit = "vim.diagnostic.severity.HINT",
-  },
   --[[ virtual_text = {
     spacing = 5,
     severity_limit = "Warning",

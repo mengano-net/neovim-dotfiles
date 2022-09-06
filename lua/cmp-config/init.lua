@@ -55,61 +55,33 @@ local map_opts = { noremap = true, silent = true }
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
-    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
 local custom_lsp_attach = function(client, bufnr)
-  -- omnifunc is INCOMPATIBLE with nvim-cmp
-  --[[ Use LSP as the handler for omnifunc.
-     See `:help omnifunc` and `:help ins-completion` for more information.
-  buffer_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc") ]]
-
-  -- Use LSP as the handler for formatexpr.
   --    See `:help formatexpr` for more information.
   buffer_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
   -- Handlers
-  vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signature_help"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+  --Debug code
+  -- To print capabilities present on buffer, execute this:
+  -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
 
-  -- buffer_map(bufnr, 'n', 'k', '<cmd>lua vim.lsp.buf.signature_help()<cr>', map_opts)
-  --[[ moved to whichkey
-  buffer_map(bufnr, 'n', 'gj', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', map_opts)
-  buffer_map(bufnr, 'n', 'gk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', map_opts) ]]
+  vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+  vim.lsp.handlers["textDocument/signature_help"] =
+  vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
   buffer_map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", map_opts)
   buffer_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", map_opts)
   buffer_map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", map_opts)
 
-  -- See https://neovim.io/doc/user/lsp.html
   if client.server_capabilities.textDocument_declaration then
     buffer_map(bufnr, "n", "gD", "<cmd> lua vim.lsp.buf.declaration()<CR>", map_opts)
   end
-
-  -- Deprecated since I'm now using plugin: https://github.com/RRethy/vim-illuminate.
-  -- It's better because native way of doing this, makes word blink evertime `CursorMoved` event
-  -- fires up vim.lsp.buf.clear_references()".
-  --[[ -- highlight words under cursor
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
-      pattern = { "*.yaml", "*.yml", "*.lua", "*.py" },
-      command = "lua vim.lsp.buf.document_highlight()",
-    })
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
-      pattern = { "*.yaml", "*.yml", "*.lua", "*.py" },
-      command = "lua vim.lsp.buf.clear_references()",
-    })
-  end ]]
-
-  --Debug code
-  -- To print capabilities present on buffer, execute this:
-  -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
 
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -241,11 +213,11 @@ USER = vim.fn.expand("$USER")
 
 if vim.fn.has("mac") == 1 then
   sumneko_root_path = "/Users/"
-    .. USER
-    .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
+      .. USER
+      .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
   sumneko_binary = "/Users/"
-    .. USER
-    .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
+      .. USER
+      .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
   sumneko_root_path = "/home/" .. USER .. "/.local/lua-language-server"
   sumneko_binary = "/home/" .. USER .. "/.local/lua-language-server/bin/lua-language-server"
