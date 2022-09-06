@@ -256,7 +256,7 @@ return require("packer").startup(function(use)
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    config = require("lua.mason-config.init"),
+    config = require("mason-config"),
   })
 
   use("hrsh7th/cmp-nvim-lsp")
