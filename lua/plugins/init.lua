@@ -80,7 +80,9 @@ return require("packer").startup(function(use)
     config = function()
       require("bufferline").setup({
         options = {
-          separator_style = "thick",
+          separator_style = "padded_slant",
+          sort_by = "insert_at_end",
+          diagnostics = "nvim_lsp",
         },
       })
     end,
