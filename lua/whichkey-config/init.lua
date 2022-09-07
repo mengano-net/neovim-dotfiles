@@ -58,6 +58,21 @@ local mappings = {
       "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5, height = 0.5}}<cr>",
       "List",
     },
+    p = {
+      "<cmd> :BufferLinePick<cr>",
+      "Pick Buffer",
+    },
+    ["m"] = {
+      name = "Move Buffer Line",
+      ["r"] = {
+        "<cmd>BufferLineMoveNext<cr>",
+        "Move buffer tab right",
+      },
+      ["l"] = {
+        "<cmd>BufferLineMovePrev<cr>",
+        "Move buffer tab left",
+      },
+    },
   },
   ["e"] = {
     name = "Edit",
