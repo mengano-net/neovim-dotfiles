@@ -14,13 +14,17 @@ local hover = null_ls.builtins.hover
 null_ls.setup({
   debug = false,
   sources = {
+    code_actions.gitsigns,
     completion.spell,
     diagnostics.flake8,
     formatting.prettier.with({
       extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+      filetypes = { "html", "json", "yaml", "markdown" },
     }),
     -- formatting.black.with({ extra_args = { "--fast" } }),
-    formatting.stylua,
+    formatting.stylua.with({
+      extra_args = { "--config-path", vim.fn.expand("~/.config/nvim/stylua.toml") },
+    }),
     formatting.autopep8,
   },
 })
