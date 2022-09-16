@@ -4,6 +4,6 @@ require("user.mappings")
 require("plugins")
 
 -- After plugins
-require("user.colorscheme")
 require("user.diagnostics")
 require("user.utils")
+require("user.colorscheme")
