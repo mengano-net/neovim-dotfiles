@@ -160,7 +160,6 @@ return require("packer").startup(function(use)
       })
     end,
     requires = { "nvim-lua/plenary.nvim" },
-    tag = "release",
   })
 
   -- See https://github.com/ellisonleao/glow.nvim/issues/82
