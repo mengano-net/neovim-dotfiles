@@ -16,7 +16,9 @@ null_ls.setup({
   sources = {
     code_actions.gitsigns,
     completion.spell,
-    diagnostics.flake8,
+    diagnostics.flake8.with({
+      extra_args = { "--extend-ignore=E501" }
+    }),
     formatting.prettier.with({
       extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       filetypes = { "html", "json", "yaml", "markdown" },
