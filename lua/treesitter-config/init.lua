@@ -7,8 +7,9 @@ end
 -- require('nvim-treesitter.configs').setup {
 treesitter.setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = {"lua", "yaml", "bash", "python" },
-  sync_install = false,
+  autopairs = { enable = true },
+  ensure_installed = { "lua", "yaml", "bash", "python" },
+  disable = { "yaml" },
   ignore_install = {},
   highlight = {
     enable = true,
@@ -16,7 +17,6 @@ treesitter.setup {
   },
   incremental_selection = { enable = true },
   indent = { enable = true },
-  autopairs = {enable = true},
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
@@ -24,5 +24,6 @@ treesitter.setup {
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
+    sync_install = false,
   },
 }

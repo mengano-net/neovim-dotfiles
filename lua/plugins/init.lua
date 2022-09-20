@@ -1,4 +1,6 @@
--- Automatically install packer
+----------------------------------------------------------------------
+--                   Automatically install packer                   --
+----------------------------------------------------------------------
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = vim.fn.system({
@@ -23,9 +25,9 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
 
-  ----------------------------------------------------------------------------------------
-  -- Color Schemes
-  ----------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------
+  --                           Color Scheme                           --
+  ----------------------------------------------------------------------
   use({ "rose-pine/neovim" })
 
   use({
@@ -65,9 +67,9 @@ return require("packer").startup(function(use)
     config = function() require("material").setup() end,
   })
 
-  ----------------------------------------------------------------------------------------
-  -- Better formatting, colors, auto pairs, etc
-  ----------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------
+  --            Better formatting, colors, auto pairs, etc            --
+  ----------------------------------------------------------------------
 
   use({
     "akinsho/bufferline.nvim",
@@ -132,10 +134,9 @@ return require("packer").startup(function(use)
     config = "require('lualine-config')",
   })
 
-  ----------------------------------------------------------------------------------------
-  -- Plugins that make this configuration a better IDE
-  ----------------------------------------------------------------------------------------
-
+  ----------------------------------------------------------------------
+  --        Plugins that make this configuration a better IDE         --
+  ----------------------------------------------------------------------
   use("tpope/vim-fugitive")
 
   use({
@@ -223,6 +224,12 @@ return require("packer").startup(function(use)
     config = function() require("illuminate").configure() end,
   })
 
+  use {
+    's1n7ax/nvim-comment-frame',
+    requires = { 'nvim-treesitter' },
+    config = "require('nvim-comment-frame-config')"
+  }
+
   ----------------------------------------------------------------------------------------
   -- Language servers, code formatting, autocompletion
   ----------------------------------------------------------------------------------------
@@ -238,18 +245,6 @@ return require("packer").startup(function(use)
     "hrsh7th/nvim-cmp",
     config = "require('cmp-config')",
   })
-
-  -- Author has deprecated this plugin and moved into a new plugin with even more Functionality:
-  -- https://github.com/williamboman/mason.nvim
-  --[[ use({
-    "williamboman/nvim-lsp-installer",
-    config = function()
-      require("nvim-lsp-installer").setup({
-        -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-        automatic_installation = true,
-      })
-    end,
-  }) ]]
 
   use({
     "williamboman/mason.nvim",
@@ -285,7 +280,6 @@ return require("packer").startup(function(use)
     "lewis6991/spellsitter.nvim",
     config = function() require("spellsitter").setup() end,
   })
-  -------------------------------------------------------------------------------------------------
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
