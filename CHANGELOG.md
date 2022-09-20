@@ -1,3 +1,22 @@
+## 1.3.2 (2022-09-20)
+
+### Fix
+
+- **treesitter**: hack for yaml TS coloring
+- **lsp**: sumneko_binary wasn't found
+- **init**: moving colorscheme to the end
+- **gitsign**: updated project branch
+- **null-ls**: added ignore options for flake8
+- **null-ls**: added code actions and formatting
+
+### Feat
+
+- **comment-frame**: added plugin to intelligently add comment blocks
+- **comment-frame**: added plugin to intelligently add comment blocks
+- **utils**: added helper functions: P() and R()
+- **null_ls**: adding code_actions and formatting
+- **bufferline**: adding maps to move and select bufferlines
+
 ## 1.3.1 (2022-09-06)
 
 ### Feat
