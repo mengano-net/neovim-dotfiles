@@ -223,6 +223,12 @@ return require("packer").startup(function(use)
     config = function() require("illuminate").configure() end,
   })
 
+  use {
+    's1n7ax/nvim-comment-frame',
+    requires = { 'nvim-treesitter' },
+    config = "require('nvim-comment-frame-config')"
+  }
+
   ----------------------------------------------------------------------------------------
   -- Language servers, code formatting, autocompletion
   ----------------------------------------------------------------------------------------
