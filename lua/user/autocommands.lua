@@ -81,9 +81,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --                               Yaml                               --
 ----------------------------------------------------------------------
 local yaml_file_options = function()
-  vim.cmd "TSBufDisable highlight"
-  -- vim.api.nvim_set_hl(0, "yamlPlainScalar", { fg = '#ce9178', bg = 'NONE' })
+  -- vim.cmd "TSBufDisable highlight"
   -- vim.api.nvim_set_hl(0, "yamlTSField", { fg = '#569cd6', bg = 'NONE' })
+  -- vim.api.nvim_set_hl(0, "yamlBlockMappingKey", { fg = '#00dfff', bg = 'NONE' })
   -- vim.cmd "TSBufEnable highlight"
 end
 
