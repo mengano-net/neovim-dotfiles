@@ -45,7 +45,7 @@ lualine.setup({
     extensions = { "fugitive" },
     icons_enabled = true,
     section_separators = " ",
-    theme = "nordfox",
+    theme = "material",
   },
   sections = {
     lualine_a = { "mode" },
