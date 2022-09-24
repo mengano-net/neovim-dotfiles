@@ -1,4 +1,4 @@
-local colorscheme = "darkplus"
+local colorscheme = "catppuccin"
 -- local colorscheme = "neobones"
 
 local status_ok, _ = pcall(require, colorscheme)
