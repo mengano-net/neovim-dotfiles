@@ -32,23 +32,13 @@ return require("packer").startup(function(use)
 
   use({
     "shaunsingh/nord.nvim",
-    setup = {
-      "vim.g.nord_contrast = 'false'",
-      "vim.g.nord_borders = 'true'",
-      "vim.g.nord_disable_background = 'true'",
-      "vim.g.nord_italic = 'true'",
-    },
+    config = require('nord-config.init'),
   })
 
   use({
     "folke/tokyonight.nvim",
     branch = "main",
-    setup = {
-      "vim.g.tokyonight_style = 'night'",
-      "vim.g.tokyonight_lualine_bold = 'true'",
-      "vim.g.tokyonight_italic_functions = '1'",
-      "vim.g.tokyonight_sidebars = { 'terminal' }",
-    },
+    config = require('tokyonight-config.init'),
   })
 
   use({ "lunarvim/darkplus.nvim" })
@@ -62,10 +52,13 @@ return require("packer").startup(function(use)
 
   use({
     "marko-cerovac/material.nvim",
-    -- setup = "vim.g.material_style = 'deep ocean'",
-    setup = "vim.g.material_style = 'darker'",
-    config = function() require("material").setup() end,
+    config = require('material-config.init'),
   })
+
+  use {
+    "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile",
+    config = require("catppuccin-config"),
+  }
 
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
