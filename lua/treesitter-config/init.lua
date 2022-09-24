@@ -8,8 +8,7 @@ end
 treesitter.setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   autopairs = { enable = true },
-  ensure_installed = { "lua", "yaml", "bash", "python" },
-  disable = { "yaml" },
+  ensure_installed = { "lua", "bash", "python" },
   ignore_install = {},
   highlight = {
     enable = true,
