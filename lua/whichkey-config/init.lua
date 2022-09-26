@@ -36,6 +36,17 @@ local setup = {
   ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
 }
 
+-- functions to toggle terminal windows, one floating, one horizontal
+local Terminal = require("toggleterm.terminal").Terminal
+local toggle_float = function()
+  local float = Terminal:new({ direction = "float" })
+  return float:toggle()
+end
+local toggle_horizontal = function()
+  local float = Terminal:new({ direction = "horizontal" })
+  return float:toggle()
+end
+
 -- Clearing some builtin maps that I will steal for my own.
 keymap("", "s", "<Nop>", keymap_opts)
 keymap("", "S", "<Nop>", keymap_opts)
@@ -161,8 +172,8 @@ local mappings = {
   ["t"] = {
     name = "Terminal",
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
   ["T"] = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
   ["x"] = { ":bd!<cr>", "Close buffer" },
