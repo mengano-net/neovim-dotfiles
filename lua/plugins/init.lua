@@ -60,7 +60,7 @@ return require("packer").startup(function(use)
   })
 
   use {
-    "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile",
+    "catppuccin/nvim", as = "catppuccin",
     config = require("catppuccin-config"),
   }
 

@@ -19,10 +19,8 @@ toggleterm.setup({
   start_in_insert = true,
   persist_size = true,
   -- direction = 'horizontal',
-  -- direction = 'float',
   shell = "zsh",
-  -- size = term_size,
-  size = 30,
+  size = term_size,
   close_on_exit = true,
   float_opts = {
     border = "double",
