@@ -45,7 +45,7 @@ lualine.setup({
     extensions = { "fugitive" },
     icons_enabled = true,
     section_separators = " ",
-    theme = "material",
+    theme = "tokyonight",
   },
   sections = {
     lualine_a = { "mode" },
