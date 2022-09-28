@@ -34,21 +34,7 @@ return require("packer").startup(function(use)
   ----------------------------------------------------------------------
   use({ "rose-pine/neovim" })
 
-  use({
-    "folke/tokyonight.nvim",
-    -- branch = "main",
-    config = function()
-      require("tokyonight").setup({
-        style = "night",
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-          sidebars = { "terminal" },
-          lualine_bold = false,
-        },
-      })
-    end,
-  })
+  use({ "folke/tokyonight.nvim" })
 
   use({ "lunarvim/darkplus.nvim" })
 
