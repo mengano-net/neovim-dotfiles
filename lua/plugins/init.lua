@@ -34,30 +34,16 @@ return require("packer").startup(function(use)
   ----------------------------------------------------------------------
   use({ "rose-pine/neovim" })
 
-  use({
-    "shaunsingh/nord.nvim",
-    config = require('nord-config.init'),
-  })
-
-  use({
-    "folke/tokyonight.nvim",
-    branch = "main",
-    config = require('tokyonight-config.init'),
-  })
+  use({ "folke/tokyonight.nvim", branch = "main" })
 
   use({ "lunarvim/darkplus.nvim" })
-
-  use({ "EdenEast/nightfox.nvim" })
 
   use({
     "mcchrish/zenbones.nvim",
     requires = { "rktjmp/lush.nvim" },
   })
 
-  use({
-    "catppuccin/nvim", as = "catppuccin",
-    config = require("catppuccin-config.init")
-  })
+  use({ "shaunsingh/nord.nvim" })
 
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
