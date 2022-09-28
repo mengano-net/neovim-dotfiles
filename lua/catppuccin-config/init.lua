@@ -8,4 +8,9 @@ end
 
 vim.g.catppuccin_flavour = 'mocha' -- latte, frappe, macchiato, mocha
 
-catppuccin.setup()
+catppuccin.setup({
+  styles = {
+    comments = {},
+    conditionals = {},
+  },
+})

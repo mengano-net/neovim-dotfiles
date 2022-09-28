@@ -34,7 +34,16 @@ return require("packer").startup(function(use)
   ----------------------------------------------------------------------
   use({ "rose-pine/neovim" })
 
-  use({ "folke/tokyonight.nvim" })
+  use({
+    "shaunsingh/nord.nvim",
+    config = require('nord-config.init'),
+  })
+
+  use({
+    "folke/tokyonight.nvim",
+    branch = "main",
+    config = require('tokyonight-config.init'),
+  })
 
   use({ "lunarvim/darkplus.nvim" })
 
@@ -43,6 +52,11 @@ return require("packer").startup(function(use)
   use({
     "mcchrish/zenbones.nvim",
     requires = { "rktjmp/lush.nvim" },
+  })
+
+  use({
+    "catppuccin/nvim", as = "catppuccin",
+    config = require("catppuccin-config.init")
   })
 
   ----------------------------------------------------------------------
