@@ -34,35 +34,22 @@ return require("packer").startup(function(use)
   ----------------------------------------------------------------------
   use({ "rose-pine/neovim" })
 
-  use({
-    "shaunsingh/nord.nvim",
-    config = require('nord-config.init'),
-  })
-
-  use({
-    "folke/tokyonight.nvim",
-    branch = "main",
-    config = require('tokyonight-config.init'),
-  })
+  use({ "folke/tokyonight.nvim", branch = "main" })
 
   use({ "lunarvim/darkplus.nvim" })
-
-  use({ "EdenEast/nightfox.nvim" })
 
   use({
     "mcchrish/zenbones.nvim",
     requires = { "rktjmp/lush.nvim" },
   })
 
-  use({
-    "marko-cerovac/material.nvim",
-    config = require('material-config.init'),
-  })
+  use({ "shaunsingh/nord.nvim" })
 
-  use {
-    "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile",
-    config = require("catppuccin-config"),
-  }
+  -- This is now a treesitter module, it is NOT a standalone plugin
+  use({
+    "nvim-treesitter/playground",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
 
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
@@ -206,7 +193,6 @@ return require("packer").startup(function(use)
   use({
     "folke/which-key.nvim",
     config = function()
-      -- require("which-key").setup {}
       require("whichkey-config")
     end,
   })
