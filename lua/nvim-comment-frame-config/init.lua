@@ -11,9 +11,10 @@ comment_frame.setup({
   line_wrap_len = 80,
   languages = {
     python = {
-      frame_width = 70,
-      line_wrap_len = 65,
-      start_str = '# -',
-    }
+      frame_width = 61,
+      line_wrap_len = 52,
+      start_str = '# --',
+      end_str = '-- #',
+    },
   }
 })
