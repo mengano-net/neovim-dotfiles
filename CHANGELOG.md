@@ -1,3 +1,12 @@
+## 1.3.3 (2022-09-28)
+
+### Fix
+
+- **colorscheme**: consolidated colorchemes
+- **tokyonight**: fixed setup not being applied
+- **colorschemes**: Consolidated color schemes
+- **toggleterm**: fix toggleterm size
+
 ## 1.3.2 (2022-09-20)
 
 ### Fix
