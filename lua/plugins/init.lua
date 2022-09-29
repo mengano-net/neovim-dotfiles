@@ -51,6 +51,19 @@ return require("packer").startup(function(use)
     requires = "nvim-treesitter/nvim-treesitter",
   })
 
+  use({
+    "catppuccin/nvim",
+    config = function()
+      vim.cmd "let g:catppuccin_flavour = 'mocha'"
+      require("catppuccin").setup({
+        styles = {
+          comments = {},
+          conditionals = {},
+        }
+      })
+    end
+  })
+
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
   ----------------------------------------------------------------------
