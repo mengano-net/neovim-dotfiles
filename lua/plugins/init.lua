@@ -66,7 +66,7 @@ return require("packer").startup(function(use)
     config = function()
       require("bufferline").setup({
         options = {
-          separator_style = "padded_slant",
+          separator_style = "thick",
           sort_by = "insert_at_end",
           diagnostics = "nvim_lsp",
         },

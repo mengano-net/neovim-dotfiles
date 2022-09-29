@@ -7,4 +7,13 @@ end
 
 comment_frame.setup({
   disable_default_keymap = true,
+  frame_width = 90,
+  line_wrap_len = 80,
+  languages = {
+    python = {
+      frame_width = 70,
+      line_wrap_len = 65,
+      start_str = '# -',
+    }
+  }
 })
