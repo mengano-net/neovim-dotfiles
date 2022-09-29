@@ -45,6 +45,12 @@ return require("packer").startup(function(use)
 
   use({ "shaunsingh/nord.nvim" })
 
+  -- This is now a treesitter module, it is NOT a standalone plugin
+  use({
+    "nvim-treesitter/playground",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
   ----------------------------------------------------------------------
@@ -187,7 +193,6 @@ return require("packer").startup(function(use)
   use({
     "folke/which-key.nvim",
     config = function()
-      -- require("which-key").setup {}
       require("whichkey-config")
     end,
   })
