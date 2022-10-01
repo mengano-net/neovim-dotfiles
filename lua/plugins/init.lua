@@ -70,7 +70,7 @@ return require("packer").startup(function(use)
   --            Better formatting, colors, auto pairs, etc            --
   ----------------------------------------------------------------------
 
-  use({
+  --[[ use({
     "akinsho/bufferline.nvim",
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
@@ -87,7 +87,7 @@ return require("packer").startup(function(use)
         },
       })
     end,
-  })
+  }) ]]
 
   use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
