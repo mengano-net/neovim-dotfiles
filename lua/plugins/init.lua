@@ -262,7 +262,12 @@ return require("packer").startup(function(use)
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    config = require("mason-config"),
+    config = {
+      require("mason").setup(),
+      require("mason-lspconfig").setup({
+        ensure_installed = { "sumneko_lua", "bashls", "yamlls", "pyright" },
+      })
+    }
   })
 
   use("hrsh7th/cmp-nvim-lsp")
