@@ -45,12 +45,6 @@ return require("packer").startup(function(use)
 
   use({ "shaunsingh/nord.nvim" })
 
-  -- This is now a treesitter module, it is NOT a standalone plugin
-  use({
-    "nvim-treesitter/playground",
-    requires = "nvim-treesitter/nvim-treesitter",
-  })
-
   use({
     "catppuccin/nvim",
     config = function()
@@ -250,6 +244,13 @@ return require("packer").startup(function(use)
     -- This is now a treesitter module, it is NOT a standalone plugin
     requires = "p00f/nvim-ts-rainbow",
   })
+
+  -- This is now a treesitter module, it is NOT a standalone plugin
+  use({
+    "nvim-treesitter/playground",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+
 
   use({
     "hrsh7th/nvim-cmp",
