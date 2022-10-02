@@ -64,7 +64,7 @@ return require("packer").startup(function(use)
     end
   })
 
-  use({ "Everblush/everblush.nvim" })
+  use({ "shaunsingh/nord.nvim" })
 
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --

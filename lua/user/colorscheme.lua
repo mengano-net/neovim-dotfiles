@@ -2,7 +2,6 @@ local colorscheme = "darkplus"
 -- local colorscheme = "rose-pine"
 -- local colorscheme = "tokyonight"
 -- local colorscheme = "nord"
--- local colorscheme = "everblush"
 
 local status_ok, _ = pcall(require, colorscheme)
 if not status_ok then
@@ -20,12 +19,12 @@ if colorscheme == "tokyonight" then
       lualine_bold = false,
     },
   })
-  pcall(vim.cmd, "colorscheme " .. "tokyonight-night")
-  return
+  pcall(vim.cmd, "colorscheme " .. colorscheme)
 end
 
 if colorscheme == "darkplus" then
   vim.cmd "hi TelescopeBorder guifg=#569cd6"
+  pcall(vim.cmd, "colorscheme " .. colorscheme)
 end
 
 if colorscheme == "nord" then
@@ -33,19 +32,5 @@ if colorscheme == "nord" then
   vim.g.nord_borders = 'true'
   vim.g.nord_disable_background = 'true'
   vim.g.nord_italic = 'false'
+  require('nord').set()
 end
-
-if colorscheme == "everblush" then
-  local colors = require('everblush.core').get_colors()
-  require('everblush').setup({
-    nvim_tree = { contrast = true },
-    override = {
-      ColorColumn = { fg = colors.Comment },
-    }
-  })
-end
-
-----------------------------------------------------------------------
---                 Finally, setting the colorscheme                 --
-----------------------------------------------------------------------
-pcall(vim.cmd, "colorscheme " .. colorscheme)
