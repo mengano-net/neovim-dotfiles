@@ -45,18 +45,7 @@ return require("packer").startup(function(use)
 
   use({ "shaunsingh/nord.nvim" })
 
-  use({
-    "catppuccin/nvim",
-    config = function()
-      vim.cmd "let g:catppuccin_flavour = 'mocha'"
-      require("catppuccin").setup({
-        styles = {
-          comments = {},
-          conditionals = {},
-        }
-      })
-    end
-  })
+  use({ "catppuccin/nvim" })
 
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
