@@ -2,8 +2,8 @@
 -- local colorscheme = "rose-pine"
 -- local colorscheme = "tokyonight"
 -- local colorscheme = "nord"
--- local colorscheme = "catppuccin"
-local colorscheme = "cubandusk"
+local colorscheme = "catppuccin"
+-- local colorscheme = "cubandusk"
 
 local status_ok, _ = pcall(require, colorscheme)
 if not status_ok then

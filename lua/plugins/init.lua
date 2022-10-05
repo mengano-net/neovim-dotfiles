@@ -49,7 +49,7 @@ return require("packer").startup(function(use)
 
   use({
     "mengano-net/cubandusk.nvim",
-    branch = "develop",
+    branch = "palette",
   })
 
   ----------------------------------------------------------------------
