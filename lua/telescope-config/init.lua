@@ -48,7 +48,7 @@ telescope.setup({
   extensions = {
     fzf = { fuzzy = false },
     zoxide = {
-      prompt_title = "[ Walking on the shoulders of TJ ]",
+      prompt_title = "[ Zoxide ]",
       mappings = {
         default = {
           after_action = function(selection)
