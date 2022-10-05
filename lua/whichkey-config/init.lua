@@ -144,7 +144,7 @@ local mappings = {
     name = "Search",
     ["g"] = {
       -- ":lua require('telescope.builtin').live_grep({require('telescope.themes').get_ivy(), search_dirs = {_path})<cr>",
-      ":lua require('telescope.builtin').live_grep({require('telescope.themes').get_ivy()})<cr>",
+      ":lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy())<cr>",
       "Live Grep",
     },
     ["t"] = {
