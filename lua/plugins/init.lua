@@ -188,6 +188,17 @@ return require("packer").startup(function(use)
     config = { "require('telescope-config')", "require('user.telescope-extensions')" },
   })
 
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    requires = { "nvim-telescope/telescope.nvim" },
+    run = 'make'
+  }
+
+  use {
+    "jvgrootveld/telescope-zoxide",
+    requires = { "nvim-lua/popup.nvim" }
+  }
+
   -- This plugin has MANY key maps configured to call several of the plugins above, do NOT
   -- install it until the previous plugins are also installed and configured FIRST
   -- Such plugins are(not exhaustive): telescope, gitsigns, nvimTree, etc.
