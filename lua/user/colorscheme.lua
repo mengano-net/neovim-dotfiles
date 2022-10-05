@@ -2,7 +2,8 @@
 -- local colorscheme = "rose-pine"
 -- local colorscheme = "tokyonight"
 -- local colorscheme = "nord"
-local colorscheme = "catppuccin"
+-- local colorscheme = "catppuccin"
+local colorscheme = "cubandusk"
 
 local status_ok, _ = pcall(require, colorscheme)
 if not status_ok then
@@ -56,5 +57,9 @@ if colorscheme == "catppuccin" then
       conditionals = {},
     }
   })
+  pcall(vim.cmd, "colorscheme " .. colorscheme)
+end
+
+if colorscheme == "cubandusk" then
   pcall(vim.cmd, "colorscheme " .. colorscheme)
 end

@@ -47,6 +47,11 @@ return require("packer").startup(function(use)
 
   use({ "catppuccin/nvim" })
 
+  use({
+    "mengano-net/cubandusk.nvim",
+    branch = "develop",
+  })
+
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
   ----------------------------------------------------------------------
