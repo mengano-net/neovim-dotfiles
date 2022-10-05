@@ -48,7 +48,7 @@ telescope.setup({
   extensions = {
     fzf = { fuzzy = false },
     zoxide = {
-      prompt_title = "[ Zoxide ]",
+      prompt_title = "[ Zoxide List ]",
       mappings = {
         default = {
           after_action = function(selection)

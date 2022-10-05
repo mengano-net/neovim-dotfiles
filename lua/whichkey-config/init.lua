@@ -97,6 +97,7 @@ local mappings = {
       ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
       "Jump Points",
     },
+    z = { "<cmd> lua require('telescope').extensions.zoxide.list()<cr>", "Zoxide List" },
   },
   ["G"] = {
     name = "Git",
