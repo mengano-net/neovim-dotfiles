@@ -26,7 +26,8 @@ end
 
 if colorscheme == "darkplus" then
   pcall(vim.cmd, "colorscheme " .. colorscheme)
-  vim.cmd "hi TelescopeBorder guifg=#569cd6"
+  vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#569cd6", underline = false, })
+  -- Background matching bg color for lualine_b_ section while on tokyonight colorscheme
   vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#14C50B", bg = "#3b4261", underline = false, })
   vim.api.nvim_set_hl(0, "DiffChange", { fg = "#0195F7", bg = "#3b4261", underline = false, })
   vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#ff007c", bg = "#3b4261", underline = false, })
