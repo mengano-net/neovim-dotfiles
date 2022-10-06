@@ -51,7 +51,15 @@ lualine.setup({
     lualine_a = { "mode" },
     lualine_b = {
       { "branch", icon = "" },
-      { "diff" },
+      {
+        "diff",
+        colored = true,
+        diff_color = {
+          added    = 'DiffAdd', -- Changes the diff's added color
+          modified = 'DiffChange', -- Changes the diff's modified color
+          removed  = 'DiffDelete', -- Changes the diff's removed color you
+        },
+      },
     },
     lualine_c = {
       {
