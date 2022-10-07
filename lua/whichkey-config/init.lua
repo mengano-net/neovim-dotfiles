@@ -55,23 +55,8 @@ local mappings = {
   ["b"] = {
     name = "Buffers",
     l = {
-      "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5, height = 0.5}}<cr>",
-      "List",
-    },
-    p = {
-      "<cmd> :BufferLinePick<cr>",
-      "Pick Buffer",
-    },
-    ["m"] = {
-      name = "Move Buffer Line",
-      ["r"] = {
-        "<cmd>BufferLineMoveNext<cr>",
-        "Move buffer tab right",
-      },
-      ["l"] = {
-        "<cmd>BufferLineMovePrev<cr>",
-        "Move buffer tab left",
-      },
+      "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false,prompt_title='Open Buffers'}))<cr>",
+      "List Opened Buffers",
     },
   },
   ["e"] = {
@@ -97,15 +82,16 @@ local mappings = {
       ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
       "Jump Points",
     },
-    z = { "<cmd> lua require('telescope').extensions.zoxide.list()<cr>", "Zoxide List" },
+    z = {
+      "<cmd> lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_ivy{})<cr>",
+      "Zoxide List"
+    },
   },
   ["G"] = {
     name = "Git",
     b = { "<cmd>lua require('user.telescope-extensions').git_branches()<cr>", "Branches" },
-    -- B = { "<cmd>lua require('gitsigns').blame_line{full=true}<cr>", "Blame" },
     B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
     c = { "<cmd>Git commit -s<cr>", "Commit" },
-    -- h = {},
     l = { "<cmd>lua require('user.telescope-extensions').git_commits()<cr>", "List commits" },
     s = { "<cmd>Ge:<cr>", "Status" },
     S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
