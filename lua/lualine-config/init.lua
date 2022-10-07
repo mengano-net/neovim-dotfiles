@@ -7,7 +7,7 @@ local function current_buffer_number() return "﬘ " .. vim.api.nvim_get_current
 local function current_date()
   -- return string.sub(os.date "%x", 1, 5)
   -- return os.date "%x"
-  return os.date("%a %b %d, %H:%M", os.time() + 8 * 60 * 60)
+  return os.date("%a %b %d, %H:%M", os.time() + 1 * 60 * 60)
 end
 
 -- Vim's working directory
@@ -59,6 +59,7 @@ lualine.setup({
           modified = 'DiffChange', -- Changes the diff's modified color
           removed  = 'DiffDelete', -- Changes the diff's removed color you
         },
+        padding = { left = 1, right = 2 },
       },
     },
     lualine_c = {
