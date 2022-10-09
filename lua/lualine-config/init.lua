@@ -81,6 +81,6 @@ lualine.setup({
       -- { "filetype", icon_only = true },
     },
     lualine_y = { word_count, "location", progress },
-    lualine_z = { current_date },
+    lualine_z = { nil },
   },
 })
