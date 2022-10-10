@@ -21,16 +21,6 @@ if colorscheme == "tokyonight" then
       lualine_bold = false,
     },
   })
-  pcall(vim.cmd, "colorscheme " .. colorscheme)
-end
-
-if colorscheme == "darkplus" then
-  pcall(vim.cmd, "colorscheme " .. colorscheme)
-  vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#569cd6", underline = false, })
-  -- Background matching bg color for lualine_b_ section while on tokyonight colorscheme
-  vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#14C50B", bg = "#3b4261", underline = false, })
-  vim.api.nvim_set_hl(0, "DiffChange", { fg = "#0195F7", bg = "#3b4261", underline = false, })
-  vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#ff007c", bg = "#3b4261", underline = false, })
 end
 
 if colorscheme == "nord" then
@@ -38,7 +28,6 @@ if colorscheme == "nord" then
   vim.g.nord_borders = 'true'
   vim.g.nord_disable_background = 'true'
   vim.g.nord_italic = 'false'
-  pcall(vim.cmd, "colorscheme " .. colorscheme)
 end
 
 if colorscheme == "rose-pine" then
@@ -50,7 +39,6 @@ if colorscheme == "rose-pine" then
       ColorColumn = { bg = 'rose' }
     }, ]]
   })
-  pcall(vim.cmd, "colorscheme " .. colorscheme)
 end
 
 if colorscheme == "catppuccin" then
@@ -61,9 +49,6 @@ if colorscheme == "catppuccin" then
       conditionals = {},
     }
   })
-  pcall(vim.cmd, "colorscheme " .. colorscheme)
 end
 
-if colorscheme == "cubandusk" then
-  pcall(vim.cmd, "colorscheme " .. colorscheme)
-end
+pcall(vim.cmd, "colorscheme " .. colorscheme)
