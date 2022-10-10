@@ -20,6 +20,11 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   command = "silent! set nopaste",
 })
 
+--[[ vim.api.nvim_create_autocmd("BufEnter", {
+  group = _general,
+  command = "lua vim.o.winbar=vim.api.nvim_buf_get_name(0)",
+}) ]]
+
 ----------------------------------------------------------------------
 --                               Git                                --
 ----------------------------------------------------------------------
