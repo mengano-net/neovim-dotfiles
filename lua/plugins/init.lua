@@ -239,6 +239,32 @@ return require("packer").startup(function(use)
     end
   }
 
+  use {
+    "fgheng/winbar.nvim",
+    config = function()
+      require('winbar').setup({
+        enabled = true,
+        exclude_filetype = {
+          'help',
+          'startify',
+          'dashboard',
+          'fugitive',
+          'gitcommit',
+          'packer',
+          'neogitstatus',
+          'NvimTree',
+          'Trouble',
+          'alpha',
+          'lir',
+          'Outline',
+          'spectre_panel',
+          'toggleterm',
+          'qf',
+        },
+      })
+    end
+  }
+
   ----------------------------------------------------------------------------------------
   -- Language servers, code formatting, autocompletion
   ----------------------------------------------------------------------------------------

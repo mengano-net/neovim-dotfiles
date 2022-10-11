@@ -59,16 +59,16 @@ lualine.setup({
           modified = 'DiffChange', -- Changes the diff's modified color
           removed  = 'DiffDelete', -- Changes the diff's removed color you
         },
-        padding = { left = 1, right = 2 },
+        padding = { left = 1, right = 1 },
       },
     },
     lualine_c = {
-      {
+      --[[ {
         "filename", -- displays file status (readonly status, modified status)
         -- current_working_dir,
         file_status = true, -- 0 = just filename, 1 = relative path, 2 = absolute path
         path = 1, -- Shortens path to leave 40 space in the window
-      },
+      }, ]]
     },
     lualine_x = {
       {
