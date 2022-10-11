@@ -36,7 +36,7 @@ return require("packer").startup(function(use)
 
   use({ "folke/tokyonight.nvim", branch = "main" })
 
-  use({ "mengano-net/darkplus.nvim" })
+  use({ "mengano-net/darkplus.nvim", branch = "develop" })
 
   use({
     "mcchrish/zenbones.nvim",
