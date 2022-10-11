@@ -36,17 +36,6 @@ local setup = {
   ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
 }
 
--- functions to toggle terminal windows, one floating, one horizontal
-local Terminal = require("toggleterm.terminal").Terminal
-local toggle_float = function()
-  local float = Terminal:new({ direction = "float" })
-  return float:toggle()
-end
-local toggle_horizontal = function()
-  local float = Terminal:new({ direction = "horizontal" })
-  return float:toggle()
-end
-
 -- Clearing some builtin maps that I will steal for my own.
 keymap("", "s", "<Nop>", keymap_opts)
 keymap("", "S", "<Nop>", keymap_opts)
