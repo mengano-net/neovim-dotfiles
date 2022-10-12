@@ -53,16 +53,8 @@ local mappings = {
     h = { "<cmd>nohl<cr>", "No Highlights" },
     c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
   },
-  ["f"] = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find Files" },
-  ["F"] = {
-    name = "Find",
-    ["f"] = {
-      ":lua require('user.telescope-extensions').find_files_in_path()<cr>",
-      "Files in directory",
-    },
-    r = { ":%s///g<left><left><left>", "Replace Globally" },
-    c = { ":%s///gc<left><left><left>", "Replace / Confirm" },
-  },
+  ["f"] = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find files" },
+  ["F"] = { "<cmd>lua require('user.telescope-extensions').find_files_in_path()<cr>", "Find files in path..." },
   ["g"] = {
     name = "Goto",
     j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
@@ -113,9 +105,11 @@ local mappings = {
     f = { "<cmd>lua vim.lsp.buf.format{async=false} vim.diagnostic.enable()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     m = { "<cmd>Mason<cr>", "List LSP servers installed." },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    s = {
+      "lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())",
+      "Document Symbols"
+    },
   },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["s"] = {
     name = "Search",
     ["g"] = {
@@ -143,7 +137,6 @@ local mappings = {
       ":lua require('telescope.builtin').oldfiles(require('telescope.themes').get_ivy())<cr>",
       "Recent Files",
     },
-    -- t = {function() print("bar") end, "Foobar"}
   },
   ["t"] = {
     name = "Terminal",
