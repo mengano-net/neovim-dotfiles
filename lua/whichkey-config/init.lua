@@ -41,25 +41,25 @@ keymap("", "s", "<Nop>", keymap_opts)
 keymap("", "S", "<Nop>", keymap_opts)
 
 local mappings = {
-  ["b"] = {
+  b = {
     name = "Buffers",
     l = {
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false,prompt_title='Open Buffers'}))<cr>",
       "List Opened Buffers",
     },
   },
-  ["e"] = {
+  e = {
     name = "Edit",
     h = { "<cmd>nohl<cr>", "No Highlights" },
     c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
   },
-  ["f"] = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find files" },
-  ["F"] = { "<cmd>lua require('user.telescope-extensions').find_files_in_path()<cr>", "Find files in path..." },
-  ["g"] = {
+  f = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find files" },
+  F = { "<cmd>lua require('user.telescope-extensions').find_files_in_path()<cr>", "Find files in path..." },
+  g = {
     name = "Goto",
     j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
     k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
-    ["J"] = {
+    J = {
       ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
       "Jump Points",
     },
@@ -68,7 +68,7 @@ local mappings = {
       "Zoxide List"
     },
   },
-  ["G"] = {
+  G = {
     name = "Git",
     b = { "<cmd>lua require('user.telescope-extensions').git_branches()<cr>", "Branches" },
     B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
@@ -80,7 +80,7 @@ local mappings = {
     P = { "<cmd>Git push<cr>", "Push" },
     r = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
   },
-  ["h"] = {
+  h = {
     name = "Hunks",
     b = { "<cmd>lua require'gitsigns'.blame_line{full=false}<cr>", "Blame Line - Short" },
     B = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line - Short" },
@@ -99,54 +99,53 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-  ["l"] = {
+  l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     f = { "<cmd>lua vim.lsp.buf.format{async=false} vim.diagnostic.enable()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     m = { "<cmd>Mason<cr>", "List LSP servers installed." },
     s = {
-      "lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())",
+      "<cmd> lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())<cr>",
       "Document Symbols"
     },
   },
-  ["s"] = {
+  s = {
     name = "Search",
-    ["g"] = {
-      -- ":lua require('telescope.builtin').live_grep({require('telescope.themes').get_ivy(), search_dirs = {_path})<cr>",
+    g = {
       ":lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy())<cr>",
       "Live Grep",
     },
-    ["t"] = {
+    t = {
       ":lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
       "Help Tags",
     },
-    ["c"] = {
+    c = {
       ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
       "Commands",
     },
-    ["G"] = {
+    G = {
       "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>",
       "Grep within grep",
     },
-    ["m"] = {
+    m = {
       ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
       "Man Pages",
     },
-    ["r"] = {
+    r = {
       ":lua require('telescope.builtin').oldfiles(require('telescope.themes').get_ivy())<cr>",
       "Recent Files",
     },
   },
-  ["t"] = {
+  t = {
     name = "Terminal",
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
   },
-  ["T"] = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
-  ["x"] = { ":bd!<cr>", "Close buffer" },
-  ["w"] = { ":w!<cr>", "Save buffer" },
+  T = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
+  x = { ":bd!<cr>", "Close buffer" },
+  w = { ":w!<cr>", "Save buffer" },
 }
 
 which_key.setup(setup)
