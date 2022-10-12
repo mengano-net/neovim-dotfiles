@@ -243,6 +243,11 @@ return require("packer").startup(function(use)
     "fgheng/winbar.nvim",
     config = function()
       require('winbar').setup({
+        colors = {
+          path = '#7aa2f7',
+          file_name = '#c946fd',
+          symbols = '#c946fd',
+        },
         enabled = true,
         exclude_filetype = {
           'help',
