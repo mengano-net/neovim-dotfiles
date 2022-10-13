@@ -1,6 +1,6 @@
-local colorscheme = "darkplus"
+-- local colorscheme = "darkplus"
 -- local colorscheme = "rose-pine"
--- local colorscheme = "tokyonight"
+local colorscheme = "tokyonight"
 -- local colorscheme = "nord"
 -- local colorscheme = "catppuccin"
 -- local colorscheme = "cubandusk"

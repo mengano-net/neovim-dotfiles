@@ -7,22 +7,22 @@ if not status_ok then return end
 
 local opts = {
   prefix = "<leader>",
-  mode = "n", -- NORMAL mode
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  mode = "n",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
 }
 
 local setup = {
   plugins = {
     spelling = {
-      enabled = true, -- show WhichKey when pressing z= to select spelling suggestions
+      enabled = true,
       suggestions = 20,
     },
   },
   presets = {
-    operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+    operators = true, -- adds operators like d, y, registers them for motion, completions, etc
   },
   window = {
     border = "single", -- none, single, double, shadow
@@ -33,7 +33,7 @@ local setup = {
   layout = {
     align = "center", -- align columns left, center or right
   },
-  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
+  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
 }
 
 -- Clearing some builtin maps that I will steal for my own.
@@ -59,10 +59,6 @@ local mappings = {
     name = "Goto",
     j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
     k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
-    J = {
-      ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
-      "Jump Points",
-    },
     z = {
       "<cmd> lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_ivy{})<cr>",
       "Zoxide List"
@@ -124,6 +120,10 @@ local mappings = {
       ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
       "Commands",
     },
+    j = {
+      ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
+      "Jump Points",
+    },
     G = {
       "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>",
       "Grep within grep",
@@ -144,7 +144,7 @@ local mappings = {
     v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
   },
   T = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
-  x = { ":bd!<cr>", "Close buffer" },
+  x = { ":bd!<cr>", "Destroy buffer" },
   w = { ":w!<cr>", "Save buffer" },
 }
 
