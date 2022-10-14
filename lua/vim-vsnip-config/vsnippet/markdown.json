@@ -1,0 +1,16 @@
+{
+  "blog": {
+    "prefix": ["blog section - Markdown"],
+    "body": ["## ${1:Title}", "${2}"],
+    "description": "Blog section - Markdown"
+  },
+  "date": {
+    "prefix": ["date - Markdown"],
+    "body": [
+      "---",
+      "## $CURRENT_MONTH_NAME $CURRENT_DATE, $CURRENT_YEAR",
+      "${2}"
+    ],
+    "description": "Date - Markdown"
+  }
+}
