@@ -52,6 +52,8 @@ return require("packer").startup(function(use)
     branch = "palette",
   })
 
+  use { "cocopon/iceberg.vim" }
+
   ----------------------------------------------------------------------
   --            Better formatting, colors, auto pairs, etc            --
   ----------------------------------------------------------------------
@@ -267,6 +269,19 @@ return require("packer").startup(function(use)
           'qf',
         },
       })
+    end
+  }
+
+  use { "j-hui/fidget.nvim", config = function() require('fidget').setup() end }
+
+  use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }
+
+  use {
+    'jinh0/eyeliner.nvim',
+    config = function()
+      require 'eyeliner'.setup {
+        highlight_on_key = true
+      }
     end
   }
 
