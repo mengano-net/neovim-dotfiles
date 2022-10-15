@@ -1,7 +1,4 @@
-----------------------------------------------------------------------
---                   Automatically install packer                   --
-----------------------------------------------------------------------
-
+-- Git clone and install packer if it's not installed already
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -18,7 +15,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- Have packer use a pop-up window
+-- Have packer use a float window instead of a vertical split
 require("packer").init({
   display = {
     open_fn = function() return require("packer.util").float({ border = "rounded" }) end,
@@ -29,9 +26,9 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
 
-  ----------------------------------------------------------------------
-  --                           Color Scheme                           --
-  ----------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------
+  --                                     Colorschemes                                     --
+  ------------------------------------------------------------------------------------------
   use({ "rose-pine/neovim" })
 
   use({ "folke/tokyonight.nvim", branch = "main" })
@@ -54,28 +51,9 @@ return require("packer").startup(function(use)
 
   use { "cocopon/iceberg.vim" }
 
-  ----------------------------------------------------------------------
-  --            Better formatting, colors, auto pairs, etc            --
-  ----------------------------------------------------------------------
-
-  --[[ use({
-    "akinsho/bufferline.nvim",
-    tag = "v2.*",
-    requires = "kyazdani42/nvim-web-devicons",
-    setup = {
-      vim.api.nvim_set_keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true }),
-      vim.api.nvim_set_keymap("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }),
-    },
-    config = function()
-      require("bufferline").setup({
-        options = {
-          separator_style = "thick",
-          sort_by = "insert_at_end",
-          diagnostics = "nvim_lsp",
-        },
-      })
-    end,
-  }) ]]
+  ------------------------------------------------------------------------------------------
+  --                          Plugins making Neovim a better IDE                          --
+  ------------------------------------------------------------------------------------------
 
   use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
@@ -95,7 +73,7 @@ return require("packer").startup(function(use)
     "ntpeters/vim-better-whitespace",
     config = {
       vim.cmd(
-        "let g:better_whitespace_filetypes_blacklist=['<filetype1>', '<filetype2>', '<etc>', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'toggleterm']"
+        "let g:better_whitespace_filetypes_blacklist=['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'toggleterm']"
       ),
     },
   })
@@ -121,9 +99,6 @@ return require("packer").startup(function(use)
     config = "require('lualine-config')",
   })
 
-  ----------------------------------------------------------------------
-  --        Plugins that make this configuration a better IDE         --
-  ----------------------------------------------------------------------
   use("tpope/vim-fugitive")
 
   use({
@@ -201,9 +176,11 @@ return require("packer").startup(function(use)
     requires = { "nvim-lua/popup.nvim" }
   }
 
-  -- This plugin has MANY key maps configured to call several of the plugins above, do NOT
-  -- install it until the previous plugins are also installed and configured FIRST
-  -- Such plugins are(not exhaustive): telescope, gitsigns, nvimTree, etc.
+  ------------------------------------------------------------------------------------------
+  --            Whichkey plugin calls MANY keymaps with functionality provided            --
+  --         by other plugins, so do not run until after all those other plugins          --
+  --                            are installed and configured.                             --
+  ------------------------------------------------------------------------------------------
   use({
     "folke/which-key.nvim",
     config = function()
