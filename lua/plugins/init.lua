@@ -244,6 +244,7 @@ return require("packer").startup(function(use)
           'spectre_panel',
           'toggleterm',
           'qf',
+          'glowpreview',
         },
       })
     end
