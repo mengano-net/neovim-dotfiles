@@ -6,6 +6,7 @@ local _git = vim.api.nvim_create_augroup("git", { clear = true })
 local _python = vim.api.nvim_create_augroup("python", { clear = true })
 local _documentation = vim.api.nvim_create_augroup("documentation", { clear = true })
 local _yaml = vim.api.nvim_create_augroup("yaml", { clear = true })
+local _terminal = vim.api.nvim_create_augroup("terminal", { clear = true })
 
 ------------------------------------------------------------------------------------------
 --                                 General autocommands                                 --
@@ -84,4 +85,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = _yaml,
   pattern = { "*.yaml", "*.yml" },
   callback = yaml_file_options,
+})
+
+------------------------------------------------------------------------------------------
+--                                       Terminal                                       --
+------------------------------------------------------------------------------------------
+local terminal = function()
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { silent = true })
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], { silent = true })
+end
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = _terminal,
+  pattern = { "term://*" },
+  callback = terminal
 })
