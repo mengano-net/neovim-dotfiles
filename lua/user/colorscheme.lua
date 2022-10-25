@@ -1,8 +1,8 @@
 -- local colorscheme = "darkplus"
 -- local colorscheme = "rose-pine"
-local colorscheme = "tokyonight"
+-- local colorscheme = "tokyonight"
 -- local colorscheme = "nord"
--- local colorscheme = "catppuccin"
+local colorscheme = "catppuccin"
 -- local colorscheme = "cubandusk"
 
 local status_ok, _ = pcall(require, colorscheme)
@@ -42,7 +42,7 @@ if colorscheme == "rose-pine" then
 end
 
 if colorscheme == "catppuccin" then
-  vim.cmd "let g:catppuccin_flavour = 'mocha'"
+  vim.cmd "let g:catppuccin_flavour = 'macchiato'"
   require("catppuccin").setup({
     styles = {
       comments = {},
