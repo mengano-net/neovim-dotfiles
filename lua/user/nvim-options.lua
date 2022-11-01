@@ -80,10 +80,8 @@ for key, value in pairs(buffer_options) do
     vim.bo[key] = value
 end
 
-
-
 ------------------------------------------------------------------------------------------
---                        Disable some of vim's built-in plugins                        --
+--                     Disabling some of vim's built-in plugins...                      --
 ------------------------------------------------------------------------------------------
 local disabled_built_ins = {
     "netrw",
