@@ -24,10 +24,10 @@ if colorscheme == "tokyonight" then
 end
 
 if colorscheme == "nord" then
-    vim.g.nord_contrast = 'false'
-    vim.g.nord_borders = 'true'
-    vim.g.nord_disable_background = 'true'
-    vim.g.nord_italic = 'false'
+    vim.g.nord_contrast = false
+    vim.g.nord_borders = true
+    vim.g.nord_disable_background = true
+    vim.g.nord_italic = false
 end
 
 if colorscheme == "rose-pine" then
@@ -47,7 +47,14 @@ if colorscheme == "catppuccin" then
         styles = {
             comments = {},
             conditionals = {},
-        }
+        },
+        highlight_overrides = {
+            macchiato = function(macchiato)
+                return {
+                    DiffAdd = { fg = macchiato.overlay1 },
+                }
+            end,
+        },
     })
 end
 
