@@ -44,7 +44,6 @@ vim.api.nvim_create_autocmd("FileType", {
 ----------------------------------------------------------------------
 --                           Python files                           --
 ----------------------------------------------------------------------
--- local function filetypes_python() vim.api.nvim_win_set_option(0, "colorcolumn", "80") end
 local function filetypes_python()
     vim.opt_local.colorcolumn = "80"
 end
