@@ -173,7 +173,7 @@ return require("packer").startup(function(use)
 
     use {
         "jvgrootveld/telescope-zoxide",
-        requires = { "nvim-lua/popup.nvim" }
+        requires = { "nvim-lua/popup.nvim", "nvim-telescope/telescope.nvim" }
     }
 
     ------------------------------------------------------------------------------------------
