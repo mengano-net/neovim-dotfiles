@@ -1,332 +1,332 @@
 -- Git clone and install packer if it's not installed already
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({
-      'git', 'clone', '--depth', '1',
-      'https://github.com/wbthomason/packer.nvim', install_path
-    })
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({
+            'git', 'clone', '--depth', '1',
+            'https://github.com/wbthomason/packer.nvim', install_path
+        })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
 
 -- Have packer use a float window instead of a vertical split
 require("packer").init({
-  display = {
-    open_fn = function() return require("packer.util").float({ border = "rounded" }) end,
-  },
+    display = {
+        open_fn = function() return require("packer.util").float({ border = "rounded" }) end,
+    },
 })
 
 return require("packer").startup(function(use)
-  -- Packer can manage itself
-  use("wbthomason/packer.nvim")
+    -- Packer can manage itself
+    use("wbthomason/packer.nvim")
 
-  ------------------------------------------------------------------------------------------
-  --                                     Colorschemes                                     --
-  ------------------------------------------------------------------------------------------
-  use({ "rose-pine/neovim" })
+    ------------------------------------------------------------------------------------------
+    --                                     Colorschemes                                     --
+    ------------------------------------------------------------------------------------------
+    use({ "rose-pine/neovim" })
 
-  use({ "folke/tokyonight.nvim", branch = "main" })
+    use({ "folke/tokyonight.nvim", branch = "main" })
 
-  use({ "mengano-net/darkplus.nvim", branch = "develop" })
+    use({ "mengano-net/darkplus.nvim", branch = "develop" })
 
-  use({
-    "mcchrish/zenbones.nvim",
-    requires = { "rktjmp/lush.nvim" },
-  })
+    use({
+        "mcchrish/zenbones.nvim",
+        requires = { "rktjmp/lush.nvim" },
+    })
 
-  use({ "shaunsingh/nord.nvim" })
+    use({ "shaunsingh/nord.nvim" })
 
-  use({ "catppuccin/nvim" })
+    use({ "catppuccin/nvim" })
 
-  use({
-    "mengano-net/cubandusk.nvim",
-    branch = "palette",
-  })
+    use({
+        "mengano-net/cubandusk.nvim",
+        branch = "palette",
+    })
 
-  use { "cocopon/iceberg.vim" }
+    use { "cocopon/iceberg.vim" }
 
-  ------------------------------------------------------------------------------------------
-  --                          Plugins making Neovim a better IDE                          --
-  ------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------
+    --                          Plugins making Neovim a better IDE                          --
+    ------------------------------------------------------------------------------------------
 
-  use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
+    use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
-  use({
-    "numToStr/Comment.nvim",
-    config = {
-      "require('Comment').setup{ignore = '^$'}",
-    },
-  })
-
-  use({
-    "norcalli/nvim-colorizer.lua",
-    config = "require('colorizer').setup()",
-  })
-
-  use({
-    "ntpeters/vim-better-whitespace",
-    config = {
-      vim.cmd(
-        "let g:better_whitespace_filetypes_blacklist=['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'toggleterm']"
-      ),
-    },
-  })
-
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("indent_blankline").setup({
-        buftype_exclude = { "terminal", "help", "nofile", "NvimTree" },
-        filetype_exclude = { "packer", "help", "NvimTree" },
-        show_current_context_start = true,
-        show_end_of_line = true,
-        show_icons = {
-          git = 1,
+    use({
+        "numToStr/Comment.nvim",
+        config = {
+            "require('Comment').setup{ignore = '^$'}",
         },
-      })
-    end,
-  })
+    })
 
-  use({
-    "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    config = "require('lualine-config')",
-  })
+    use({
+        "norcalli/nvim-colorizer.lua",
+        config = "require('colorizer').setup()",
+    })
 
-  use("tpope/vim-fugitive")
-
-  use({
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup({
-        signs = {
-          add = {
-            hl = "GitSignsAdd",
-            text = "▎",
-            numhl = "GitSignsAddNr",
-            linehl = "GitSignsAddLn",
-          },
-          change = {
-            hl = "GitSignsChange",
-            text = "▎",
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
-          },
+    use({
+        "ntpeters/vim-better-whitespace",
+        config = {
+            vim.cmd(
+                "let g:better_whitespace_filetypes_blacklist=['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive', 'toggleterm']"
+            ),
         },
-        attach_to_untracked = true,
-      })
-    end,
-    requires = { "nvim-lua/plenary.nvim" },
-  })
+    })
 
-  -- See https://github.com/ellisonleao/glow.nvim/issues/82
-  use({
-    "ellisonleao/glow.nvim",
-    branch = "main",
-    config = function()
-      require("glow").setup({
-        border = "rounded",
-        width = 120,
-      })
-    end,
-  })
+    use({
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("indent_blankline").setup({
+                buftype_exclude = { "terminal", "help", "nofile", "NvimTree" },
+                filetype_exclude = { "packer", "help", "NvimTree" },
+                show_current_context_start = true,
+                show_end_of_line = true,
+                show_icons = {
+                    git = 1,
+                },
+            })
+        end,
+    })
 
-  use({
-    "davidgranstrom/nvim-markdown-preview",
-  })
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        config = "require('lualine-config')",
+    })
 
-  use({
-    "kyazdani42/nvim-tree.lua",
-    requires = {
-      "kyazdani42/nvim-web-devicons",
-    },
-    config = {
-      "require('nvimtree-config')",
-    },
-  })
+    use("tpope/vim-fugitive")
 
-  use({ "rcarriga/nvim-notify", config = "require('notify-extensions')" })
+    use({
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup({
+                signs = {
+                    add = {
+                        hl = "GitSignsAdd",
+                        text = "▎",
+                        numhl = "GitSignsAddNr",
+                        linehl = "GitSignsAddLn",
+                    },
+                    change = {
+                        hl = "GitSignsChange",
+                        text = "▎",
+                        numhl = "GitSignsChangeNr",
+                        linehl = "GitSignsChangeLn",
+                    },
+                },
+                attach_to_untracked = true,
+            })
+        end,
+        requires = { "nvim-lua/plenary.nvim" },
+    })
 
-  use({
-    "akinsho/toggleterm.nvim",
-    tag = "v2.*",
-    config = "require('toggleterm-config')",
-  })
+    -- See https://github.com/ellisonleao/glow.nvim/issues/82
+    use({
+        "ellisonleao/glow.nvim",
+        branch = "main",
+        config = function()
+            require("glow").setup({
+                border = "rounded",
+                width = 120,
+            })
+        end,
+    })
 
-  use({
-    "nvim-telescope/telescope.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = { "require('telescope-config')", "require('user.telescope-extensions')" },
-  })
+    use({
+        "davidgranstrom/nvim-markdown-preview",
+    })
 
-  use {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    requires = { "nvim-telescope/telescope.nvim" },
-    run = 'make'
-  }
-
-  use {
-    "jvgrootveld/telescope-zoxide",
-    requires = { "nvim-lua/popup.nvim" }
-  }
-
-  ------------------------------------------------------------------------------------------
-  --            Whichkey plugin calls MANY keymaps with functionality provided            --
-  --         by other plugins, so do not run until after all those other plugins          --
-  --                            are installed and configured.                             --
-  ------------------------------------------------------------------------------------------
-  use({
-    "folke/which-key.nvim",
-    config = function()
-      require("whichkey-config")
-    end,
-  })
-
-  use({
-    "kylechui/nvim-surround",
-    config = function() require("nvim-surround").setup({}) end,
-  })
-
-  use({
-    "RRethy/vim-illuminate",
-    config = function() require("illuminate").configure() end,
-  })
-
-  use {
-    's1n7ax/nvim-comment-frame',
-    requires = { 'nvim-treesitter' },
-    config = function()
-      require('nvim-comment-frame').setup({
-        disable_default_keymap = true,
-        frame_width = 90,
-        line_wrap_len = 80,
-        languages = {
-          python = {
-            frame_width = 61,
-            line_wrap_len = 52,
-            start_str = '# --',
-            end_str = '-- #',
-          },
-        }
-      })
-    end
-  }
-
-  use {
-    "fgheng/winbar.nvim",
-    config = function()
-      require('winbar').setup({
-        colors = {
-          path = '#7aa2f7',
-          file_name = '#c946fd',
-          symbols = '#c946fd',
+    use({
+        "kyazdani42/nvim-tree.lua",
+        requires = {
+            "kyazdani42/nvim-web-devicons",
         },
-        enabled = true,
-        exclude_filetype = {
-          'help',
-          'startify',
-          'dashboard',
-          'fugitive',
-          'gitcommit',
-          'packer',
-          'neogitstatus',
-          'NvimTree',
-          'Trouble',
-          'alpha',
-          'lir',
-          'Outline',
-          'spectre_panel',
-          'toggleterm',
-          'qf',
-          'glowpreview',
+        config = {
+            "require('nvimtree-config')",
         },
-      })
-    end
-  }
+    })
 
-  use { "j-hui/fidget.nvim", config = function() require('fidget').setup() end }
+    use({ "rcarriga/nvim-notify", config = "require('notify-extensions')" })
 
-  use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }
+    use({
+        "akinsho/toggleterm.nvim",
+        tag = "v2.*",
+        config = "require('toggleterm-config')",
+    })
 
-  use {
-    'jinh0/eyeliner.nvim',
-    config = function()
-      require 'eyeliner'.setup {
-        highlight_on_key = true
-      }
-    end
-  }
+    use({
+        "nvim-telescope/telescope.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = { "require('telescope-config')", "require('user.telescope-extensions')" },
+    })
 
-  ----------------------------------------------------------------------------------------
-  -- Language servers, code formatting, autocompletion
-  ----------------------------------------------------------------------------------------
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = ": TSUpdate",
-    config = "require('treesitter-config')",
-    -- This is now a treesitter module, it is NOT a standalone plugin
-    requires = "p00f/nvim-ts-rainbow",
-  })
-
-  -- This is now a treesitter module, it is NOT a standalone plugin
-  use({
-    "nvim-treesitter/playground",
-    requires = "nvim-treesitter/nvim-treesitter",
-  })
-
-
-  use({
-    "hrsh7th/nvim-cmp",
-    config = "require('cmp-config')",
-  })
-
-  use({
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    config = {
-      require("mason").setup(),
-      require("mason-lspconfig").setup({
-        ensure_installed = { "sumneko_lua", "bashls", "yamlls", "pyright" },
-      })
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        requires = { "nvim-telescope/telescope.nvim" },
+        run = 'make'
     }
-  })
 
-  use("hrsh7th/cmp-nvim-lsp")
+    use {
+        "jvgrootveld/telescope-zoxide",
+        requires = { "nvim-lua/popup.nvim" }
+    }
 
-  use("hrsh7th/cmp-buffer")
+    ------------------------------------------------------------------------------------------
+    --            Whichkey plugin calls MANY keymaps with functionality provided            --
+    --         by other plugins, so do not run until after all those other plugins          --
+    --                            are installed and configured.                             --
+    ------------------------------------------------------------------------------------------
+    use({
+        "folke/which-key.nvim",
+        config = function()
+            require("whichkey-config")
+        end,
+    })
 
-  use("hrsh7th/cmp-path")
+    use({
+        "kylechui/nvim-surround",
+        config = function() require("nvim-surround").setup({}) end,
+    })
 
-  use("hrsh7th/cmp-cmdline")
+    use({
+        "RRethy/vim-illuminate",
+        config = function() require("illuminate").configure() end,
+    })
 
-  use("hrsh7th/cmp-vsnip")
+    use {
+        's1n7ax/nvim-comment-frame',
+        requires = { 'nvim-treesitter' },
+        config = function()
+            require('nvim-comment-frame').setup({
+                disable_default_keymap = true,
+                frame_width = 90,
+                line_wrap_len = 80,
+                languages = {
+                    python = {
+                        frame_width = 61,
+                        line_wrap_len = 52,
+                        start_str = '# --',
+                        end_str = '-- #',
+                    },
+                }
+            })
+        end
+    }
 
-  use("hrsh7th/cmp-nvim-lsp-signature-help")
+    use {
+        "fgheng/winbar.nvim",
+        config = function()
+            require('winbar').setup({
+                colors = {
+                    path = '#7aa2f7',
+                    file_name = '#c946fd',
+                    symbols = '#c946fd',
+                },
+                enabled = true,
+                exclude_filetype = {
+                    'help',
+                    'startify',
+                    'dashboard',
+                    'fugitive',
+                    'gitcommit',
+                    'packer',
+                    'neogitstatus',
+                    'NvimTree',
+                    'Trouble',
+                    'alpha',
+                    'lir',
+                    'Outline',
+                    'spectre_panel',
+                    'toggleterm',
+                    'qf',
+                    'glowpreview',
+                },
+            })
+        end
+    }
 
-  use("hrsh7th/cmp-nvim-lua")
+    use { "j-hui/fidget.nvim", config = function() require('fidget').setup() end }
 
-  use({
-    "hrsh7th/vim-vsnip",
-    config = function() require("vim-vsnip-config") end,
-  })
+    use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }
 
-  use({ "onsails/lspkind-nvim" })
+    use {
+        'jinh0/eyeliner.nvim',
+        config = function()
+            require 'eyeliner'.setup {
+                highlight_on_key = true
+            }
+        end
+    }
 
-  use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
+    ----------------------------------------------------------------------------------------
+    -- Language servers, code formatting, autocompletion
+    ----------------------------------------------------------------------------------------
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = ": TSUpdate",
+        config = "require('treesitter-config')",
+        -- This is now a treesitter module, it is NOT a standalone plugin
+        requires = "p00f/nvim-ts-rainbow",
+    })
 
-  use({
-    "lewis6991/spellsitter.nvim",
-    config = function() require("spellsitter").setup() end,
-  })
+    -- This is now a treesitter module, it is NOT a standalone plugin
+    use({
+        "nvim-treesitter/playground",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then require("packer").sync() end
+
+    use({
+        "hrsh7th/nvim-cmp",
+        config = "require('cmp-config')",
+    })
+
+    use({
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+        config = {
+            require("mason").setup(),
+            require("mason-lspconfig").setup({
+                ensure_installed = { "sumneko_lua", "bashls", "yamlls", "pyright" },
+            })
+        }
+    })
+
+    use("hrsh7th/cmp-nvim-lsp")
+
+    use("hrsh7th/cmp-buffer")
+
+    use("hrsh7th/cmp-path")
+
+    use("hrsh7th/cmp-cmdline")
+
+    use("hrsh7th/cmp-vsnip")
+
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
+
+    use("hrsh7th/cmp-nvim-lua")
+
+    use({
+        "hrsh7th/vim-vsnip",
+        config = function() require("vim-vsnip-config") end,
+    })
+
+    use({ "onsails/lspkind-nvim" })
+
+    use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
+
+    use({
+        "lewis6991/spellsitter.nvim",
+        config = function() require("spellsitter").setup() end,
+    })
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then require("packer").sync() end
 end)
