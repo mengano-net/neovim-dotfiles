@@ -63,7 +63,6 @@ local documentation_file_options = function()
     vim.opt_local.spell = true
     vim.bo.fo = "awtq"
     vim.opt_local.linebreak = true
-    vim.api.nvim_set_hl(0, 'IlluminatedWordText', { underline = false })
 end
 
 vim.api.nvim_create_autocmd("BufEnter", {

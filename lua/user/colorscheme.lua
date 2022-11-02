@@ -63,6 +63,7 @@ if colorscheme == "catppuccin" then
                     DiffAdd = { fg = macchiato.sapphire, bg = "#1e2030" },
                     DiffChange = { fg = macchiato.pink, bg = "#1e2030" },
                     DiffDelete = { fg = macchiato.red, bg = "#1e2030" },
+                    IlluminatedWordText = { bg = "#494d64", underline = false }
                 }
             end
         },
