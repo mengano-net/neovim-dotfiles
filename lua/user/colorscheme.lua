@@ -42,18 +42,37 @@ if colorscheme == "rose-pine" then
 end
 
 if colorscheme == "catppuccin" then
-    vim.cmd "let g:catppuccin_flavour = 'macchiato'"
     require("catppuccin").setup({
+        flavour = "macchiato", -- latte, frappe, macchiato, mocha
         styles = {
-            comments = {},
+            loops = {},
+            functions = {},
+            keywords = {},
+            strings = {},
+            numbers = {},
+            booleans = {},
+            properties = {},
+            operators = {},
             conditionals = {},
+            types = {},
+            variables = {},
         },
         highlight_overrides = {
             macchiato = function(macchiato)
                 return {
-                    DiffAdd = { fg = macchiato.overlay1 },
+                    DiffAdd = { fg = macchiato.sapphire, bg = "#1e2030" },
+                    DiffChange = { fg = macchiato.pink, bg = "#1e2030" },
+                    DiffDelete = { fg = macchiato.red, bg = "#1e2030" },
                 }
-            end,
+            end
+        },
+        integrations = {
+            cmp = true,
+            gitsigns = true,
+            nvimtree = true,
+            telescope = true,
+            treesitter = true,
+            -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
     })
 end
