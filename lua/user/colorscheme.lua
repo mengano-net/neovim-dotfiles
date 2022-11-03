@@ -23,13 +23,6 @@ if colorscheme == "tokyonight" then
     })
 end
 
-if colorscheme == "nord" then
-    vim.g.nord_contrast = false
-    vim.g.nord_borders = true
-    vim.g.nord_disable_background = true
-    vim.g.nord_italic = false
-end
-
 if colorscheme == "rose-pine" then
     require('rose-pine').setup({
         dark_variant = 'moon',
@@ -60,9 +53,10 @@ if colorscheme == "catppuccin" then
         highlight_overrides = {
             macchiato = function(macchiato)
                 return {
-                    DiffAdd = { fg = macchiato.sapphire, bg = "#1e2030" },
-                    DiffChange = { fg = macchiato.pink, bg = "#1e2030" },
-                    DiffDelete = { fg = macchiato.red, bg = "#1e2030" },
+                    -- DiffAdd = { fg = "#1fff0f", bg = "#24273A" },
+                    DiffAdd = { fg = macchiato.green, bg = "#24273A" },
+                    DiffChange = { fg = "Pink", bg = "#24273A" },
+                    DiffDelete = { fg = "Red", bg = "#24273A" },
                     IlluminatedWordText = { bg = "#494d64", underline = false }
                 }
             end
@@ -73,7 +67,7 @@ if colorscheme == "catppuccin" then
             nvimtree = true,
             telescope = true,
             treesitter = true,
-            -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+            -- For more plugins integrations see (https://github.com/catppuccin/nvim#integrations)
         },
     })
 end
