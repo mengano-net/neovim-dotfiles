@@ -1,7 +1,6 @@
 -- local colorscheme = "darkplus"
 -- local colorscheme = "rose-pine"
 -- local colorscheme = "tokyonight"
--- local colorscheme = "nord"
 local colorscheme = "catppuccin"
 -- local colorscheme = "cubandusk"
 
@@ -35,8 +34,9 @@ if colorscheme == "rose-pine" then
 end
 
 if colorscheme == "catppuccin" then
+    -- vim.api.nvim_set_hl(0, lualine_b_diff_removed, {})
     require("catppuccin").setup({
-        flavour = "macchiato", -- latte, frappe, macchiato, mocha
+        flavour = "macchiato", -- latte, frappe, macchiato, mocha.
         styles = {
             loops = {},
             functions = {},
@@ -53,10 +53,12 @@ if colorscheme == "catppuccin" then
         highlight_overrides = {
             macchiato = function(macchiato)
                 return {
-                    -- DiffAdd = { fg = "#1fff0f", bg = "#24273A" },
                     DiffAdd = { fg = macchiato.green, bg = "#24273A" },
+                    DiffSignsAdd = { fg = macchiato.green, bg = "#24273A" },
                     DiffChange = { fg = "Pink", bg = "#24273A" },
-                    DiffDelete = { fg = "Red", bg = "#24273A" },
+                    GitSignsChange = { fg = "Pink", bg = "#24273A" },
+                    DiffDelete = { fg = "#D0312D", bg = "#24273A" },
+                    GitSignsDelete = { fg = "#D0312D", bg = "#24273A" },
                     IlluminatedWordText = { bg = "#494d64", underline = false }
                 }
             end
