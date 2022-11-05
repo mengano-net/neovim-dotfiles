@@ -54,11 +54,6 @@ return require("packer").startup(function(use)
 
     use({ "catppuccin/nvim" })
 
-    use({
-        "mengano-net/cubandusk.nvim",
-        branch = "palette",
-    })
-
     use { "cocopon/iceberg.vim" }
 
     ------------------------------------------------------------------------------------------
