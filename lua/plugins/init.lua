@@ -144,6 +144,9 @@ return require("packer").startup(function(use)
 
     use({
         "davidgranstrom/nvim-markdown-preview",
+        config = {
+            function() vim.g.nvim_markdown_preview_theme = 'solarized-dark' end
+        }
     })
 
     use({
