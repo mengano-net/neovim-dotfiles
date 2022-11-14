@@ -1,6 +1,5 @@
 -- Exit if can't load module(s)
 local cmp_status_ok, cmp = pcall(require, "cmp")
-local macchiato          = require("catppuccin.palettes.macchiato")
 if not cmp_status_ok then
     print("Couldn't require module 'cmp'.")
     return
@@ -51,6 +50,8 @@ lspkind.init({
 local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
 local map_opts = { noremap = true, silent = true }
+local macchiato = require("catppuccin.palettes.macchiato")
+local mocha = require("catppuccin.palettes.mocha")
 
 -- Functions to implement autocomplete on the custom <Tab> and -- <S-Tab> mappings below
 local has_words_before = function()
@@ -112,38 +113,36 @@ cmp.setup({
 
     -- Catppuccin's macchiato color palette, for custom color palettes for cmp window
     -- You get it by running this command: lua P(require("catppuccin.palettes").get_palette("macchiato"))
-    macchiato = {
-        base = "#1E1E2E",
-        blue = "#89B4FA",
-        crust = "#11111B",
-        flamingo = "#F2CDCD",
-        green = "#A6E3A1",
-        lavender = "#B4BEFE",
-        mantle = "#181825",
-        maroon = "#EBA0AC",
-        mauve = "#CBA6F7",
-        overlay0 = "#6C7086",
-        overlay1 = "#7F849C",
-        overlay2 = "#9399B2",
-        peach = "#FAB387",
-        pink = "#F5C2E7",
-        red = "#F38BA8",
-        rosewater = "#F5E0DC",
-        sapphire = "#74C7EC",
-        sky = "#89DCEB",
-        subtext0 = "#A6ADC8",
-        subtext1 = "#BAC2DE",
-        surface0 = "#313244",
-        surface1 = "#45475A",
-        surface2 = "#585B70",
-        teal = "#94E2D5",
-        text = "#CDD6F4",
-        yellow = "#F9E2AF"
-    },
-
-    vim.api.nvim_set_hl(0, "CmpWindowBackground", { bg = macchiato.base }),
+    -- Here is Catppuccin's Mocha palette:
+    --[[ base = "#1E1E2E",
+      blue = "#89B4FA",
+      crust = "#11111B",
+      flamingo = "#F2CDCD",
+      green = "#A6E3A1",
+      lavender = "#B4BEFE",
+      mantle = "#181825",
+      maroon = "#EBA0AC",
+      mauve = "#CBA6F7",
+      overlay0 = "#6C7086",
+      overlay1 = "#7F849C",
+      overlay2 = "#9399B2",
+      peach = "#FAB387",
+      pink = "#F5C2E7",
+      red = "#F38BA8",
+      rosewater = "#F5E0DC",
+      sapphire = "#74C7EC",
+      sky = "#89DCEB",
+      subtext0 = "#A6ADC8",
+      subtext1 = "#BAC2DE",
+      surface0 = "#313244",
+      surface1 = "#45475A",
+      surface2 = "#585B70",
+      teal = "#94E2D5",
+      text = "#CDD6F4",
+      yellow = "#F9E2AF" ]]
+    vim.api.nvim_set_hl(0, "CmpWindowBackground", { bg = mocha.base }),
     vim.api.nvim_set_hl(0, "CmpWindowCursorLine", { fg = macchiato.peach, bg = macchiato.overlay0 }),
-    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.overlay0 }),
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.base }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = macchiato.yellow, bg = macchiato.overlay0 }),
 
     window = {
