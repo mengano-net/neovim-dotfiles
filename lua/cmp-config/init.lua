@@ -141,9 +141,9 @@ cmp.setup({
       text = "#CDD6F4",
       yellow = "#F9E2AF" ]]
     vim.api.nvim_set_hl(0, "CmpWindowBackground", { bg = mocha.base }),
-    vim.api.nvim_set_hl(0, "CmpWindowCursorLine", { fg = macchiato.peach, bg = macchiato.overlay0 }),
+    vim.api.nvim_set_hl(0, "CmpWindowCursorLine", { fg = macchiato.lavender, bg = mocha.surface0 }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.base }),
-    vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = macchiato.yellow, bg = macchiato.overlay0 }),
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = macchiato.yellow, bg = mocha.overlay0 }),
 
     window = {
         completion = cmp.config.window.bordered({
