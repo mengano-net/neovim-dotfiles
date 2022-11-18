@@ -3,6 +3,9 @@ local opts = { silent = true }
 
 keymap("i", "jk", "<Esc>", opts)
 
+keymap("n", "<Tab>", ":bnext<CR>", { silent = true })
+keymap("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
+
 keymap("n", "<leader>p", '"0p', opts) -- paste yanked, not deleted, not system copied
 
 -- While on visual mode, this allows selections to remain selected for aditional actions without

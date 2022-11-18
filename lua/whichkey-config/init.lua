@@ -7,22 +7,22 @@ if not status_ok then return end
 
 local opts = {
   prefix = "<leader>",
-  mode = "n", -- NORMAL mode
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  mode = "n",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
 }
 
 local setup = {
   plugins = {
     spelling = {
-      enabled = true, -- show WhichKey when pressing z= to select spelling suggestions
+      enabled = true,
       suggestions = 20,
     },
   },
   presets = {
-    operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+    operators = true, -- adds operators like d, y, registers them for motion, completions, etc
   },
   window = {
     border = "single", -- none, single, double, shadow
@@ -33,78 +33,42 @@ local setup = {
   layout = {
     align = "center", -- align columns left, center or right
   },
-  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
+  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
 }
-
--- functions to toggle terminal windows, one floating, one horizontal
-local Terminal = require("toggleterm.terminal").Terminal
-local toggle_float = function()
-  local float = Terminal:new({ direction = "float" })
-  return float:toggle()
-end
-local toggle_horizontal = function()
-  local float = Terminal:new({ direction = "horizontal" })
-  return float:toggle()
-end
 
 -- Clearing some builtin maps that I will steal for my own.
 keymap("", "s", "<Nop>", keymap_opts)
 keymap("", "S", "<Nop>", keymap_opts)
 
 local mappings = {
-  ["b"] = {
+  b = {
     name = "Buffers",
     l = {
-      "<cmd>lua require('telescope.builtin').buffers{previewer = false, layout_config = {width = 0.5, height = 0.5}}<cr>",
-      "List",
-    },
-    p = {
-      "<cmd> :BufferLinePick<cr>",
-      "Pick Buffer",
-    },
-    ["m"] = {
-      name = "Move Buffer Line",
-      ["r"] = {
-        "<cmd>BufferLineMoveNext<cr>",
-        "Move buffer tab right",
-      },
-      ["l"] = {
-        "<cmd>BufferLineMovePrev<cr>",
-        "Move buffer tab left",
-      },
+      "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false,prompt_title='Open Buffers'}))<cr>",
+      "List Opened Buffers",
     },
   },
-  ["e"] = {
+  e = {
     name = "Edit",
     h = { "<cmd>nohl<cr>", "No Highlights" },
     c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
   },
-  ["f"] = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find Files" },
-  ["F"] = {
-    name = "Find",
-    ["f"] = {
-      ":lua require('user.telescope-extensions').find_files_in_path()<cr>",
-      "Files in directory",
-    },
-    r = { ":%s///g<left><left><left>", "Replace Globally" },
-    c = { ":%s///gc<left><left><left>", "Replace / Confirm" },
-  },
-  ["g"] = {
+  f = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find files" },
+  F = { "<cmd>lua require('user.telescope-extensions').find_files_in_path()<cr>", "Find files in path..." },
+  g = {
     name = "Goto",
     j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
     k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
-    ["J"] = {
-      ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
-      "Jump Points",
+    z = {
+      "<cmd> lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_ivy{})<cr>",
+      "Zoxide List"
     },
   },
-  ["G"] = {
+  G = {
     name = "Git",
     b = { "<cmd>lua require('user.telescope-extensions').git_branches()<cr>", "Branches" },
-    -- B = { "<cmd>lua require('gitsigns').blame_line{full=true}<cr>", "Blame" },
     B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
     c = { "<cmd>Git commit -s<cr>", "Commit" },
-    -- h = {},
     l = { "<cmd>lua require('user.telescope-extensions').git_commits()<cr>", "List commits" },
     s = { "<cmd>Ge:<cr>", "Status" },
     S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
@@ -112,7 +76,7 @@ local mappings = {
     P = { "<cmd>Git push<cr>", "Push" },
     r = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
   },
-  ["h"] = {
+  h = {
     name = "Hunks",
     b = { "<cmd>lua require'gitsigns'.blame_line{full=false}<cr>", "Blame Line - Short" },
     B = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line - Short" },
@@ -131,53 +95,57 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-  ["l"] = {
+  l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     f = { "<cmd>lua vim.lsp.buf.format{async=false} vim.diagnostic.enable()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     m = { "<cmd>Mason<cr>", "List LSP servers installed." },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    s = {
+      "<cmd> lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())<cr>",
+      "Document Symbols"
+    },
   },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["s"] = {
+  s = {
     name = "Search",
-    ["g"] = {
-      -- ":lua require('telescope.builtin').live_grep({require('telescope.themes').get_ivy(), search_dirs = {_path})<cr>",
-      ":lua require('telescope.builtin').live_grep({require('telescope.themes').get_ivy()})<cr>",
+    g = {
+      ":lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy())<cr>",
       "Live Grep",
     },
-    ["t"] = {
+    t = {
       ":lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
       "Help Tags",
     },
-    ["c"] = {
+    c = {
       ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
       "Commands",
     },
-    ["G"] = {
+    j = {
+      ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
+      "Jump Points",
+    },
+    G = {
       "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>",
       "Grep within grep",
     },
-    ["m"] = {
+    m = {
       ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
       "Man Pages",
     },
-    ["r"] = {
+    r = {
       ":lua require('telescope.builtin').oldfiles(require('telescope.themes').get_ivy())<cr>",
       "Recent Files",
     },
-    -- t = {function() print("bar") end, "Foobar"}
   },
-  ["t"] = {
+  t = {
     name = "Terminal",
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
   },
-  ["T"] = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
-  ["x"] = { ":bd!<cr>", "Close buffer" },
-  ["w"] = { ":w!<cr>", "Save buffer" },
+  T = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
+  x = { ":bd!<cr>", "Destroy buffer" },
+  w = { ":w!<cr>", "Save buffer" },
 }
 
 which_key.setup(setup)

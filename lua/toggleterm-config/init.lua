@@ -12,6 +12,18 @@ local term_size = function(term)
 end
 
 toggleterm.setup({
+  close_on_exit = true,
+  float_opts = {
+    border = "curved",
+    winblend = 0,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
+    -- width = vim.o.columns * 0.9,
+    -- height = vim.o.lines * 0.5,
+  },
+  hide_numbers = true, -- hide the number column in toggleterm buffers
   open_mapping = [[<c-\>]],
   shade_filetypes = {},
   shade_terminals = true,
@@ -21,15 +33,4 @@ toggleterm.setup({
   -- direction = 'horizontal',
   shell = "zsh",
   size = term_size,
-  close_on_exit = true,
-  float_opts = {
-    border = "double",
-    winblend = 0,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    },
-    -- width = vim.o.columns * 0.9,
-    -- height = vim.o.lines * 0.5,
-  },
 })
