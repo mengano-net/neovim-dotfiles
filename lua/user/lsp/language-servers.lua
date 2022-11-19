@@ -6,7 +6,6 @@ local custom_lsp_attach = function(client, bufnr)
     --    See `:help formatexpr` for more information.
     buffer_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
-    -- Handlers
     --Debug code
     -- To print capabilities present on buffer, execute this:
     -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
