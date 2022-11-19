@@ -4,7 +4,7 @@ local map_opts = { noremap = true, silent = true }
 
 local custom_lsp_attach = function(client, bufnr)
     --    See `:help formatexpr` for more information.
-    buffer_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+    buffer_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})")
 
     --Debug code
     -- To print capabilities present on buffer, execute this:
@@ -13,7 +13,7 @@ local custom_lsp_attach = function(client, bufnr)
     vim.lsp.handlers["textDocument/hover"] =
     vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
     vim.lsp.handlers["textDocument/signature_help"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+    vim.lsp.with({ border = "rounded" }, vim.lsp.handlers.signature_help)
 
     buffer_map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", map_opts)
     buffer_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", map_opts)
@@ -37,6 +37,7 @@ local custom_lsp_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- lua-language-server
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
