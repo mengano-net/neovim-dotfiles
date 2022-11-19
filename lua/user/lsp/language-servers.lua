@@ -32,12 +32,15 @@ local custom_lsp_attach = function(client, bufnr)
     end
 
     local illuminate_status_ok, illuminate = pcall(require, "illuminate")
-    if not illuminate_status_ok then return end
-    illuminate.on_attach(client)
+    if illuminate_status_ok then illuminate.on_attach(client) end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if status_cmp_ok then
+    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+end
 
 -- lua-language-server
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
