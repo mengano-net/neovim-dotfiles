@@ -329,8 +329,6 @@ return require("packer").startup(function(use)
         config = function() require("vim-vsnip-config") end,
     })
 
-    use({ "onsails/lspkind-nvim" })
-
     use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 
     use({
