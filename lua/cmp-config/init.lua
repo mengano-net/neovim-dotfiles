@@ -1,45 +1,37 @@
 -- Exit if can't load module(s)
 local cmp_status_ok, cmp = pcall(require, "cmp")
+local entry              = require("cmp.entry")
 if not cmp_status_ok then
     print("Couldn't require module 'cmp'.")
     return
 end
 
-local status_ok, lspkind = pcall(require, "lspkind")
-if not status_ok then
-    print("Couldn't require module 'lspkind'.")
-    return
-end
-
-lspkind.init({
-    mode = "symbol_text",
-    symbol_map = {
-        Text = " ",
-        Method = " ",
-        -- Function = "ﬦ",
-        Function = "ƒ",
-        Constructor = " ",
-        Variable = " ",
-        Class = " ",
-        Interface = "ﰮ",
-        Module = " ",
-        Property = "",
-        Unit = "",
-        Value = " ",
-        Enum = "了",
-        Keyword = "",
-        Color = " ",
-        File = " ",
-        Folder = " ",
-        -- Folder = " ",
-        EnumMember = " ",
-        Constant = " ",
-        Reference = " ",
-        Snippet = " ",
-        Struct = " ",
-        Event = "",
-    },
-})
+local cmp_icons = {
+    Text = " ",
+    Method = " ",
+    -- Function = "ﬦ",
+    Function = "ƒ",
+    Constructor = " ",
+    Variable = " ",
+    Class = " ",
+    Interface = "ﰮ",
+    Module = " ",
+    Property = "",
+    Unit = "",
+    Value = " ",
+    Enum = "了",
+    Keyword = "",
+    Color = " ",
+    File = " ",
+    Folder = " ",
+    -- Folder = " ",
+    EnumMember = " ",
+    Constant = " ",
+    Reference = " ",
+    Snippet = " ",
+    Struct = " ",
+    Event = "",
+}
 
 local macchiato = require("catppuccin.palettes.macchiato")
 local mocha = require("catppuccin.palettes.mocha")
@@ -100,6 +92,7 @@ cmp.setup({
     vim.api.nvim_set_hl(0, "CmpWindowCursorLine", { fg = macchiato.lavender, bg = mocha.surface0 }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.base }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = macchiato.yellow, bg = mocha.overlay0 }),
+    vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = macchiato.lavender }),
 
     window = {
         completion = cmp.config.window.bordered({
@@ -116,7 +109,6 @@ cmp.setup({
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-Space>"] = cmp.mapping.complete(),
-        -- ['<C-e>'] = cmp.mapping.abort(),
         ["<C-e>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
@@ -144,26 +136,29 @@ cmp.setup({
 
     sources = cmp.config.sources({
         { name = "vsnip" }, -- For vsnip users.
-        { name = "buffer" },
-        { name = "nvim_lsp" },
         -- { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+    }, { -- If found in vsnips do not  duplicate it for the others
+        { name = "nvim_lsp" },
+        { name = "buffer" },
         { name = "path" },
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
+        { name = "cmdline" },
     }),
 
+    ------------------------------------------------------------------------------------------
+    --                     See this vedeo series on YouTube for details                     --
+    --                     https://www.youtube.com/watch?v=8zENSGqOk8w                      --
+    ------------------------------------------------------------------------------------------
     formatting = {
         fields = { "abbr", "kind", "menu" },
-        format = lspkind.cmp_format({
-            mode = "symbol_text",
-            menu = {
-                buffer = "[Buffer]",
-                nvim_lsp = "[LSP]",
-                nvim_lua = "[Lua]",
-            },
-        }),
+        format = function(entry, vim_item)
+            local source = entry.source.name
+            local kind = vim_item.kind
+            kind = (cmp_icons[kind] or "") .. " (" .. kind .. ")"
+            vim_item.menu = " [" .. source .. "]"
+            return vim_item
+        end
     },
 
     confirm_opts = {
