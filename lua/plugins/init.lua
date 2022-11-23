@@ -329,6 +329,16 @@ return require("packer").startup(function(use)
         config = function() require("vim-vsnip-config") end,
     })
 
+    use({
+        "L3MON4D3/LuaSnip",
+        tag = "v<CurrentMajor>.*",
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
+    })
+
+    use({ "rafamadriz/friendly-snippets", requires = "L3MON4D3/LuaSnip" })
+
     use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 
     use({
