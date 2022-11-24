@@ -1,9 +1,0 @@
-{
-  "Date": {
-    "prefix": ["date"],
-    "body": [
-      "$BLOCK_COMMENT_START $CURRENT_MONTH_NAME $CURRENT_DATE, $CURRENT_YEAR $BLOCK_COMMENT_END",
-      "${1}"
-    ]
-  }
-}

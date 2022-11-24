@@ -186,7 +186,7 @@ return require("packer").startup(function(use)
 
     ------------------------------------------------------------------------------------------
     --            Whichkey plugin calls MANY keymaps with functionality provided            --
-    --         by other plugins, so do not run until after all those other plugins          --
+    --         by other plugins. Do do NOT run until after all those other plugins          --
     --                            are installed and configured.                             --
     ------------------------------------------------------------------------------------------
     use({
@@ -318,18 +318,21 @@ return require("packer").startup(function(use)
 
     use("hrsh7th/cmp-cmdline")
 
-    use("hrsh7th/cmp-vsnip")
+    use({ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" })
 
     use("hrsh7th/cmp-nvim-lsp-signature-help")
 
     use("hrsh7th/cmp-nvim-lua")
 
     use({
-        "hrsh7th/vim-vsnip",
-        config = function() require("vim-vsnip-config") end,
+        "L3MON4D3/LuaSnip",
+        -- tag = "v<CurrentMajor>.*",
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
     })
 
-    use({ "onsails/lspkind-nvim" })
+    use({ "rafamadriz/friendly-snippets", requires = "L3MON4D3/LuaSnip" })
 
     use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 
