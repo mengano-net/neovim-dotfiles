@@ -11,8 +11,6 @@ if not snip_status_ok then
     return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
-
 local cmp_icons = {
     Text = " ",
     Method = " ",
@@ -38,6 +36,7 @@ local cmp_icons = {
     Snippet = " ",
     Struct = " ",
     Event = "",
+    Field = "ﴲ ",
 }
 
 local macchiato = require("catppuccin.palettes.macchiato")
@@ -54,12 +53,7 @@ end
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        end,
+        expand = function(args) luasnip.lsp_expand(args.body) end,
     },
 
     -- Catppuccin's macchiato color palette, for custom color palettes for cmp window
@@ -95,12 +89,13 @@ cmp.setup({
     vim.api.nvim_set_hl(0, "CmpWindowCursorLine", { fg = macchiato.lavender, bg = mocha.surface0 }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.base }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = macchiato.yellow, bg = mocha.overlay0 }),
-    vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = macchiato.lavender }),
+    vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = macchiato.maroon }),
 
     window = {
         completion = cmp.config.window.bordered({
             border = "shadow",
             winhighlight = "Normal:CmpWindowBackground,Floatborder:Pmenu,CursorLine:CmpWindowCursorLine,Search:None",
+            col_offset = -3,
         }),
         documentation = cmp.config.window.bordered({
             border = "shadow",
@@ -159,12 +154,12 @@ cmp.setup({
     --                     https://www.youtube.com/watch?v=8zENSGqOk8w                      --
     ------------------------------------------------------------------------------------------
     formatting = {
-        fields = { "abbr", "kind", "menu" },
+        -- fields = { "abbr", "kind", "menu" },
+        fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-            local source = entry.source.name
-            local kind = vim_item.kind
-            kind = (cmp_icons[kind] or "") .. " (" .. kind .. ")"
-            vim_item.menu = " [" .. source .. "]"
+            -- vim_item.kind = (cmp_icons[vim_item.kind] or "") .. " (" .. vim_item.kind .. ")"
+            vim_item.kind = (cmp_icons[vim_item.kind] or "")
+            vim_item.menu = " [" .. entry.source.name .. "]"
             return vim_item
         end
     },
