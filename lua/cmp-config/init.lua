@@ -55,8 +55,8 @@ end
 ---@cast cmp -?
 -- See https://github.com/sumneko/lua-language-server/issues/1487
 cmp.setup({
+    -- disable completion in comments
     enabled = function()
-        -- disable completion in comments
         local context = require 'cmp.config.context'
         -- keep command mode completion enabled when cursor is in a comment
         if vim.api.nvim_get_mode().mode == 'c' then return true
