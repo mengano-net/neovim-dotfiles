@@ -98,17 +98,20 @@ local mappings = {
     l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
-        D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
+        -- d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
+        d = { "<cmd>Glance definitions<cr>", "Definition" },
+        -- D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
         f = { "<cmd>lua vim.lsp.buf.format{async=false} vim.diagnostic.enable()<cr>", "Format" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         m = { "<cmd>Mason<cr>", "List LSP servers installed." },
-        r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+        -- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+        r = { "<cmd>Glance references<cr>", "References" },
         s = {
             "<cmd> lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())<cr>",
             "Document Symbols"
         },
+        t = { "<cmd>Glance type_definitions<cr>", "Type Definition" },
     },
     s = {
         name = "Search",
