@@ -112,7 +112,6 @@ function M.git_branches()
         }))
     else
         require("notify-extensions").notify("Warning", "Not a git working tree", "warn", 5000)
-        require("notify")("test", 2)
         return
     end
 end
