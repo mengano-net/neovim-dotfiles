@@ -118,18 +118,6 @@ return require("packer").startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     })
 
-    -- See https://github.com/ellisonleao/glow.nvim/issues/82
-    use({
-        "ellisonleao/glow.nvim",
-        branch = "main",
-        config = function()
-            require("glow").setup({
-                border = "rounded",
-                width = 120,
-            })
-        end,
-    })
-
     use({
         "davidgranstrom/nvim-markdown-preview",
         config = {
