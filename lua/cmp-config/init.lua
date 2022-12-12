@@ -158,8 +158,8 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'luasnip' }, -- For luasnip users.
         -- }, { -- If found in luasnip do not duplicate it for the others sources
-        { name = "nvim_lsp" },
         { name = "buffer" },
+        { name = "nvim_lsp" },
         { name = "path" },
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
@@ -185,6 +185,16 @@ cmp.setup({
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
+
+    sorting = {
+        comparators = {
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.length,
+            cmp.config.compare.locality,
+        }
+    },
+
 })
 
 -- Set configuration for specific filetype.
