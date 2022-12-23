@@ -324,6 +324,24 @@ return require("packer").startup(function(use)
         end,
     })
 
+    ------------------------------------------------------------------------------------------
+    --           These plugins are just for fun, not related to IDE configuration           --
+    ------------------------------------------------------------------------------------------
+    -- Packer
+    use({
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("chatgpt").setup({
+                -- optional configuration
+            })
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    })
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then require("packer").sync() end
