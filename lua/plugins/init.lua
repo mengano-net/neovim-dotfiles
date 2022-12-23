@@ -133,7 +133,7 @@ return require("packer").startup(function(use)
         },
     })
 
-    use({ "rcarriga/nvim-notify", config = "require('notify-extensions')" })
+    use({ "rcarriga/nvim-notify" })
 
     use({
         "akinsho/toggleterm.nvim",
