@@ -1,4 +1,3 @@
--- local colorscheme = "darkplus"
 -- local colorscheme = "rose-pine"
 -- local colorscheme = "tokyonight"
 local colorscheme = "catppuccin"
