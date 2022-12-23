@@ -29,8 +29,6 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     --                                     Colorschemes                                     --
     ------------------------------------------------------------------------------------------
-    use({ "rose-pine/neovim" })
-
     use({ "folke/tokyonight.nvim", branch = "main" })
 
     use({
@@ -39,8 +37,6 @@ return require("packer").startup(function(use)
     })
 
     use({ "catppuccin/nvim" })
-
-    use { "cocopon/iceberg.vim" }
 
     ------------------------------------------------------------------------------------------
     --                          Plugins making Neovim a better IDE                          --
