@@ -1,34 +1,33 @@
--- Diagnostics and their representation
--- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 vim.diagnostic.config({
     virtual_text = false,
-    signs = true,
+    -- signs = true,
     underline = true,
-    update_in_insert = true,
+    update_in_insert = false,
     float = {
-        border = "rounded",
+        border = "none",
         header = "",
         focusable = false,
         prefix = "",
         scope = "cursor",
-        severity_sort = false,
-        style = "minimal",
-        source = "always",
+        severity_sort = true,
+        source = "if_many",
+        spacing = 3,
     },
-    severity_sort = false,
+    severity_sort = true,
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    --[[ virtual_text = {
-    spacing = 5,
-    severity_limit = "Warning",
-    prefix = " ", -- Could be '■' '●', '▎', 'x',
-  }, ]]
-    update_in_insert = false,
-})
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+-- vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+--     --[[ virtual_text = {
+--     spacing = 5,
+--     severity_limit = "Warning",
+--     prefix = " ", -- Could be '■' '●', '▎', 'x',
+--   }, ]]
+--     update_in_insert = false,
+--     float = { scope = "line" }
+-- })
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
