@@ -31,11 +31,6 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     use({ "folke/tokyonight.nvim", branch = "main" })
 
-    use({
-        "mcchrish/zenbones.nvim",
-        requires = { "rktjmp/lush.nvim" },
-    })
-
     use({ "catppuccin/nvim" })
 
     ------------------------------------------------------------------------------------------
