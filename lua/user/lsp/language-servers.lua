@@ -1,6 +1,4 @@
-local buffer_map = vim.api.nvim_buf_set_keymap
 local buffer_option = vim.api.nvim_buf_set_option
-local map_opts = { noremap = true, silent = true }
 
 local custom_lsp_attach = function(client, bufnr)
     --    See `:help formatexpr` for more information.
@@ -14,14 +12,6 @@ local custom_lsp_attach = function(client, bufnr)
     vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
     vim.lsp.handlers["textDocument/signature_help"] =
     vim.lsp.with({ border = "rounded" }, vim.lsp.handlers.signature_help)
-
-    buffer_map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", map_opts)
-    buffer_map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", map_opts)
-    buffer_map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", map_opts)
-
-    if client.server_capabilities.textDocument_declaration then
-        buffer_map(bufnr, "n", "gD", "<cmd> lua vim.lsp.buf.declaration()<CR>", map_opts)
-    end
 
     if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd("BufWritePre", {

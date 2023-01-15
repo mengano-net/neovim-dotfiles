@@ -29,32 +29,9 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     --                                     Colorschemes                                     --
     ------------------------------------------------------------------------------------------
-    use({ "rose-pine/neovim" })
-
     use({ "folke/tokyonight.nvim", branch = "main" })
 
-    use({ "mengano-net/darkplus.nvim", branch = "develop" })
-
-    use({
-        "mcchrish/zenbones.nvim",
-        requires = { "rktjmp/lush.nvim" },
-    })
-
-    use({
-        "shaunsingh/nord.nvim",
-        config = function()
-            vim.g.nord_contrast = false
-            vim.g.nord_borders = true
-            vim.g.nord_disable_background = false
-            vim.g.nord_italic = false
-            vim.g.nord_uniform_diff_background = true
-            vim.g.nord_bold = false
-        end
-    })
-
     use({ "catppuccin/nvim" })
-
-    use { "cocopon/iceberg.vim" }
 
     ------------------------------------------------------------------------------------------
     --                          Plugins making Neovim a better IDE                          --
@@ -130,18 +107,6 @@ return require("packer").startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     })
 
-    -- See https://github.com/ellisonleao/glow.nvim/issues/82
-    use({
-        "ellisonleao/glow.nvim",
-        branch = "main",
-        config = function()
-            require("glow").setup({
-                border = "rounded",
-                width = 120,
-            })
-        end,
-    })
-
     use({
         "davidgranstrom/nvim-markdown-preview",
         config = {
@@ -159,7 +124,7 @@ return require("packer").startup(function(use)
         },
     })
 
-    use({ "rcarriga/nvim-notify", config = "require('notify-extensions')" })
+    use({ "rcarriga/nvim-notify" })
 
     use({
         "akinsho/toggleterm.nvim",
@@ -339,6 +304,33 @@ return require("packer").startup(function(use)
     use({
         "lewis6991/spellsitter.nvim",
         config = function() require("spellsitter").setup() end,
+    })
+
+    use({
+        "dnlhc/glance.nvim",
+        config = function()
+            require('glance').setup({
+                -- your configuration
+            })
+        end,
+    })
+
+    ------------------------------------------------------------------------------------------
+    --           These plugins are just for fun, not related to IDE configuration           --
+    ------------------------------------------------------------------------------------------
+    -- Packer
+    use({
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("chatgpt").setup({
+                -- optional configuration
+            })
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
     })
 
     -- Automatically set up your configuration after cloning packer.nvim

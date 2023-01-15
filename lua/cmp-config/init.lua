@@ -47,10 +47,25 @@ local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
+local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+end
 
 ---@cast cmp -?
 -- See https://github.com/sumneko/lua-language-server/issues/1487
 cmp.setup({
+    -- disable completion in comments
+    enabled = function()
+        local context = require 'cmp.config.context'
+        -- keep command mode completion enabled when cursor is in a comment
+        if vim.api.nvim_get_mode().mode == 'c' then return true
+        else
+            return not context.in_treesitter_capture("comment")
+                and not context.in_syntax_group("Comment")
+        end
+    end,
+
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args) luasnip.lsp_expand(args.body) end,
@@ -112,16 +127,18 @@ cmp.setup({
             c = cmp.mapping.close(),
         }),
         -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expendable() then
+            elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             elseif check_backspace() then
                 -- cmp.complete
+                fallback()
+            elseif has_words_before() then
                 fallback()
             else
                 fallback()
@@ -141,8 +158,8 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'luasnip' }, -- For luasnip users.
         -- }, { -- If found in luasnip do not duplicate it for the others sources
-        { name = "nvim_lsp" },
         { name = "buffer" },
+        { name = "nvim_lsp" },
         { name = "path" },
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
@@ -168,6 +185,16 @@ cmp.setup({
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
+
+    sorting = {
+        comparators = {
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.length,
+            cmp.config.compare.locality,
+        }
+    },
+
 })
 
 -- Set configuration for specific filetype.

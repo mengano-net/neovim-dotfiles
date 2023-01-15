@@ -1,8 +1,5 @@
--- local colorscheme = "darkplus"
--- local colorscheme = "rose-pine"
 -- local colorscheme = "tokyonight"
 local colorscheme = "catppuccin"
--- local colorscheme = "cubandusk"
 
 local status_ok, _ = pcall(require, colorscheme)
 if not status_ok then
@@ -57,8 +54,8 @@ if colorscheme == "catppuccin" then
                     DiffSignsAdd = { fg = macchiato.green, bg = "#24273A" },
                     DiffChange = { fg = "Pink", bg = "#24273A" },
                     GitSignsChange = { fg = "Pink", bg = "#24273A" },
-                    DiffDelete = { fg = "#D0312D", bg = "#24273A" },
-                    GitSignsDelete = { fg = "#D0312D", bg = "#24273A" },
+                    DiffDelete = { fg = "#B55A67", bg = "#24273A" },
+                    GitSignsDelete = { fg = "#B55A67", bg = "#24273A" },
                     IlluminatedWordText = { bg = "#494d64", underline = false }
                 }
             end
