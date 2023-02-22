@@ -168,7 +168,8 @@ return require("packer").startup(function(use)
 
     use({
         "RRethy/vim-illuminate",
-        config = function() require("illuminate").configure()
+        config = function()
+            require("illuminate").configure()
             require('illuminate').configure({
                 filetypes_denylist = { 'fugitive', 'NvimTree', 'help', 'gitcommit' },
             })
@@ -270,7 +271,7 @@ return require("packer").startup(function(use)
         config = {
             require("mason").setup(),
             require("mason-lspconfig").setup({
-                ensure_installed = { "sumneko_lua", "bashls", "yamlls", "pyright" },
+                ensure_installed = { "lua_ls", "bashls", "yamlls", "pyright" },
             })
         }
     })
