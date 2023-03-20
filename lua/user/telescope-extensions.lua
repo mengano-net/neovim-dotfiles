@@ -139,6 +139,13 @@ function M.git_commits()
     end
 end
 
+function M.git_bcommits()
+    require('telescope.builtin').git_bcommits(require('telescope.themes').get_ivy({
+        prompt_title = "Browser File Commits",
+        prompt_prefix = "  ",
+    }))
+end
+
 function M.notes()
     local opts = {
         prompt_title = "\\ Notes - IT /",
