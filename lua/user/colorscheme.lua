@@ -47,6 +47,8 @@ if colorscheme == "catppuccin" then
             types = {},
             variables = {},
         },
+        no_italic = true, -- Force no italic
+        no_bold = true, -- Force no bold
         highlight_overrides = {
             macchiato = function(macchiato)
                 return {
