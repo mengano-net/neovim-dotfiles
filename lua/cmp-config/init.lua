@@ -1,6 +1,5 @@
 -- Exit if can't load module(s)
 local cmp_status_ok, cmp = pcall(require, "cmp")
-local entry              = require("cmp.entry")
 if not cmp_status_ok then
     print("Couldn't require module 'cmp'.")
     return
@@ -158,7 +157,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'luasnip' }, -- For luasnip users.
         -- }, { -- If found in luasnip do not duplicate it for the others sources
-        { name = "buffer" },
+        { name = "buffer", keyword_length = 5 },
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "nvim_lsp_signature_help" },
@@ -186,14 +185,14 @@ cmp.setup({
         select = false,
     },
 
-    sorting = {
-        comparators = {
-            cmp.config.compare.exact,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.length,
-            cmp.config.compare.locality,
-        }
-    },
+    -- sorting = {
+    --     comparators = {
+    --         cmp.config.compare.exact,
+    --         cmp.config.compare.recently_used,
+    --         cmp.config.compare.length,
+    --         cmp.config.compare.locality,
+    --     }
+    -- },
 
 })
 

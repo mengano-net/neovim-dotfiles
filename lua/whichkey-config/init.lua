@@ -69,6 +69,7 @@ local mappings = {
         b = { "<cmd>lua require('user.telescope-extensions').git_branches()<cr>", "Branches" },
         B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
         c = { "<cmd>Git commit -s<cr>", "Commit" },
+        f = { "<cmd>lua require('user.telescope-extensions').git_bcommits()<cr>", "Browse File Commits" },
         l = { "<cmd>lua require('user.telescope-extensions').git_commits()<cr>", "List commits" },
         s = { "<cmd>Ge:<cr>", "Status" },
         S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },

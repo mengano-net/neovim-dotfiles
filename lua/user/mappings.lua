@@ -3,6 +3,9 @@ local opts = { silent = true }
 
 keymap("i", "jk", "<Esc>", opts)
 
+-- When you remove a selection character under cursor with `x`, do not also copy to register
+keymap("n", "x", '"_x')
+
 keymap("n", "<Tab>", ":bnext<CR>", { silent = true })
 keymap("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 

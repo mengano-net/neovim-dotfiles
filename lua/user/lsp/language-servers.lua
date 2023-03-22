@@ -9,9 +9,9 @@ local custom_lsp_attach = function(client, bufnr)
     -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
 
     vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+        vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
     vim.lsp.handlers["textDocument/signature_help"] =
-    vim.lsp.with({ border = "rounded" }, vim.lsp.handlers.signature_help)
+        vim.lsp.with({ border = "rounded" }, vim.lsp.handlers.signature_help)
 
     if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -52,8 +52,7 @@ elseif vim.fn.has("unix") == 1 then
 else
     print("Can't find lua-language-server binary.")
 end ]]
-
-require("lspconfig")["sumneko_lua"].setup({
+require("lspconfig")["lua_ls"].setup({
     -- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     capabilities = capabilities,
     on_attach = custom_lsp_attach,
@@ -76,6 +75,8 @@ require("lspconfig")["sumneko_lua"].setup({
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
+                -- See https://github.com/LuaLS/lua-language-server/discussions/1688
+                checkThirdParty = false,
             },
             format = {
                 enable = true,
@@ -130,7 +131,6 @@ if vim.fn.has("mac") == 1 then
 elseif vim.fn.has("unix") == 1 then
   yamlls_binary = "/usr/bin/yaml-language-server"
 end ]]
-
 require("lspconfig")["yamlls"].setup({
     -- cmd = { yamlls_binary, "--stdio" },
     on_attach = custom_lsp_attach,

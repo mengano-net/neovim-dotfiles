@@ -1,3 +1,81 @@
+## 1.5.0 (2023-03-22)
+
+### Feat
+
+- **telescope-extensions, whichkey-config**: new git shortcut to browse file commits.
+- **mappings**: new map for 'x'
+- **GTP3**: added plugin to converse with GPT3
+- **undodir**: added undodir under ~/.cache/nvim/undodir
+- **cmp**: WIP working on sorting mechanisms for cmp
+- **cmp-config**: disabled auto completion whole typing comments
+- **cmp-config**: disabled auto completion whole typing comments
+- **luasnip**: finish luasnip implementation
+- **luasnip**: WIP 1
+- **cmp-config**: color highlights for auto complete window
+- **vsnippet**: table for markdown
+- **toggleterm**: new maps and autocommands for terminal
+- several plugins
+- **markdown vsnippet**: For blog sections and date
+- **plugin**: installed fgheng/winbar.nvim
+- **winbar**: wip, adding potential for winbar
+- **telescope zoxide extension**: adding which key map
+- **telescope**: adding telescope extensions
+- **telescope**: adding telescope extensions
+- **colorscheme**: added cubandusk
+- **colorscheme**: Installed Nord
+- **colorscheme**: added everblush colorscheme
+- **colorscheme**: added catppuccin colorscheme
+
+### Fix
+
+- **lua lsp**: sumneko_lua deprecated for lua_ls
+- **cmp**: adding keyword_length=5 to buffer source
+- **cmp-config**: removing comparators because I don't like order it produces
+- **catppuccin**: changed GitDiffDelete highlight
+- **notify**: fixed
+- **diagnostics**: some better options for diagnostics.config
+- **cmp**: was throwing exception when hit Tab with typing first
+- **cmp**: was throwing exception when hit Tab with typing first
+- **cmp**: exception no longer thrown if hit tab before typing anything
+- **lsp**: improving capabilities
+- **catppuccin**: better colors for cmp window
+- **colorscheme**: better red for GitRemove highlight
+- **colorscheme**: lazy-loading nord and new highlights for git on catppuccin
+- **illuminate**: added gitcommit filetype to ignore list
+- **illuminate**: added filetypes to exclusion list
+- **catppucinn colorscheme**: Illuminate highlight
+- **IlluminatedWordText**: overriding it at colorscheme(catppuccin) setup function
+- **illuminate**: eliminated underline for hi IlluminatedWordText
+- **telescope-zoxide**: it requires telescope plugin
+- **catppuccin**: highlight overrides for Diff*
+- **cmp**: cmp_nvim_lsp.update_capabilities is deprecated
+- **winbar**: added glowpreview to ignore filetypes
+- **whichkey-config**: deleted deprecated, lualized LSP map
+- **whichkey-config**: cleaned up, lualize a map, remove others, etc
+- **toggleterm**: new border for float and removed unused code on whichkey-config
+- **lualine**: timezone and added padding to git diff
+- **whichkey**: several fixed, removals
+- **lualine**: lualized hilight for TelescopeBorder
+- **telescope**: get_ivy theme for grep picker
+- **colorscheme cubandusk**: fixed branch
+- **colorscheme**: moved there to colorscheme file
+- **nord colorscheme**: was called twice on plugins file
+- **nord colorscheme**: was called twice on plugins file
+- **nvim-comment-frame**: moved config to plugin.lua
+- **nvim-comment-frame**: fix issue for python
+- **nvim-comment-frame**: better values for width of comment block
+
+### Refactor
+
+- removed plugins: glow and unused Nord color scheme
+- WIP just removing some old color schemes
+- **notify**: removed extraneous line.
+- **telescope-extensions**: refactored the notify messages
+- **lsp**: now using Glance plugin for declaration, definitions and references.
+- **whichkey-config**: moved some LSP maps to whichkey
+- **cmp**: removed onsails/lspkind-nvim
+- **lsp**: capabilities
+
 ## 1.3.3 (2022-09-28)
 
 ### Fix
