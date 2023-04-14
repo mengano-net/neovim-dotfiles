@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.leader = " "
 
-local options = {
+local global_options = {
     autoindent = true,
     autoread = true,
     autowrite = true,
@@ -51,7 +51,7 @@ local options = {
     splitbelow = true,
     showbreak = "↳",
     termguicolors = true,
-    tabstop = 2,
+    tabstop = 4,
     textwidth = 99,
     timeoutlen = 1000,
     updatetime = 150,
@@ -63,7 +63,7 @@ local options = {
     wildmenu = true,
 }
 
-for key, value in pairs(options) do
+for key, value in pairs(global_options) do
     vim.opt[key] = value
 end
 
@@ -73,7 +73,7 @@ vim.opt.iskeyword:append("-,_")
 vim.opt.listchars:append("eol:↴")
 
 local buffer_options = {
-    tabstop = 2,
+    tabstop = 4,
     shiftwidth = 2,
     expandtab = true,
 }
