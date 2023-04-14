@@ -58,18 +58,17 @@ cmp.setup({
     enabled = function()
         local context = require 'cmp.config.context'
         -- keep command mode completion enabled when cursor is in a comment
-        if vim.api.nvim_get_mode().mode == 'c' then return true
+        if vim.api.nvim_get_mode().mode == 'c' then
+            return true
         else
             return not context.in_treesitter_capture("comment")
                 and not context.in_syntax_group("Comment")
         end
     end,
-
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args) luasnip.lsp_expand(args.body) end,
     },
-
     -- Catppuccin's macchiato color palette, for custom color palettes for cmp window
     -- You get it by running this command: lua P(require("catppuccin.palettes").get_palette("macchiato"))
     -- Here is Catppuccin's Mocha palette:
@@ -104,7 +103,6 @@ cmp.setup({
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.base }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = macchiato.yellow, bg = mocha.overlay0 }),
     vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = macchiato.maroon }),
-
     window = {
         completion = cmp.config.window.bordered({
             border = "shadow",
@@ -116,10 +114,9 @@ cmp.setup({
             winhighlight = "Normal:CmpWindowBackground,Floatborder:Pmenu,CursorLine:PmenuThumb,Search:None",
         }),
     },
-
     mapping = cmp.mapping.preset.insert({
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-u>"] = cmp.mapping.scroll_docs( -4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping({
             i = cmp.mapping.abort(),
@@ -146,25 +143,30 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
+            elseif luasnip.jumpable( -1) then
+                luasnip.jump( -1)
             else
                 fallback()
             end
         end, { "i", "s", }),
     }),
-
     sources = cmp.config.sources({
         { name = 'luasnip' }, -- For luasnip users.
         -- }, { -- If found in luasnip do not duplicate it for the others sources
-        { name = "buffer", keyword_length = 5 },
+        { name = "buffer",                 keyword_length = 4 },
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
-        { name = "cmdline" },
+        -- Disabling for now ... this is cauing autocomplete prompot to pop up even while I have
+        -- yet to type anything ...
+        -- {
+        --     name = "cmdline",
+        --     option = {
+        --         ignore_cmds = { 'Man', '!' }
+        --     }
+        -- },
     }),
-
     ------------------------------------------------------------------------------------------
     --                     See this vedeo series on YouTube for details                     --
     --                     https://www.youtube.com/watch?v=8zENSGqOk8w                      --
@@ -179,12 +181,10 @@ cmp.setup({
             return vim_item
         end
     },
-
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
-
     -- sorting = {
     --     comparators = {
     --         cmp.config.compare.exact,

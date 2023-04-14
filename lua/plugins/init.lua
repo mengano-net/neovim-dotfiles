@@ -325,6 +325,9 @@ return require("packer").startup(function(use)
         config = function()
             require("chatgpt").setup({
                 -- optional configuration
+                keymaps = {
+                    submit = "<C-t>"
+                }
             })
         end,
         requires = {
