@@ -252,13 +252,6 @@ return require("packer").startup(function(use)
         requires = "p00f/nvim-ts-rainbow",
     })
 
-    -- This is now a treesitter module, it is NOT a standalone plugin
-    use({
-        "nvim-treesitter/playground",
-        requires = "nvim-treesitter/nvim-treesitter",
-    })
-
-
     use({
         "hrsh7th/nvim-cmp",
         config = "require('cmp-config')",
