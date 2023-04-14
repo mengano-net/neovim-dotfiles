@@ -71,33 +71,6 @@ cmp.setup({
     },
     -- Catppuccin's macchiato color palette, for custom color palettes for cmp window
     -- You get it by running this command: lua P(require("catppuccin.palettes").get_palette("macchiato"))
-    -- Here is Catppuccin's Mocha palette:
-    --[[ base = "#1E1E2E",
-      blue = "#89B4FA",
-      crust = "#11111B",
-      flamingo = "#F2CDCD",
-      green = "#A6E3A1",
-      lavender = "#B4BEFE",
-      mantle = "#181825",
-      maroon = "#EBA0AC",
-      mauve = "#CBA6F7",
-      overlay0 = "#6C7086",
-      overlay1 = "#7F849C",
-      overlay2 = "#9399B2",
-      peach = "#FAB387",
-      pink = "#F5C2E7",
-      red = "#F38BA8",
-      rosewater = "#F5E0DC",
-      sapphire = "#74C7EC",
-      sky = "#89DCEB",
-      subtext0 = "#A6ADC8",
-      subtext1 = "#BAC2DE",
-      surface0 = "#313244",
-      surface1 = "#45475A",
-      surface2 = "#585B70",
-      teal = "#94E2D5",
-      text = "#CDD6F4",
-      yellow = "#F9E2AF" ]]
     vim.api.nvim_set_hl(0, "CmpWindowBackground", { bg = mocha.base }),
     vim.api.nvim_set_hl(0, "CmpWindowCursorLine", { fg = macchiato.lavender, bg = mocha.surface0 }),
     vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.base }),
@@ -107,7 +80,7 @@ cmp.setup({
         completion = cmp.config.window.bordered({
             border = "shadow",
             winhighlight = "Normal:CmpWindowBackground,Floatborder:Pmenu,CursorLine:CmpWindowCursorLine,Search:None",
-            col_offset = -3,
+            -- col_offset = -3, -- to moveautocomplet pop window in the horizontal axis
         }),
         documentation = cmp.config.window.bordered({
             border = "shadow",
@@ -172,11 +145,11 @@ cmp.setup({
     --                     https://www.youtube.com/watch?v=8zENSGqOk8w                      --
     ------------------------------------------------------------------------------------------
     formatting = {
-        -- fields = { "abbr", "kind", "menu" },
-        fields = { "kind", "abbr", "menu" },
+        fields = { "abbr", "kind", "menu" },
+        -- fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-            -- vim_item.kind = (cmp_icons[vim_item.kind] or "") .. " (" .. vim_item.kind .. ")"
-            vim_item.kind = (cmp_icons[vim_item.kind] or "")
+            vim_item.kind = (cmp_icons[vim_item.kind] or "") .. " (" .. vim_item.kind .. ")"
+            -- vim_item.kind = (cmp_icons[vim_item.kind] or "")
             vim_item.menu = " [" .. entry.source.name .. "]"
             return vim_item
         end
