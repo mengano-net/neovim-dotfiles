@@ -45,24 +45,24 @@ lualine.setup({
         extensions = { "fugitive" },
         icons_enabled = true,
         section_separators = " ",
-        theme = "catppuccin",
+        theme = "auto",
     },
     sections = {
         lualine_a = { "mode" },
         lualine_b = {
             { "branch", icon = "" },
+        },
+        lualine_c = {
             {
                 "diff",
                 colored = true,
-                diff_color = {
-                    added    = 'DiffAdd', -- Changes the diff's added color
-                    modified = 'DiffChange', -- Changes the diff's modified color
-                    removed  = 'DiffDelete', -- Changes the diff's removed color you
-                },
+                -- diff_color = {
+                --     added    = 'DiffAdd', -- Changes the diff's added color
+                --     modified = 'DiffChange', -- Changes the diff's modified color
+                --     removed  = 'DiffDelete', -- Changes the diff's removed color you
+                -- },
                 padding = { left = 1, right = 1 },
             },
-        },
-        lualine_c = {
             --[[ {
         "filename", -- displays file status (readonly status, modified status)
         -- current_working_dir,
@@ -77,7 +77,6 @@ lualine.setup({
                 symbols = { error = " ", warn = " ", info = " ", hint = " " },
             },
             -- 'fileformat',
-            "filetype",
             -- { "filetype", icon_only = true },
         },
         lualine_y = { word_count, "location", progress },
