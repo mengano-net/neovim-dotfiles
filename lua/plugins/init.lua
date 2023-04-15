@@ -315,12 +315,13 @@ return require("packer").startup(function(use)
     -- Packer
     use({
         "jackMort/ChatGPT.nvim",
+        commit = '8820b99c', -- March 6th 2023, before submit issue
         config = function()
             require("chatgpt").setup({
-                -- optional configuration
-                keymaps = {
-                    submit = "<C-t>"
-                }
+                -- -- optional configuration
+                -- keymaps = {
+                --     submit = "<C-t>"
+                -- }
             })
         end,
         requires = {
