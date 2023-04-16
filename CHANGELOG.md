@@ -1,3 +1,19 @@
+## 1.5.1 (2023-04-15)
+
+### Feat
+
+- **treesitter**: nvim now support treesitter maps natively
+
+### Fix
+
+- **ChatGPT**: went to previous version due to bug
+- **lualine-config**: moved git_signs to lualine_c.
+- **cmp-config**: changed order of items on cmp float.
+- **nvim-options**: tab space was wrongly set to 2, instead of 4
+- **cmp-config**: disabling cmp-cmd for now.
+- remapped submit key
+- **catppuccin**: forcing italics to be off
+
 ## 1.5.0 (2023-03-22)
 
 ### Feat
