@@ -1,12 +1,12 @@
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {})]])
 
 vim.diagnostic.config({
     virtual_text = false,
-    -- signs = true,
+    signs = true,
     underline = true,
-    update_in_insert = false,
+    update_in_insert = true,
     float = {
-        border = "none",
+        border = "single",
         header = "",
         focusable = false,
         prefix = "",
