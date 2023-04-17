@@ -77,7 +77,7 @@ lualine.setup({
                 symbols = { error = " ", warn = " ", info = " ", hint = " " },
             },
             -- 'fileformat',
-            -- { "filetype", icon_only = true },
+            { "filetype", icon_only = true },
         },
         lualine_y = { word_count, "location", progress },
         lualine_z = { nil },

@@ -37,6 +37,8 @@ return require("packer").startup(function(use)
     --                          Plugins making Neovim a better IDE                          --
     ------------------------------------------------------------------------------------------
 
+    use("kyazdani42/nvim-web-devicons")
+
     use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
     use({
