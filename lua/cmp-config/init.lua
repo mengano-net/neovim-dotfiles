@@ -69,13 +69,6 @@ cmp.setup({
         -- REQUIRED - you must specify a snippet engine
         expand = function(args) luasnip.lsp_expand(args.body) end,
     },
-    -- Catppuccin's macchiato color palette, for custom color palettes for cmp window
-    -- You get it by running this command: lua P(require("catppuccin.palettes").get_palette("macchiato"))
-    vim.api.nvim_set_hl(0, "CmpWindowBackground", { bg = mocha.base }),
-    vim.api.nvim_set_hl(0, "CmpWindowCursorLine", { fg = macchiato.lavender, bg = mocha.surface0 }),
-    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = macchiato.red, bg = macchiato.base }),
-    vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = macchiato.yellow, bg = mocha.overlay0 }),
-    vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = macchiato.maroon }),
     window = {
         completion = cmp.config.window.bordered({
             border = "shadow",
