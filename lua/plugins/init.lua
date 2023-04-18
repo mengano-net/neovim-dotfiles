@@ -298,11 +298,6 @@ return require("packer").startup(function(use)
     use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 
     use({
-        "lewis6991/spellsitter.nvim",
-        config = function() require("spellsitter").setup() end,
-    })
-
-    use({
         "dnlhc/glance.nvim",
         config = function()
             require('glance').setup({
