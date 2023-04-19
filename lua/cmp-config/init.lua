@@ -143,15 +143,14 @@ cmp.setup({
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
-    -- sorting = {
-    --     comparators = {
-    --         cmp.config.compare.exact,
-    --         cmp.config.compare.recently_used,
-    --         cmp.config.compare.length,
-    --         cmp.config.compare.locality,
-    --     }
-    -- },
-
+    sorting = {
+        comparators = {
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.length,
+            cmp.config.compare.locality,
+        }
+    },
 })
 
 -- Set configuration for specific filetype.
