@@ -48,8 +48,9 @@ if colorscheme == "catppuccin" then
             variables = {},
         },
         no_italic = true, -- Force no italic
-        no_bold = true,   -- Force no bold
+        no_bold = true, -- Force no bold
         highlight_overrides = {
+            -- To get Catppuccin's color palette run command: lua P(require("catppuccin.palettes").get_palette("macchiato"))
             macchiato = function(macchiato)
                 return {
                     DiffAdd = { fg = macchiato.green, bg = "#24273A" },
@@ -58,7 +59,12 @@ if colorscheme == "catppuccin" then
                     GitSignsChange = { fg = "Pink", bg = "#24273A" },
                     DiffDelete = { fg = "#B55A67", bg = "#24273A" },
                     GitSignsDelete = { fg = "#B55A67", bg = "#24273A" },
-                    IlluminatedWordText = { bg = "#494d64", underline = false }
+                    IlluminatedWordText = { bg = "#494d64", underline = false },
+                    CmpWindowBackground = { bg = macchiato.base },
+                    CmpWindowCursorLine = { fg = macchiato.lavender, bg = macchiato.surface0 },
+                    CmpItemAbbrMatch = { fg = macchiato.red, bg = macchiato.base },
+                    CmpItemAbbrMatchFuzzy = { fg = macchiato.yellow, bg = macchiato.overlay0 },
+                    CmpItemMenu = { fg = macchiato.maroon }
                 }
             end
         },

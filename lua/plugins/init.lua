@@ -37,6 +37,8 @@ return require("packer").startup(function(use)
     --                          Plugins making Neovim a better IDE                          --
     ------------------------------------------------------------------------------------------
 
+    use("kyazdani42/nvim-web-devicons")
+
     use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
     use({
@@ -294,11 +296,6 @@ return require("packer").startup(function(use)
     use({ "rafamadriz/friendly-snippets", requires = "L3MON4D3/LuaSnip" })
 
     use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
-
-    use({
-        "lewis6991/spellsitter.nvim",
-        config = function() require("spellsitter").setup() end,
-    })
 
     use({
         "dnlhc/glance.nvim",
