@@ -15,7 +15,7 @@ Clear/backup the following directories:
 
 #### Requirements
 
-- neovim >= 0.7.0
+- neovim >= 0.9.0
 - For Unix systems: git, curl or wget, unzip, tar, gzip, node, npm.
 - Get a release version [i.e. v
   1.3.0](https://github.com/mengano-net/neovim-dotfiles/releases/tag/1.3.0)
