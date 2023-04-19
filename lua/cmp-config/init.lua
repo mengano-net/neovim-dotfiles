@@ -124,14 +124,6 @@ cmp.setup({
         { name = "path" },
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
-        -- Disabling for now ... this is cauing autocomplete prompot to pop up even while I have
-        -- yet to type anything ...
-        -- {
-        --     name = "cmdline",
-        --     option = {
-        --         ignore_cmds = { 'Man', '!' }
-        --     }
-        -- },
     }),
     ------------------------------------------------------------------------------------------
     --                     See this vedeo series on YouTube for details                     --
