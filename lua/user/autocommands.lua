@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
             vim.bo.filetype == 'NvimTree' or
             vim.bo.filetype == 'fugitive' or
             vim.bo.filetype == 'gitcommit' or
+            vim.bo.filetype == 'help' or
             vim.bo.filetype == 'toggleterm' then
             vim.wo.winbar = ''
         else
