@@ -198,38 +198,6 @@ return require("packer").startup(function(use)
         end
     }
 
-    use {
-        "fgheng/winbar.nvim",
-        config = function()
-            require('winbar').setup({
-                colors = {
-                    path = '#7aa2f7',
-                    file_name = '#c946fd',
-                    symbols = '#c946fd',
-                },
-                enabled = true,
-                exclude_filetype = {
-                    'help',
-                    'startify',
-                    'dashboard',
-                    'fugitive',
-                    'gitcommit',
-                    'packer',
-                    'neogitstatus',
-                    'NvimTree',
-                    'Trouble',
-                    'alpha',
-                    'lir',
-                    'Outline',
-                    'spectre_panel',
-                    'toggleterm',
-                    'qf',
-                    'glowpreview',
-                },
-            })
-        end
-    }
-
     use { "j-hui/fidget.nvim", config = function() require('fidget').setup() end }
 
     use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }

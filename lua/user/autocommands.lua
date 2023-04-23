@@ -13,7 +13,7 @@ local _terminal = vim.api.nvim_create_augroup("terminal", { clear = true })
 ------------------------------------------------------------------------------------------
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = _general,
-    command = "lua vim.highlight.on_yank { higroup='IncSearch', timeout=750}",
+    command = "lua vim.highlight.on_yank { higroup='IncSearch', timeout=500}",
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
@@ -21,10 +21,22 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     command = "silent! set nopaste",
 })
 
---[[ vim.api.nvim_create_autocmd("BufEnter", {
-  group = _general,
-  command = "lua vim.o.winbar=vim.api.nvim_buf_get_name(0)",
-}) ]]
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = _general,
+    pattern = '*',
+    callback = function()
+        if vim.bo.filetype == '' or
+            vim.bo.filetype == 'NvimTree' or
+            vim.bo.filetype == 'fugitive' or
+            vim.bo.filetype == 'gitcommit' or
+            vim.bo.filetype == 'help' or
+            vim.bo.filetype == 'toggleterm' then
+            vim.wo.winbar = ''
+        else
+            vim.wo.winbar = "%{%v:lua.require('user/winbar').eval()%}"
+        end
+    end
+})
 
 ----------------------------------------------------------------------
 --                               Git                                --

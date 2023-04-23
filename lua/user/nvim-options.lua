@@ -74,13 +74,16 @@ vim.opt.listchars:append("eol:↴")
 
 local buffer_options = {
     tabstop = 4,
-    shiftwidth = 2,
+    shiftwidth = 4,
     expandtab = true,
 }
 
 for key, value in pairs(buffer_options) do
     vim.bo[key] = value
 end
+
+-- https://www.youtube.com/watch?v=3jLw3isbByI&list=WL&index=2
+-- vim.o.winbar = "%{%v:lua.require('user/winbar').eval()%}"
 
 ------------------------------------------------------------------------------------------
 --                     Disabling some of vim's built-in plugins...                      --
