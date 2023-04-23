@@ -67,7 +67,6 @@ if colorscheme == "catppuccin" then
                     CmpItemAbbrMatch = { fg = macchiato.red, bg = macchiato.base },
                     CmpItemAbbrMatchFuzzy = { fg = macchiato.yellow, bg = macchiato.overlay0 },
                     CmpItemMenu = { fg = macchiato.maroon },
-                    Winbar = { fg = "#8aadf4", bg = "#494d64" } -- lualine_b_normal
                 }
             end
         },
