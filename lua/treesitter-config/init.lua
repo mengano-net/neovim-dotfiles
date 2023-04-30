@@ -7,8 +7,8 @@ end
 treesitter.setup {
     autopairs = { enable = true },
     -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = { "vim", "vimdoc", "lua", "bash", "markdown", "python" },
-    auto_install = true, -- See comments on github
+    ensure_installed = { "vimdoc", "lua", "bash", "markdown", "python", "toml", "yaml" },
+    auto_install = true,  -- See comments on github
     sync_install = false, -- Install parsers synchronously (only applied to `ensure_installed`)
     ignore_install = {},
     highlight = {
