@@ -25,13 +25,13 @@ local setup = {
         operators = true, -- adds operators like d, y, registers them for motion, completions, etc
     },
     window = {
-        border = "single", -- none, single, double, shadow
-        margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
+        border = "single",        -- none, single, double, shadow
+        margin = { 0, 0, 0, 0 },  -- extra window margin [top, right, bottom, left]
         padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]
         winblend = 0,
     },
     layout = {
-        align = "center", -- align columns left, center or right
+        align = "center",   -- align columns left, center or right
     },
     ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
 }
@@ -108,6 +108,7 @@ local mappings = {
         m = { "<cmd>Mason<cr>", "List LSP servers installed." },
         -- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
         r = { "<cmd>Glance references<cr>", "References" },
+        R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
         s = {
             "<cmd> lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())<cr>",
             "Document Symbols"
