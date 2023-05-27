@@ -33,27 +33,7 @@ if status_cmp_ok then
 end
 
 -- lua-language-server
--- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
-
---[[ local sumneko_root_path = ""
-local sumneko_binary = ""
-USER = vim.fn.expand("$USER")
-
-if vim.fn.has("mac") == 1 then
-    sumneko_root_path = "/Users/"
-        .. USER
-        .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
-    sumneko_binary = "/Users/"
-        .. USER
-        .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"
-elseif vim.fn.has("unix") == 1 then
-    sumneko_root_path = "/home/" .. USER .. "/.local/lua-language-server"
-    sumneko_binary = "/home/" .. USER .. "/.local/lua-language-server/bin/lua-language-server"
-else
-    print("Can't find lua-language-server binary.")
-end ]]
 require("lspconfig")["lua_ls"].setup({
-    -- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     capabilities = capabilities,
     on_attach = custom_lsp_attach,
     flags = { debounce_text_changes = 150 },
@@ -82,7 +62,7 @@ require("lspconfig")["lua_ls"].setup({
                 enable = true,
                 defaultConfig = {
                     indent_style = "space",
-                    indent_size = "2",
+                    indent_size = "4",
                 },
             },
             telemetry = { enable = false }, -- Do not send randomized but unique telemetry data
@@ -171,3 +151,12 @@ require("lspconfig")["yamlls"].setup({
         },
     },
 })
+
+require 'lspconfig'.marksman.setup {
+    on_attach = custom_lsp_attach,
+    capabilities = capabilities,
+    filetypes = { "md", "markdown" },
+    code_action = {
+        enable = true,
+    },
+}
