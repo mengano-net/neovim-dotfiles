@@ -4,15 +4,6 @@ if not status_ok then
   return
 end
 
--- most of these options have now been migrated to the setup function, see this for an example of
--- such migrations: bit.ly/3vIpEOJ
--- local global_options = {
--- }
-
--- for key, value in pairs(global_options) do
---   vim.g[key] = value
--- end
-
 nvimtree.setup({
   actions = {
     open_file = {
@@ -31,7 +22,7 @@ nvimtree.setup({
     },
   },
   disable_netrw = true,
-  filters = { dotfiles = false },
+  filters = { dotfiles = true },
   git = {},
   reload_on_bufenter = true,
   renderer = {
