@@ -20,17 +20,20 @@ null_ls.setup({
             extra_args = { "--extend-ignore=E501" }
         }),
         formatting.prettier.with({
-            -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
-            extra_args = function(params)
-                return params.options
-                    and params.options.tabSize
-                    and {
-                        "--tab-width",
-                        params.options.tabSize,
-                    }
-            end,
-            filetypes = { "html", "json", "yaml", "markdown" },
+            extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" }
         }),
+        -- formatting.prettier.with({
+        --     -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
+        --     extra_args = function(params)
+        --         return params.options
+        --             and params.options.tabSize
+        --             and {
+        --                 "--tab-width",
+        --                 params.options.tabSize,
+        --             }
+        --     end,
+        --     filetypes = { "html", "json", "yaml", "markdown" },
+        -- }),
         -- formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua.with({
             extra_args = { "--config-path", vim.fn.expand("~/.config/nvim/stylua.toml") },
