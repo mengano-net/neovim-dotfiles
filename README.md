@@ -4,7 +4,7 @@ Dotfiles for Neovim used by Mengano.Net
 
 ## Installation
 
-#### Clear previous configuration
+### Clear previous configuration
 
 If you have existing Neovim configuration you must first get rid of it.\
 Clear/backup the following directories:
@@ -13,7 +13,7 @@ Clear/backup the following directories:
 -   `~/.cache/nvim/`
 -   `~/.local/share/nvim/`
 
-#### Requirements
+### Requirements
 
 -   neovim >= 0.9.0
 -   For Unix systems: git, curl or wget, unzip, tar, gzip, node, npm.

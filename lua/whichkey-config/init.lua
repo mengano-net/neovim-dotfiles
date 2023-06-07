@@ -52,6 +52,7 @@ local mappings = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
         c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
+        r = { "<cmd>retab<cr>", "Retab" },
     },
     f = { "<cmd>lua require('user.telescope-extensions').find_files()<cr>", "Find files" },
     F = { "<cmd>lua require('user.telescope-extensions').find_files_in_path()<cr>", "Find files in path..." },
