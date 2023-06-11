@@ -183,7 +183,7 @@ return require("packer").startup(function(use)
         config = function()
             require('nvim-comment-frame').setup({
                 disable_default_keymap = true,
-                frame_width = 90,
+                frame_width = 80,
                 line_wrap_len = 80,
                 languages = {
                     python = {
