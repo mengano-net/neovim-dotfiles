@@ -247,12 +247,6 @@ return require("packer").startup(function(use)
 
     use("hrsh7th/cmp-cmdline")
 
-    use({ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" })
-
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
-
-    use("hrsh7th/cmp-nvim-lua")
-
     use({
         "L3MON4D3/LuaSnip",
         -- tag = "v<CurrentMajor>.*",
