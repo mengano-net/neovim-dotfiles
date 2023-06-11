@@ -198,7 +198,13 @@ return require("packer").startup(function(use)
         end
     }
 
-    use { "j-hui/fidget.nvim", config = function() require('fidget').setup() end }
+    -- NOTE: fidget.nvim will soon be completely rewritten. In the meantime,
+    -- please pin your plugin config to the legacy tag to avoid breaking changes.
+    use {
+        "j-hui/fidget.nvim",
+        tag = 'legacy',
+        config = function() require('fidget').setup() end
+    }
 
     use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }
 
@@ -247,12 +253,6 @@ return require("packer").startup(function(use)
 
     use("hrsh7th/cmp-cmdline")
 
-    use({ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" })
-
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
-
-    use("hrsh7th/cmp-nvim-lua")
-
     use({
         "L3MON4D3/LuaSnip",
         -- tag = "v<CurrentMajor>.*",
@@ -260,6 +260,13 @@ return require("packer").startup(function(use)
             require("luasnip.loaders.from_vscode").lazy_load()
         end
     })
+
+
+    use({ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" })
+
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
+
+    use("hrsh7th/cmp-nvim-lua")
 
     use({ "rafamadriz/friendly-snippets", requires = "L3MON4D3/LuaSnip" })
 
@@ -277,25 +284,6 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     --           These plugins are just for fun, not related to IDE configuration           --
     ------------------------------------------------------------------------------------------
-    -- Packer
-    use({
-        "jackMort/ChatGPT.nvim",
-        -- See https://github.com/jackMort/ChatGPT.nvim/issues/105
-        -- commit = '8820b99c',
-        config = function()
-            require("chatgpt").setup({
-                -- -- optional configuration
-                -- keymaps = {
-                --     submit = "<C-t>"
-                -- }
-            })
-        end,
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
