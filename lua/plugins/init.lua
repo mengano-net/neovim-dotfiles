@@ -171,7 +171,6 @@ return require("packer").startup(function(use)
     use({
         "RRethy/vim-illuminate",
         config = function()
-            require("illuminate").configure()
             require('illuminate').configure({
                 filetypes_denylist = { 'fugitive', 'NvimTree', 'help', 'gitcommit' },
             })
@@ -184,7 +183,7 @@ return require("packer").startup(function(use)
         config = function()
             require('nvim-comment-frame').setup({
                 disable_default_keymap = true,
-                frame_width = 90,
+                frame_width = 80,
                 line_wrap_len = 80,
                 languages = {
                     python = {
@@ -212,7 +211,8 @@ return require("packer").startup(function(use)
         'jinh0/eyeliner.nvim',
         config = function()
             require 'eyeliner'.setup {
-                highlight_on_key = true
+                highlight_on_key = true,
+                dim = true
             }
         end
     }
