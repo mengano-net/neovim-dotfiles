@@ -198,7 +198,13 @@ return require("packer").startup(function(use)
         end
     }
 
-    use { "j-hui/fidget.nvim", config = function() require('fidget').setup() end }
+    -- NOTE: fidget.nvim will soon be completely rewritten. In the meantime,
+    -- please pin your plugin config to the legacy tag to avoid breaking changes.
+    use {
+        "j-hui/fidget.nvim",
+        tag = 'legacy',
+        config = function() require('fidget').setup() end
+    }
 
     use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }
 
@@ -254,6 +260,13 @@ return require("packer").startup(function(use)
             require("luasnip.loaders.from_vscode").lazy_load()
         end
     })
+
+
+    use({ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" })
+
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
+
+    use("hrsh7th/cmp-nvim-lua")
 
     use({ "rafamadriz/friendly-snippets", requires = "L3MON4D3/LuaSnip" })
 
