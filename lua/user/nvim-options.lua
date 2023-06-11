@@ -23,6 +23,7 @@ local global_options = {
     dictionary = "/usr/share/dict/words",
     diffopt = { "filler", "internal", "algorithm:histogram", "indent-heuristic" },
     expandtab = true,
+    shiftround = true,
     fileencoding = "utf-8",
     hidden = true,
     hlsearch = true,
