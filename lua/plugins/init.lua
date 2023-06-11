@@ -171,7 +171,6 @@ return require("packer").startup(function(use)
     use({
         "RRethy/vim-illuminate",
         config = function()
-            require("illuminate").configure()
             require('illuminate').configure({
                 filetypes_denylist = { 'fugitive', 'NvimTree', 'help', 'gitcommit' },
             })
