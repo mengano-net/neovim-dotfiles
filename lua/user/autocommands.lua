@@ -7,6 +7,7 @@ local _python = vim.api.nvim_create_augroup("python", { clear = true })
 local _documentation = vim.api.nvim_create_augroup("documentation", { clear = true })
 local _yaml = vim.api.nvim_create_augroup("yaml", { clear = true })
 local _terminal = vim.api.nvim_create_augroup("terminal", { clear = true })
+local _markdown = vim.api.nvim_create_augroup("terminal", { clear = true })
 
 ------------------------------------------------------------------------------------------
 --                                 General autocommands                                 --
@@ -98,9 +99,25 @@ vim.api.nvim_create_autocmd("BufEnter", {
     callback = yaml_file_options,
 })
 
-------------------------------------------------------------------------------------------
---                                       Terminal                                       --
-------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------
+--                               Markdown                           --
+----------------------------------------------------------------------
+local markdown_file_options = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.tabstop = 2
+end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = _markdown,
+    pattern = { "*.md" },
+    callback = markdown_file_options,
+})
+
+----------------------------------------------------------------------
+--                                       Terminal                   --
+----------------------------------------------------------------------
 local terminal = function()
     vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { silent = true })
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], { silent = true })

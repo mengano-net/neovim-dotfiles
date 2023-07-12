@@ -238,7 +238,16 @@ return require("packer").startup(function(use)
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
         config = {
-            require("mason").setup(),
+            require("mason").setup({
+                ui = {
+                    icons = {
+                        package_installed = "✓",
+                        package_pending = "➜",
+                        package_uninstalled = "✗"
+                    }
+                },
+                max_concurrent_installers = 10,
+            }),
             require("mason-lspconfig").setup({
                 ensure_installed = { "lua_ls", "bashls", "yamlls", "pyright" },
             })
