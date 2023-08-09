@@ -293,6 +293,7 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     --           These plugins are just for fun, not related to IDE configuration           --
     ------------------------------------------------------------------------------------------
+    use({ "DanilaMihailov/beacon.nvim" })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
