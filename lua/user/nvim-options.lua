@@ -4,6 +4,24 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.leader = " "
 
+-- Other variables, helper functions
+local spell_file = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+
+local function is_file_readable(file_path)
+    if vim.fn.empty(vim.fn.glob(file_path)) > 0 then
+        return false
+    else
+        return true
+    end
+end
+
+local function create_spellfile(file_path)
+    local ok, fd = pcall(vim.loop.fs_open, file_path, "w", 420)
+    if not ok then
+        require("notify")("Couldn't create spell file: " .. file_path, "error", {})
+    end
+end
+
 local global_options = {
     autoindent = true,
     autoread = true,
@@ -67,6 +85,11 @@ local global_options = {
 for key, value in pairs(global_options) do
     vim.opt[key] = value
 end
+
+if not is_file_readable(spell_file) then
+    create_spellfile(spell_file)
+end
+vim.opt.spellfile = spell_file
 
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
