@@ -103,7 +103,10 @@ local mappings = {
         -- d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
         d = { "<cmd>Glance definitions<cr>", "Definition" },
         -- D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
-        f = { "<cmd>lua vim.lsp.buf.format{async=false} vim.diagnostic.enable()<cr>", "Format" },
+        f = {
+            "<cmd>lua vim.lsp.buf.format{async=false,timeout_ms=2000} vim.diagnostic.enable()<cr>",
+            "Format"
+        },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         m = { "<cmd>Mason<cr>", "List LSP servers installed." },
