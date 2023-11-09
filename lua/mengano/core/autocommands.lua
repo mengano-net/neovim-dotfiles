@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
             vim.bo.filetype == 'toggleterm' then
             vim.wo.winbar = ''
         else
-            vim.wo.winbar = "%{%v:lua.require('user/winbar').eval()%}"
+            vim.wo.winbar = "%{%v:lua.require('mengano.core/winbar').eval()%}"
         end
     end
 })
