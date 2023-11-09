@@ -13,10 +13,7 @@
 -- thus no need to run: config =  function() require('telescope').setup({}) end,
 return {
     "nvim-telescope/telescope.nvim",
-    dependencies = { 
-        "nvim-lua/plenary.nvim",
-        "mengano.plugins.telescope.telescope-extensions"
-    },
+    dependencies = { "nvim-lua/plenary.nvim" },
     opt = {
         defaults = {
             file_ignore_patterns = { ".git", "node_modules" },
@@ -58,5 +55,4 @@ return {
             }
         }
     },
-    -- require("mengano.plugins.telescope.telescope-extensions")
 }
