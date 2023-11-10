@@ -31,80 +31,80 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     use({ "folke/tokyonight.nvim", branch = "main" })
 
-    use({ "catppuccin/nvim" })
+    -- use({ "catppuccin/nvim" })
 
     ------------------------------------------------------------------------------------------
     --                          Plugins making Neovim a better IDE                          --
     ------------------------------------------------------------------------------------------
 
-    use("kyazdani42/nvim-web-devicons")
+    -- use("kyazdani42/nvim-web-devicons")
 
     use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
-    use({
-        "numToStr/Comment.nvim",
-        config = {
-            "require('Comment').setup{ignore = '^$'}",
-        },
-    })
+    -- use({
+    --     "numToStr/Comment.nvim",
+    --     config = {
+    --         "require('Comment').setup{ignore = '^$'}",
+    --     },
+    -- })
 
-    use({
-        "norcalli/nvim-colorizer.lua",
-        config = "require('colorizer').setup()",
-    })
+    -- use({
+    --     "norcalli/nvim-colorizer.lua",
+    --     config = "require('colorizer').setup()",
+    -- })
 
-    use({
-        "ntpeters/vim-better-whitespace",
-        config = {
-            vim.cmd(
-                "let g:better_whitespace_filetypes_blacklist=['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive', 'toggleterm']"
-            ),
-        },
-    })
+    -- use({
+    --     "ntpeters/vim-better-whitespace",
+    --     config = {
+    --         vim.cmd(
+    --             "let g:better_whitespace_filetypes_blacklist=['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive', 'toggleterm']"
+    --         ),
+    --     },
+    -- })
 
-    use({
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("ibl").setup({
-                exclude = {
-                    filetypes = { "terminal", "help", "nofile", "NvimTree", },
-                    buftypes = { "packer", "help", "NvimTree", },
-                },
-            })
-        end,
-    })
+    -- use({
+    --     "lukas-reineke/indent-blankline.nvim",
+    --     config = function()
+    --         require("ibl").setup({
+    --             exclude = {
+    --                 filetypes = { "terminal", "help", "nofile", "NvimTree", },
+    --                 buftypes = { "packer", "help", "NvimTree", },
+    --             },
+    --         })
+    --     end,
+    -- })
 
-    use({
-        "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
-        config = "require('lualine-config')",
-    })
+    -- use({
+    --     "nvim-lualine/lualine.nvim",
+    --     requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    --     config = "require('lualine-config')",
+    -- })
 
-    use("tpope/vim-fugitive")
+    -- use("tpope/vim-fugitive")
 
-    use({
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup({
-                signs = {
-                    add = {
-                        hl = "GitSignsAdd",
-                        text = "▎",
-                        numhl = "GitSignsAddNr",
-                        linehl = "GitSignsAddLn",
-                    },
-                    change = {
-                        hl = "GitSignsChange",
-                        text = "▎",
-                        numhl = "GitSignsChangeNr",
-                        linehl = "GitSignsChangeLn",
-                    },
-                },
-                attach_to_untracked = true,
-            })
-        end,
-        requires = { "nvim-lua/plenary.nvim" },
-    })
+    -- use({
+    --     "lewis6991/gitsigns.nvim",
+    --     config = function()
+    --         require("gitsigns").setup({
+    --             signs = {
+    --                 add = {
+    --                     hl = "GitSignsAdd",
+    --                     text = "▎",
+    --                     numhl = "GitSignsAddNr",
+    --                     linehl = "GitSignsAddLn",
+    --                 },
+    --                 change = {
+    --                     hl = "GitSignsChange",
+    --                     text = "▎",
+    --                     numhl = "GitSignsChangeNr",
+    --                     linehl = "GitSignsChangeLn",
+    --                 },
+    --             },
+    --             attach_to_untracked = true,
+    --         })
+    --     end,
+    --     requires = { "nvim-lua/plenary.nvim" },
+    -- })
 
     use({
         "davidgranstrom/nvim-markdown-preview",
@@ -113,15 +113,15 @@ return require("packer").startup(function(use)
         }
     })
 
-    use({
-        "kyazdani42/nvim-tree.lua",
-        requires = {
-            "kyazdani42/nvim-web-devicons",
-        },
-        config = {
-            "require('nvimtree-config')",
-        },
-    })
+    -- use({
+    --     "kyazdani42/nvim-tree.lua",
+    --     requires = {
+    --         "kyazdani42/nvim-web-devicons",
+    --     },
+    --     config = {
+    --         "require('nvimtree-config')",
+    --     },
+    -- })
 
     use({ "rcarriga/nvim-notify" })
 

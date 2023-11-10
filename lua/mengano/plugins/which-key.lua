@@ -25,9 +25,21 @@ local mappings = {
         c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
         r = { "<cmd>retab<cr>", "Retab" },
     },
+    f = { 
+        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files()<cr>", 
+        "Find files",
+    },
+    F = { 
+        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files_in_path()<cr>", 
+        "Find files in path...",
+    },
     g = {
         name = "Goto",
         j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
+        J = {
+            ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
+            "Jump Points",
+        },
         k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
         z = {
             "<cmd> lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_ivy{})<cr>",
@@ -93,10 +105,6 @@ local mappings = {
         c = {
             ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
             "Commands",
-        },
-        j = {
-            ":lua require('telescope.builtin').jumplist(require('telescope.themes').get_ivy())<cr>",
-            "Jump Points",
         },
         -- G = {
         --     "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>",
