@@ -81,7 +81,6 @@ local mappings = {
             "Format"
         },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
-        -- i = { "<cmd>LspInfo<cr>", "Info" },
         -- m = { "<cmd>Mason<cr>", "List LSP servers installed." },
         -- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
         -- r = { "<cmd>Glance references<cr>", "References" },
@@ -106,10 +105,10 @@ local mappings = {
             ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
             "Commands",
         },
-        -- G = {
-        --     "<cmd>lua require('user.telescope-extensions').grep_within_grep()<cr>",
-        --     "Grep within grep",
-        -- },
+        G = {
+            "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').grep_within_grep()<cr>",
+            "Grep within grep",
+        },
         m = {
             ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
             "Man Pages",
@@ -119,12 +118,12 @@ local mappings = {
             "Recent Files",
         },
     },
-    -- t = {
-    --     name = "Terminal",
-    --     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    --     h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
-    --     v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
-    -- },
+    t = {
+        name = "Terminal",
+        f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+        h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
+        v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
+    },
     T = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
     x = { ":bd!<cr>", "Destroy buffer" },
     w = { ":w!<cr>", "Save buffer" },

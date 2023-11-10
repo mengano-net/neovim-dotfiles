@@ -29,7 +29,7 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     --                                     Colorschemes                                     --
     ------------------------------------------------------------------------------------------
-    use({ "folke/tokyonight.nvim", branch = "main" })
+    -- use({ "folke/tokyonight.nvim", branch = "main" })
 
     -- use({ "catppuccin/nvim" })
 
@@ -125,40 +125,40 @@ return require("packer").startup(function(use)
 
     use({ "rcarriga/nvim-notify" })
 
-    use({
-        "akinsho/toggleterm.nvim",
-        tag = "v2.*",
-        config = "require('toggleterm-config')",
-    })
+    -- use({
+    --     "akinsho/toggleterm.nvim",
+    --     tag = "v2.*",
+    --     config = "require('toggleterm-config')",
+    -- })
 
-    use({
-        "nvim-telescope/telescope.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = { "require('telescope-config')", "require('user.telescope-extensions')" },
-    })
-
-    use {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        requires = { "nvim-telescope/telescope.nvim" },
-        run = 'make'
-    }
-
-    use {
-        "jvgrootveld/telescope-zoxide",
-        requires = { "nvim-lua/popup.nvim", "nvim-telescope/telescope.nvim" }
-    }
+    -- use({
+    --     "nvim-telescope/telescope.nvim",
+    --     requires = { "nvim-lua/plenary.nvim" },
+    --     config = { "require('telescope-config')", "require('user.telescope-extensions')" },
+    -- })
+    --
+    -- use {
+    --     'nvim-telescope/telescope-fzf-native.nvim',
+    --     requires = { "nvim-telescope/telescope.nvim" },
+    --     run = 'make'
+    -- }
+    --
+    -- use {
+    --     "jvgrootveld/telescope-zoxide",
+    --     requires = { "nvim-lua/popup.nvim", "nvim-telescope/telescope.nvim" }
+    -- }
 
     ------------------------------------------------------------------------------------------
     --            Whichkey plugin calls MANY keymaps with functionality provided            --
     --         by other plugins. Do do NOT run until after all those other plugins          --
     --                            are installed and configured.                             --
     ------------------------------------------------------------------------------------------
-    use({
-        "folke/which-key.nvim",
-        config = function()
-            require("whichkey-config")
-        end,
-    })
+    -- use({
+    --     "folke/which-key.nvim",
+    --     config = function()
+    --         require("whichkey-config")
+    --     end,
+    -- })
 
     use({
         "kylechui/nvim-surround",
