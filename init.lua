@@ -1,8 +1,5 @@
-require("user.nvim-options")
-require("user.autocommands")
-require("user.mappings")
-require("user.colorscheme")
+require("mengano.core")
+require("mengano.lazy")
 
-require("plugins")
-require("user.utils")
-require("user.lsp")
+-- require("user.utils")
+-- require("user.lsp")
