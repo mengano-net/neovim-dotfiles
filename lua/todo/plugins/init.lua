@@ -39,7 +39,7 @@ return require("packer").startup(function(use)
 
     -- use("kyazdani42/nvim-web-devicons")
 
-    use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
+    -- use({ "windwp/nvim-autopairs", config = { "require('autopairs-config')" } })
 
     -- use({
     --     "numToStr/Comment.nvim",
@@ -217,18 +217,18 @@ return require("packer").startup(function(use)
     ----------------------------------------------------------------------------------------
     -- Language servers, code formatting, autocompletion
     ----------------------------------------------------------------------------------------
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        run = ": TSUpdate",
-        config = "require('treesitter-config')",
-        -- This is now a treesitter module, it is NOT a standalone plugin
-        requires = "p00f/nvim-ts-rainbow",
-    })
+    -- use({
+    --     "nvim-treesitter/nvim-treesitter",
+    --     run = ": TSUpdate",
+    --     config = "require('treesitter-config')",
+    --     -- This is now a treesitter module, it is NOT a standalone plugin
+    --     requires = "p00f/nvim-ts-rainbow",
+    -- })
 
-    use({
-        "hrsh7th/nvim-cmp",
-        config = "require('cmp-config')",
-    })
+    -- use({
+    --     "hrsh7th/nvim-cmp",
+    --     config = "require('cmp-config')",
+    -- })
 
     use({
         "williamboman/mason.nvim",
@@ -251,30 +251,30 @@ return require("packer").startup(function(use)
         }
     })
 
-    use("hrsh7th/cmp-nvim-lsp")
-
-    use("hrsh7th/cmp-buffer")
-
-    use("hrsh7th/cmp-path")
-
-    use("hrsh7th/cmp-cmdline")
-
-    use({
-        "L3MON4D3/LuaSnip",
-        -- tag = "v<CurrentMajor>.*",
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end
-    })
-
-
-    use({ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" })
-
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
-
-    use("hrsh7th/cmp-nvim-lua")
-
-    use({ "rafamadriz/friendly-snippets", requires = "L3MON4D3/LuaSnip" })
+    -- use("hrsh7th/cmp-nvim-lsp")
+    --
+    -- use("hrsh7th/cmp-buffer")
+    --
+    -- use("hrsh7th/cmp-path")
+    --
+    -- use("hrsh7th/cmp-cmdline")
+    --
+    -- use({
+    --     "L3MON4D3/LuaSnip",
+    --     -- tag = "v<CurrentMajor>.*",
+    --     config = function()
+    --         require("luasnip.loaders.from_vscode").lazy_load()
+    --     end
+    -- })
+    --
+    --
+    -- use({ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" })
+    --
+    -- use("hrsh7th/cmp-nvim-lsp-signature-help")
+    --
+    -- use("hrsh7th/cmp-nvim-lua")
+    --
+    -- use({ "rafamadriz/friendly-snippets", requires = "L3MON4D3/LuaSnip" })
 
     use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
 

@@ -1,6 +1,6 @@
 -- Clearing some builtin maps that I will steal for my own.
-vim.keymap.set("", "s", "<Nop>", { noremap = true, silent = true } )
-vim.keymap.set("", "S", "<Nop>", { noremap = true, silent = true } )
+vim.keymap.set("", "s", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("", "S", "<Nop>", { noremap = true, silent = true })
 
 local opts = {
     prefix = "<leader>",
@@ -25,12 +25,12 @@ local mappings = {
         c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
         r = { "<cmd>retab<cr>", "Retab" },
     },
-    f = { 
-        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files()<cr>", 
+    f = {
+        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files()<cr>",
         "Find files",
     },
-    F = { 
-        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files_in_path()<cr>", 
+    F = {
+        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files_in_path()<cr>",
         "Find files in path...",
     },
     g = {
@@ -73,16 +73,16 @@ local mappings = {
     l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        -- d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
+        d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
         -- d = { "<cmd>Glance definitions<cr>", "Definition" },
-        -- D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
+        D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
         f = {
             "<cmd>lua vim.lsp.buf.format{async=false,timeout_ms=2000} vim.diagnostic.enable()<cr>",
             "Format"
         },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
-        -- m = { "<cmd>Mason<cr>", "List LSP servers installed." },
-        -- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+        m = { "<cmd>Mason<cr>", "List LSP servers installed." },
+        r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
         -- r = { "<cmd>Glance references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
         s = {
@@ -138,13 +138,13 @@ return {
     end,
     config = function()
         require("which-key").setup({
-            -- window = {
-            --     border = "single",
-            --     margin = { 0, 0, 0, 0 },
-            --     padding = { 0, 0, 0, 0 },
-            -- },
+            window = {
+                border = "single",
+                margin = { 0, 0, 0, 0 },
+                padding = { 0, 0, 0, 0 },
+            },
             layout = { align = "center" },
         })
-        require("which-key").register(mappings,opts)
+        require("which-key").register(mappings, opts)
     end,
 }
