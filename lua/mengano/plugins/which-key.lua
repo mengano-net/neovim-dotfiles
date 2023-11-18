@@ -2,6 +2,111 @@
 vim.keymap.set("", "s", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "S", "<Nop>", { noremap = true, silent = true })
 
+-- telescope helper functions
+local telescope_builtin = require("telescope.builtin")
+local telescope_utils = require("telescope.utils")
+
+-- true if local directory is a clone of a git repository
+local is_git_worktree = function()
+    local _, ret, stderr = telescope_utils.get_os_command_output({
+        "git",
+        "rev-parse",
+        "--is-inside-work-tree",
+    })
+    -- print(vim.inspect(ret))
+    if ret == 0 then
+        return true
+    else
+        return false
+    end
+end
+
+-- Telescope, listing files currently managed by git
+local git_files = function()
+    --[[ local opts = {
+    prompt_title = "\\ Git Files /",
+    follow = 'true',
+    -- hidden = 'false',
+    layout_strategy = "horizontal",
+    layout_config = {
+      width = 0.95,
+    },
+  }
+  require'telescope.builtin'.git_files(opts) ]]
+    telescope_builtin.git_files(require("telescope.themes").get_ivy({
+        prompt_title = "Git Files",
+        follow = "true",
+        prompt_prefix = "  ",
+    }))
+end
+
+-- Telescope fuzzy finder
+local find_files = function()
+    if is_git_worktree() then
+        git_files()
+    else
+        telescope_builtin.find_files(require("telescope.themes").get_ivy({}))
+    end
+end
+
+local grep_within_grep = function()
+    telescope_builtin.grep_string(require("telescope.themes").get_ivy({
+        prompt_title = "Secondary Grep",
+        search = vim.fn.input("Rg> "),
+    }))
+end
+
+local git_branches = function()
+    --[[ local opts = {
+    prompt_title = "\\ Git Branches /",
+    layout_strategy = "horizontal",
+    layout_config = {
+      width = 0.9,
+    },
+    prompt_prefix = '  ',
+  } ]]
+    if is_git_worktree() then
+        -- require'telescope.builtin'.git_branches(opts)
+        telescope_builtin.git_branches(require("telescope.themes").get_ivy({
+            prompt_title = "Git Branches",
+            prompt_prefix = "  ",
+        }))
+    else
+        vim.notify_once("Not a git working tree", 3, {})
+        -- require("notify-extensions").notify("Warning", "Not a git working tree", "warn", 5000)
+        return
+    end
+end
+
+local git_commits = function()
+    if is_git_worktree() then
+        require("telescope.builtin").git_commits(require("telescope.themes").get_ivy({
+            prompt_title = "Git Commits",
+            prompt_prefix = "  ",
+        }))
+    else
+        require("notify-extensions").notify("Warning", "Not a git working tree", "warn", 5000)
+        return
+    end
+end
+
+local git_bcommits = function()
+    telescope_builtin.git_bcommits(require('telescope.themes').get_ivy({
+        prompt_title = "Browser File Commits",
+        prompt_prefix = "  ",
+    }))
+end
+
+local find_files_in_path = function()
+    local _path = vim.fn.input("Enter Directory: ", "", "dir")
+    if _path == nil or _path == "" then _path = vim.fn.expand("%:p:h") end
+    telescope_builtin.find_files(require("telescope.themes").get_ivy({
+        prompt_title = "Find in directory: " .. _path,
+        search_dirs = { _path },
+    }))
+end
+
+
 local opts = {
     prefix = "<leader>",
     mode = "n",
@@ -25,14 +130,8 @@ local mappings = {
         c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
         r = { "<cmd>retab<cr>", "Retab" },
     },
-    f = {
-        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files()<cr>",
-        "Find files",
-    },
-    F = {
-        "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').find_files_in_path()<cr>",
-        "Find files in path...",
-    },
+    f = { find_files, "Find files" },
+    F = { find_files_in_path, "Find files in path..." },
     g = {
         name = "Goto",
         j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
@@ -48,11 +147,11 @@ local mappings = {
     },
     G = {
         name = "Git",
-        b = { "<cmd>lua require('user.telescope-extensions').git_branches()<cr>", "Branches" },
+        b = { git_branches, "Branches" },
         B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
         c = { "<cmd>Git commit -s<cr>", "Commit" },
-        f = { "<cmd>lua require('user.telescope-extensions').git_bcommits()<cr>", "Browse File Commits" },
-        l = { "<cmd>lua require('user.telescope-extensions').git_commits()<cr>", "List commits" },
+        f = { git_bcommits, "Browse File Commits" },
+        l = { git_commits, "List commits" },
         s = { "<cmd>Ge:<cr>", "Status" },
         S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
         p = { "<cmd>Git pull<cr>", "Pull" },
@@ -105,10 +204,7 @@ local mappings = {
             ":lua require('telescope.builtin').commands(require('telescope.themes').get_ivy())<cr>",
             "Commands",
         },
-        G = {
-            "<cmd>lua require('mengano.plugins.telescope.telescope-extensions').grep_within_grep()<cr>",
-            "Grep within grep",
-        },
+        G = { grep_within_grep, "Grep within grep" },
         m = {
             ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
             "Man Pages",

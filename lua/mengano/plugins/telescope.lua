@@ -1,20 +1,17 @@
 -- TODUA:
--- Why can't I load actions and z_utils?
-
--- Useful for easily creating commands
 
 return {
     {
         "nvim-telescope/telescope.nvim",
-        dependencies = { 
+        dependencies = {
             "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
         config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
-            local file_previewer = require("telescope.previewers").vim_buffer_cat.new
-            local generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter
+            -- local file_previewer = require("telescope.previewers").vim_buffer_cat.new
+            -- local generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter
             local z_utils = require("telescope._extensions.zoxide.utils")
 
             telescope.setup({
@@ -46,7 +43,7 @@ return {
                         },
                     },
                     prompt_prefix = " ",
-                    path_display = { "smart" },
+                    path_display = { "truncate" },
                     selection_caret = " ",
                     set_env = { ["COLORTERM"] = "truecolor" },
                 },
@@ -61,7 +58,6 @@ return {
                                 end
                             },
                             ["<C-s>"] = {
-                                before_action = function(selection) print("before C-s") end,
                                 action = function(selection)
                                     vim.cmd("edit " .. selection.path)
                                 end
@@ -80,9 +76,9 @@ return {
     },
     {
         "jvgrootveld/telescope-zoxide",
-        dependencies = { 
-            "nvim-lua/popup.nvim", 
-            "nvim-telescope/telescope.nvim" 
+        dependencies = {
+            "nvim-lua/popup.nvim",
+            "nvim-telescope/telescope.nvim"
         },
     },
 }
