@@ -16,7 +16,7 @@ return {
                 linehl = "GitSignsChangeLn",
             },
         },
-    attach_to_untracked = true,
+        attach_to_untracked = true,
     },
     dependencies = { "nvim-lua/plenary.nvim" },
     -- config = function()

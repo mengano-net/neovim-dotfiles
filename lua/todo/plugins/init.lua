@@ -106,12 +106,12 @@ return require("packer").startup(function(use)
     --     requires = { "nvim-lua/plenary.nvim" },
     -- })
 
-    use({
-        "davidgranstrom/nvim-markdown-preview",
-        config = {
-            function() vim.g.nvim_markdown_preview_theme = 'solarized-dark' end
-        }
-    })
+    -- use({
+    --     "davidgranstrom/nvim-markdown-preview",
+    --     config = {
+    --         function() vim.g.nvim_markdown_preview_theme = 'solarized-dark' end
+    --     }
+    -- })
 
     -- use({
     --     "kyazdani42/nvim-tree.lua",
@@ -123,7 +123,7 @@ return require("packer").startup(function(use)
     --     },
     -- })
 
-    use({ "rcarriga/nvim-notify" })
+    -- use({ "rcarriga/nvim-notify" })
 
     -- use({
     --     "akinsho/toggleterm.nvim",
@@ -160,10 +160,10 @@ return require("packer").startup(function(use)
     --     end,
     -- })
 
-    use({
-        "kylechui/nvim-surround",
-        config = function() require("nvim-surround").setup({}) end,
-    })
+    -- use({
+    --     "kylechui/nvim-surround",
+    --     config = function() require("nvim-surround").setup({}) end,
+    -- })
 
     use({
         "RRethy/vim-illuminate",
@@ -174,45 +174,45 @@ return require("packer").startup(function(use)
         end,
     })
 
-    use {
-        's1n7ax/nvim-comment-frame',
-        requires = { 'nvim-treesitter' },
-        config = function()
-            require('nvim-comment-frame').setup({
-                disable_default_keymap = true,
-                frame_width = 80,
-                line_wrap_len = 80,
-                languages = {
-                    python = {
-                        frame_width = 61,
-                        line_wrap_len = 52,
-                        start_str = '# --',
-                        end_str = '-- #',
-                    },
-                }
-            })
-        end
-    }
+    -- use {
+    --     's1n7ax/nvim-comment-frame',
+    --     requires = { 'nvim-treesitter' },
+    --     config = function()
+    --         require('nvim-comment-frame').setup({
+    --             disable_default_keymap = true,
+    --             frame_width = 80,
+    --             line_wrap_len = 80,
+    --             languages = {
+    --                 python = {
+    --                     frame_width = 61,
+    --                     line_wrap_len = 52,
+    --                     start_str = '# --',
+    --                     end_str = '-- #',
+    --                 },
+    --             }
+    --         })
+    --     end
+    -- }
 
     -- NOTE: fidget.nvim will soon be completely rewritten. In the meantime,
     -- please pin your plugin config to the legacy tag to avoid breaking changes.
-    use {
-        "j-hui/fidget.nvim",
-        tag = 'legacy',
-        config = function() require('fidget').setup() end
-    }
+    -- use {
+    --     "j-hui/fidget.nvim",
+    --     tag = 'legacy',
+    --     config = function() require('fidget').setup() end
+    -- }
 
-    use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }
+    -- use { "karb94/neoscroll.nvim", config = function() require('neoscroll').setup() end }
 
-    use {
-        'jinh0/eyeliner.nvim',
-        config = function()
-            require 'eyeliner'.setup {
-                highlight_on_key = true,
-                dim = true
-            }
-        end
-    }
+    -- use {
+    --     'jinh0/eyeliner.nvim',
+    --     config = function()
+    --         require 'eyeliner'.setup {
+    --             highlight_on_key = true,
+    --             dim = true
+    --         }
+    --     end
+    -- }
 
     ----------------------------------------------------------------------------------------
     -- Language servers, code formatting, autocompletion
@@ -230,26 +230,26 @@ return require("packer").startup(function(use)
     --     config = "require('cmp-config')",
     -- })
 
-    use({
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-        config = {
-            require("mason").setup({
-                ui = {
-                    icons = {
-                        package_installed = "✓",
-                        package_pending = "➜",
-                        package_uninstalled = "✗"
-                    }
-                },
-                max_concurrent_installers = 10,
-            }),
-            require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "bashls", "yamlls", "pyright" },
-            })
-        }
-    })
+    -- use({
+    --     "williamboman/mason.nvim",
+    --     "williamboman/mason-lspconfig.nvim",
+    --     "neovim/nvim-lspconfig",
+    --     config = {
+    --         require("mason").setup({
+    --             ui = {
+    --                 icons = {
+    --                     package_installed = "✓",
+    --                     package_pending = "➜",
+    --                     package_uninstalled = "✗"
+    --                 }
+    --             },
+    --             max_concurrent_installers = 10,
+    --         }),
+    --         require("mason-lspconfig").setup({
+    --             ensure_installed = { "lua_ls", "bashls", "yamlls", "pyright" },
+    --         })
+    --     }
+    -- })
 
     -- use("hrsh7th/cmp-nvim-lsp")
     --
@@ -290,7 +290,7 @@ return require("packer").startup(function(use)
     ------------------------------------------------------------------------------------------
     --           These plugins are just for fun, not related to IDE configuration           --
     ------------------------------------------------------------------------------------------
-    use({ "DanilaMihailov/beacon.nvim" })
+    -- use({ "DanilaMihailov/beacon.nvim" })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

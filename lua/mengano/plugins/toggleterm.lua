@@ -1,25 +1,25 @@
 local term_size = function(term)
-  if term.direction == "horizontal" then
-    -- return 20
-    return vim.o.lines * 0.4
-  elseif term.direction == "vertical" then
-    return vim.o.columns * 0.4
-  end
+    if term.direction == "horizontal" then
+        -- return 20
+        return vim.o.lines * 0.4
+    elseif term.direction == "vertical" then
+        return vim.o.columns * 0.4
+    end
 end
 
 return {
-    { 
-        'akinsho/toggleterm.nvim', 
-        version = "*", 
-        config = true ,
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        config = true,
         opts = {
             close_on_exit = true,
             float_opts = {
                 border = "curved",
                 winblend = 0,
                 highlights = {
-                border = "Normal",
-                background = "Normal",
+                    border = "Normal",
+                    background = "Normal",
                 },
                 -- width = vim.o.columns * 0.9,
                 -- height = vim.o.lines * 0.5,
