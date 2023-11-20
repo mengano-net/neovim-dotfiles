@@ -10,13 +10,17 @@ return {
         -- local keymap = vim.keymap
 
         local on_attach = function(client, bufnr)
+            --Debug code
+            -- To print capabilities present on buffer, execute this:
+            -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
+
             vim.lsp.handlers["textDocument/hover"] =
                 vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
             vim.lsp.handlers["textDocument/signature_help"] =
                 vim.lsp.with({ border = "rounded" }, vim.lsp.handlers.signature_help)
 
             if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_create_autocmd("BufWritePre", {
+                vim.api.nvim_create_autocmd("LspAttach", {
                     group = vim.api.nvim_create_augroup("document highlight", { clear = false }),
                     pattern = { "*" },
                     command = "lua vim.lsp.buf.format() vim.diagnostic.enable()",
@@ -24,10 +28,11 @@ return {
             end
         end
 
-        -- LS capabilities
-        -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-        -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        if cmp_nvim_lsp then
+            capabilities = cmp_nvim_lsp.default_capabilities()
+        end
 
         -- Diagnostic Signs
         vim.diagnostic.config({
@@ -153,10 +158,7 @@ return {
         lspconfig["marksman"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
-            filetypes = { "md", "markdown" },
-            code_action = {
-                enable = true,
-            },
+            code_action = { enable = true },
         })
     end,
 }
