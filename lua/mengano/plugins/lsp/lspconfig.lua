@@ -65,21 +65,18 @@ return {
             flags = { debounce_text_changes = 150 },
             settings = {
                 Lua = {
-                    --[[ runtime = {
-                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                        version = "LuaJIT",
-                        -- Setup your lua path
-                        path = vim.split(package.path, ";"),
-                    }, ]]
                     diagnostics = {
-                        globals = { "vim" }, -- Get the language server to recognze the `vim` global
-                        -- Lua LSP to check code styles too, like indentation best practices, etc
+                        -- Get the language server to recognze the `vim` global
+                        globals = { "vim" },
+                        -- Lua LSP to check code styles too, like indentation
+                        -- best practices, etc
                         neededFileStatus = { ["codestyle-check"] = "Any" },
                     },
                     workspace = {
                         -- Make the server aware of Neovim runtime files
                         library = vim.api.nvim_get_runtime_file("", true),
-                        -- See https://github.com/LuaLS/lua-language-server/discussions/1688
+                        -- See
+                        -- https://github.com/LuaLS/lua-language-server/discussions/1688
                         checkThirdParty = false,
                     },
                     format = {
@@ -89,7 +86,7 @@ return {
                             indent_size = "4",
                         },
                     },
-                    telemetry = { enable = false }, -- Do not send randomized but unique telemetry data
+                    telemetry = { enable = false },
                 },
             },
         })

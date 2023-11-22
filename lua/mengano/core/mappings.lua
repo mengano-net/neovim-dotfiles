@@ -3,16 +3,18 @@ local opts = { silent = true }
 
 keymap("i", "jk", "<Esc>", opts)
 
--- When you remove a selection character under cursor with `x`, do not also copy to register
+-- When you remove a selection character under cursor with `x`, do not also copy
+-- to register
 keymap("n", "x", '"_x')
 
 keymap("n", "<Tab>", ":bnext<CR>", { silent = true })
 keymap("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 
-keymap("n", "<leader>p", '"0p', opts) -- paste yanked, not deleted, not system copied
+-- paste yanked, not deleted, not system copied
+keymap("n", "<leader>p", '"0p', opts)
 
--- While on visual mode, this allows selections to remain selected for aditional actions without
--- loosing the visual block selection
+-- While on visual mode, this allows selections to remain selected for aditional
+-- actions without loosing the visual block selection
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 

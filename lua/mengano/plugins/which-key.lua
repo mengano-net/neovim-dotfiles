@@ -2,11 +2,13 @@
 vim.keymap.set("", "s", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "S", "<Nop>", { noremap = true, silent = true })
 
--- telescope helper functions
+----------------------------------------------------------------------
+--              Functions and extensions for Telescope              --
+----------------------------------------------------------------------
 local telescope_builtin = require("telescope.builtin")
 local telescope_utils = require("telescope.utils")
 
--- true if local directory is a clone of a git repository
+-- Return true if local directory is a clone of a git repository
 local is_git_worktree = function()
     local _, ret, stderr = telescope_utils.get_os_command_output({
         "git",
@@ -40,7 +42,7 @@ local git_files = function()
     }))
 end
 
--- Telescope fuzzy finder
+-- Telescope's built-in fuzzy finder, using get_ivy theme
 local find_files = function()
     if is_git_worktree() then
         git_files()
@@ -49,6 +51,7 @@ local find_files = function()
     end
 end
 
+-- Telescope built-in wrapper listing grep inside grep
 local grep_within_grep = function()
     telescope_builtin.grep_string(require("telescope.themes").get_ivy({
         prompt_title = "Secondary Grep",
@@ -56,6 +59,7 @@ local grep_within_grep = function()
     }))
 end
 
+-- Telescope built-in wrapper, listing git branches
 local git_branches = function()
     --[[ local opts = {
     prompt_title = "\\ Git Branches /",
@@ -78,6 +82,7 @@ local git_branches = function()
     end
 end
 
+-- Telescope built-in wrapper - listing git commits
 local git_commits = function()
     if is_git_worktree() then
         require("telescope.builtin").git_commits(require("telescope.themes").get_ivy({
@@ -106,6 +111,15 @@ local find_files_in_path = function()
     }))
 end
 
+local list_buffers = function()
+    require('telescope.builtin').buffers(require('telescope.themes').get_ivy({
+        previewer = false, prompt_title = 'Open Buffers'
+    }))
+end
+
+----------------------------------------------------------------------
+--                Configuration for whichkey plugin                 --
+----------------------------------------------------------------------
 
 local opts = {
     prefix = "<leader>",
@@ -117,13 +131,7 @@ local opts = {
 }
 
 local mappings = {
-    b = {
-        name = "Buffers",
-        l = {
-            "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false,prompt_title='Open Buffers'}))<cr>",
-            "List Opened Buffers",
-        },
-    },
+    b = { list_buffers, "Buffers" },
     e = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
@@ -140,6 +148,10 @@ local mappings = {
             "Jump Points",
         },
         k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
+        r = {
+            ":lua require('telescope.builtin').oldfiles(require('telescope.themes').get_ivy())<cr>",
+            "Recent Files",
+        },
         z = {
             "<cmd> lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_ivy{})<cr>",
             "Zoxide List"
@@ -205,14 +217,10 @@ local mappings = {
             "Commands",
         },
         G = { grep_within_grep, "Grep within grep" },
-        m = {
-            ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
-            "Man Pages",
-        },
-        r = {
-            ":lua require('telescope.builtin').oldfiles(require('telescope.themes').get_ivy())<cr>",
-            "Recent Files",
-        },
+        -- m = {
+        --     ":lua require('telescope.builtin').man_pages(require('telescope.themes').get_ivy())<cr>",
+        --     "Man Pages",
+        -- },
     },
     t = {
         name = "Terminal",
