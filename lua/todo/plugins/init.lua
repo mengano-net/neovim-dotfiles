@@ -165,14 +165,14 @@ return require("packer").startup(function(use)
     --     config = function() require("nvim-surround").setup({}) end,
     -- })
 
-    use({
-        "RRethy/vim-illuminate",
-        config = function()
-            require('illuminate').configure({
-                filetypes_denylist = { 'fugitive', 'NvimTree', 'help', 'gitcommit' },
-            })
-        end,
-    })
+    -- use({
+    --     "RRethy/vim-illuminate",
+    --     config = function()
+    --         require('illuminate').configure({
+    --             filetypes_denylist = { 'fugitive', 'NvimTree', 'help', 'gitcommit' },
+    --         })
+    --     end,
+    -- })
 
     -- use {
     --     's1n7ax/nvim-comment-frame',
