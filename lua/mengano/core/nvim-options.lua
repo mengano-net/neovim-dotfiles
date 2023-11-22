@@ -53,7 +53,7 @@ local global_options = {
     mouse = "n",
     ruler = true,
     swapfile = false,
-    pastetoggle = "<F2>",
+    -- pastetoggle = "<F2>",
     pumheight = 20,
     redrawtime = 250,
     relativenumber = true,
@@ -106,12 +106,7 @@ for key, value in pairs(buffer_options) do
     vim.bo[key] = value
 end
 
--- https://www.youtube.com/watch?v=3jLw3isbByI&list=WL&index=2
--- vim.o.winbar = "%{%v:lua.require('user/winbar').eval()%}"
-
-------------------------------------------------------------------------------------------
---                     Disabling some of vim's built-in plugins...                      --
-------------------------------------------------------------------------------------------
+-- Disabling some of vim's built-in plugins I do not use
 local disabled_built_ins = {
     "netrw",
     "netrwPlugin",

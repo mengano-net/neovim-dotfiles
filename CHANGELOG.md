@@ -1,3 +1,36 @@
+## 1.6.0 (2023-11-22)
+
+### Feat
+
+- migrated plugin manager to Lazy.nvim
+- **plugin**: beacon plugin, no other config done
+- **spell file**: new feature to use spell file
+- **markdown**: tabstop 2 for markdown file buffers
+- **mason**: options for concurrency
+- **marksman**: setup function to enable toc on md files
+- **chatGPT**: went back to latest commit.
+- **lsp, whichkey**: adding vim.api.buf.rename()
+- **winbar**: better colors and caps for winbar
+- **winbar**: implemented my own module.
+- **cmp-config**: cmp priority comparators
+- **hrsh7th/cmp-cmdline**: deleted by mistake, added back
+
+### Fix
+
+- indent-blankline.nvim upgraded setup function
+- performance issue
+- **winbar**: issue with WinBar highlight
+- **winbar**: fixing bugs
+- **devicons**: fixed issue with devicons plugin.
+
+### Refactor
+
+- **cmp-config**: removed `cmp-cmdline` plugin.
+- **cmp-config**: moved custom colorscheme changes.
+- **diagnostics**: added border to float window
+
+## 1.4.0 (2022-11-24)
+
 ## 1.5.1 (2023-04-15)
 
 ### Feat

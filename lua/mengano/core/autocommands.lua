@@ -1,6 +1,6 @@
-------------------------------------------------------------------------------------------
---                          Declaring autocommand groups first                          --
-------------------------------------------------------------------------------------------
+----------------------------------------------------------------------
+--                        Autocommand groups                        --
+----------------------------------------------------------------------
 local _general = vim.api.nvim_create_augroup("general_settings", { clear = true })
 local _git = vim.api.nvim_create_augroup("git", { clear = true })
 local _python = vim.api.nvim_create_augroup("python", { clear = true })
@@ -9,9 +9,10 @@ local _yaml = vim.api.nvim_create_augroup("yaml", { clear = true })
 local _terminal = vim.api.nvim_create_augroup("terminal", { clear = true })
 local _markdown = vim.api.nvim_create_augroup("terminal", { clear = true })
 
-------------------------------------------------------------------------------------------
---                                 General autocommands                                 --
-------------------------------------------------------------------------------------------
+----------------------------------------------------------------------
+--                      'General' autocommands                      --
+----------------------------------------------------------------------
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = _general,
     command = "lua vim.highlight.on_yank { higroup='IncSearch', timeout=500}",
@@ -22,6 +23,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     command = "silent! set nopaste",
 })
 
+-- Setting up winbar
 vim.api.nvim_create_autocmd("BufWinEnter", {
     group = _general,
     pattern = '*',
@@ -34,7 +36,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
             vim.bo.filetype == 'toggleterm' then
             vim.wo.winbar = ''
         else
-            vim.wo.winbar = "%{%v:lua.require('user/winbar').eval()%}"
+            vim.wo.winbar = "%{%v:lua.require('mengano.core/winbar').eval()%}"
         end
     end
 })
