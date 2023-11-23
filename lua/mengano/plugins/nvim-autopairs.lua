@@ -1,5 +1,5 @@
 return {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {
         check_ts = true,
@@ -20,5 +20,5 @@ return {
             highlight = "PmenuSel",
             highlight_grey = "LineNr",
         },
-    } 
+    },
 }

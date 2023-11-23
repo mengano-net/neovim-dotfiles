@@ -9,7 +9,7 @@ end
 
 return {
     {
-        'akinsho/toggleterm.nvim',
+        "akinsho/toggleterm.nvim",
         version = "*",
         config = true,
         opts = {
@@ -35,5 +35,5 @@ return {
             shell = "zsh",
             size = term_size,
         },
-    }
+    },
 }

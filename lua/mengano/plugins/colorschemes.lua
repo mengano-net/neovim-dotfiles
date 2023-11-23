@@ -19,7 +19,7 @@ return {
                     variables = {},
                 },
                 no_italic = true, -- Force no italic
-                no_bold = true,   -- Force no bold
+                no_bold = true, -- Force no bold
                 highlight_overrides = {
                     -- To get Catppuccin's color palette run command: lua P(require("catppuccin.palettes").get_palette("macchiato"))
                     -- lualine_a_normal xxx gui=bold guifg=#1e2030 guibg=#8aadf4
@@ -34,12 +34,18 @@ return {
                             GitSignsDelete = { fg = "#B55A67", bg = "#24273A" },
                             IlluminatedWordText = { bg = "#494d64", underline = false },
                             CmpWindowBackground = { bg = macchiato.base },
-                            CmpWindowCursorLine = { fg = macchiato.lavender, bg = macchiato.surface0 },
+                            CmpWindowCursorLine = {
+                                fg = macchiato.lavender,
+                                bg = macchiato.surface0,
+                            },
                             CmpItemAbbrMatch = { fg = macchiato.red, bg = macchiato.base },
-                            CmpItemAbbrMatchFuzzy = { fg = macchiato.yellow, bg = macchiato.overlay0 },
+                            CmpItemAbbrMatchFuzzy = {
+                                fg = macchiato.yellow,
+                                bg = macchiato.overlay0,
+                            },
                             CmpItemMenu = { fg = macchiato.maroon },
                         }
-                    end
+                    end,
                 },
                 integrations = {
                     cmp = true,
