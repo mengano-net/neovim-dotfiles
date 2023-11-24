@@ -26,19 +26,21 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Setting up winbar
 vim.api.nvim_create_autocmd("BufWinEnter", {
     group = _general,
-    pattern = '*',
+    pattern = "*",
     callback = function()
-        if vim.bo.filetype == '' or
-            vim.bo.filetype == 'NvimTree' or
-            vim.bo.filetype == 'fugitive' or
-            vim.bo.filetype == 'gitcommit' or
-            vim.bo.filetype == 'help' or
-            vim.bo.filetype == 'toggleterm' then
-            vim.wo.winbar = ''
+        if
+            vim.bo.filetype == ""
+            or vim.bo.filetype == "NvimTree"
+            or vim.bo.filetype == "fugitive"
+            or vim.bo.filetype == "gitcommit"
+            or vim.bo.filetype == "help"
+            or vim.bo.filetype == "toggleterm"
+        then
+            vim.wo.winbar = ""
         else
             vim.wo.winbar = "%{%v:lua.require('mengano.core/winbar').eval()%}"
         end
-    end
+    end,
 })
 
 ----------------------------------------------------------------------
@@ -59,9 +61,7 @@ vim.api.nvim_create_autocmd("FileType", {
 ----------------------------------------------------------------------
 --                           Python files                           --
 ----------------------------------------------------------------------
-local function filetypes_python()
-    vim.opt_local.colorcolumn = "80"
-end
+local function filetypes_python() vim.opt_local.colorcolumn = "80" end
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
     group = _python,
@@ -101,7 +101,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     callback = yaml_file_options,
 })
 
-
 ----------------------------------------------------------------------
 --                               Markdown                           --
 ----------------------------------------------------------------------
@@ -121,12 +120,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --                                       Terminal                   --
 ----------------------------------------------------------------------
 local terminal = function()
-    vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { silent = true })
-    vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], { silent = true })
+    vim.keymap.set("t", "jk", [[<C-\><C-n>]], { silent = true })
+    vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { silent = true })
 end
 
 vim.api.nvim_create_autocmd("TermOpen", {
     group = _terminal,
     pattern = { "term://*" },
-    callback = terminal
+    callback = terminal,
 })
