@@ -20,6 +20,7 @@ return {
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             ---@cast cmp -?
             -- See https://github.com/sumneko/lua-language-server/issues/1487
+
             cmp.event:on(
                 "confirm_done",
                 cmp_autopairs.on_confirm_done({
