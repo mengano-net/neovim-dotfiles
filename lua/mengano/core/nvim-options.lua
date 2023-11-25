@@ -17,9 +17,7 @@ end
 
 local function create_spellfile(file_path)
     local ok, fd = pcall(vim.loop.fs_open, file_path, "w", 420)
-    if not ok then
-        require("notify")("Couldn't create spell file: " .. file_path, "error", {})
-    end
+    if not ok then require("notify")("Couldn't create spell file: " .. file_path, "error", {}) end
 end
 
 local global_options = {
@@ -86,9 +84,7 @@ for key, value in pairs(global_options) do
     vim.opt[key] = value
 end
 
-if not is_file_readable(spell_file) then
-    create_spellfile(spell_file)
-end
+if not is_file_readable(spell_file) then create_spellfile(spell_file) end
 vim.opt.spellfile = spell_file
 
 vim.opt.shortmess:append("c")
@@ -125,7 +121,7 @@ local disabled_built_ins = {
     "logipat",
     "rrhelper",
     "spellfile_plugin",
-    "matchit"
+    "matchit",
 }
 
 for _, plugin in pairs(disabled_built_ins) do

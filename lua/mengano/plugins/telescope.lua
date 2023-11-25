@@ -1,5 +1,3 @@
--- TODUA:
-
 return {
     {
         "nvim-telescope/telescope.nvim",
@@ -54,18 +52,18 @@ return {
                         mappings = {
                             default = {
                                 after_action = function(selection)
-                                    print("Update to (" .. selection.z_score .. ") " .. selection.path)
-                                end
+                                    print(
+                                        "Update to (" .. selection.z_score .. ") " .. selection.path
+                                    )
+                                end,
                             },
                             ["<C-s>"] = {
-                                action = function(selection)
-                                    vim.cmd("edit " .. selection.path)
-                                end
+                                action = function(selection) vim.cmd("edit " .. selection.path) end,
                             },
                             -- Opens the selected entry in a new split
                             ["<C-q>"] = { action = z_utils.create_basic_command("split") },
                         },
-                    }
+                    },
                 },
             })
 
@@ -78,7 +76,7 @@ return {
         "jvgrootveld/telescope-zoxide",
         dependencies = {
             "nvim-lua/popup.nvim",
-            "nvim-telescope/telescope.nvim"
+            "nvim-telescope/telescope.nvim",
         },
     },
 }

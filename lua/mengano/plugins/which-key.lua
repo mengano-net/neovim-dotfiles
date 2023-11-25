@@ -3,8 +3,9 @@ vim.keymap.set("", "s", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "S", "<Nop>", { noremap = true, silent = true })
 
 ----------------------------------------------------------------------
---              Functions and extensions for Telescope              --
+--                 Extensions for Telescope plugin                  --
 ----------------------------------------------------------------------
+
 local telescope_builtin = require("telescope.builtin")
 local telescope_utils = require("telescope.utils")
 
@@ -96,7 +97,7 @@ local git_commits = function()
 end
 
 local git_bcommits = function()
-    telescope_builtin.git_bcommits(require('telescope.themes').get_ivy({
+    telescope_builtin.git_bcommits(require("telescope.themes").get_ivy({
         prompt_title = "Browser File Commits",
         prompt_prefix = "  ",
     }))
@@ -112,8 +113,9 @@ local find_files_in_path = function()
 end
 
 local list_buffers = function()
-    require('telescope.builtin').buffers(require('telescope.themes').get_ivy({
-        previewer = false, prompt_title = 'Open Buffers'
+    require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
+        previewer = false,
+        prompt_title = "Open Buffers",
     }))
 end
 
@@ -135,7 +137,10 @@ local mappings = {
     e = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
-        c = { "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>", "Comment Block" },
+        c = {
+            "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>",
+            "Comment Block",
+        },
         r = { "<cmd>retab<cr>", "Retab" },
     },
     f = { find_files, "Find files" },
@@ -154,7 +159,7 @@ local mappings = {
         },
         z = {
             "<cmd> lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_ivy{})<cr>",
-            "Zoxide List"
+            "Zoxide List",
         },
     },
     G = {
@@ -184,23 +189,17 @@ local mappings = {
     l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
-        -- d = { "<cmd>Glance definitions<cr>", "Definition" },
-        D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Declaration" },
-        f = {
-            "<cmd>lua vim.lsp.buf.format{async=false,timeout_ms=2000} vim.diagnostic.enable()<cr>",
-            "Format"
-        },
+        -- d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
+        d = { "<cmd>Glance definitions<cr>", "Definition" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
-        m = { "<cmd>Mason<cr>", "List LSP servers installed." },
-        r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
-        -- r = { "<cmd>Glance references<cr>", "References" },
+        -- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+        r = { "<cmd>Glance references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
         s = {
             "<cmd> lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_ivy())<cr>",
-            "Document Symbols"
+            "Document Symbols",
         },
-        -- t = { "<cmd>Glance type_definitions<cr>", "Type Definition" },
+        t = { "<cmd>Glance type_definitions<cr>", "Type Definition" },
     },
     s = {
         name = "Search",

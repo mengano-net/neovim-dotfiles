@@ -14,7 +14,8 @@ return {
         event = "BufEnter",
         config = function()
             vim.cmd(
-                "let g:better_whitespace_filetypes_blacklist=['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive', 'toggleterm']")
+                "let g:better_whitespace_filetypes_blacklist=['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive', 'toggleterm']"
+            )
         end,
     },
     { "tpope/vim-fugitive" },
@@ -24,17 +25,15 @@ return {
         event = "BufEnter",
         opts = {
             exclude = {
-                filetypes = { "terminal", "help", "nofile", "NvimTree", },
-                buftypes = { "packer", "help", "NvimTree", },
-            }
+                filetypes = { "terminal", "help", "nofile", "NvimTree" },
+                buftypes = { "packer", "help", "NvimTree" },
+            },
         },
     },
     {
         "davidgranstrom/nvim-markdown-preview",
         ft = "markdown",
-        config = function()
-            vim.g.nvim_markdown_preview_theme = 'solarized-dark'
-        end
+        config = function() vim.g.nvim_markdown_preview_theme = "solarized-dark" end,
     },
     {
         "s1n7ax/nvim-comment-frame",
@@ -49,34 +48,36 @@ return {
                     python = {
                         frame_width = 61,
                         line_wrap_len = 52,
-                        start_str = '# --',
-                        end_str = '-- #',
-                    }
-                }
+                        start_str = "# --",
+                        end_str = "-- #",
+                    },
+                },
             })
         end,
     },
     {
-        "j-hui/fidget.nvim", event = "VeryLazy", opts = {},
+        "j-hui/fidget.nvim",
+        event = "VeryLazy",
+        opts = {},
     },
     {
         "karb94/neoscroll.nvim",
         event = "VeryLazy",
-        config = function()
-            require('neoscroll').setup()
-        end
+        config = function() require("neoscroll").setup() end,
     },
     {
         "jinh0/eyeliner.nvim",
         event = "VeryLazy",
-        config = function()
-            require 'eyeliner'.setup { highlight_on_key = true, dim = true }
-        end
+        config = function() require("eyeliner").setup({ highlight_on_key = true, dim = true }) end,
     },
     {
         "DanilaMihailov/beacon.nvim",
     },
     {
         "rcarriga/nvim-notify",
-    }
+    },
+    {
+        "DNLHC/glance.nvim",
+        config = function() require("glance").setup({}) end,
+    },
 }
