@@ -134,10 +134,10 @@ return {
                     { name = "path", keyword_length = 3, group_index = 2 },
                     { name = "buffer", keyword_length = 4, group_index = 2 },
                 }),
-                ------------------------------------------------------------------------------------------
-                --                     See this vedeo series on YouTube for details                     --
-                --                     https://www.youtube.com/watch?v=8zENSGqOk8w                      --
-                ------------------------------------------------------------------------------------------
+                ----------------------------------------------------------------------
+                --              See this video on YouTube for details               --
+                --           https://www.youtube.com/watch?v=8zENSGqOk8w            --
+                ----------------------------------------------------------------------
                 formatting = {
                     fields = { "abbr", "kind", "menu" },
                     -- fields = { "kind", "abbr", "menu" },
@@ -166,20 +166,22 @@ return {
                 -- Set configuration for specific filetype.
                 cmp.setup.filetype("gitcommit", {
                     sources = cmp.config.sources({
-                        -- You can specify the `cmp_git` source if you were installed it.
+                        -- You can specify the `cmp_git` source if installed
                         { name = "cmp_git" },
                     }, {
                         { name = "buffer" },
                     }),
                 }),
-                -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+                -- Use buffer source for `/` (if you enabled `native_menu`, this
+                -- won't work anymore).
                 cmp.setup.cmdline("/", {
                     mapping = cmp.mapping.preset.cmdline(),
                     sources = {
                         { name = "buffer" },
                     },
                 }),
-                -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+                -- Use cmdline & path source for ':' (if you enabled
+                -- `native_menu`, this won't work anymore).
                 cmp.setup.cmdline(":", {
                     mapping = cmp.mapping.preset.cmdline(),
                     sources = cmp.config.sources({
