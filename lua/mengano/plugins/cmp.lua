@@ -126,30 +126,13 @@ return {
                         end
                     end, { "i", "s" }),
                 }),
-                -- sources = cmp.config.sources({
-                --         { name = 'luasnip' }, -- For luasnip users.
-                --     },
-                --     {                         -- If found in luasnip do not duplicate it for the others sources
-                --         {
-                --             name = "buffer",
-                --             keyword_length = 3
-                --         },
-                --         { name = "nvim_lsp" },
-                --         { name = "path" },
-                --         { name = "nvim_lsp_signature_help" },
-                --         { name = "nvim_lua" },
-                --     }
-                -- ),
                 sources = cmp.config.sources({
-                    {
-                        name = "buffer",
-                        keyword_length = 3,
-                    },
-                    { name = "luasnip" },
-                    { name = "nvim_lsp" },
+                    { name = "nvim_lsp", group_index = 1 },
                     { name = "nvim_lsp_signature_help" },
+                    { name = "luasnip" },
                     { name = "nvim_lua" },
-                    { name = "path" },
+                    { name = "path", keyword_length = 3, group_index = 2 },
+                    { name = "buffer", keyword_length = 4, group_index = 2 },
                 }),
                 ------------------------------------------------------------------------------------------
                 --                     See this vedeo series on YouTube for details                     --
