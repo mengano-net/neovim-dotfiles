@@ -10,6 +10,7 @@ luac.out
 spell/
 **/packer_compiled.lua
 plugin/packer_compiled.lua
+lazy-lock.json
 
 # Object files
 *.o
