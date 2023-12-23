@@ -75,10 +75,12 @@ return {
                             and not context.in_syntax_group("Comment")
                     end
                 end,
+
                 snippet = {
                     -- REQUIRED - you must specify a snippet engine
                     expand = function(args) luasnip.lsp_expand(args.body) end,
                 },
+
                 window = {
                     completion = cmp.config.window.bordered({
                         border = "shadow",
@@ -90,6 +92,7 @@ return {
                         winhighlight = "Normal:CmpWindowBackground,Floatborder:Pmenu,CursorLine:PmenuThumb,Search:None",
                     }),
                 },
+
                 mapping = cmp.mapping.preset.insert({
                     ["<C-d>"] = cmp.mapping.scroll_docs(4),
                     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -126,6 +129,7 @@ return {
                         end
                     end, { "i", "s" }),
                 }),
+
                 sources = cmp.config.sources({
                     { name = "nvim_lsp_signature_help" },
                     { name = "luasnip" },
@@ -133,6 +137,7 @@ return {
                     { name = "path", keyword_length = 3, group_index = 2 },
                     { name = "buffer", keyword_length = 4, group_index = 2 },
                 }),
+
                 ----------------------------------------------------------------------
                 --              See this video on YouTube for details               --
                 --           https://www.youtube.com/watch?v=8zENSGqOk8w            --
@@ -150,10 +155,12 @@ return {
                         return vim_item
                     end,
                 },
+
                 confirm_opts = {
                     behavior = cmp.ConfirmBehavior.Replace,
                     select = false,
                 },
+
                 sorting = {
                     comparators = {
                         cmp.config.compare.exact,
@@ -162,15 +169,11 @@ return {
                         cmp.config.compare.locality,
                     },
                 },
-                -- Set configuration for specific filetype.
-                cmp.setup.filetype("gitcommit", {
-                    sources = cmp.config.sources({
-                        -- You can specify the `cmp_git` source if installed
-                        { name = "cmp_git" },
-                    }, {
-                        { name = "buffer" },
-                    }),
-                }),
+
+                -- Set configuration for specific filetypes.
+                cmp.setup.filetype("gitcommit", { enabled = false }),
+                cmp.setup.filetype("TelescopePrompt", { enabled = false }),
+
                 -- Use buffer source for `/` (if you enabled `native_menu`, this
                 -- won't work anymore).
                 cmp.setup.cmdline("/", {
@@ -179,6 +182,7 @@ return {
                         { name = "buffer" },
                     },
                 }),
+
                 -- Use cmdline & path source for ':' (if you enabled
                 -- `native_menu`, this won't work anymore).
                 cmp.setup.cmdline(":", {
