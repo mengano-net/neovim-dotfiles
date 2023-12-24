@@ -188,13 +188,9 @@ local mappings = {
     },
     l = {
         name = "LSP",
-        -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         a = { '<cmd>lua require("actions-preview").code_actions()<cr>', "Code Action" },
-        -- require("actions-preview").code_actions()
-        -- d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
         d = { "<cmd>Glance definitions<cr>", "Definition" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
-        -- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
         r = { "<cmd>Glance references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
         s = {

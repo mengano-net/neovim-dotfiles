@@ -8,30 +8,29 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
-            -- local keymap = vim.keymap
 
-            local on_attach = function(client, bufnr)
-                --Debug code
-                -- To print capabilities present on buffer, execute this:
-                -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("LspAttach", { clear = false }),
+                callback = function(args)
+                    -- opts for buffer's local mappings.
+                    local opts = { buffer = args.buf }
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-                vim.lsp.handlers["textDocument/hover"] =
-                    vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-                vim.lsp.handlers["textDocument/signature_help"] =
-                    vim.lsp.with({ border = "rounded" }, vim.lsp.handlers.signature_help)
+                    vim.lsp.handlers["textDocument/hover"] =
+                        vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
-                if client.server_capabilities.documentFormattingProvider then
-                    vim.api.nvim_create_autocmd("LspAttach", {
-                        group = vim.api.nvim_create_augroup(
-                            "document highlight",
-                            { clear = false }
-                        ),
-                        pattern = { "*" },
-                        command = "lua vim.lsp.buf.format() vim.diagnostic.enable()",
-                    })
-                end
-            end
+                    vim.lsp.handlers["textDocument/signature_help"] =
+                        vim.lsp.with({ border = "rounded" }, vim.lsp.handlers.signature_help)
 
+                    -- format buffer when Lsp attaches
+                    if client.server_capabilities.documentFormattingProvider then
+                        vim.lsp.buf.format()
+                    end
+                end,
+            })
+
+            -- To print capabilities present on buffer, execute this:
+            -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true
             if cmp_nvim_lsp then capabilities = cmp_nvim_lsp.default_capabilities() end
@@ -43,7 +42,7 @@ return {
                 underline = true,
                 update_in_insert = true,
                 float = {
-                    border = "single",
+                    border = "rounded",
                     header = "",
                     focusable = false,
                     prefix = "",
@@ -63,21 +62,15 @@ return {
             -- LS configuration for the different languages
             lspconfig["lua_ls"].setup({
                 capabilities = capabilities,
-                on_attach = on_attach,
                 flags = { debounce_text_changes = 150 },
                 settings = {
                     Lua = {
                         diagnostics = {
-                            -- Get the language server to recognze the `vim` global
                             globals = { "vim" },
-                            -- Lua LSP to check code styles too, like indentation
-                            -- best practices, etc
                             neededFileStatus = { ["codestyle-check"] = "Any" },
                         },
                         workspace = {
-                            -- Make the server aware of Neovim runtime files
                             library = vim.api.nvim_get_runtime_file("", true),
-                            -- See
                             -- https://github.com/LuaLS/lua-language-server/discussions/1688
                             checkThirdParty = false,
                         },
@@ -95,15 +88,11 @@ return {
 
             lspconfig["pyright"].setup({
                 filetypes = { "python" },
-                on_attach = on_attach,
                 capabilities = capabilities,
             })
 
             -- bash language server
             lspconfig["bashls"].setup({
-                -- cmd = { "/usr/bin/bash-language-server", "start" },
-                -- cmd == { "~/.local/share/nvim/lsp_servers/bash", "start" },
-                on_attach = on_attach,
                 capabilities = capabilities,
                 flags = {
                     debounce_text_changes = 150,
@@ -113,8 +102,6 @@ return {
 
             -- yaml LSP
             lspconfig["yamlls"].setup({
-                -- cmd = { yamlls_binary, "--stdio" },
-                on_attach = on_attach,
                 capabilities = capabilities,
                 debounce_text_changes = 150,
                 filetypes = { "yaml", "yml" },
@@ -155,7 +142,6 @@ return {
 
             -- marksman LSP
             lspconfig["marksman"].setup({
-                on_attach = on_attach,
                 capabilities = capabilities,
                 code_action = { enable = true },
             })
