@@ -74,6 +74,7 @@ return {
                             -- https://github.com/LuaLS/lua-language-server/discussions/1688
                             checkThirdParty = false,
                         },
+
                         format = {
                             enable = true,
                             defaultConfig = {

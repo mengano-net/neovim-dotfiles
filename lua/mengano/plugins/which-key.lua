@@ -187,7 +187,7 @@ local mappings = {
         u = { "<cmd Gitsigns undo_stage_hunk<cr>", "UnStage Hunk" },
     },
     l = {
-        name = "LSP",
+        name = "LSP",p
         a = { '<cmd>lua require("actions-preview").code_actions()<cr>', "Code Action" },
         d = { "<cmd>Glance definitions<cr>", "Definition" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
