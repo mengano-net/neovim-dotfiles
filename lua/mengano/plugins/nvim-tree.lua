@@ -1,7 +1,7 @@
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
-        "kyazdani42/nvim-web-devicons"
+        "kyazdani42/nvim-web-devicons",
     },
     config = function()
         require("nvim-tree").setup({
@@ -12,10 +12,10 @@ return {
                 enable = true,
                 show_on_dirs = true,
                 icons = {
-                    hint = " ",
-                    info = " ",
-                    warning = " ",
-                    error = " ",
+                    hint = " ",
+                    info = " ",
+                    warning = " ",
+                    error = " ",
                 },
             },
             disable_netrw = true,
