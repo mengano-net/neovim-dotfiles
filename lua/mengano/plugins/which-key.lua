@@ -1,4 +1,4 @@
--- Clearing some builtin maps that I will steal for my own.
+-- Clearing some builtin maps that I will steal for my own
 vim.keymap.set("", "s", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "S", "<Nop>", { noremap = true, silent = true })
 
