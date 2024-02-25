@@ -48,12 +48,11 @@ return {
                     end,
                 },
                 integrations = {
-                    cmp = true,
-                    gitsigns = true,
-                    nvimtree = true,
-                    telescope = true,
-                    treesitter = true,
                     -- For more plugins integrations see (https://github.com/catppuccin/nvim#integrations)
+                    -- Some are enabled by default, i.e. 'cmp' - Do not add
+                    mason = true,
+                    ts_rainbow = true,
+                    which_key = true,
                 },
             })
             vim.cmd([[colorscheme catppuccin-macchiato]])

@@ -1,3 +1,8 @@
+-- DO NOT add keymaps for ANY plugins here, this is ONLY for keymaps relating to
+-- functionality that is built into Neovim only.
+-- The keymaps, relating to each plugin should be added on said plaugin's
+-- configuration lua file, usually found in /lua/mengano/plugins
+
 -- Function wrapper for mapping custom keybindings
 local function keymap(mode, lhs, rhs, opts)
     local options = { noremap = true, silent = true }

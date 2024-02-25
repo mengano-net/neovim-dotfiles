@@ -8,6 +8,7 @@ local _documentation = vim.api.nvim_create_augroup("documentation", { clear = tr
 local _yaml = vim.api.nvim_create_augroup("yaml", { clear = true })
 local _terminal = vim.api.nvim_create_augroup("terminal", { clear = true })
 local _markdown = vim.api.nvim_create_augroup("terminal", { clear = true })
+local _platuml = vim.api.nvim_create_augroup("platuml", { clear = true })
 
 ----------------------------------------------------------------------
 --                      'General' autocommands                      --
@@ -128,4 +129,20 @@ vim.api.nvim_create_autocmd("TermOpen", {
     group = _terminal,
     pattern = { "term://*" },
     callback = terminal,
+})
+
+----------------------------------------------------------------------
+--                             PlatUML                              --
+----------------------------------------------------------------------
+local plantuml_file_options = function()
+    vim.opt_local.filetype = "platuml"
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.tabstop = 4
+end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = _platuml,
+    pattern = { "*.puml" },
+    callback = plantuml_file_options,
 })
