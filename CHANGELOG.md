@@ -1,3 +1,9 @@
+## 1.7.1 (2024-02-27)
+
+### Fix
+
+- was still using retired notify-extensions
+
 ## 1.7.0 (2024-02-25)
 
 ## 1.6.0 (2024-02-25)

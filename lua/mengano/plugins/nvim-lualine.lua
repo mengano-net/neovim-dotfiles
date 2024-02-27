@@ -54,7 +54,8 @@ return {
                 extensions = { "fugitive" },
                 icons_enabled = true,
                 section_separators = " ",
-                theme = "auto",
+                theme = "dracula",
+                -- theme = "auto",
             },
             sections = {
                 lualine_a = { "mode" },
@@ -66,9 +67,9 @@ return {
                         "diff",
                         colored = true,
                         -- diff_color = {
-                        --     added    = 'DiffAdd', -- Changes the diff's added color
-                        --     modified = 'DiffChange', -- Changes the diff's modified color
-                        --     removed  = 'DiffDelete', -- Changes the diff's removed color you
+                        --     added    = 'DiffAdd',
+                        --     modified = 'DiffChange',
+                        --     removed  = 'DiffDelete',
                         -- },
                         padding = { left = 1, right = 1 },
                     },
