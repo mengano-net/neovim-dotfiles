@@ -77,8 +77,8 @@ local git_branches = function()
             prompt_prefix = "  ",
         }))
     else
-        vim.notify_once("Not a git working tree", 3, {})
-        -- require("notify-extensions").notify("Warning", "Not a git working tree", "warn", 5000)
+        -- vim.notify_once("Not a git working tree", 3, {})
+        require("notify")("Not a git working tree", "WARN")
         return
     end
 end
@@ -91,7 +91,7 @@ local git_commits = function()
             prompt_prefix = "  ",
         }))
     else
-        require("notify-extensions").notify("Warning", "Not a git working tree", "warn", 5000)
+        require("notify")("Not a git working tree", "WARN")
         return
     end
 end
