@@ -1,7 +1,3 @@
-----------------------------------------------------------------------
---                   Telescope built-in estensions                  --
-----------------------------------------------------------------------
-
 local telescope_builtin = require("telescope.builtin")
 local telescope_utils = require("telescope.utils")
 local themes = require("telescope.themes")
@@ -21,7 +17,6 @@ local is_git_worktree = function()
     end
 end
 
--- Telescope, listing files currently managed by git
 local git_files = function()
     --[[ local opts = {
     prompt_title = "\\ Git Files /",
@@ -40,7 +35,6 @@ local git_files = function()
     }))
 end
 
--- Telescope's built-in fuzzy finder, using get_ivy theme
 local find_files = function()
     if is_git_worktree() then
         git_files()
@@ -51,7 +45,6 @@ end
 
 local live_grep = function() telescope_builtin.live_grep(themes.get_ivy()) end
 
--- Telescope built-in wrapper listing grep inside grep
 local grep_within_grep = function()
     telescope_builtin.grep_string(themes.get_ivy({
         prompt_title = "Secondary Grep",
@@ -59,7 +52,6 @@ local grep_within_grep = function()
     }))
 end
 
--- Telescope built-in wrapper, listing git branches
 local git_branches = function()
     --[[ local opts = {
     prompt_title = "\\ Git Branches /",
@@ -119,40 +111,15 @@ end
 
 local jump_list = function() telescope_builtin.jumplist(themes.get_ivy({})) end
 
-local recent_files = function()
-    telescope_builtin.oldfiles(themes.get_ivy({ previewer = false }))
-end
+local recent_files = function() telescope_builtin.oldfiles(themes.get_ivy({ previewer = false })) end
 
-local zoxide_list = function()
-    require("telescope").extensions.zoxide.list(themes.get_ivy({}))
-end
+local zoxide_list = function() require("telescope").extensions.zoxide.list(themes.get_ivy({})) end
 
-local symbols = function()
-    telescope_builtin.lsp_document_symbols(themes.get_ivy())
-end
+local symbols = function() telescope_builtin.lsp_document_symbols(themes.get_ivy()) end
 
 local search_tags = function() telescope_builtin.help_tags(themes.get_ivy()) end
 
 local search_commands = function() telescope_builtin.commands(themes.get_ivy()) end
-
-----------------------------------------------------------------------
---                        Telescope keymaps                         --
-----------------------------------------------------------------------
-
-vim.keymap.set({ "n" }, "<leader>bl", list_buffers, { desc = "List open buffers" })
-vim.keymap.set({ "n" }, "<leader>f", find_files, { desc = "Find files" })
-vim.keymap.set({ "n" }, "<leader>F", find_files_in_path, { desc = "Find files in path ..." })
-vim.keymap.set({ "n" }, "<leader>gJ", jump_list, { desc = "Jump List" })
-vim.keymap.set({ "n" }, "<leader>gr", recent_files, { desc = "Recent Files" })
-vim.keymap.set({ "n" }, "<leader>gz", zoxide_list, { desc = "Zoxide Jump List" })
-vim.keymap.set({ "n" }, "<leader>Gb", git_branches, { desc = "Branches" })
-vim.keymap.set({ "n" }, "<leader>Gf", git_bcommits, { desc = "File Commit List" })
-vim.keymap.set({ "n" }, "<leader>Gl", git_commits, { desc = "List branch commits" })
-vim.keymap.set({ "n" }, "<leader>ls", symbols, { desc = "Symbols" })
-vim.keymap.set({ "n" }, "<leader>sg", live_grep, { desc = "Grep" })
-vim.keymap.set({ "n" }, "<leader>sG", grep_within_grep, { desc = "Grep within grep ..." })
-vim.keymap.set({ "n" }, "<leader>st", search_tags, { desc = "Tags" })
-vim.keymap.set({ "n" }, "<leader>sc", search_commands, { desc = "Commands" })
 
 ----------------------------------------------------------------------
 --                  Telescope plugin configuration                  --
@@ -164,6 +131,22 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
+        keys = {
+            { "<leader>bl", list_buffers, desc = "Buffers" },
+            { "<leader>f", find_files, desc = "Find files" },
+            { "<leader>F", find_files_in_path, desc = "Find files in path ..." },
+            { "<leader>gJ", jump_list, desc = "Jump list" },
+            { "<leader>gr", recent_files, desc = "Recent files" },
+            { "<leader>gz", zoxide_list, desc = "Zoxide jump list" },
+            { "<leader>Gb", git_branches, desc = "Branches" },
+            { "<leader>Gf", git_bcommits, desc = "File Commit List" },
+            { "<leader>Gl", git_commits, desc = "Commits" },
+            { "<leader>ls", symbols, desc = "Symbols" },
+            { "<leader>sg", live_grep, desc = "Grep" },
+            { "<leader>sG", grep_within_grep, desc = "Grep within grep ..." },
+            { "<leader>st", search_tags, desc = "Tags" },
+            { "<leader>sc", search_commands, desc = "Commands" },
         },
         config = function()
             local telescope = require("telescope")
