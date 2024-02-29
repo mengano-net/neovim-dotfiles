@@ -4,6 +4,7 @@
 
 local telescope_builtin = require("telescope.builtin")
 local telescope_utils = require("telescope.utils")
+local themes = require("telescope.themes")
 
 -- Return true if local directory is a clone of a git repository
 local is_git_worktree = function()
@@ -32,7 +33,7 @@ local git_files = function()
     },
   }
   require'telescope.builtin'.git_files(opts) ]]
-    telescope_builtin.git_files(require("telescope.themes").get_ivy({
+    telescope_builtin.git_files(themes.get_ivy({
         prompt_title = "Git Files",
         follow = "true",
         prompt_prefix = "  ",
@@ -44,15 +45,15 @@ local find_files = function()
     if is_git_worktree() then
         git_files()
     else
-        telescope_builtin.find_files(require("telescope.themes").get_ivy({}))
+        telescope_builtin.find_files(themes.get_ivy({}))
     end
 end
 
-local live_grep = function() telescope_builtin.live_grep(require("telescope.themes").get_ivy()) end
+local live_grep = function() telescope_builtin.live_grep(themes.get_ivy()) end
 
 -- Telescope built-in wrapper listing grep inside grep
 local grep_within_grep = function()
-    telescope_builtin.grep_string(require("telescope.themes").get_ivy({
+    telescope_builtin.grep_string(themes.get_ivy({
         prompt_title = "Secondary Grep",
         search = vim.fn.input("Rg> "),
     }))
@@ -70,7 +71,7 @@ local git_branches = function()
   } ]]
     if is_git_worktree() then
         -- require'telescope.builtin'.git_branches(opts)
-        telescope_builtin.git_branches(require("telescope.themes").get_ivy({
+        telescope_builtin.git_branches(themes.get_ivy({
             prompt_title = "Git Branches",
             prompt_prefix = "  ",
         }))
@@ -81,10 +82,9 @@ local git_branches = function()
     end
 end
 
--- Telescope built-in wrapper - listing git commits
 local git_commits = function()
     if is_git_worktree() then
-        telescope_builtin.git_commits(require("telescope.themes").get_ivy({
+        telescope_builtin.git_commits(themes.get_ivy({
             prompt_title = "Git Commits",
             prompt_prefix = "  ",
         }))
@@ -95,8 +95,8 @@ local git_commits = function()
 end
 
 local git_bcommits = function()
-    telescope_builtin.git_bcommits(require("telescope.themes").get_ivy({
-        prompt_title = "Browser File Commits",
+    telescope_builtin.git_bcommits(themes.get_ivy({
+        prompt_title = "Commits which include current buffer",
         prompt_prefix = "  ",
     }))
 end
@@ -104,38 +104,36 @@ end
 local find_files_in_path = function()
     local _path = vim.fn.input("Enter Directory: ", "", "dir")
     if _path == nil or _path == "" then _path = vim.fn.expand("%:p:h") end
-    telescope_builtin.find_files(require("telescope.themes").get_ivy({
+    telescope_builtin.find_files(themes.get_ivy({
         prompt_title = "Find in directory: " .. _path,
         search_dirs = { _path },
     }))
 end
 
 local list_buffers = function()
-    telescope_builtin.buffers(require("telescope.themes").get_ivy({
+    telescope_builtin.buffers(themes.get_ivy({
         previewer = false,
         prompt_title = "Open Buffers",
     }))
 end
 
-local jump_list = function() telescope_builtin.jumplist(require("telescope.themes").get_ivy({})) end
+local jump_list = function() telescope_builtin.jumplist(themes.get_ivy({})) end
 
 local recent_files = function()
-    telescope_builtin.oldfiles(require("telescope.themes").get_ivy({
-        previewer = false,
-    }))
+    telescope_builtin.oldfiles(themes.get_ivy({ previewer = false }))
 end
 
 local zoxide_list = function()
-    require("telescope").extensions.zoxide.list(require("telescope.themes").get_ivy({}))
+    require("telescope").extensions.zoxide.list(themes.get_ivy({}))
 end
 
 local symbols = function()
-    telescope_builtin.lsp_document_symbols(require("telescope.themes").get_ivy())
+    telescope_builtin.lsp_document_symbols(themes.get_ivy())
 end
 
-local search_tags = function() telescope_builtin.help_tags(require("telescope.themes").get_ivy()) end
+local search_tags = function() telescope_builtin.help_tags(themes.get_ivy()) end
 
-local search_commands = function() telescope_builtin.commands(require("telescope.themes").get_ivy()) end
+local search_commands = function() telescope_builtin.commands(themes.get_ivy()) end
 
 ----------------------------------------------------------------------
 --                        Telescope keymaps                         --
