@@ -1,3 +1,11 @@
+## 1.7.2 (2024-03-01)
+
+### Refactor
+
+- telescope keymaps
+- telescope themes are a local variable
+- Moved telescope keymaps
+
 ## 1.7.1 (2024-02-27)
 
 ### Fix
