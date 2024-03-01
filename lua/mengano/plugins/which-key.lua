@@ -22,10 +22,6 @@ local mappings = {
     e = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
-        c = {
-            "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr>",
-            "Comment Block",
-        },
         r = { "<cmd>retab<cr>", "Retab" },
     },
     g = {
