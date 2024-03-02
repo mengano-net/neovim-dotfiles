@@ -16,9 +16,7 @@ local opts = {
 }
 
 local mappings = {
-    b = {
-        name = "Buffers",
-    },
+    b = { name = "Buffers" },
     e = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
@@ -31,25 +29,12 @@ local mappings = {
     },
     G = {
         name = "Git",
-        B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
         c = { "<cmd>Git commit -s<cr>", "Commit" },
         s = { "<cmd>Ge:<cr>", "Status" },
-        S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
         p = { "<cmd>Git pull<cr>", "Pull" },
         P = { "<cmd>Git push<cr>", "Push" },
-        r = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
     },
-    h = {
-        name = "Hunks",
-        b = { "<cmd>lua require'gitsigns'.blame_line{full=false}<cr>", "Blame Line - Short" },
-        B = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line - Short" },
-        j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
-        k = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
-        p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
-        r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
-        s = { "<cmd> Gitsigns stage_hunk<cr>", "Stage Hunk" },
-        u = { "<cmd Gitsigns undo_stage_hunk<cr>", "UnStage Hunk" },
-    },
+    h = { name = "Hunks" },
     l = {
         name = "LSP",
         a = { '<cmd>lua require("actions-preview").code_actions()<cr>', "Code Action" },
