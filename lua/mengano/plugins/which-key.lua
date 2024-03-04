@@ -31,7 +31,6 @@ local mappings = {
     h = { name = "Hunks" },
     l = {
         name = "LSP",
-        a = { '<cmd>lua require("actions-preview").code_actions()<cr>', "Code Action" },
         d = { "<cmd>Glance definitions<cr>", "Definition" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
         r = { "<cmd>Glance references<cr>", "References" },

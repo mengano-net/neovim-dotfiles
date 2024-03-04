@@ -155,6 +155,12 @@ return {
         config = function()
             require("actions-preview").setup({
                 telescope = require("telescope.themes").get_ivy(),
+                vim.keymap.set(
+                    { "n" },
+                    "<leader>la",
+                    '<cmd>lua require("actions-preview").code_actions()<cr>',
+                    { desc = "Code Actions" }
+                ),
             })
         end,
     },
