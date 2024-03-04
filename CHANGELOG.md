@@ -1,3 +1,18 @@
+## 1.7.3 (2024-03-04)
+
+### Fix
+
+- gitsigns had errors on some keymaps
+
+### Refactor
+
+- nvim-tree keymaps
+- toggleterm keymaps
+- moved  keymaps for glance.
+- Moved keymaps for actions-preview
+- moved vim-figitive maps from which-key
+- moved keymaps for gitsign
+
 ## 1.7.2 (2024-03-01)
 
 ### Refactor
