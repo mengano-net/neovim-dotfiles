@@ -15,6 +15,11 @@ local opts = {
     nowait = true,
 }
 
+-- Keep in mind, most keymaps are created in the configuration file for each
+-- plugin, i.e. telescope keemaps are found on ./telescope.lua, etc. Here are
+-- only entries to keymap groups in order to display in whick-key floating
+-- window and maps that are implementd via nvim's built-in functionalities,
+--not dependant on external plugins.
 local mappings = {
     b = { name = "Buffers" },
     e = {
@@ -36,7 +41,6 @@ local mappings = {
     },
     s = { name = "Search" },
     t = { name = "Terminal" },
-    T = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
     x = { ":bd!<cr>", "Destroy buffer" },
     w = { ":w!<cr>", "Save buffer" },
 }
