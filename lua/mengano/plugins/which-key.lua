@@ -35,12 +35,7 @@ local mappings = {
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
     },
     s = { name = "Search" },
-    t = {
-        name = "Terminal",
-        f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-        h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
-        v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
-    },
+    t = { name = "Terminal" },
     T = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
     x = { ":bd!<cr>", "Destroy buffer" },
     w = { ":w!<cr>", "Save buffer" },
