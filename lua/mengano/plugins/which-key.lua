@@ -27,13 +27,7 @@ local mappings = {
         j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
         k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
     },
-    G = {
-        name = "Git",
-        c = { "<cmd>Git commit -s<cr>", "Commit" },
-        s = { "<cmd>Ge:<cr>", "Status" },
-        p = { "<cmd>Git pull<cr>", "Pull" },
-        P = { "<cmd>Git push<cr>", "Push" },
-    },
+    G = { name = "Git" },
     h = { name = "Hunks" },
     l = {
         name = "LSP",

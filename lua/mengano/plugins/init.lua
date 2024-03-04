@@ -18,7 +18,6 @@ return {
             )
         end,
     },
-    { "tpope/vim-fugitive" },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
