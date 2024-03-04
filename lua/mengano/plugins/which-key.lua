@@ -31,15 +31,10 @@ local mappings = {
     h = { name = "Hunks" },
     l = {
         name = "LSP",
-        d = { "<cmd>Glance definitions<cr>", "Definition" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
-        r = { "<cmd>Glance references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
-        t = { "<cmd>Glance type_definitions<cr>", "Type Definition" },
     },
-    s = {
-        name = "Search",
-    },
+    s = { name = "Search" },
     t = {
         name = "Terminal",
         f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
