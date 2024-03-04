@@ -15,10 +15,13 @@ local opts = {
     nowait = true,
 }
 
+-- Keep in mind, most keymaps are created in the configuration file for each
+-- plugin, i.e. telescope keemaps are found on ./telescope.lua, etc. Here are
+-- only entries to keymap groups in order to display in whick-key floating
+-- window and maps that are implementd via nvim's built-in functionalities,
+--not dependant on external plugins.
 local mappings = {
-    b = {
-        name = "Buffers",
-    },
+    b = { name = "Buffers" },
     e = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
@@ -29,46 +32,15 @@ local mappings = {
         j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
         k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
     },
-    G = {
-        name = "Git",
-        B = { "<cmd>lua require('gitsigns').blame_line{full=false}<cr>", "Blame" },
-        c = { "<cmd>Git commit -s<cr>", "Commit" },
-        s = { "<cmd>Ge:<cr>", "Status" },
-        S = { "<cmd> Gitsigns stage_buffer<cr>", "Stage Buffer" },
-        p = { "<cmd>Git pull<cr>", "Pull" },
-        P = { "<cmd>Git push<cr>", "Push" },
-        r = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
-    },
-    h = {
-        name = "Hunks",
-        b = { "<cmd>lua require'gitsigns'.blame_line{full=false}<cr>", "Blame Line - Short" },
-        B = { "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>", "Blame Line - Short" },
-        j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
-        k = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
-        p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
-        r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
-        s = { "<cmd> Gitsigns stage_hunk<cr>", "Stage Hunk" },
-        u = { "<cmd Gitsigns undo_stage_hunk<cr>", "UnStage Hunk" },
-    },
+    G = { name = "Git" },
+    h = { name = "Hunks" },
     l = {
         name = "LSP",
-        a = { '<cmd>lua require("actions-preview").code_actions()<cr>', "Code Action" },
-        d = { "<cmd>Glance definitions<cr>", "Definition" },
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
-        r = { "<cmd>Glance references<cr>", "References" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
-        t = { "<cmd>Glance type_definitions<cr>", "Type Definition" },
     },
-    s = {
-        name = "Search",
-    },
-    t = {
-        name = "Terminal",
-        f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-        h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
-        v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
-    },
-    T = { "<cmd>NvimTreeToggle<cr>", "Nvim Tree" },
+    s = { name = "Search" },
+    t = { name = "Terminal" },
     x = { ":bd!<cr>", "Destroy buffer" },
     w = { ":w!<cr>", "Save buffer" },
 }

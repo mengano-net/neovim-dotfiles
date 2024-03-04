@@ -18,7 +18,6 @@ return {
             )
         end,
     },
-    { "tpope/vim-fugitive" },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -60,7 +59,27 @@ return {
     },
     {
         "DNLHC/glance.nvim",
-        config = function() require("glance").setup({}) end,
+        config = function()
+            require("glance").setup({})
+            vim.keymap.set(
+                { "n" },
+                "<leader>ld",
+                "<cmd>Glance definitions<cr>",
+                { desc = "Definitions" }
+            )
+            vim.keymap.set(
+                { "n" },
+                "<leader>lr",
+                "<cmd>Glance references<cr>",
+                { desc = "References" }
+            )
+            vim.keymap.set(
+                { "n" },
+                "<leader>lt",
+                "<cmd>Glance type_definitions<cr>",
+                { desc = "Type Definitions" }
+            )
+        end,
     },
     {
         "tpope/vim-surround",

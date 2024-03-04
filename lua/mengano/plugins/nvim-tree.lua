@@ -13,20 +13,22 @@ return {
                 show_on_dirs = true,
                 icons = {
                     hint = " ",
+                    -- 
                     info = " ",
                     warning = " ",
                     error = " ",
                 },
             },
+            git = {
+                enable = true,
+            },
             disable_netrw = true,
             filters = { dotfiles = true },
-            git = {},
             reload_on_bufenter = true,
             renderer = {
                 add_trailing = true,
-                indent_markers = { enable = false },
                 highlight_opened_files = "all",
-                highlight_git = true,
+                highlight_git = "icon",
                 icons = {
                     padding = " ",
                     glyphs = {
