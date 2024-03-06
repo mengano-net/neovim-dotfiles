@@ -120,6 +120,12 @@ local search_tags = function() telescope_builtin.help_tags(themes.get_ivy()) end
 
 local search_commands = function() telescope_builtin.commands(themes.get_ivy()) end
 
+local search_in_current_buffer = function()
+    telescope_builtin.current_buffer_fuzzy_find(themes.get_ivy({
+        -- telescope_builtin.current_buffer_fuzzy_find(themes.get_dropdown({
+        prompt_title = "Search Current Buffer",
+    }))
+end
 ----------------------------------------------------------------------
 --                  Telescope plugin configuration                  --
 ----------------------------------------------------------------------
@@ -147,10 +153,11 @@ return {
             { "<leader>Gf", git_bcommits, desc = "File Commit List" },
             { "<leader>Gl", git_commits, desc = "Commits" },
             { "<leader>ls", symbols, desc = "Symbols" },
-            { "<leader>sg", live_grep, desc = "Grep" },
-            { "<leader>sG", grep_within_grep, desc = "Grep within grep ..." },
+            { "<leader>sg", live_grep, desc = "Grep on workspace" },
+            { "<leader>sG", grep_within_grep, desc = "Grep within grep on workspace" },
             { "<leader>st", search_tags, desc = "Tags" },
             { "<leader>sc", search_commands, desc = "Commands" },
+            { "<leader>sb", search_in_current_buffer, desc = "... in buffer" },
         },
         config = function()
             local telescope = require("telescope")
