@@ -62,7 +62,6 @@ local git_branches = function()
     prompt_prefix = '  ',
   } ]]
     if is_git_worktree() then
-        -- require'telescope.builtin'.git_branches(opts)
         telescope_builtin.git_branches(themes.get_ivy({
             prompt_title = "Git Branches",
             prompt_prefix = "  ",
@@ -121,6 +120,12 @@ local search_tags = function() telescope_builtin.help_tags(themes.get_ivy()) end
 
 local search_commands = function() telescope_builtin.commands(themes.get_ivy()) end
 
+local search_in_current_buffer = function()
+    telescope_builtin.current_buffer_fuzzy_find(themes.get_ivy({
+        -- telescope_builtin.current_buffer_fuzzy_find(themes.get_dropdown({
+        prompt_title = "Search Current Buffer",
+    }))
+end
 ----------------------------------------------------------------------
 --                  Telescope plugin configuration                  --
 ----------------------------------------------------------------------
@@ -128,9 +133,14 @@ local search_commands = function() telescope_builtin.commands(themes.get_ivy()) 
 return {
     {
         "nvim-telescope/telescope.nvim",
+        event = "VeryLazy",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+                cond = function() return vim.fn.executable("make") == 1 end,
+            },
         },
         keys = {
             { "<leader>bl", list_buffers, desc = "Buffers" },
@@ -143,10 +153,11 @@ return {
             { "<leader>Gf", git_bcommits, desc = "File Commit List" },
             { "<leader>Gl", git_commits, desc = "Commits" },
             { "<leader>ls", symbols, desc = "Symbols" },
-            { "<leader>sg", live_grep, desc = "Grep" },
-            { "<leader>sG", grep_within_grep, desc = "Grep within grep ..." },
+            { "<leader>sg", live_grep, desc = "Grep on workspace" },
+            { "<leader>sG", grep_within_grep, desc = "Grep within grep on workspace" },
             { "<leader>st", search_tags, desc = "Tags" },
             { "<leader>sc", search_commands, desc = "Commands" },
+            { "<leader>sb", search_in_current_buffer, desc = "... in buffer" },
         },
         config = function()
             local telescope = require("telescope")
@@ -211,7 +222,7 @@ return {
             })
 
             -- load_extension, somewhere after setup function:
-            -- telescope.load_extension("fzf")
+            telescope.load_extension("fzf")
             telescope.load_extension("zoxide")
         end,
     },

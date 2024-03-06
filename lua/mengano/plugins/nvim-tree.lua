@@ -47,5 +47,6 @@ return {
             sync_root_with_cwd = true,
             view = { adaptive_size = true },
         })
+        vim.keymap.set({ "n", "v" }, "<leader>T", "<cmd>NvimTreeToggle<cr>", { desc = "File Tree" })
     end,
 }
