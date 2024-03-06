@@ -1,3 +1,11 @@
+## 1.8.0 (2024-03-05)
+
+### Fix
+
+- nvim-tree was missing the keymap to toggle
+- telescope-fzf-native plugin
+- adding TSUpdate to nvim-tressitter plugin
+
 ## 1.7.3 (2024-03-04)
 
 ### Fix
