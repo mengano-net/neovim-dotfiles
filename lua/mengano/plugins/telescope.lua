@@ -62,7 +62,6 @@ local git_branches = function()
     prompt_prefix = '  ',
   } ]]
     if is_git_worktree() then
-        -- require'telescope.builtin'.git_branches(opts)
         telescope_builtin.git_branches(themes.get_ivy({
             prompt_title = "Git Branches",
             prompt_prefix = "  ",
@@ -128,9 +127,14 @@ local search_commands = function() telescope_builtin.commands(themes.get_ivy()) 
 return {
     {
         "nvim-telescope/telescope.nvim",
+        event = "VeryLazy",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+                cond = function() return vim.fn.executable("make") == 1 end,
+            },
         },
         keys = {
             { "<leader>bl", list_buffers, desc = "Buffers" },
@@ -211,7 +215,7 @@ return {
             })
 
             -- load_extension, somewhere after setup function:
-            -- telescope.load_extension("fzf")
+            telescope.load_extension("fzf")
             telescope.load_extension("zoxide")
         end,
     },
