@@ -126,6 +126,19 @@ local search_in_current_buffer = function()
         prompt_title = "Search Current Buffer",
     }))
 end
+
+local lsp_references = function()
+    telescope_builtin.lsp_references(themes.get_ivy({}))
+end
+
+local lsp_definitions = function()
+    telescope_builtin.lsp_definitions(themes.get_ivy({}))
+end
+
+local lsp_type_definitions = function()
+    telescope_builtin.lsp_type_definitions(themes.get_ivy({}))
+end
+
 ----------------------------------------------------------------------
 --                  Telescope plugin configuration                  --
 ----------------------------------------------------------------------
@@ -158,6 +171,9 @@ return {
             { "<leader>st", search_tags,              desc = "Tags" },
             { "<leader>sc", search_commands,          desc = "Commands" },
             { "<leader>sb", search_in_current_buffer, desc = "... in buffer" },
+            { "<leader>lr", lsp_references,           desc = "Reference" },
+            { "<leader>ld", lsp_definitions,          desc = "Definitions" },
+            { "<leader>lt", lsp_type_definitions,     desc = "Types" },
         },
         config = function()
             local telescope = require("telescope")
