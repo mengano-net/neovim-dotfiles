@@ -6,11 +6,10 @@ return {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-nvim-lsp-signature-help",
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
         },
         config = function()
             local cmp = require("cmp")
@@ -29,31 +28,29 @@ return {
             )
 
             local cmp_icons = {
-                Text = " ",
+                Text = " ",
                 Method = " ",
-                -- Function = "ﬦ",
                 Function = "ƒ",
                 Constructor = " ",
                 Variable = " ",
                 Class = " ",
-                Interface = "ﰮ",
-                Module = " ",
+                Interface = " ",
+                Module = " ",
                 Property = "",
                 Unit = "",
-                Value = " ",
+                Value = " ",
                 Enum = "了",
                 Keyword = "",
                 Color = " ",
-                File = " ",
+                File = " ",
                 Folder = " ",
-                -- Folder = " ",
                 EnumMember = " ",
                 Constant = " ",
-                Reference = " ",
+                Reference = " ",
                 Snippet = " ",
                 Struct = " ",
                 Event = "",
-                Field = "ﴲ ",
+                Field = " ",
             }
 
             -- Functions to implement autocomplete on the custom <Tab> and --
@@ -144,14 +141,13 @@ return {
                 ----------------------------------------------------------------------
                 formatting = {
                     fields = { "abbr", "kind", "menu" },
-                    -- fields = { "kind", "abbr", "menu" },
                     format = function(entry, vim_item)
                         vim_item.kind = (cmp_icons[vim_item.kind] or "")
-                            .. " ("
+                            .. "("
                             .. vim_item.kind
                             .. ")"
                         -- vim_item.kind = (cmp_icons[vim_item.kind] or "")
-                        vim_item.menu = " [" .. entry.source.name .. "]"
+                        vim_item.menu = "[" .. entry.source.name .. "]"
                         return vim_item
                     end,
                 },
@@ -195,5 +191,10 @@ return {
                 }),
             })
         end,
+    },
+    {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp",
     },
 }
