@@ -81,7 +81,8 @@ return {
                 window = {
                     completion = cmp.config.window.bordered({
                         border = "shadow",
-                        winhighlight = "Normal:CmpWindowBackground,Floatborder:Pmenu,CursorLine:CmpWindowCursorLine,Search:None",
+                        winhighlight =
+                        "Normal:CmpWindowBackground,Floatborder:Pmenu,CursorLine:CmpWindowCursorLine,Search:None",
                         -- col_offset = -3, -- to moveautocomplet pop window in the horizontal axis
                     }),
                     documentation = cmp.config.window.bordered({
@@ -131,8 +132,8 @@ return {
                     { name = "nvim_lsp_signature_help" },
                     { name = "luasnip" },
                     { name = "nvim_lua" },
-                    { name = "path", keyword_length = 3, group_index = 2 },
-                    { name = "buffer", keyword_length = 4, group_index = 2 },
+                    { name = "path",                   keyword_length = 3, group_index = 2 },
+                    { name = "buffer",                 keyword_length = 4, group_index = 2 },
                 }),
 
                 ----------------------------------------------------------------------
