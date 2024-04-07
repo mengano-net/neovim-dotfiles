@@ -1,3 +1,14 @@
+## 1.9.0 (2024-04-07)
+
+### Feat
+
+- removed glance plugin
+
+### Fix
+
+- cmp kind icons
+- expanded lsp capabilities
+
 ## 1.8.0 (2024-03-05)
 
 ### Fix
