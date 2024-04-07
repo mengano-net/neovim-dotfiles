@@ -33,7 +33,13 @@ return {
             -- :lua =vim.lsp.get_active_clients()[1].server_capabilities
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true
-            if cmp_nvim_lsp then capabilities = cmp_nvim_lsp.default_capabilities() end
+            if cmp_nvim_lsp then
+                capabilities = vim.tbl_deep_extend(
+                    "force",
+                    capabilities,
+                    require("cmp_nvim_lsp").default_capabilities()
+                )
+            end
 
             -- Diagnostic Signs
             vim.diagnostic.config({
