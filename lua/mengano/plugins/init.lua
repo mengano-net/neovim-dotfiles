@@ -23,6 +23,7 @@ return {
         main = "ibl",
         event = "BufEnter",
         opts = {
+            indent = { char = "┊" },
             exclude = {
                 filetypes = { "terminal", "help", "nofile", "NvimTree" },
                 buftypes = { "packer", "help", "NvimTree" },
