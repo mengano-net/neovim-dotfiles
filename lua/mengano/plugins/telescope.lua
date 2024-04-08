@@ -127,17 +127,11 @@ local search_in_current_buffer = function()
     }))
 end
 
-local lsp_references = function()
-    telescope_builtin.lsp_references(themes.get_ivy({}))
-end
+local lsp_references = function() telescope_builtin.lsp_references(themes.get_ivy({})) end
 
-local lsp_definitions = function()
-    telescope_builtin.lsp_definitions(themes.get_ivy({}))
-end
+local lsp_definitions = function() telescope_builtin.lsp_definitions(themes.get_ivy({})) end
 
-local lsp_type_definitions = function()
-    telescope_builtin.lsp_type_definitions(themes.get_ivy({}))
-end
+local lsp_type_definitions = function() telescope_builtin.lsp_type_definitions(themes.get_ivy({})) end
 
 ----------------------------------------------------------------------
 --                  Telescope plugin configuration                  --
@@ -156,24 +150,24 @@ return {
             },
         },
         keys = {
-            { "<leader>bl", list_buffers,             desc = "Buffers" },
-            { "<leader>f",  find_files,               desc = "Find files" },
-            { "<leader>F",  find_files_in_path,       desc = "Find files in path ..." },
-            { "<leader>gJ", jump_list,                desc = "Jump list" },
-            { "<leader>gr", recent_files,             desc = "Recent files" },
-            { "<leader>gz", zoxide_list,              desc = "Zoxide jump list" },
-            { "<leader>Gb", git_branches,             desc = "Branches" },
-            { "<leader>Gf", git_bcommits,             desc = "File Commit List" },
-            { "<leader>Gl", git_commits,              desc = "Commits" },
-            { "<leader>ls", symbols,                  desc = "Symbols" },
-            { "<leader>sg", live_grep,                desc = "Grep on workspace" },
-            { "<leader>sG", grep_within_grep,         desc = "Grep within grep on workspace" },
-            { "<leader>st", search_tags,              desc = "Tags" },
-            { "<leader>sc", search_commands,          desc = "Commands" },
+            { "<leader>bl", list_buffers, desc = "Buffers" },
+            { "<leader>f", find_files, desc = "Find files" },
+            { "<leader>F", find_files_in_path, desc = "Find files in path ..." },
+            { "<leader>gJ", jump_list, desc = "Jump list" },
+            { "<leader>gr", recent_files, desc = "Recent files" },
+            { "<leader>gz", zoxide_list, desc = "Zoxide jump list" },
+            { "<leader>Gb", git_branches, desc = "Branches" },
+            { "<leader>Gf", git_bcommits, desc = "File Commit List" },
+            { "<leader>Gl", git_commits, desc = "Commits" },
+            { "<leader>ls", symbols, desc = "Symbols" },
+            { "<leader>sg", live_grep, desc = "Grep on workspace" },
+            { "<leader>sG", grep_within_grep, desc = "Grep within grep on workspace" },
+            { "<leader>st", search_tags, desc = "Tags" },
+            { "<leader>sc", search_commands, desc = "Commands" },
             { "<leader>sb", search_in_current_buffer, desc = "... in buffer" },
-            { "<leader>lr", lsp_references,           desc = "Reference" },
-            { "<leader>ld", lsp_definitions,          desc = "Definitions" },
-            { "<leader>lt", lsp_type_definitions,     desc = "Types" },
+            { "<leader>lr", lsp_references, desc = "Reference" },
+            { "<leader>ld", lsp_definitions, desc = "Definitions" },
+            { "<leader>lt", lsp_type_definitions, desc = "Types" },
         },
         config = function()
             local telescope = require("telescope")
@@ -211,7 +205,7 @@ return {
                         },
                     },
                     prompt_prefix = " ",
-                    path_display = { "truncate" },
+                    path_display = { "smart" },
                     selection_caret = " ",
                     set_env = { ["COLORTERM"] = "truecolor" },
                 },
