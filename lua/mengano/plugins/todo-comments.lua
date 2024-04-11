@@ -9,6 +9,8 @@ return {
             todo_comments.jump_next()
         end, { desc = "Todo comment next" })
 
+        -- TODO: we need previous too, because navigation is conbersome without
+        -- it
         -- vim.keymap.set("n", "<leader>gtp", function()
         --     todo_comments.jump_prev()
         -- end, { desc = "Todo comment previous" })

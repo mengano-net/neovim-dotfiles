@@ -1,3 +1,4 @@
+-- FIX: I think this is best added to keymaps.lua
 -- Clearing some builtin maps that I will steal for my own
 vim.keymap.set("", "s", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "S", "<Nop>", { noremap = true, silent = true })
@@ -25,6 +26,7 @@ local mappings = {
     e = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
+        -- TODO: Is this needed?
         r = { "<cmd>retab<cr>", "Retab" },
     },
     g = {
