@@ -92,6 +92,8 @@ local git_bcommits = function()
     }))
 end
 
+-- I do not use this, I usually explore within single project, and if I need to
+-- explore to others, Telescope zoxide seems better
 local find_files_in_path = function()
     local _path = vim.fn.input("Enter Directory: ", "", "dir")
     if _path == nil or _path == "" then _path = vim.fn.expand("%:p:h") end
@@ -152,8 +154,6 @@ return {
         keys = {
             { "<leader>bl", list_buffers,             desc = "Buffers" },
             { "<leader>f",  find_files,               desc = "Find files" },
-            -- TODO: Is this needed?
-            { "<leader>F",  find_files_in_path,       desc = "Find files in path ..." },
             { "<leader>gJ", jump_list,                desc = "Jump list" },
             { "<leader>gr", recent_files,             desc = "Recent files" },
             { "<leader>gz", zoxide_list,              desc = "Zoxide jump list" },
