@@ -23,6 +23,9 @@ local opts = {
 local mappings = {
     b = { name = "Buffers" },
     e = {
+        name = "Explorer",
+    },
+    E = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
     },

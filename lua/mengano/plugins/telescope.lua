@@ -156,7 +156,7 @@ return {
             { "<leader>f",  find_files,               desc = "Find files" },
             { "<leader>gJ", jump_list,                desc = "Jump list" },
             { "<leader>gr", recent_files,             desc = "Recent files" },
-            { "<leader>gz", zoxide_list,              desc = "Zoxide jump list" },
+            { "<leader>ez", zoxide_list,              desc = "Explore Zoxide" },
             { "<leader>Gb", git_branches,             desc = "Branches" },
             { "<leader>Gf", git_bcommits,             desc = "File Commit List" },
             { "<leader>Gl", git_commits,              desc = "Commits" },
