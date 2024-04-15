@@ -18,61 +18,35 @@ local is_git_worktree = function()
 end
 
 local git_files = function()
-    --[[ local opts = {
-    prompt_title = "\\ Git Files /",
-    follow = 'true',
-    -- hidden = 'false',
-    layout_strategy = "horizontal",
-    layout_config = {
-      width = 0.95,
-    },
-  }
-  require'telescope.builtin'.git_files(opts) ]]
-    telescope_builtin.git_files(themes.get_ivy({
+    telescope_builtin.git_files({
         prompt_title = "Git Files",
         follow = "true",
         prompt_prefix = "  ",
-    }))
+    })
 end
 
 local find_files = function()
     if is_git_worktree() then
         git_files()
     else
-        telescope_builtin.find_files(themes.get_ivy({}))
+        telescope_builtin.find_files()
     end
-end
-
-local live_grep = function()
-    telescope_builtin.live_grep(themes.get_ivy())
-end
-
-local grep_cursor = function()
-    telescope_builtin.grep_string(themes.get_ivy())
 end
 
 -- TODO: Deprecated, I do not use it
 local grep_within_grep = function()
-    telescope_builtin.grep_string(themes.get_ivy({
+    telescope_builtin.grep_string({
         prompt_title = "Secondary Grep",
         search = vim.fn.input("Rg> "),
-    }))
+    })
 end
 
 local git_branches = function()
-    --[[ local opts = {
-    prompt_title = "\\ Git Branches /",
-    layout_strategy = "horizontal",
-    layout_config = {
-      width = 0.9,
-    },
-    prompt_prefix = '  ',
-  } ]]
     if is_git_worktree() then
-        telescope_builtin.git_branches(themes.get_ivy({
+        telescope_builtin.git_branches({
             prompt_title = "Git Branches",
             prompt_prefix = "  ",
-        }))
+        })
     else
         -- vim.notify_once("Not a git working tree", 3, {})
         require("notify")("Not a git working tree", "WARN")
@@ -82,10 +56,10 @@ end
 
 local git_commits = function()
     if is_git_worktree() then
-        telescope_builtin.git_commits(themes.get_ivy({
+        telescope_builtin.git_commits({
             prompt_title = "Git Commits",
             prompt_prefix = "  ",
-        }))
+        })
     else
         require("notify")("Not a git working tree", "WARN")
         return
@@ -93,10 +67,10 @@ local git_commits = function()
 end
 
 local git_bcommits = function()
-    telescope_builtin.git_bcommits(themes.get_ivy({
+    telescope_builtin.git_bcommits({
         prompt_title = "Commits which include current buffer",
         prompt_prefix = "  ",
-    }))
+    })
 end
 
 -- I do not use this, I usually explore within single project, and if I need to
@@ -113,58 +87,17 @@ local find_files_in_path = function()
 end
 
 local list_buffers = function()
-    telescope_builtin.buffers(themes.get_ivy({
+    telescope_builtin.buffers(themes.get_dropdown({
         previewer = false,
-        prompt_title = "Open Buffers",
-    }))
-end
-
-local find_in_jump_list = function()
-    telescope_builtin.jumplist(themes.get_ivy({
-        prompt_title = "in (J)ump list",
+        prompt_title = "Buffer (L)ist",
     }))
 end
 
 local recent_files = function()
-    telescope_builtin.oldfiles(themes.get_ivy({
+    telescope_builtin.oldfiles(themes.get_dropdown({
         previewer = false,
         prompt_title = " Recent Files",
     }))
-end
-
-local zoxide_list = function()
-    require("telescope").extensions.zoxide.list(themes.get_ivy({}))
-end
-
-local symbols = function()
-    telescope_builtin.lsp_document_symbols(themes.get_ivy())
-end
-
-local find_vim_help_tags = function()
-    telescope_builtin.help_tags(themes.get_ivy())
-end
-
-local find_vim_commands = function()
-    telescope_builtin.commands(themes.get_ivy())
-end
-
-local find_in_current_buffer = function()
-    telescope_builtin.current_buffer_fuzzy_find(themes.get_ivy({
-        -- telescope_builtin.current_buffer_fuzzy_find(themes.get_dropdown({
-        prompt_title = "Search Current Buffer",
-    }))
-end
-
-local lsp_references = function()
-    telescope_builtin.lsp_references(themes.get_ivy({}))
-end
-
-local lsp_definitions = function()
-    telescope_builtin.lsp_definitions(themes.get_ivy({}))
-end
-
-local lsp_type_definitions = function()
-    telescope_builtin.lsp_type_definitions(themes.get_ivy({}))
 end
 
 ----------------------------------------------------------------------
@@ -186,23 +119,79 @@ return {
             },
         },
         keys = {
-            { "<leader>bl", list_buffers,           desc = "(L)ist" },
-            { "<leader>ez", zoxide_list,            desc = "Explore Zoxide" },
-            { "<leader>fb", find_in_current_buffer, desc = "in (B)uffer" },
-            { "<leader>fc", grep_cursor,            desc = "string in (C)ursor" },
-            { "<leader>ff", find_files,             desc = "(F)iles" },
-            { "<leader>fj", find_in_jump_list,      desc = "In (J)ump list" },
-            { "<leader>fs", live_grep,              desc = "(S)tring" },
-            { "<leader>fr", recent_files,           desc = "(R)ecent files" },
-            { "<leader>gd", lsp_definitions,        desc = "Definitions" },
-            { "<leader>gr", lsp_references,         desc = "References" },
-            { "<leader>Gb", git_branches,           desc = "Branches" },
-            { "<leader>Gf", git_bcommits,           desc = "File Commit List" },
-            { "<leader>Gl", git_commits,            desc = "Commits" },
-            { "<leader>ls", symbols,                desc = "Symbols" },
-            { "<leader>lt", lsp_type_definitions,   desc = "Types" },
-            { "<leader>vt", find_vim_help_tags,     desc = "Vim help(T)ags" },
-            { "<leader>vc", find_vim_commands,      desc = "Vim (C)ommands" },
+            { "<leader>bl", list_buffers,                  desc = "(L)ist" },
+            {
+                "<leader>ez",
+                "<cmd>lua require('telescope').extensions.zoxide.list()<cr>",
+                desc = "Zoxide"
+            },
+            {
+                "<leader>fb",
+                telescope_builtin.current_buffer_fuzzy_find,
+                desc = "in (B)uffer"
+            },
+            { "<leader>fc", telescope_builtin.grep_string, desc = "string in (C)ursor" },
+            { "<leader>ff", find_files,                    desc = "(F)iles" },
+            {
+                "<leader>fj",
+                telescope_builtin.jumplist,
+                desc = "In (J)ump list"
+            },
+            {
+                "<leader>fs",
+                telescope_builtin.live_grep,
+                desc = "(S)tring"
+            },
+            {
+                "<leader>fr",
+                telescope_builtin.oldfiles,
+                desc = "(R)ecent files"
+            },
+            {
+                "<leader>gd",
+                telescope_builtin.lsp_definitions,
+                desc = "Definitions"
+            },
+            {
+                "<leader>gr",
+                telescope_builtin.lsp_references,
+                desc = "References"
+            },
+            {
+                "<leader>Gb",
+                git_branches,
+                desc = "Branches"
+            },
+            {
+                "<leader>Gf",
+                git_bcommits,
+                desc = "File Commit List"
+            },
+            {
+                "<leader>Gl",
+                git_commits,
+                desc = "Commits"
+            },
+            {
+                "<leader>ls",
+                telescope_builtin.lsp_document_symbols,
+                desc = "Symbols"
+            },
+            {
+                "<leader>lt",
+                telescope_builtin.lsp_type_definitions,
+                desc = "Types"
+            },
+            {
+                "<leader>vt",
+                telescope_builtin.help_tags,
+                desc = "Vim help(T)ags"
+            },
+            {
+                "<leader>vc",
+                telescope_builtin.commands,
+                desc = "Vim (C)ommands"
+            },
         },
         config = function()
             local telescope = require("telescope")
