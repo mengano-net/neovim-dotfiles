@@ -186,23 +186,23 @@ return {
             },
         },
         keys = {
-            { "<leader>bl", list_buffers, desc = "(L)ist" },
-            { "<leader>ez", zoxide_list, desc = "Explore Zoxide" },
+            { "<leader>bl", list_buffers,           desc = "(L)ist" },
+            { "<leader>ez", zoxide_list,            desc = "Explore Zoxide" },
             { "<leader>fb", find_in_current_buffer, desc = "in (B)uffer" },
-            { "<leader>fc", grep_cursor, desc = "string in (C)ursor" },
-            { "<leader>ff", find_files, desc = "(F)iles" },
-            { "<leader>fj", find_in_jump_list, desc = "In (J)ump list" },
-            { "<leader>fs", live_grep, desc = "(S)tring" },
-            { "<leader>fr", recent_files, desc = "(R)ecent files" },
-            { "<leader>gd", lsp_definitions, desc = "Definitions" },
-            { "<leader>gr", lsp_references, desc = "References" },
-            { "<leader>Gb", git_branches, desc = "Branches" },
-            { "<leader>Gf", git_bcommits, desc = "File Commit List" },
-            { "<leader>Gl", git_commits, desc = "Commits" },
-            { "<leader>ls", symbols, desc = "Symbols" },
-            { "<leader>lt", lsp_type_definitions, desc = "Types" },
-            { "<leader>vt", find_vim_help_tags, desc = "Vim help(T)ags" },
-            { "<leader>vc", find_vim_commands, desc = "Vim (C)ommands" },
+            { "<leader>fc", grep_cursor,            desc = "string in (C)ursor" },
+            { "<leader>ff", find_files,             desc = "(F)iles" },
+            { "<leader>fj", find_in_jump_list,      desc = "In (J)ump list" },
+            { "<leader>fs", live_grep,              desc = "(S)tring" },
+            { "<leader>fr", recent_files,           desc = "(R)ecent files" },
+            { "<leader>gd", lsp_definitions,        desc = "Definitions" },
+            { "<leader>gr", lsp_references,         desc = "References" },
+            { "<leader>Gb", git_branches,           desc = "Branches" },
+            { "<leader>Gf", git_bcommits,           desc = "File Commit List" },
+            { "<leader>Gl", git_commits,            desc = "Commits" },
+            { "<leader>ls", symbols,                desc = "Symbols" },
+            { "<leader>lt", lsp_type_definitions,   desc = "Types" },
+            { "<leader>vt", find_vim_help_tags,     desc = "Vim help(T)ags" },
+            { "<leader>vc", find_vim_commands,      desc = "Vim (C)ommands" },
         },
         config = function()
             local telescope = require("telescope")
@@ -244,6 +244,23 @@ return {
                     path_display = { "smart" },
                     selection_caret = " ",
                     set_env = { ["COLORTERM"] = "truecolor" },
+
+                    -- Ideally, there would be a way to set a default theme for
+                    -- telescope, there isn't. I'm trying one of these:
+                    -- HACK: https://github.com/LazyVim/LazyVim/discussions/1127
+                    -- HACK: https://github.com/nvim-telescope/telescope.nvim/issues/848
+                    sorting_strategy = "ascending",
+                    layout_strategy = "bottom_pane",
+                    layout_config = {
+                        height = 25,
+                    },
+
+                    border = true,
+                    borderchars = {
+                        prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+                        results = { " " },
+                        preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                    },
                 },
                 extensions = {
                     fzf = { fuzzy = true },
