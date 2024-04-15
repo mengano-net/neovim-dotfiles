@@ -121,7 +121,7 @@ return {
         keys = {
             { "<leader>bl", list_buffers,                  desc = "(L)ist" },
             {
-                "<leader>ez",
+                "<leader>fz",
                 "<cmd>lua require('telescope').extensions.zoxide.list()<cr>",
                 desc = "Zoxide"
             },
