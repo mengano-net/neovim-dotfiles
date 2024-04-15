@@ -43,8 +43,15 @@ local find_files = function()
     end
 end
 
-local live_grep = function() telescope_builtin.live_grep(themes.get_ivy()) end
+local live_grep = function()
+    telescope_builtin.live_grep(themes.get_ivy())
+end
 
+local grep_cursor = function()
+    telescope_builtin.grep_string(themes.get_ivy())
+end
+
+-- TODO: Deprecated, I do not use it
 local grep_within_grep = function()
     telescope_builtin.grep_string(themes.get_ivy({
         prompt_title = "Secondary Grep",
@@ -96,7 +103,9 @@ end
 -- explore to others, Telescope zoxide seems better
 local find_files_in_path = function()
     local _path = vim.fn.input("Enter Directory: ", "", "dir")
-    if _path == nil or _path == "" then _path = vim.fn.expand("%:p:h") end
+    if _path == nil or _path == "" then
+        _path = vim.fn.expand("%:p:h")
+    end
     telescope_builtin.find_files(themes.get_ivy({
         prompt_title = "Find in directory: " .. _path,
         search_dirs = { _path },
@@ -110,30 +119,53 @@ local list_buffers = function()
     }))
 end
 
-local jump_list = function() telescope_builtin.jumplist(themes.get_ivy({})) end
+local find_in_jump_list = function()
+    telescope_builtin.jumplist(themes.get_ivy({
+        prompt_title = "in (J)ump list",
+    }))
+end
 
-local recent_files = function() telescope_builtin.oldfiles(themes.get_ivy({ previewer = false })) end
+local recent_files = function()
+    telescope_builtin.oldfiles(themes.get_ivy({
+        previewer = false,
+        prompt_title = " Recent Files",
+    }))
+end
 
-local zoxide_list = function() require("telescope").extensions.zoxide.list(themes.get_ivy({})) end
+local zoxide_list = function()
+    require("telescope").extensions.zoxide.list(themes.get_ivy({}))
+end
 
-local symbols = function() telescope_builtin.lsp_document_symbols(themes.get_ivy()) end
+local symbols = function()
+    telescope_builtin.lsp_document_symbols(themes.get_ivy())
+end
 
-local search_tags = function() telescope_builtin.help_tags(themes.get_ivy()) end
+local find_vim_help_tags = function()
+    telescope_builtin.help_tags(themes.get_ivy())
+end
 
-local search_commands = function() telescope_builtin.commands(themes.get_ivy()) end
+local find_vim_commands = function()
+    telescope_builtin.commands(themes.get_ivy())
+end
 
-local search_in_current_buffer = function()
+local find_in_current_buffer = function()
     telescope_builtin.current_buffer_fuzzy_find(themes.get_ivy({
         -- telescope_builtin.current_buffer_fuzzy_find(themes.get_dropdown({
         prompt_title = "Search Current Buffer",
     }))
 end
 
-local lsp_references = function() telescope_builtin.lsp_references(themes.get_ivy({})) end
+local lsp_references = function()
+    telescope_builtin.lsp_references(themes.get_ivy({}))
+end
 
-local lsp_definitions = function() telescope_builtin.lsp_definitions(themes.get_ivy({})) end
+local lsp_definitions = function()
+    telescope_builtin.lsp_definitions(themes.get_ivy({}))
+end
 
-local lsp_type_definitions = function() telescope_builtin.lsp_type_definitions(themes.get_ivy({})) end
+local lsp_type_definitions = function()
+    telescope_builtin.lsp_type_definitions(themes.get_ivy({}))
+end
 
 ----------------------------------------------------------------------
 --                  Telescope plugin configuration                  --
@@ -148,31 +180,34 @@ return {
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
-                cond = function() return vim.fn.executable("make") == 1 end,
+                cond = function()
+                    return vim.fn.executable("make") == 1
+                end,
             },
         },
         keys = {
-            { "<leader>bl", list_buffers,             desc = "Buffers" },
-            { "<leader>f",  find_files,               desc = "Find files" },
-            { "<leader>gJ", jump_list,                desc = "Jump list" },
-            { "<leader>gr", recent_files,             desc = "Recent files" },
-            { "<leader>ez", zoxide_list,              desc = "Explore Zoxide" },
-            { "<leader>Gb", git_branches,             desc = "Branches" },
-            { "<leader>Gf", git_bcommits,             desc = "File Commit List" },
-            { "<leader>Gl", git_commits,              desc = "Commits" },
-            { "<leader>ls", symbols,                  desc = "Symbols" },
-            { "<leader>sg", live_grep,                desc = "Grep on workspace" },
-            { "<leader>sG", grep_within_grep,         desc = "Grep within grep on workspace" },
-            { "<leader>st", search_tags,              desc = "Tags" },
-            { "<leader>sc", search_commands,          desc = "Commands" },
-            { "<leader>sb", search_in_current_buffer, desc = "... in buffer" },
-            { "<leader>lr", lsp_references,           desc = "Reference" },
-            { "<leader>ld", lsp_definitions,          desc = "Definitions" },
-            { "<leader>lt", lsp_type_definitions,     desc = "Types" },
+            { "<leader>bl", list_buffers, desc = "(L)ist" },
+            { "<leader>ez", zoxide_list, desc = "Explore Zoxide" },
+            { "<leader>fb", find_in_current_buffer, desc = "in (B)uffer" },
+            { "<leader>fc", grep_cursor, desc = "string in (C)ursor" },
+            { "<leader>ff", find_files, desc = "(F)iles" },
+            { "<leader>fj", find_in_jump_list, desc = "In (J)ump list" },
+            { "<leader>fs", live_grep, desc = "(S)tring" },
+            { "<leader>fr", recent_files, desc = "(R)ecent files" },
+            { "<leader>gd", lsp_definitions, desc = "Definitions" },
+            { "<leader>gr", lsp_references, desc = "References" },
+            { "<leader>Gb", git_branches, desc = "Branches" },
+            { "<leader>Gf", git_bcommits, desc = "File Commit List" },
+            { "<leader>Gl", git_commits, desc = "Commits" },
+            { "<leader>ls", symbols, desc = "Symbols" },
+            { "<leader>lt", lsp_type_definitions, desc = "Types" },
+            { "<leader>vt", find_vim_help_tags, desc = "Vim help(T)ags" },
+            { "<leader>vc", find_vim_commands, desc = "Vim (C)ommands" },
         },
         config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
+            -- TODO: I can't remember what these are for, if no purporse, remove
             -- local file_previewer = require("telescope.previewers").vim_buffer_cat.new
             -- local generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter
             local z_utils = require("telescope._extensions.zoxide.utils")
@@ -223,7 +258,9 @@ return {
                                 end,
                             },
                             ["<C-s>"] = {
-                                action = function(selection) vim.cmd("edit " .. selection.path) end,
+                                action = function(selection)
+                                    vim.cmd("edit " .. selection.path)
+                                end,
                             },
                             -- Opens the selected entry in a new split
                             ["<C-q>"] = { action = z_utils.create_basic_command("split") },

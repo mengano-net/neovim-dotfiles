@@ -29,6 +29,9 @@ local mappings = {
         name = "Edit",
         h = { "<cmd>nohl<cr>", "No Highlights" },
     },
+    f = {
+        name = "Find",
+    },
     g = {
         name = "Goto",
         j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
@@ -41,8 +44,8 @@ local mappings = {
         h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
     },
-    s = { name = "Search" },
     t = { name = "Terminal" },
+    v = { name = "Vim" },
     x = { ":bd!<cr>", "Destroy buffer" },
     w = { ":w!<cr>", "Save buffer" },
 }

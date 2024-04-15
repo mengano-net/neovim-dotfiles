@@ -5,16 +5,17 @@ return {
     config = function()
         local todo_comments = require("todo-comments")
 
+        -- TODO: find a way to instead do :TodoTelescope with get_ivy theme
         vim.keymap.set("n", "<leader>gt", function()
-            todo_comments.jump_next()
-        end, { desc = "Todo comment next" })
+            -- todo_comments.jump_next()
+            vim.cmd("TodoLocList")
+        end, { desc = "Todo comments" })
 
-        -- TODO: we need previous too, because navigation is conbersome without
-        -- it
+        -- TODO: we need previous too, otherwise navigation seems cumbersom
         -- vim.keymap.set("n", "<leader>gtp", function()
         --     todo_comments.jump_prev()
         -- end, { desc = "Todo comment previous" })
 
         todo_comments.setup()
-    end
+    end,
 }
