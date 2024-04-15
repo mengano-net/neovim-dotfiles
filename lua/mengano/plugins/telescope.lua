@@ -144,7 +144,7 @@ return {
             },
             {
                 "<leader>fr",
-                telescope_builtin.oldfiles,
+                recent_files,
                 desc = "(R)ecent files"
             },
             {
