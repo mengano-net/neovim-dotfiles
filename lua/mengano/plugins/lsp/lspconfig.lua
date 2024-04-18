@@ -165,7 +165,7 @@ return {
                     { "n" },
                     "<leader>ga",
                     '<cmd>lua require("actions-preview").code_actions()<cr>',
-                    { desc = "Code Actions" }
+                    { desc = "Code ( a )ctions" }
                 ),
             })
         end,

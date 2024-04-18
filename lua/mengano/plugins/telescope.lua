@@ -89,7 +89,7 @@ end
 local list_buffers = function()
     telescope_builtin.buffers(themes.get_dropdown({
         previewer = false,
-        prompt_title = "Buffer (L)ist",
+        prompt_title = "Buffer List",
     }))
 end
 
@@ -119,78 +119,78 @@ return {
             },
         },
         keys = {
-            { "<leader>bl", list_buffers,                  desc = "(L)ist" },
+            { "<leader>bl", list_buffers,                  desc = "( l )ist" },
             {
                 "<leader>fz",
                 "<cmd>lua require('telescope').extensions.zoxide.list()<cr>",
-                desc = "Zoxide"
+                desc = "( z )oxide"
             },
             {
                 "<leader>fb",
                 telescope_builtin.current_buffer_fuzzy_find,
-                desc = "in (B)uffer"
+                desc = "in ( b )uffer"
             },
-            { "<leader>fc", telescope_builtin.grep_string, desc = "string in (C)ursor" },
-            { "<leader>ff", find_files,                    desc = "(F)iles" },
+            { "<leader>fc", telescope_builtin.grep_string, desc = "under ( c )ursor" },
+            { "<leader>ff", find_files,                    desc = "( f )iles" },
             {
                 "<leader>fj",
                 telescope_builtin.jumplist,
-                desc = "In (J)ump list"
+                desc = "in ( j )ump list"
             },
             {
                 "<leader>fs",
                 telescope_builtin.live_grep,
-                desc = "(S)tring"
+                desc = "( s )tring"
             },
             {
                 "<leader>fr",
                 recent_files,
-                desc = "(R)ecent files"
+                desc = "( r )ecent files"
             },
             {
                 "<leader>gd",
                 telescope_builtin.lsp_definitions,
-                desc = "Definitions"
+                desc = "( d )efinitions"
             },
             {
                 "<leader>gr",
                 telescope_builtin.lsp_references,
-                desc = "References"
+                desc = "( r )eferences"
             },
             {
                 "<leader>Gb",
                 git_branches,
-                desc = "Branches"
+                desc = "( b )ranches"
             },
             {
                 "<leader>Gf",
                 git_bcommits,
-                desc = "File Commit List"
+                desc = "( f )ile commits"
             },
             {
                 "<leader>Gl",
                 git_commits,
-                desc = "Commits"
+                desc = "( l )ist commits"
             },
             {
                 "<leader>ls",
                 telescope_builtin.lsp_document_symbols,
-                desc = "Symbols"
+                desc = "( s )ymbols"
             },
             {
                 "<leader>lt",
                 telescope_builtin.lsp_type_definitions,
-                desc = "Types"
+                desc = "( t )ypes"
             },
             {
                 "<leader>vt",
                 telescope_builtin.help_tags,
-                desc = "Vim help(T)ags"
+                desc = "Vim help ( t )ags"
             },
             {
                 "<leader>vc",
                 telescope_builtin.commands,
-                desc = "Vim (C)ommands"
+                desc = "Vim ( c )ommands"
             },
         },
         config = function()

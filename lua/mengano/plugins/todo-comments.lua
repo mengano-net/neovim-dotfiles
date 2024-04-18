@@ -9,7 +9,7 @@ return {
             -- todo_comments.jump_next()
             -- TODO: wrap in if statement to first check for telescope plugin
             vim.cmd("TodoTelescope")
-        end, { desc = "Todo comments" })
+        end, { desc = "( t )odo comments" })
 
         todo_comments.setup()
     end,

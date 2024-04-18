@@ -28,67 +28,55 @@ return {
                 { "n" },
                 "<leader>GB",
                 "<cmd>lua require('gitsigns').blame_line{full=false}<cr>",
-                { desc = "Blame" }
+                { desc = "( B )lame" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>GS",
                 "<cmd>Gitsigns stage_buffer<cr>",
-                { desc = "Stage buffer" }
+                { desc = "( S )tage buffer" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>GR",
                 "<cmd>Gitsigns reset_buffer<cr>",
-                { desc = "Reset buffer" }
-            ),
-            vim.keymap.set(
-                { "n" },
-                "<leader>hb",
-                "<cmd>lua require'gitsigns'.blame_line{full=false}<cr>",
-                { desc = "Blame line - short" }
-            ),
-            vim.keymap.set(
-                { "n" },
-                "<leader>hB",
-                "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>",
-                { desc = "Blame line - long" }
+                { desc = "( R )eset buffer" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>hj",
                 "<cmd>Gitsigns next_hunk<cr>",
-                { desc = "Next hunk" }
+                { desc = "( j )ext" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>hk",
                 "<cmd>Gitsigns prev_hunk<cr>",
-                { desc = "Previous hunk" }
+                { desc = "( k )revious" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>hp",
                 "<cmd>Gitsigns preview_hunk<cr>",
-                { desc = "Preview hunk" }
+                { desc = "( p )review" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>hr",
                 "<cmd>Gitsigns reset_hunk<cr>",
-                { desc = "Reset hunk" }
+                { desc = "( r )eset" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>hs",
                 "<cmd>Gitsigns stage_hunk<cr>",
-                { desc = "Stage hunk" }
+                { desc = "( s )tage" }
             ),
             vim.keymap.set(
                 { "n" },
                 "<leader>hu",
                 "<cmd>Gitsigns undo_stage_hunk<cr>",
-                { desc = "Un-Stage hunk" }
+                { desc = "( u )n-Stage" }
             ),
         })
     end,

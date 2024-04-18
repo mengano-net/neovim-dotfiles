@@ -27,27 +27,27 @@ local mappings = {
     },
     E = {
         name = "Edit",
-        h = { "<cmd>nohl<cr>", "No Highlights" },
+        h = { "<cmd>nohl<cr>", "No ( h )ighlights" },
     },
     f = {
         name = "Find",
     },
     g = {
         name = "Goto",
-        j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-        k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
+        j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "( j )ext Diagnostic" },
+        k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "( k )revious Diagnostic" },
     },
     G = { name = "Git" },
     h = { name = "Hunks" },
     l = {
         name = "LSP",
-        h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Definition" },
-        R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename variable" },
+        h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "( h )over Definition" },
+        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "( r )ename variable" },
     },
     t = { name = "Terminal" },
     v = { name = "Vim" },
-    x = { ":bd!<cr>", "Destroy buffer" },
-    w = { ":w!<cr>", "Save buffer" },
+    x = { ":bd!<cr>", "( x ) buffer" },
+    w = { ":w!<cr>", "( w )rite buffer" },
 }
 
 return {

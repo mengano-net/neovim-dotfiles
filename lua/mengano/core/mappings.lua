@@ -20,10 +20,18 @@ keymap("n", "<Tab>", ":bnext<CR>", { silent = true })
 keymap("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 
 -- paste yanked, not deleted, not system copied
-keymap("n", "<leader>p", '"0p')
+keymap("n",
+    "<leader>p",
+    '"0p',
+    { desc = "( p )aste yanked, not deleted, copied" }
+)
 
 -- Replace all instances of highlighted words
-keymap("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
+keymap("v",
+    "<leader>Er",
+    '"hy:%s/<C-r>h//g<left><left>',
+    { desc = "( r )eplace all instances of selected string" }
+)
 
 -- While on visual mode, this allows selections to remain selected for aditional
 -- actions without loosing the visual block selection

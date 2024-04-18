@@ -31,7 +31,7 @@ return {
                     timeout_ms = 1000,
                 })
             end,
-            { desc = "Format file or range (in visual mode)" }
+            { desc = "( f )ormat file or range" }
         )
     end,
 }

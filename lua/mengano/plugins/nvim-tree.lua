@@ -47,14 +47,29 @@ return {
             sync_root_with_cwd = true,
             view = { adaptive_size = true },
         })
-        vim.keymap.set({ "n" }, "<leader>ee", "<cmd>NvimTreeToggle<cr>", { desc = "Explorer" })
+        vim.keymap.set(
+            { "n" },
+            "<leader>ee",
+            "<cmd>NvimTreeToggle<cr>",
+            { desc = "( e )xplorer" }
+        )
         vim.keymap.set(
             { "n" },
             "<leader>ef",
             "<cmd>NvimTreeFindFileToggle<cr>",
-            { desc = "File current" }
+            { desc = "( f )ile current" }
         )
-        vim.keymap.set({ "n" }, "<leader>ec", "<cmd>NvimTreeCollapse<cr>", { desc = "Collapse" })
-        vim.keymap.set({ "n" }, "<leader>er", "<cmd>NvimTreeRefresh<cr>", { desc = "Refresh" })
+        vim.keymap.set(
+            { "n" },
+            "<leader>ec",
+            "<cmd>NvimTreeCollapse<cr>",
+            { desc = "( c )ollapse" }
+        )
+        vim.keymap.set(
+            { "n" },
+            "<leader>er",
+            "<cmd>NvimTreeRefresh<cr>",
+            { desc = "( r )efresh" }
+        )
     end,
 }
