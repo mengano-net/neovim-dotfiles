@@ -1,3 +1,25 @@
+## 1.10.0 (2024-04-21)
+
+### Feat
+
+- reworked all keymaps functions in telescope
+- telescope's default theme set to get_ivy
+- removed mappings I do not need or use
+- removed comment-frame plugin
+- added todo-comments plugin
+- added dressing plugin for better usage in tree
+
+### Fix
+
+- changed recent files' theme to dropdown
+- path_display set to 'smart'
+
+### Refactor
+
+- many maymaps
+- Moved other keymaps
+- Moved nvim-tree keymaps
+
 ## 1.9.0 (2024-04-07)
 
 ### Feat
