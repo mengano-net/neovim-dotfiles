@@ -163,9 +163,9 @@ return {
                 telescope = require("telescope.themes").get_ivy(),
                 vim.keymap.set(
                     { "n" },
-                    "<leader>la",
+                    "<leader>ga",
                     '<cmd>lua require("actions-preview").code_actions()<cr>',
-                    { desc = "Code Actions" }
+                    { desc = "Code ( a )ctions" }
                 ),
             })
         end,

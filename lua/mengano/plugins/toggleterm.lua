@@ -26,19 +26,19 @@ return {
                     { "n" },
                     "<leader>tf",
                     "<cmd>ToggleTerm direction=float<cr>",
-                    { desc = "Float" }
+                    { desc = "( f )loat" }
                 ),
                 vim.keymap.set(
                     { "n" },
                     "<leader>th",
                     "<cmd>ToggleTerm direction=horizontal<cr>",
-                    { desc = "Horizontal" }
+                    { desc = "( h )orizontal" }
                 ),
                 vim.keymap.set(
                     { "n" },
                     "<leader>tv",
                     "<cmd>ToggleTerm direction=vertical<cr>",
-                    { desc = "Vertical" }
+                    { desc = "( v )ertical" }
                 ),
             })
         end,

@@ -18,54 +18,35 @@ local is_git_worktree = function()
 end
 
 local git_files = function()
-    --[[ local opts = {
-    prompt_title = "\\ Git Files /",
-    follow = 'true',
-    -- hidden = 'false',
-    layout_strategy = "horizontal",
-    layout_config = {
-      width = 0.95,
-    },
-  }
-  require'telescope.builtin'.git_files(opts) ]]
-    telescope_builtin.git_files(themes.get_ivy({
+    telescope_builtin.git_files({
         prompt_title = "Git Files",
         follow = "true",
         prompt_prefix = "  ",
-    }))
+    })
 end
 
 local find_files = function()
     if is_git_worktree() then
         git_files()
     else
-        telescope_builtin.find_files(themes.get_ivy({}))
+        telescope_builtin.find_files()
     end
 end
 
-local live_grep = function() telescope_builtin.live_grep(themes.get_ivy()) end
-
+-- TODO: Deprecated, I do not use it
 local grep_within_grep = function()
-    telescope_builtin.grep_string(themes.get_ivy({
+    telescope_builtin.grep_string({
         prompt_title = "Secondary Grep",
         search = vim.fn.input("Rg> "),
-    }))
+    })
 end
 
 local git_branches = function()
-    --[[ local opts = {
-    prompt_title = "\\ Git Branches /",
-    layout_strategy = "horizontal",
-    layout_config = {
-      width = 0.9,
-    },
-    prompt_prefix = '  ',
-  } ]]
     if is_git_worktree() then
-        telescope_builtin.git_branches(themes.get_ivy({
+        telescope_builtin.git_branches({
             prompt_title = "Git Branches",
             prompt_prefix = "  ",
-        }))
+        })
     else
         -- vim.notify_once("Not a git working tree", 3, {})
         require("notify")("Not a git working tree", "WARN")
@@ -75,10 +56,10 @@ end
 
 local git_commits = function()
     if is_git_worktree() then
-        telescope_builtin.git_commits(themes.get_ivy({
+        telescope_builtin.git_commits({
             prompt_title = "Git Commits",
             prompt_prefix = "  ",
-        }))
+        })
     else
         require("notify")("Not a git working tree", "WARN")
         return
@@ -86,15 +67,19 @@ local git_commits = function()
 end
 
 local git_bcommits = function()
-    telescope_builtin.git_bcommits(themes.get_ivy({
+    telescope_builtin.git_bcommits({
         prompt_title = "Commits which include current buffer",
         prompt_prefix = "  ",
-    }))
+    })
 end
 
+-- I do not use this, I usually explore within single project, and if I need to
+-- explore to others, Telescope zoxide seems better
 local find_files_in_path = function()
     local _path = vim.fn.input("Enter Directory: ", "", "dir")
-    if _path == nil or _path == "" then _path = vim.fn.expand("%:p:h") end
+    if _path == nil or _path == "" then
+        _path = vim.fn.expand("%:p:h")
+    end
     telescope_builtin.find_files(themes.get_ivy({
         prompt_title = "Find in directory: " .. _path,
         search_dirs = { _path },
@@ -102,41 +87,17 @@ local find_files_in_path = function()
 end
 
 local list_buffers = function()
-    telescope_builtin.buffers(themes.get_ivy({
+    telescope_builtin.buffers(themes.get_dropdown({
         previewer = false,
-        prompt_title = "Open Buffers",
+        prompt_title = "Buffer List",
     }))
 end
 
-local jump_list = function() telescope_builtin.jumplist(themes.get_ivy({})) end
-
-local recent_files = function() telescope_builtin.oldfiles(themes.get_ivy({ previewer = false })) end
-
-local zoxide_list = function() require("telescope").extensions.zoxide.list(themes.get_ivy({})) end
-
-local symbols = function() telescope_builtin.lsp_document_symbols(themes.get_ivy()) end
-
-local search_tags = function() telescope_builtin.help_tags(themes.get_ivy()) end
-
-local search_commands = function() telescope_builtin.commands(themes.get_ivy()) end
-
-local search_in_current_buffer = function()
-    telescope_builtin.current_buffer_fuzzy_find(themes.get_ivy({
-        -- telescope_builtin.current_buffer_fuzzy_find(themes.get_dropdown({
-        prompt_title = "Search Current Buffer",
+local recent_files = function()
+    telescope_builtin.oldfiles(themes.get_dropdown({
+        previewer = false,
+        prompt_title = " Recent Files",
     }))
-end
-
-local lsp_references = function()
-    telescope_builtin.lsp_references(themes.get_ivy({}))
-end
-
-local lsp_definitions = function()
-    telescope_builtin.lsp_definitions(themes.get_ivy({}))
-end
-
-local lsp_type_definitions = function()
-    telescope_builtin.lsp_type_definitions(themes.get_ivy({}))
 end
 
 ----------------------------------------------------------------------
@@ -152,32 +113,90 @@ return {
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
-                cond = function() return vim.fn.executable("make") == 1 end,
+                cond = function()
+                    return vim.fn.executable("make") == 1
+                end,
             },
         },
         keys = {
-            { "<leader>bl", list_buffers,             desc = "Buffers" },
-            { "<leader>f",  find_files,               desc = "Find files" },
-            { "<leader>F",  find_files_in_path,       desc = "Find files in path ..." },
-            { "<leader>gJ", jump_list,                desc = "Jump list" },
-            { "<leader>gr", recent_files,             desc = "Recent files" },
-            { "<leader>gz", zoxide_list,              desc = "Zoxide jump list" },
-            { "<leader>Gb", git_branches,             desc = "Branches" },
-            { "<leader>Gf", git_bcommits,             desc = "File Commit List" },
-            { "<leader>Gl", git_commits,              desc = "Commits" },
-            { "<leader>ls", symbols,                  desc = "Symbols" },
-            { "<leader>sg", live_grep,                desc = "Grep on workspace" },
-            { "<leader>sG", grep_within_grep,         desc = "Grep within grep on workspace" },
-            { "<leader>st", search_tags,              desc = "Tags" },
-            { "<leader>sc", search_commands,          desc = "Commands" },
-            { "<leader>sb", search_in_current_buffer, desc = "... in buffer" },
-            { "<leader>lr", lsp_references,           desc = "Reference" },
-            { "<leader>ld", lsp_definitions,          desc = "Definitions" },
-            { "<leader>lt", lsp_type_definitions,     desc = "Types" },
+            { "<leader>bl", list_buffers,                  desc = "( l )ist" },
+            {
+                "<leader>fz",
+                "<cmd>lua require('telescope').extensions.zoxide.list()<cr>",
+                desc = "( z )oxide"
+            },
+            {
+                "<leader>fb",
+                telescope_builtin.current_buffer_fuzzy_find,
+                desc = "in ( b )uffer"
+            },
+            { "<leader>fc", telescope_builtin.grep_string, desc = "under ( c )ursor" },
+            { "<leader>ff", find_files,                    desc = "( f )iles" },
+            {
+                "<leader>fj",
+                telescope_builtin.jumplist,
+                desc = "in ( j )ump list"
+            },
+            {
+                "<leader>fs",
+                telescope_builtin.live_grep,
+                desc = "( s )tring"
+            },
+            {
+                "<leader>fr",
+                recent_files,
+                desc = "( r )ecent files"
+            },
+            {
+                "<leader>gd",
+                telescope_builtin.lsp_definitions,
+                desc = "( d )efinitions"
+            },
+            {
+                "<leader>gr",
+                telescope_builtin.lsp_references,
+                desc = "( r )eferences"
+            },
+            {
+                "<leader>Gb",
+                git_branches,
+                desc = "( b )ranches"
+            },
+            {
+                "<leader>Gf",
+                git_bcommits,
+                desc = "( f )ile commits"
+            },
+            {
+                "<leader>Gl",
+                git_commits,
+                desc = "( l )ist commits"
+            },
+            {
+                "<leader>ls",
+                telescope_builtin.lsp_document_symbols,
+                desc = "( s )ymbols"
+            },
+            {
+                "<leader>lt",
+                telescope_builtin.lsp_type_definitions,
+                desc = "( t )ypes"
+            },
+            {
+                "<leader>vt",
+                telescope_builtin.help_tags,
+                desc = "Vim help ( t )ags"
+            },
+            {
+                "<leader>vc",
+                telescope_builtin.commands,
+                desc = "Vim ( c )ommands"
+            },
         },
         config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
+            -- TODO: I can't remember what these are for, if no purporse, remove
             -- local file_previewer = require("telescope.previewers").vim_buffer_cat.new
             -- local generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter
             local z_utils = require("telescope._extensions.zoxide.utils")
@@ -211,9 +230,26 @@ return {
                         },
                     },
                     prompt_prefix = " ",
-                    path_display = { "truncate" },
+                    path_display = { "smart" },
                     selection_caret = " ",
                     set_env = { ["COLORTERM"] = "truecolor" },
+
+                    -- Ideally, there would be a way to set a default theme for
+                    -- telescope, there isn't. I'm trying one of these:
+                    -- HACK: https://github.com/LazyVim/LazyVim/discussions/1127
+                    -- HACK: https://github.com/nvim-telescope/telescope.nvim/issues/848
+                    sorting_strategy = "ascending",
+                    layout_strategy = "bottom_pane",
+                    layout_config = {
+                        height = 25,
+                    },
+
+                    border = true,
+                    borderchars = {
+                        prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+                        results = { " " },
+                        preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                    },
                 },
                 extensions = {
                     fzf = { fuzzy = true },
@@ -228,7 +264,9 @@ return {
                                 end,
                             },
                             ["<C-s>"] = {
-                                action = function(selection) vim.cmd("edit " .. selection.path) end,
+                                action = function(selection)
+                                    vim.cmd("edit " .. selection.path)
+                                end,
                             },
                             -- Opens the selected entry in a new split
                             ["<C-q>"] = { action = z_utils.create_basic_command("split") },
