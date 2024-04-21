@@ -6,7 +6,9 @@
 -- Function wrapper for mapping custom keybindings
 local function keymap(mode, lhs, rhs, opts)
     local options = { noremap = true, silent = true }
-    if opts then options = vim.tbl_extend("force", options, opts) end
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
@@ -20,14 +22,11 @@ keymap("n", "<Tab>", ":bnext<CR>", { silent = true })
 keymap("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 
 -- paste yanked, not deleted, not system copied
-keymap("n",
-    "<leader>p",
-    '"0p',
-    { desc = "( p )aste yanked, not deleted, copied" }
-)
+keymap("n", "<leader>p", '"0p', { desc = "( p )aste yanked, not deleted, copied" })
 
 -- Replace all instances of highlighted words
-keymap("v",
+keymap(
+    "v",
     "<leader>Er",
     '"hy:%s/<C-r>h//g<left><left>',
     { desc = "( r )eplace all instances of selected string" }
@@ -43,8 +42,8 @@ keymap("v", "J", ":m '>+1<cr>gv=gv")
 keymap("v", "K", ":m '<-2<cr>gv=gv")
 
 -- Splits
-keymap("n", "ss", ":new<Return><C-w>j")
-keymap("n", "sv", ":vnew<Return><C-w>l")
+keymap("n", "ss", "<cmd>new<Return><C-w>j", { desc = "(s)plit (h)orizontal" })
+keymap("n", "sv", "<cmd>vnew<Return><C-w>l", { desc = "(s)plit (v)ertical" })
 -- keymap("n", "<C-h>", "<C-w>h")
 -- keymap("n", "<C-j>", "<C-w>j")
 -- keymap("n", "<C-k>", "<C-w>k")
