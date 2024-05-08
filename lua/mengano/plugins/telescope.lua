@@ -33,7 +33,6 @@ local find_files = function()
     end
 end
 
--- TODO: Deprecated, I do not use it
 local grep_within_grep = function()
     telescope_builtin.grep_string({
         prompt_title = "Secondary Grep",
@@ -119,78 +118,79 @@ return {
             },
         },
         keys = {
-            { "<leader>bl", list_buffers,                  desc = "( l )ist" },
+            { "<leader>bl", list_buffers, desc = "( l )ist" },
             {
                 "<leader>fz",
                 "<cmd>lua require('telescope').extensions.zoxide.list()<cr>",
-                desc = "( z )oxide"
+                desc = "( z )oxide",
             },
             {
                 "<leader>fb",
                 telescope_builtin.current_buffer_fuzzy_find,
-                desc = "in ( b )uffer"
+                desc = "in ( b )uffer",
             },
             { "<leader>fc", telescope_builtin.grep_string, desc = "under ( c )ursor" },
-            { "<leader>ff", find_files,                    desc = "( f )iles" },
+            { "<leader>ff", find_files, desc = "( f )iles" },
+            { "<leader>fg", grep_within_grep, desc = "( g )rep" },
             {
                 "<leader>fj",
                 telescope_builtin.jumplist,
-                desc = "in ( j )ump list"
+                desc = "in ( j )ump list",
             },
             {
                 "<leader>fs",
                 telescope_builtin.live_grep,
-                desc = "( s )tring"
+                desc = "( s )tring",
             },
             {
                 "<leader>fr",
                 recent_files,
-                desc = "( r )ecent files"
+                desc = "( r )ecent files",
             },
             {
                 "<leader>gd",
                 telescope_builtin.lsp_definitions,
-                desc = "( d )efinitions"
+                desc = "( d )efinitions",
             },
             {
                 "<leader>gr",
                 telescope_builtin.lsp_references,
-                desc = "( r )eferences"
+                desc = "( r )eferences",
             },
             {
                 "<leader>Gb",
                 git_branches,
-                desc = "( b )ranches"
+                desc = "( b )ranches",
             },
             {
                 "<leader>Gf",
                 git_bcommits,
-                desc = "( f )ile commits"
+                desc = "( f )ile commits",
             },
             {
                 "<leader>Gl",
                 git_commits,
-                desc = "( l )ist commits"
+                desc = "( l )ist commits",
             },
             {
                 "<leader>ls",
                 telescope_builtin.lsp_document_symbols,
-                desc = "( s )ymbols"
+                desc = "( s )ymbols",
             },
             {
                 "<leader>lt",
                 telescope_builtin.lsp_type_definitions,
-                desc = "( t )ypes"
+                desc = "( t )ypes",
             },
             {
                 "<leader>vt",
                 telescope_builtin.help_tags,
-                desc = "Vim help ( t )ags"
+                desc = "Vim help ( t )ags",
             },
             {
                 "<leader>vc",
                 telescope_builtin.commands,
-                desc = "Vim ( c )ommands"
+                desc = "Vim ( c )ommands",
             },
         },
         config = function()
